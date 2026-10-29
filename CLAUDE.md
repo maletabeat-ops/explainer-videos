@@ -28,16 +28,23 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 7. **Deliverables per NEW video (always, at the end, without being asked)** for BOTH the RU and EN version:
    a **cover** (1080×1920), a **title** and the **pinned-comment text** — written out in the chat, also appended to
    `instagram_posts.md`. **No description/caption needed.** Don't redo texts for older videos.
-8. **Models**: try `eleven_v4` (newer, higher quality TTS) and `music_v2_5` for music — see `.claude/skills`
+8. **Models**: use `eleven_v4` (`tools/tts4.py`, pass language code; v4 only takes stability/similarity) and `music_v2_5`.
+   EN: do NOT use paragraph separators (NLNL) — they create odd pauses that sound like a cut; avoid tiny standalone
+   sentences like "It can't." between pauses.
+9. **Ending CTA (always)**: the voice ends with a follow/like line (RU "Подпишись и поставь лайк — впереди ещё больше
+   разборов!", EN similar) — `tools/append_cta.py` adds it with request stitching — plus the animated end card
+   (Follow button tapped → "Following ✓", heart fills) from `videos/fridge/remotion/src/Overlays.tsx` `CTA`.
+10. **SFX**: NO whoosh/transition sounds on camera moves (user hates them, "like hitting a pipe"). Keep only
+    meaningful SFX tied to on-screen actions (pop for labels, door, compressor click, etc.). — see `.claude/skills`
    (official ElevenLabs skills: text-to-speech, music, sound-effects, voice-isolator, speech-to-text, dubbing...).
 
 ## Style
 - Dark neon look, glowing pills/badges, header with progress bar + "0N / 08" chapters, 8 chapters per video.
 - Each video has its own palette but the same system. Persistent element at the bottom (ledger / chain / stage list).
-- Prefer real 3D (three.js / MapLibre extrusions) where it helps; avoid crooked/ill-fitting geometry — verify with stills.
+- Prefer real 3D (three.js / R3F via `@remotion/three` / MapLibre extrusions) where it helps; avoid crooked/ill-fitting geometry — verify with stills.
 - Covers: "ВЫ ЗНАЛИ? / DID YOU KNOW?" kicker + big 2-line title, key content inside the 3:4 safe area.
 - Brand: 3D "HOW?" / "КАК?" logo (`brand/avatar`), YouTube banner `brand/banner` (2560×1440, safe 1546×423).
 
 ## Videos so far
 coffee (2D, EN voice is the old British one — needs re-voicing), dishwasher (2D), microwave (3D), UAE taxes (3D),
-switzerland salaries (Remotion). Old "Dubai" version was replaced by UAE.
+switzerland salaries (Remotion), fridge (Remotion + R3F 3D, eleven_v4, CTA). Old "Dubai" version was replaced by UAE.

@@ -3,7 +3,7 @@ import {AbsoluteFill, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {Audio} from '@remotion/media';
 import {loadFont} from '@remotion/fonts';
 import {Fridge3D} from './Fridge3D';
-import {Cycle, Overlays} from './Overlays';
+import {CTA, Cycle, Overlays} from './Overlays';
 import {Captions} from './Captions';
 import {STR} from './strings';
 import {chapters} from './scene';
@@ -47,19 +47,14 @@ export const FridgeVideo: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, dat
 			<Overlays ch={ch} K={K} S={S} />
 			<Cycle ch={ch} K={K} S={S} />
 			<Header S={S} ch={ch} dur={dur} />
+			<CTA K={K} S={S} />
 			<Captions captions={data.captions} />
-			<Sequence from={Math.round(end * FPS)} layout="none">
-				<AbsoluteFill style={{top: 1640, alignItems: 'center'}}>
-					<div style={{background: C.cyan, color: C.ink, fontFamily: DISPLAY, fontWeight: 900, fontSize: 52, padding: '20px 44px', borderRadius: 999, boxShadow: `0 0 40px ${C.cyan}`, height: 'fit-content'}}>{S.end}</div>
-				</AbsoluteFill>
-			</Sequence>
 			<Audio src={staticFile('music.mp3')} volume={(f) => 0.14 * Math.min(1, f / 30) * Math.min(1, (dur * FPS - f) / 75)} />
 			<Sequence from={15} layout="none"><Audio src={staticFile(`${lang}/voice.mp3`)} volume={1.1} /></Sequence>
-			{ch.slice(1, 8).map((c, i) => sfx('whoosh.mp3', c - 0.4, 0.28, 'w' + i))}
 			{sfx('door.mp3', 0.6, 0.4, 'd1')}{sfx('close.mp3', 2.9, 0.35, 'd2')}{sfx('door.mp3', K.door - 0.6, 0.4, 'd3')}
 			{sfx('click.mp3', K.comp - 0.3, 0.5, 'cl')}{sfx('hum.mp3', K.comp, 0.25, 'hm')}{sfx('hiss.mp3', K.drop - 0.3, 0.35, 'hs')}
 			{[K.nocold, K.agent, K.evap, K.grid, K.tube, K.ammonia, K.freon, K.ban, K.pump].map((k: number, i: number) => sfx('pop.mp3', k - 0.3, 0.3, 'p' + i))}
-			{sfx('ding.mp3', end, 0.4, 'end')}
+			{K.cta !== undefined ? <>{sfx('pop.mp3', K.cta + 1.1, 0.45, 'tap')}{sfx('ding.mp3', K.cta + 2.0, 0.4, 'like')}</> : sfx('ding.mp3', end, 0.4, 'end')}
 		</AbsoluteFill>
 	);
 };

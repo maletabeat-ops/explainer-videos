@@ -8,7 +8,7 @@ export const STR: Record<'ru' | 'en', any> = {
 		tube: 'КАПИЛЛЯР', drop: 'ДАВЛЕНИЕ ↓  ХОЛОД ↓', loop: 'КРУГ ЗАМКНУЛСЯ',
 		stages: ['ИСПАРЕНИЕ', 'СЖАТИЕ', 'КОНДЕНСАЦИЯ', 'РАСШИРЕНИЕ'],
 		hist: [['1900-е', 'АММИАК И СЕРНИСТЫЙ ГАЗ', 'ЯДОВИТЫЕ УТЕЧКИ'], ['1930-е', 'ФРЕОН', 'БЕЗОПАСЕН... НО'], ['1987', 'ЗАПРЕТ ФРЕОНОВ', 'ОЗОНОВЫЙ СЛОЙ'], ['СЕГОДНЯ', 'ИЗОБУТАН', 'БЕЗ ВРЕДА ДЛЯ ОЗОНА']],
-		door: 'ДВЕРЦА ОТКРЫТА', kitchen: 'КУХНЯ', warmer: 'ТЕПЛЕЕ, А НЕ ХОЛОДНЕЕ', fin1: 'ХОЛОДИЛЬНИК —', fin2: 'НАСОС ДЛЯ ТЕПЛА', end: 'ТЕПЕРЬ ТЫ ЗНАЕШЬ!',
+		door: 'ДВЕРЦА ОТКРЫТА', kitchen: 'КУХНЯ', warmer: 'ТЕПЛЕЕ, А НЕ ХОЛОДНЕЕ', fin1: 'ХОЛОДИЛЬНИК —', sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК', fin2: 'НАСОС ДЛЯ ТЕПЛА', end: 'ТЕПЕРЬ ТЫ ЗНАЕШЬ!',
 	},
 	en: {
 		head: 'HOW A FRIDGE WORKS', t1: 'HOW DOES A', t2: 'FRIDGE WORK?',
@@ -19,6 +19,6 @@ export const STR: Record<'ru' | 'en', any> = {
 		tube: 'CAPILLARY TUBE', drop: 'PRESSURE ↓  COLD ↓', loop: 'THE LOOP RESTARTS',
 		stages: ['EVAPORATE', 'COMPRESS', 'CONDENSE', 'EXPAND'],
 		hist: [['1900s', 'AMMONIA & SULFUR DIOXIDE', 'TOXIC LEAKS'], ['1930s', 'FREON', 'SAFE... BUT'], ['1987', 'FREON BAN', 'OZONE LAYER'], ['TODAY', 'ISOBUTANE', 'OZONE-FRIENDLY']],
-		door: 'DOOR LEFT OPEN', kitchen: 'KITCHEN', warmer: 'WARMER, NOT COOLER', fin1: 'A FRIDGE IS', fin2: 'A HEAT PUMP', end: 'NOW YOU KNOW!',
+		door: 'DOOR LEFT OPEN', kitchen: 'KITCHEN', warmer: 'WARMER, NOT COOLER', fin1: 'A FRIDGE IS', sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE', fin2: 'A HEAT PUMP', end: 'NOW YOU KNOW!',
 	},
 };
