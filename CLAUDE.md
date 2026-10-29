@@ -12,8 +12,8 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 3. **Voice (ElevenLabs, eleven_v3)** via `tools/tts2.py <dir> eleven_v3 <voice>` (RU) or
    `tools/tts3.py <dir> eleven_v3 <voice> 0.92 NLNL` (EN, paragraph pauses). Writes `voice.mp3`, `align.json`, `timing.js`.
    - RU voice: **George** `JBFqnCBsd6RMkjVDRZzb` (user loves it for Russian).
-   - EN voice: **"Explainer US Male (v1)"** `w4gF2zzYSAgjVtnUV41o` — American, warm (user chose variant "A", natural).
-     It reads fast: fit timing with `tools/post.py <dir> <gap_s> <tempo>` (e.g. `0.5 0.97`) instead of regenerating.
+   - EN voice: **Jessica** `cgSgspJ2msm6clMCkdW9` on `eleven_v4` (user's choice since the fridge video; young
+     expressive American female). Older videos used "Explainer US Male (v1)" `w4gF2zzYSAgjVtnUV41o`.
    - The API key cannot list voices (no voices_read); Voice Design + save works.
 4. **Music/SFX**: ElevenLabs `/v1/music` (~70–80 s) and `/v1/sound-generation`; music at ~0.14 volume under voice.
 5. **Animation** — two engines:
@@ -39,6 +39,10 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
    (official ElevenLabs skills: text-to-speech, music, sound-effects, voice-isolator, speech-to-text, dubbing...).
 
 ## Style
+- **Every video gets its own twist** (user request): keep the series look (dark neon, header, captions, CTA), but
+  don't copy the previous template — vary the hero visual, camera moves, transitions, a signature gimmick,
+  palette, music mood. Experiment freely, but cheaply (reuse code/assets; don't burn ElevenLabs credits on
+  throwaway generations).
 - Dark neon look, glowing pills/badges, header with progress bar + "0N / 08" chapters, 8 chapters per video.
 - Each video has its own palette but the same system. Persistent element at the bottom (ledger / chain / stage list).
 - Prefer real 3D (three.js / R3F via `@remotion/three` / MapLibre extrusions) where it helps; avoid crooked/ill-fitting geometry — verify with stills.
