@@ -171,3 +171,47 @@ Team dishwasher or team hand-wash? 👇
 
 **🇺🇸** 📌 The biggest cost isn't the coffee, it's people and place: rent and the barista eat up almost half the price 🏙
 Would you still open a café after watching this, or just brew at home? 👇
+
+---
+
+## 5. Почему в Швейцарии такие зарплаты
+
+### 🇷🇺 RU
+**Видео:** `pochemu_v_shveycarii_zarplaty_RU.mp4` · **Обложка:** `cover_switzerland_RU.png`
+
+**Название:** Вы знали, что типичная зарплата в Швейцарии — 7 024 франка в месяц? 🇨🇭
+
+**Описание:**
+> Это примерно вдвое больше, чем у соседей. Но дело не в щедрости 💸
+> Лекарства, банки, часы и торговля, ⅔ подростков в ученичестве, сильный франк и низкие налоги в кантонах — и всё это при страховке ~465 CHF и трёшке в Цюрихе ~2 900 CHF в месяц.
+>
+> Поехал бы работать в Швейцарию? Пиши в комментариях 👇
+> Сохрани, чтобы не потерять 📌
+>
+> *Медиана 2024 (BFS), упрощённо.*
+
+**Хэштеги:** #вызнали #швейцария #зарплаты #экономика #работазарубежом #финансы #переезд #интересныефакты
+
+**Закреплённый комментарий:**
+> 📌 7 024 CHF — это медиана брутто за 2024 год: половина швейцарцев получает больше, половина меньше. В Цюрихе медиана ещё выше — около 7 500.
+> А какая зарплата должна быть, чтобы тебе было комфортно жить в Цюрихе? 👇
+
+### 🇺🇸 EN
+**Video:** `why_swiss_salaries_are_high_EN.mp4` · **Cover:** `cover_switzerland_EN.png`
+
+**Title:** Did you know the typical Swiss salary is 7,024 francs a month? 🇨🇭
+
+**Caption:**
+> That's roughly double its neighbors. But it's not generosity 💸
+> Medicines, banking, watches and trading, two thirds of teens in apprenticeships, a strong franc and low cantonal taxes — with ~465 CHF health insurance and ~2,900 CHF for a 2-bedroom in Zurich.
+>
+> Would you move to Switzerland for work? Tell me below 👇
+> Save this for later 📌
+>
+> *2024 median (FSO), simplified.*
+
+**Hashtags:** #didyouknow #switzerland #salary #economy #workabroad #finance #expatlife #funfacts
+
+**Pinned comment:**
+> 📌 7,024 CHF is the 2024 gross median: half of Swiss workers earn more, half earn less. In the Zurich region it's even higher, around 7,500.
+> What salary would you need to live comfortably in Zurich? 👇

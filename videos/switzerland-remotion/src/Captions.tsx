@@ -14,7 +14,7 @@ const Page: React.FC<{page: TikTokPage}> = ({page}) => {
 				textShadow: '0 4px 0 #000, 0 0 18px rgba(0,0,0,.9)', WebkitTextStroke: '10px #0b0f22', paintOrder: 'stroke fill'}}>
 				{page.tokens.map((tk, i) => {
 					const on = ms >= tk.fromMs && ms < tk.toMs + 120;
-					return <span key={i} style={{color: on ? C.gold : '#ffffff', display: 'inline-block', margin: '0 0.14em', transform: on ? 'scale(1.08)' : undefined}}>{tk.text.trim()}</span>;
+					return <span key={i} style={{color: on ? C.gold : '#ffffff', display: 'inline-block', margin: '0 0.24em', transform: on ? 'scale(1.06)' : undefined}}>{tk.text.trim()}</span>;
 				})}
 			</div>
 		</AbsoluteFill>
