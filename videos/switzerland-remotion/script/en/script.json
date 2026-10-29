@@ -1,0 +1,10 @@
+[
+ {"s":1,"tts":"The median salary in Switzerland is about seven thousand francs a month. That's roughly double its neighbors. So where does that money come from?","sub":"","keys":{"wage":"seven","double":"double","why":"where"}},
+ {"s":2,"tts":"Secret number one: what they make. Medicines in Basel, banking in Zurich, watches in the Jura, commodity trading in Geneva. Expensive stuff, sold to the whole world.","sub":"","keys":{"s1":"Secret","pharma":"Medicines","bank":"banking","watch":"watches","trade":"trading","world":"whole world"}},
+ {"s":3,"tts":"Those companies pay a lot. So everyone else has to keep up: the waiter, the cashier, the bus driver. Otherwise, people just leave.","sub":"","keys":{"pay":"pay","waiter":"waiter","cashier":"cashier","driver":"bus driver","leave":"leave"}},
+ {"s":4,"tts":"Secret number two: skills. About two thirds of teens skip university and do an apprenticeship instead, learning right on the job.","sub":"","keys":{"s2":"number two","twothirds":"two thirds","appr":"apprenticeship","job":"on the job"}},
+ {"s":5,"tts":"Secret number three: stability. A strong franc, neutrality, and low taxes in cantons like Zug. Big companies move their headquarters here.","sub":"","keys":{"s3":"number three","franc":"franc","neutral":"neutrality","zug":"Zug","hq":"headquarters"}},
+ {"s":6,"tts":"But life is expensive too. Mandatory health insurance is about four hundred sixty francs a month. A two-bedroom in Zurich? Around three thousand.","sub":"","keys":{"cost":"expensive","ins":"health insurance","rent":"two-bedroom"}},
+ {"s":7,"tts":"So it's a chain: expensive products, high productivity, high wages, and high prices.","sub":"","keys":{"chain":"chain","goods":"products","prod":"productivity","wages":"wages","prices":"prices"}},
+ {"s":8,"tts":"The Swiss aren't paid a lot out of generosity. Their work is simply worth a lot.","sub":"","keys":{"fin":"generosity","costly":"worth"}}
+]

@@ -1,0 +1,10 @@
+const S={head:'WHY THE UAE HAS NO TAXES',t1a:'WHY DOES THE UAE',t1b:'HAVE NO TAXES?',tSize:84,
+pay:{title:'PAYSLIP',sal:'Salary',tax:'Income tax',net:'Take-home',amt:'AED 20,000',zero:'AED 0'},q:'WHO PAYS THE BILLS?',
+oil:'OIL',big:'ONE OF THE TOP PRODUCERS',ad:'ABU DHABI',
+fund:'FUNDS',trn:'$1 TRILLION+',trnSub:"Abu Dhabi's biggest fund (estimate)",yearly:'RETURNS EVERY YEAR',
+p11:'11%',cit:'CITIZENS',p89:'89%',exp:'EXPATS',perks:'PERKS',
+fees:'FEES',visa:'VISAS',lic:'LICENSES',fines:'FINES',toll:'TOLL ROADS',cardV:'VISA',cardL:'LICENSE',cardF:'FINE',rent:'DUBAI: +5% ON RENT',
+rc:['Coffee','Sneakers','Phone'],rcVat:'VAT 5%',rcTitle:'RECEIPT',vat:'VAT 5%',corp:'CORPORATE TAX 9%',corpNote:'on profits above AED 375,000',excise:'EXCISE 100%',pack:'TOBACCO',can:'ENERGY',
+q34:'77%',nonoil:'NON-OIL',trade:'TRADE',tour:'TOURISM',fin:'FINANCE',bait:'0% IS THE BAIT',
+fin1:'TAXES EXIST, JUST NOT ON PAY:',fin2:'OIL · FUNDS · RECEIPTS',
+chain:['OIL','FUNDS','FEES','VAT','CORP 9%','EXCISE'],end:'NOW YOU KNOW!',note:'* simplified, 2026 data. Not financial advice'};

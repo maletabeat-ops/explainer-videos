@@ -1,0 +1,9 @@
+node_modules/
+**/out/
+**/frames/
+**/fr_*/
+**/st/
+**/stills/
+*.mp4
+*.raw
+.DS_Store

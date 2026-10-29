@@ -1,0 +1,4 @@
+const {chromium}=require('playwright');const fs=require('fs');
+(async()=>{const b=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist','--allow-file-access-from-files']});const p=await b.newPage();p.on('pageerror',e=>console.log(e.message));p.on('console',m=>console.log(m.text()));
+await p.goto('file://'+__dirname+'/index.html');await p.waitForFunction(()=>window.ok,null,{timeout:60000});await p.evaluate(b=>setFont(b),fs.readFileSync(__dirname+'/InterDisplay-Black.otf').toString('base64'));
+for(const[n,m,w]of[['avatar_A_universal','A',''],['avatar_RU','B','КАК'],['avatar_EN','B','HOW']]){const d=await p.evaluate(([m,w])=>make(m,w),[m,w]);fs.writeFileSync(`/home/user/${n}.png`,Buffer.from(d.split(',')[1],'base64'))}await b.close()})();

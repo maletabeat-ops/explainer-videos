@@ -1,0 +1,96 @@
+[
+ {
+  "s": 1,
+  "tts": "Your microwave heats food, but nothing inside it gets hot. So how?",
+  "sub": "Hot food, cool walls. How?",
+  "keys": {
+   "hook": "heats",
+   "cold": "nothing"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "It starts with the magnetron. It turns electricity into invisible waves, billions of wiggles a second.",
+  "sub": "Magnetron: billions of waves a second",
+  "keys": {
+   "mag": "magnetron",
+   "waves": "waves",
+   "ghz": "billions"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "A waveguide shoots them into the box, where they bounce off the metal walls.",
+  "sub": "Waves bounce off the walls",
+  "keys": {
+   "guide": "waveguide",
+   "bounce": "bounce"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "And the mesh on the door? It's a trap. Its holes are smaller than the waves.",
+  "sub": "The holes are smaller than the waves",
+  "keys": {
+   "mesh": "mesh",
+   "holes": "holes"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "Your food is full of water molecules. The waves flip them back and forth, they rub together, and boom: heat.",
+  "sub": "Water molecules flip and rub",
+  "keys": {
+   "mol": "molecules",
+   "flip": "flip",
+   "rub": "rub",
+   "heat": "heat"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "And no, it doesn't cook from the inside out. Waves only go about an inch deep. The middle heats from the edges.",
+  "sub": "Myth: \"it cooks from the inside\"",
+  "keys": {
+   "myth": "inside out",
+   "depth": "an inch",
+   "core": "middle"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "Inside, the waves stack up into hot and cold spots. That's why the plate spins.",
+  "sub": "Hot spots and cold spots",
+  "keys": {
+   "spots": "hot and cold",
+   "plate": "plate"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "And fifty percent power? It's a trick. The magnetron just switches on and off.",
+  "sub": "50% = on, off, on, off",
+  "keys": {
+   "p50": "fifty",
+   "onoff": "on and off"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Oh, and no metal. Waves crowd onto sharp edges and spark.",
+  "sub": "Metal = sparks",
+  "keys": {
+   "metal": "metal",
+   "sparks": "spark"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "So a microwave isn't really an oven. It's a box where your food heats itself.",
+  "sub": "Your food heats itself",
+  "keys": {
+   "notoven": "isn't really",
+   "self": "itself"
+  }
+ }
+]

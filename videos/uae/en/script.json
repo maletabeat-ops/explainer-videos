@@ -1,0 +1,10 @@
+[
+ {"s":1,"tts":"In the UAE, there's no income tax. You keep your whole paycheck. So how does a whole country pay its bills?","sub":"UAE income tax: 0%","keys":{"zero":"no income","whole":"whole","money":"pay its bills"}},
+ {"s":2,"tts":"Answer number one: oil. The UAE is one of the world's biggest producers, and most of it sits under Abu Dhabi.","sub":"Answer #1: oil","keys":{"oil":"oil","big":"biggest","abudhabi":"Abu Dhabi"}},
+ {"s":3,"tts":"But that oil money isn't just spent. It's invested. Abu Dhabi's biggest fund alone is estimated at over a trillion dollars, and it pays out every year.","sub":"Abu Dhabi's fund: over $1 trillion","keys":{"fund":"invested","trn":"trillion","yearly":"every year"}},
+ {"s":4,"tts":"Secret number two: citizens are only about eleven percent of the population. The generous perks go to them. Everyone else is an expat.","sub":"Citizens: about 11%","keys":{"cit":"citizens","p11":"eleven","perks":"perks","expats":"expat"}},
+ {"s":5,"tts":"And expats pay in other ways. Fees: visas, licenses, fines, toll roads. In Dubai, another five percent of your rent.","sub":"Expats pay through fees","keys":{"fees":"Fees","visa":"visas","lic":"licenses","fines":"fines","toll":"toll","rent":"rent"}},
+ {"s":6,"tts":"And yes, there are taxes: five percent VAT, a nine percent corporate tax, and a hundred percent excise on cigarettes and energy drinks.","sub":"5% VAT, 9% corporate tax, 100% excise","keys":{"vat":"VAT","c9":"nine","excise":"excise"}},
+ {"s":7,"tts":"Today, over three quarters of the economy isn't oil: trade, tourism, finance. Zero income tax is the bait that pulls in people and money.","sub":"Over ¾ of the economy isn't oil","keys":{"econ":"economy","q34":"three quarters","trade":"trade","bait":"bait"}},
+ {"s":8,"tts":"So the UAE does have taxes. They're just not on your paycheck. They're paid in oil, in funds, and on your receipt.","sub":"Paid in oil, funds and receipts","keys":{"are":"does have","pay":"oil, in funds","check":"receipt"}}
+]

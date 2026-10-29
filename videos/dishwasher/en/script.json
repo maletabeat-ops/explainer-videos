@@ -1,0 +1,109 @@
+[
+ {
+  "s": 1,
+  "tts": "A dishwasher needs just three gallons of water.",
+  "sub": "A dishwasher uses just 3 gallons",
+  "keys": {
+   "l12": "three gallons"
+  }
+ },
+ {
+  "s": 1,
+  "tts": "By hand? Up to twenty-seven. So how does it work?",
+  "sub": "By hand: up to 27 gallons",
+  "keys": {
+   "l100": "twenty-seven"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "First, a valve lets water into the sump at the bottom. Only about a gallon.",
+  "sub": "Valve → sump: about 1 gallon",
+  "keys": {
+   "valve": "valve",
+   "sump": "sump",
+   "fill": "a gallon"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "A heater warms it to a hundred and forty degrees, and the detergent door pops open.",
+  "sub": "Heated to 140 °F + detergent",
+  "keys": {
+   "heat": "heater",
+   "hot": "a hundred and forty",
+   "tab": "detergent"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "A pump pushes it into the spray arms. No motor spins them: the jets do, like a lawn sprinkler.",
+  "sub": "The jets spin the spray arms",
+  "keys": {
+   "pump": "pump",
+   "arms": "spray arms",
+   "thrust": "jets",
+   "sprinkler": "sprinkler"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "The water drains through a filter and back to the pump. Around and around, dozens of times.",
+  "sub": "Same water, dozens of loops",
+  "keys": {
+   "filter": "filter",
+   "loop": "back",
+   "times": "dozens"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "Meanwhile, enzymes in the detergent break down fat, protein and starch.",
+  "sub": "Enzymes eat fat, protein, starch",
+  "keys": {
+   "enz": "enzymes",
+   "fat": "fat",
+   "prot": "protein",
+   "starch": "starch"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "Then it drains, and rinses with fresh water and rinse aid, so there are no spots.",
+  "sub": "Drain, fresh water, rinse aid",
+  "keys": {
+   "drain": "drains",
+   "rinse": "fresh",
+   "aid": "rinse aid",
+   "spots": "spots"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "Drying is physics: steam condenses on the cooler walls and drips away.",
+  "sub": "Drying: steam condenses on walls",
+  "keys": {
+   "steam": "steam",
+   "walls": "walls"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Why so slow? Heating water takes the most energy. So eco mode runs cooler, but longer.",
+  "sub": "Eco: cooler, but longer",
+  "keys": {
+   "why": "slow",
+   "cost": "energy",
+   "eco": "eco"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "So a dishwasher isn't a tub of water. It's a tiny water cycle.",
+  "sub": "Not a tub, a tiny water cycle",
+  "keys": {
+   "notbasin": "tub",
+   "cycle": "cycle"
+  }
+ }
+]

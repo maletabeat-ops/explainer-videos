@@ -1,0 +1,8 @@
+{
+  "name": "explainer-videos",
+  "private": true,
+  "description": "Short 3D explainer videos (RU + EN): three.js / canvas pages rendered with Playwright, plus a Remotion project",
+  "dependencies": {
+    "three": "0.169.0"
+  }
+}

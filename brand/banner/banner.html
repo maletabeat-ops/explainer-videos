@@ -1,0 +1,58 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0"><canvas id="c" width="2560" height="1440"></canvas>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';import {TTFLoader} from 'three/addons/loaders/TTFLoader.js';import {Font} from 'three/addons/loaders/FontLoader.js';
+import {TextGeometry} from 'three/addons/geometries/TextGeometry.js';import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+const BW=2560,BH=1440,cv=document.getElementById('c'),ctx=cv.getContext('2d');
+const C={orange:'#ff8a3d',cyan:'#4de1ff',violet:'#b48cff',gold:'#ffc94d',pink:'#ff5fa2',teal:'#2ee6c9'};
+function rnd(seed){let s=seed;return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+function bg(){const g=ctx.createLinearGradient(0,0,0,BH);g.addColorStop(0,'#0c0820');g.addColorStop(.42,'#1d1145');g.addColorStop(.62,'#3a1752');g.addColorStop(.8,'#1a0e33');g.addColorStop(1,'#0a0718');ctx.fillStyle=g;ctx.fillRect(0,0,BW,BH);
+ ctx.strokeStyle='rgba(190,170,255,.05)';ctx.lineWidth=2;for(let x=0;x<=BW;x+=64){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,BH);ctx.stroke()}for(let y=0;y<=BH;y+=64){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(BW,y);ctx.stroke()}
+ for(const[c,x,y,r,a]of[[C.orange,800,720,700,.20],[C.cyan,1800,720,700,.16],[C.violet,1280,300,900,.12],[C.pink,1280,1200,900,.08]]){const q=ctx.createRadialGradient(x,y,0,x,y,r);q.addColorStop(0,c+Math.round(a*255).toString(16).padStart(2,'0'));q.addColorStop(1,c+'00');ctx.fillStyle=q;ctx.fillRect(0,0,BW,BH)}
+ const r=rnd(7);for(let i=0;i<260;i++){ctx.globalAlpha=.25+r()*.6;ctx.fillStyle=[C.orange,C.cyan,C.violet,'#fff'][i%4];ctx.beginPath();ctx.arc(r()*BW,r()*BH,1+r()*3,0,7);ctx.fill()}ctx.globalAlpha=1;
+ // faint big question marks in TV-only zone
+ ctx.font='900 300px "Inter Display"';ctx.textAlign='center';ctx.textBaseline='middle';const q=rnd(3);for(let i=0;i<14;i++){const x=q()*BW,y=q()<.5?q()*380+40:1060+q()*360;ctx.save();ctx.translate(x,y);ctx.rotate((q()-.5)*.8);ctx.globalAlpha=.05+q()*.05;ctx.fillStyle=[C.violet,C.cyan,C.orange][i%3];ctx.fillText('?',0,0);ctx.restore()}ctx.globalAlpha=1}
+const gl=document.createElement('canvas');gl.width=BW;gl.height=BH;
+const R=new THREE.WebGLRenderer({canvas:gl,antialias:true,alpha:true,preserveDrawingBuffer:true});R.setSize(BW,BH,false);R.setClearColor(0,0);R.toneMapping=THREE.ACESFilmicToneMapping;
+const scene=new THREE.Scene();scene.environment=new THREE.PMREMGenerator(R).fromScene(new RoomEnvironment(),.04).texture;scene.environmentIntensity=.6;
+const cam=new THREE.PerspectiveCamera(20,BW/BH,.1,200);cam.position.set(0,0,60);cam.lookAt(0,0,0);
+const k=new THREE.DirectionalLight('#fff',2.2);k.position.set(5,8,10);scene.add(k);const r2=new THREE.DirectionalLight('#9b7bff',3);r2.position.set(-8,2,-4);scene.add(r2);const r3=new THREE.DirectionalLight('#4de1ff',1.4);r3.position.set(8,-4,3);scene.add(r3);
+const std=(c,o={})=>new THREE.MeshStandardMaterial({color:c,metalness:.3,roughness:.35,...o});
+const phys=c=>new THREE.MeshPhysicalMaterial({color:c,metalness:.15,roughness:.3,clearcoat:1,clearcoatRoughness:.15,emissive:c,emissiveIntensity:.08});
+// pixel -> world on z=0
+const vh=2*Math.tan(THREE.MathUtils.degToRad(10))*60,vw=vh*BW/BH;const W=(px,py,z=0)=>new THREE.Vector3((px/BW-.5)*vw,(.5-py/BH)*vh,z);const U=vh/BH;// world units per px
+let font;
+window.setFont=b64=>{const bin=atob(b64),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);const L=new TTFLoader();L.reversed=true;font=new Font(L.parse(u.buffer));return 1};
+function text(s,size,col){const g=new TextGeometry(s,{font,size,depth:size*.28,curveSegments:10,bevelEnabled:true,bevelThickness:size*.05,bevelSize:size*.035,bevelSegments:6});g.computeBoundingBox();return new THREE.Mesh(g,phys(col))}
+function place(obj,px,py,sc,rx=0,ry=0,rz=0){obj.position.copy(W(px,py));obj.scale.setScalar(sc);obj.rotation.set(rx,ry,rz);scene.add(obj);return obj}
+function microwave(){const g=new THREE.Group();g.add(new THREE.Mesh(new RoundedBoxGeometry(3.4,2,2.4,4,.15),std('#e7e5ef',{metalness:.45,roughness:.3})));
+ const door=new THREE.Mesh(new RoundedBoxGeometry(2.2,1.6,.1,2,.05),std('#2a2934',{metalness:.5,roughness:.2}));door.position.set(-.5,0,1.22);g.add(door);
+ const win=new THREE.Mesh(new THREE.PlaneGeometry(1.5,1.05),new THREE.MeshBasicMaterial({color:'#ffcf7a',toneMapped:false}));win.position.set(-.55,.02,1.28);g.add(win);
+ const pan=new THREE.Mesh(new THREE.BoxGeometry(.8,1.7,.08),std('#1f1e28'));pan.position.set(1.15,0,1.22);g.add(pan);const d=new THREE.Mesh(new THREE.PlaneGeometry(.6,.22),new THREE.MeshBasicMaterial({color:'#ffb15c',toneMapped:false}));d.position.set(1.15,.55,1.27);g.add(d);
+ const dial=new THREE.Mesh(new THREE.CylinderGeometry(.16,.16,.08,32),std('#c9ccd6',{metalness:.9}));dial.rotation.x=Math.PI/2;dial.position.set(1.15,0,1.3);g.add(dial);return g}
+function cup(){const g=new THREE.Group();const b=new THREE.Mesh(new THREE.CylinderGeometry(.9,.65,2.4,48),std('#fbf3e6',{roughness:.4}));g.add(b);const s=new THREE.Mesh(new THREE.CylinderGeometry(.86,.75,.9,48),std(C.gold,{roughness:.5}));s.position.y=-.1;g.add(s);
+ const l=new THREE.Mesh(new THREE.CylinderGeometry(.97,.97,.22,48),std('#f0dcc0'));l.position.y=1.3;g.add(l);const l2=new THREE.Mesh(new THREE.CylinderGeometry(.6,.7,.18,48),std('#e2c9a6'));l2.position.y=1.48;g.add(l2);return g}
+function barrel(){const g=new THREE.Group();g.add(new THREE.Mesh(new THREE.CylinderGeometry(.75,.75,2,32),std('#1f1b24',{metalness:.7,roughness:.3})));for(const y of[-.5,.5]){const r=new THREE.Mesh(new THREE.TorusGeometry(.75,.06,10,40),std(C.gold,{metalness:.9,roughness:.2}));r.rotation.x=Math.PI/2;r.position.y=y;g.add(r)}return g}
+function coins(){const g=new THREE.Group();const m=std(C.gold,{metalness:1,roughness:.22,emissive:'#ff9a00',emissiveIntensity:.2});for(let i=0;i<7;i++){const c=new THREE.Mesh(new THREE.CylinderGeometry(.7,.7,.18,40),m);c.position.set((i%2)*.08,i*.19,0);g.add(c)}return g}
+function drop(){const pts=[];for(let i=0;i<=24;i++){const a=i/24*Math.PI;const r=Math.sin(a)*(1-Math.cos(a))*.5*1.1;pts.push(new THREE.Vector2(r,-Math.cos(a)*1.1))}return new THREE.Mesh(new THREE.LatheGeometry(pts,40),new THREE.MeshPhysicalMaterial({color:'#5fd8ff',roughness:.05,metalness:0,clearcoat:1,transparent:true,opacity:.92,emissive:'#1fa8ff',emissiveIntensity:.25}))}
+function flag(){const t=new THREE.CanvasTexture((()=>{const c=document.createElement('canvas');c.width=300;c.height=150;const g=c.getContext('2d');g.fillStyle='#00843d';g.fillRect(0,0,300,50);g.fillStyle='#fff';g.fillRect(0,50,300,50);g.fillStyle='#000';g.fillRect(0,100,300,50);g.fillStyle='#ef3340';g.fillRect(0,0,75,150);return c})());t.colorSpace=THREE.SRGBColorSpace;
+ const geo=new THREE.PlaneGeometry(2.6,1.3,24,8);const a=geo.attributes.position.array;for(let i=0;i<a.length;i+=3){const x=a[i]+1.3;a[i+2]=Math.sin(x*2.2)*.15*(x/2.6)}geo.computeVertexNormals();const g=new THREE.Group();const f=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({map:t,side:THREE.DoubleSide,roughness:.7}));f.position.set(1.3,1.2,0);g.add(f);
+ const pole=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,3.4,12),std('#e8edf5',{metalness:.9}));pole.position.y=.4;g.add(pole);return g}
+window.make=()=>{bg();
+ // logo HOW? inside safe area (x 507..2053, y 508..931)
+ const G=new THREE.Group();const a=text('HOW',2.0,'#ff6a1a'),q=text('?',2.0,'#22c8ff');const ba=a.geometry.boundingBox,bq=q.geometry.boundingBox;const w=ba.max.x+.25+(bq.max.x-bq.min.x),h=ba.max.y-ba.min.y;
+ a.position.set(-w/2,-h/2,0);q.position.set(-w/2+ba.max.x+.25-bq.min.x,-h/2,0);G.add(a,q);G.position.copy(W(870,705));G.rotation.set(.08,.32,0);scene.add(G);
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(4.2,.06,16,200),new THREE.MeshBasicMaterial({color:C.violet,toneMapped:false}));ring.position.copy(W(870,705,-3));ring.rotation.set(1.25,.0,.2);scene.add(ring);
+ // desktop-strip objects (outside safe area, inside y 508..931)
+ place(microwave(),245,705,1.15,.25,.55,0);place(cup(),440,760,1.0,.15,0,.12);
+ place(barrel(),2190,790,.95,.2,0,-.1);place(coins(),2350,800,.95,.3,0,.1);place(drop(),2470,720,.6,0,0,.25);place(flag(),2215,690,.6,.1,-.4,0);
+ R.render(scene,cam);ctx.drawImage(gl,0,0);
+ // tagline text (2D, inside safe area right side)
+ const X=1280;ctx.textAlign='left';ctx.textBaseline='alphabetic';ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=20;
+ ctx.font='900 92px "Inter Display"';ctx.fillStyle='#ffffff';ctx.fillText('HOW THINGS',X,650);ctx.fillStyle=C.orange;ctx.shadowColor=C.orange;ctx.shadowBlur=36;ctx.fillText('REALLY WORK',X,750);ctx.shadowBlur=0;
+ ctx.font='700 35px Inter';ctx.fillStyle='#d8d0f2';ctx.fillText('3D explainers  ·  New videos every week',X,820);
+ // small topic chips
+ const chips=[['TECH',C.cyan],['MONEY',C.gold],['SCIENCE',C.violet],['LIFE',C.pink]];let cx=X;ctx.font='900 30px "Inter Display"';for(const[s,c]of chips){const tw=ctx.measureText(s).width+40;ctx.beginPath();ctx.roundRect(cx,846,tw,46,23);ctx.fillStyle=c;ctx.shadowColor=c;ctx.shadowBlur=18;ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='#120a26';ctx.fillText(s,cx+20,879);cx+=tw+16}
+ return 1};
+window.ok=1;
+</script></body></html>
