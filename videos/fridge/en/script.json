@@ -1,0 +1,10 @@
+[
+ {"s":1,"tts":"Your fridge doesn't make cold. It can't. It just pulls the heat out of your food and dumps it into your kitchen.","sub":"","keys":{"nocold":"doesn't make","out":"pulls","kitchen":"kitchen"}},
+ {"s":2,"tts":"That's why the back of it is warm. Touch it: that's the heat from your groceries.","sub":"","keys":{"back":"back","touch":"Touch"}},
+ {"s":3,"tts":"The trick is the refrigerant. These days it's usually isobutane, which boils at just eleven degrees Fahrenheit.","sub":"","keys":{"agent":"refrigerant","iso":"isobutane","boil":"eleven"}},
+ {"s":4,"tts":"In the freezer's tubes, it evaporates and soaks up heat from your food, the same way sweat cools your skin.","sub":"","keys":{"evap":"evaporates","food":"food","sweat":"sweat"}},
+ {"s":5,"tts":"Then the compressor squeezes that vapor. It gets hot, and the coils on the back dump that heat into the room as it turns back into a liquid.","sub":"","keys":{"comp":"compressor","hot":"hot","grid":"coils","liquid":"liquid"}},
+ {"s":6,"tts":"Next comes a tiny tube. The pressure drops, the liquid gets ice cold, and the loop starts all over again.","sub":"","keys":{"tube":"tiny tube","drop":"pressure","cold":"ice cold","loop":"loop"}},
+ {"s":7,"tts":"The first fridges ran on ammonia and sulfur dioxide, and the leaks were toxic. Then came freon, but it destroyed the ozone layer, so in nineteen eighty-seven the world started banning it.","sub":"","keys":{"ammonia":"ammonia","toxic":"toxic","freon":"freon","ozone":"ozone","ban":"banning"}},
+ {"s":8,"tts":"So leaving the door open won't cool your kitchen. It'll actually heat it up. A fridge is really a heat pump.","sub":"","keys":{"door":"door","heat":"heat it up","pump":"heat pump"}}
+]

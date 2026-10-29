@@ -215,3 +215,25 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 7,024 CHF is the 2024 gross median: half of Swiss workers earn more, half earn less. In the Zurich region it's even higher, around 7,500.
 > What salary would you need to live comfortably in Zurich? 👇
+
+---
+
+## 6. Как работает холодильник
+
+### 🇷🇺 RU
+**Видео:** `kak_rabotaet_holodilnik_RU.mp4` · **Обложка:** `cover_fridge_RU.png`
+
+**Название:** Вы знали, что холодильник вообще не делает холод? 🧊
+
+**Закреплённый комментарий:**
+> 📌 Холодильник не охлаждает, а переносит тепло: забирает его у еды и выбрасывает через решётку сзади. Поэтому открытая дверца кухню только нагреет 🔥
+> Что разобрать следующим: кондиционер, Wi-Fi или посудомойку изнутри? 👇
+
+### 🇺🇸 EN
+**Video:** `how_a_fridge_works_EN.mp4` · **Cover:** `cover_fridge_EN.png`
+
+**Title:** Did you know your fridge doesn't actually make cold? 🧊
+
+**Pinned comment:**
+> 📌 A fridge doesn't create cold, it moves heat: it pulls it out of your food and dumps it through the coils on the back. That's why an open fridge door actually warms your kitchen 🔥
+> What should I break down next: AC, Wi-Fi or something else? 👇
