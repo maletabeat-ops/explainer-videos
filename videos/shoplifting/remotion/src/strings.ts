@@ -1,0 +1,26 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		head: 'ВЫГОДНО ЛИ ВОРОВАТЬ В МАГАЗИНЕ', t1: 'ВОРОВАТЬ', t2: 'ВЫГОДНО?', app: 'ТРЕКЕР СДЕЛКИ', m: '+5 000 ₽ / мес', y: '+60 000 ₽ / год', math: 'ПОСЧИТАЕМ ЧЕСТНО',
+		myth: 'МИФ: ВОРУЮТ ВСЕ', one11: '1 ИЗ 11', one11note: 'опросы в США · хоть раз за всю жизнь',
+		ladder: [['ПЕРВАЯ КРАЖА', 'ШТРАФ ИЛИ АРЕСТ ДО 15 СУТОК', 'КоАП 7.27'], ['ПОВТОР ЗА ГОД', 'УГОЛОВНАЯ СТАТЬЯ', 'УК 158.1'], ['ИТОГ', 'СУДИМОСТЬ', '']],
+		risk: 'РИСК', cvA: 'БЕЗ СУДИМОСТИ', cvB: 'С СУДИМОСТЬЮ', callbacks: 'перезвонили', expNote: 'эксперимент Д. Пейджер, США',
+		saved: '+60 000 ₽', career: 'РАБОТА И КАРЬЕРА', burn: 'СГОРАЮТ ЗА ПАРУ МЕСЯЦЕВ',
+		everyone: 'ЗА КРАЖИ ПЛАТЯТ ВСЕ', rc: [['Молоко', '89 ₽'], ['Хлеб', '55 ₽'], ['Сыр', '420 ₽'], ['Кофе', '390 ₽']], rcTheft: 'в т.ч. кражи ≈ 1–1,5%', rcTitle: 'ЧЕК', total: 'ИТОГО',
+		kiosk: 'КАССА САМООБСЛУЖИВАНИЯ', p22: '+22% ПОТЕРЬ', p22note: 'в первый год · Лестерский университет, 2026',
+		deal: 'ПЛОХАЯ СДЕЛКА', kop: 'ЭКОНОМИШЬ КОПЕЙКИ', future: 'РИСКУЕШЬ БУДУЩИМ',
+		meterL: 'ВЫГОДА', meterR: 'РИСК',
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		head: 'IS SHOPLIFTING WORTH IT?', t1: 'IS SHOPLIFTING', t2: 'WORTH IT?', app: 'DEAL TRACKER', m: '+$200 / month', y: '+$2,400 / year', math: "LET'S DO THE MATH",
+		myth: 'MYTH: EVERYONE DOES IT', one11: '1 IN 11', one11note: 'U.S. surveys · ever, in a lifetime',
+		ladder: [['GET CAUGHT', 'FINES', ''], ['WORSE', 'JAIL TIME', ''], ['AND THEN', 'CRIMINAL RECORD', '']],
+		risk: 'RISK', cvA: 'NO RECORD', cvB: 'WITH A RECORD', callbacks: 'callbacks', expNote: 'Devah Pager experiment, U.S.',
+		saved: '+$2,400', career: 'JOBS & CAREER', burn: 'GONE IN A COUPLE PAYCHECKS',
+		everyone: 'EVERYONE PAYS FOR THEFT', rc: [['Milk', '$3.99'], ['Bread', '$2.49'], ['Cheese', '$6.79'], ['Coffee', '$9.99']], rcTheft: 'incl. theft ≈ 1.6%', rcTitle: 'RECEIPT', total: 'TOTAL',
+		kiosk: 'SELF-CHECKOUT', p22: '+22% LOSSES', p22note: 'first year · University of Leicester, 2026',
+		deal: 'BAD DEAL', kop: 'YOU SAVE PENNIES', future: 'YOU GAMBLE YOUR FUTURE',
+		meterL: 'GAIN', meterR: 'RISK',
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};

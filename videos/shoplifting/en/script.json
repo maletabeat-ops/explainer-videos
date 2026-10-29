@@ -1,0 +1,10 @@
+[
+ {"s":1,"tts":"Is shoplifting worth it? Say you swipe two hundred dollars of stuff a month. That's twenty-four hundred a year. Let's do the math.","sub":"","keys":{"q":"worth","m":"two hundred","y":"twenty-four","math":"math"}},
+ {"s":2,"tts":"First, a myth: not everyone does it. Surveys suggest about one in eleven Americans has shoplifted at some point in their life.","sub":"","keys":{"myth":"myth","one11":"one in eleven"}},
+ {"s":3,"tts":"Now the risk. Get caught, and you can face fines, even jail time, and on top of that, a criminal record.","sub":"","keys":{"risk":"risk","fine":"fines","arrest":"jail","crim":"criminal","record":"record"}},
+ {"s":4,"tts":"And that record follows you. In a famous experiment with identical résumés, applicants with a record got called back half as often: seventeen percent instead of thirty-four.","sub":"","keys":{"career":"follows","exp":"experiment","half":"half","p17":"seventeen"}},
+ {"s":5,"tts":"Lose just one job offer, and all that money you \"saved\" is gone in a couple of paychecks.","sub":"","keys":{"lost":"Lose","burn":"gone"}},
+ {"s":6,"tts":"Here's the kicker: everyone pays for theft. Retailers lose about one point six percent of sales, and it gets baked into the prices you pay.","sub":"","keys":{"everyone":"everyone","pct":"one point six","prices":"prices"}},
+ {"s":7,"tts":"And self-checkouts made it worse. In the first year after stores add them, losses jump twenty-two percent on average.","sub":"","keys":{"kiosk":"self-checkouts","p22":"twenty-two"}},
+ {"s":8,"tts":"So shoplifting isn't a life hack. It's a terrible deal: you save pennies, and you gamble your future.","sub":"","keys":{"deal":"deal","kop":"pennies","future":"future"}}
+]

@@ -237,3 +237,25 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 A fridge doesn't create cold, it moves heat: it pulls it out of your food and dumps it through the coils on the back. That's why an open fridge door actually warms your kitchen 🔥
 > What should I break down next: AC, Wi-Fi or something else? 👇
+
+---
+
+## 7. Выгодно ли воровать в магазине
+
+### 🇷🇺 RU
+**Видео:** `vorovat_v_magazine_RU.mp4` · **Обложка:** `cover_shoplifting_RU.png`
+
+**Название:** Вы знали, что за чужие кражи в магазинах платите вы? 🛒
+
+**Закреплённый комментарий:**
+> 📌 Цифры: первая мелкая кража в России — штраф или арест до 15 суток (КоАП 7.27), повторная в течение года — уже уголовная статья 158.1 и судимость. С судимостью работодатели перезванивают почти вдвое реже.
+> А ты замечал, что на кассах самообслуживания стало больше охраны? 👇
+
+### 🇺🇸 EN
+**Video:** `is_shoplifting_worth_it_EN.mp4` · **Cover:** `cover_shoplifting_EN.png`
+
+**Title:** Did you know you pay for other people's shoplifting? 🛒
+
+**Pinned comment:**
+> 📌 The math: retailers lose about 1.6% of sales to shrink and it's baked into prices. And in a famous experiment, applicants with a criminal record got half as many callbacks (17% vs 34%).
+> Have you noticed more security around self-checkouts lately? 👇
