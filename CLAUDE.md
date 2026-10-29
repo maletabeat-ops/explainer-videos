@@ -25,8 +25,11 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
      Render: `npx remotion render SwissRU out.mp4 --gl=swangle --concurrency=4 --crf=18`.
    Voice timings already include a +0.5 s offset → voice audio must start at 0.5 s.
 6. **Check stills before the full render** (layout, cropping, overlaps), then render both languages.
-7. **Deliverables per video**: RU + EN MP4, covers (`tools/cover_all.js` / `drawCover`), Instagram title,
-   caption, hashtags and a pinned first comment → append to `instagram_posts.md`.
+7. **Deliverables per NEW video (always, at the end, without being asked)** for BOTH the RU and EN version:
+   a **cover** (1080×1920), a **title** and the **pinned-comment text** — written out in the chat, also appended to
+   `instagram_posts.md`. **No description/caption needed.** Don't redo texts for older videos.
+8. **Models**: try `eleven_v4` (newer, higher quality TTS) and `music_v2_5` for music — see `.claude/skills`
+   (official ElevenLabs skills: text-to-speech, music, sound-effects, voice-isolator, speech-to-text, dubbing...).
 
 ## Style
 - Dark neon look, glowing pills/badges, header with progress bar + "0N / 08" chapters, 8 chapters per video.
