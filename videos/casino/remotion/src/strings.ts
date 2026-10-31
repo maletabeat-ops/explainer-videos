@@ -1,0 +1,38 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		t1: 'ПОЧЕМУ КАЗИНО', t2: 'ВСЕГДА ВЫИГРЫВАЕТ?', cheat: '✕ НЕ ЖУЛЬНИЧАЕТ', math: '✓ МАТЕМАТИКА',
+		even: 'КРАСНОЕ = 1 : 1', cnt: [['18', 'красных', '#d61f35'], ['18', 'чёрных', '#1b1b1b'], ['1', 'зеро', '#1fb36b']],
+		edge: '−2,7%', edgeSub: '≈ 3 ₽ с каждых 100 ₽ ставок', luck: 'ОДИН ВЕЧЕР — ЛОТЕРЕЯ', books: 'МИЛЛИОНЫ СТАВОК — БУХГАЛТЕРИЯ', house: 'КАЗИНО', players: 'ИГРОКИ',
+		p75: '≈ 7,5%', p75sub: 'оставляют автоматы · Лас-Вегас', near: '«ПОЧТИ ВЫИГРЫШ»', brain: 'МОЗГ: КАК ПОБЕДА', again: 'ЕЩЁ РАЗ ↻',
+		monte: 'МОНТЕ-КАРЛО · 1913', p26: '26 ЧЁРНЫХ ПОДРЯД', bet: 'ВСЕ НА КРАСНОЕ', lost: '−МИЛЛИОНЫ',
+		fin1: 'КАЗИНО НЕ НУЖНО ОБМАНЫВАТЬ —', fin2: 'НУЖНО, ЧТОБЫ ТЫ ИГРАЛ', fin3: 'ПОДОЛЬШЕ', meter: 'ПРЕИМУЩЕСТВО КАЗИНО',
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		t1: 'WHY THE CASINO', t2: 'ALWAYS WINS', cheat: "✕ IT DOESN'T CHEAT", math: '✓ IT KNOWS THE MATH',
+		even: 'RED PAYS 1 : 1', cnt: [['18', 'red', '#d61f35'], ['18', 'black', '#1b1b1b'], ['1', 'zero', '#1fb36b']],
+		edge: '−2.7%', edgeSub: '2.7¢ of every $1 you bet', luck: 'ONE NIGHT = LUCK', books: 'MILLIONS OF BETS = BOOKKEEPING', house: 'THE HOUSE', players: 'PLAYERS',
+		p75: '≈ 7.5%', p75sub: 'kept by slots · Las Vegas Strip', near: '"NEAR MISS"', brain: 'BRAIN: FEELS LIKE A WIN', again: 'SPIN AGAIN ↻',
+		monte: 'MONTE CARLO · 1913', p26: '26 BLACKS IN A ROW', bet: 'EVERYONE ON RED', lost: '−MILLIONS',
+		fin1: "THE CASINO DOESN'T CHEAT.", fin2: 'IT JUST NEEDS YOU', fin3: 'TO KEEP PLAYING', meter: 'HOUSE EDGE',
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};
+export const LONG = {
+	parts: ['The Monte Carlo streak', 'The house edge', 'The law of large numbers', 'The Martingale trap', 'Every game has an edge', 'Built for your brain', 'Why casinos love winners', 'Your theoretical loss', 'Casino myths', 'No memory, nothing is due', 'The only winning move'],
+	title1: 'WHY THE CASINO', title2: 'ALWAYS WINS',
+	p486: '18 / 37 = 48.6%', pay: [['PAYS', '35 : 1'], ['TRUE ODDS', '36 : 1']], eu: ['EUROPEAN', '2.7%'], us: ['AMERICAN 0 + 00', '5.3%'],
+	small: 'ONE BET: ANYTHING CAN HAPPEN', lln: 'LAW OF LARGE NUMBERS', pred: 'THE HOUSE: PREDICTABLE',
+	limit: 'TABLE MAX $5,000', mart: 'THE MARTINGALE', love: 'CASINOS LOVE IT',
+	edgeRows: [['Blackjack (perfect play)', 0.5, '#2ee68a'], ['Baccarat (banker)', 1.06, '#5fc8ff'], ['Roulette (European)', 2.7, '#ffc94d'], ['Roulette (American)', 5.26, '#ff9a3c'], ['Slots (Strip average)', 7.5, '#ff3b4f']],
+	nov: '$421M', novSub: 'won by Strip slots in Nov 2025',
+	near: 'NEAR MISS', reward: 'SAME REWARD AREAS AS A WIN', ldw: ['BET $1', 'WIN $0.50', '🎉 FEELS LIKE A WIN', 'YOU LOST $0.50'], rng: 'RNG DECIDES BEFORE THE REELS STOP', never: 'NEVER HOT · NEVER DUE',
+	winner: 'JACKPOT!', couldbe: '"THAT COULD BE ME"', paid: 'PAID FOR BY EVERYONE ELSE',
+	calc: [['', '$25 per spin', 'ex'], ['×', '35 spins / hour', 'ex'], ['×', '4 hours', 'ex'], ['=', '$3,500 wagered', 'wager'], ['×', '2.7% house edge', 'loss']], calcRes: '≈ $95 expected loss', comps: ['FREE DRINKS', 'COMPED DINNER', 'YOUR ROOM'], card: 'LOYALTY CARD = YOUR DATA',
+	clocks: 'NO CLOCKS, NO WINDOWS?', myth: 'MOSTLY A MYTH', friedman: 'per casino design theorist Bill Friedman', chips: 'CASH → CHIPS: FEELS LESS REAL', edgeWork: 'THE EDGE DOES THE WORK',
+	still: '18 / 37', stillSub: 'chance of red — every single spin', due: 'NOTHING IS EVER DUE', fallacy: "GAMBLER'S FALLACY", counting: 'CARD COUNTING: LEGAL', leave: 'BUT THEY CAN ASK YOU TO LEAVE',
+	tips: ['TREAT IT AS A NIGHT OUT', 'SET A BUDGET', 'WALK AWAY WHEN IT’S GONE'], fin: 'IN THE LONG RUN, THE MATH ALWAYS WINS',
+	sub: 'SUBSCRIBE', subbed: 'SUBSCRIBED ✓', like: 'LIKE',
+};

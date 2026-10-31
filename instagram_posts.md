@@ -259,3 +259,49 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 The math: retailers lose about 1.6% of sales to shrink and it's baked into prices. And in a famous experiment, applicants with a criminal record got half as many callbacks (17% vs 34%).
 > Have you noticed more security around self-checkouts lately? 👇
+
+---
+
+## 8. Почему казино всегда выигрывает
+
+### 🇷🇺 RU (шортс)
+**Видео:** `pochemu_kazino_vyigryvaet_RU.mp4` · **Обложка:** `cover_casino_RU.png`
+
+**Название:** Вы знали, что казино выигрывает не из-за удачи, а из-за одной зелёной ячейки? 🎰
+
+**Закреплённый комментарий:**
+> 📌 На европейской рулетке 37 ячеек, а платят так, будто их 36. Эта разница — 2,7% с каждой ставки — и есть весь бизнес казино. А на автоматах в Лас-Вегасе — около 7,5%.
+> Ты когда-нибудь «почти выигрывал»? Расскажи в комментариях 👇
+
+### 🇺🇸 EN (short)
+**Video:** `why_the_casino_always_wins_EN.mp4` · **Cover:** `cover_casino_EN.png`
+
+**Title:** Did you know the casino wins because of one green pocket? 🎰
+
+**Pinned comment:**
+> 📌 A European wheel has 37 pockets but pays like there are 36. That gap, 2.7% of every bet, is the whole business. Vegas Strip slots keep about 7.5%.
+> Ever had a "near miss" that made you spin again? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 6:40)
+**Video:** `why_the_casino_always_wins_LONG_EN.mp4` · **Thumbnail:** `thumbnail_casino_LONG_EN.png`
+
+**Title:** Why the Casino Always Wins (It's Not Luck, It's Math)
+
+**Chapters (paste into the description):**
+```
+0:00 The Monte Carlo streak
+0:35 The house edge
+1:12 The law of large numbers
+1:50 The Martingale trap
+2:36 Every game has an edge
+3:14 Built for your brain
+4:00 Why casinos love winners
+4:26 Your theoretical loss
+5:06 Casino myths
+5:39 No memory, nothing is due
+6:08 The only winning move
+```
+
+**Pinned comment:**
+> 📌 Quick math: $25 a spin × 35 spins an hour × 4 hours = $3,500 wagered. At a 2.7% edge, that's about $95 the casino expects to keep. That's what pays for the "free" drinks.
+> What game do you think has the worst odds? 👇

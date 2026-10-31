@@ -1,0 +1,10 @@
+[
+ {"s":1,"tts":"Why does the casino always win? It doesn't cheat. It just knows the math better than you do.","sub":"","keys":{"q":"always","cheat":"cheat","math":"math"}},
+ {"s":2,"tts":"Take roulette. You bet on red, and it pays even money. But the wheel has thirty-seven pockets: eighteen red, eighteen black, and one green zero.","sub":"","keys":{"wheel":"roulette","red":"red","p37":"thirty-seven","zero":"zero"}},
+ {"s":3,"tts":"That one green zero is the whole business. On every dollar you bet, the casino keeps about two point seven cents.","sub":"","keys":{"green":"green","edge":"two point seven"}},
+ {"s":4,"tts":"You might get lucky for a night. But the casino takes millions of bets, and at that scale, luck turns into simple bookkeeping.","sub":"","keys":{"luck":"lucky","millions":"millions","books":"bookkeeping"}},
+ {"s":5,"tts":"Slot machines are even better for them: on the Las Vegas Strip, they keep around seven and a half percent of everything played.","sub":"","keys":{"slots":"Slot","p75":"seven and a half"}},
+ {"s":6,"tts":"And a near miss, two cherries and the third one just off, lights up your brain almost like a win. So you spin again.","sub":"","keys":{"near":"near miss","brain":"brain","again":"again"}},
+ {"s":7,"tts":"In nineteen thirteen, in Monte Carlo, black came up twenty-six times in a row. People piled onto red, sure it was due, and lost millions.","sub":"","keys":{"monte":"Monte Carlo","p26":"twenty-six","bet":"piled","lost":"lost"}},
+ {"s":8,"tts":"So the casino doesn't need to cheat. It just needs you to keep playing.","sub":"","keys":{"noCheat":"cheat","longer":"keep playing"}}
+]

@@ -1,0 +1,163 @@
+[
+ {
+  "s": 1,
+  "tts": "August, nineteen thirteen. Monte Carlo. At one roulette table, the ball lands on black. Then black again. And again. Ten times. Fifteen. Twenty. A crowd forms, and people start betting everything on red, because surely, red is due now. Black came up twenty-six times in a row, and those players lost a fortune. So here's the question: why does the casino always win? It's not luck, and it's usually not cheating. It's math. Let's break it down.",
+  "sub": "",
+  "keys": {
+   "aug": "August",
+   "black": "black",
+   "crowd": "crowd",
+   "red": "red is due",
+   "p26": "twenty-six",
+   "why": "why does",
+   "math": "math"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "Start with roulette. A European wheel has thirty-seven pockets: eighteen red, eighteen black, and one green zero. Bet on red, and you win even money. But your real chance isn't fifty percent. It's eighteen out of thirty-seven, about forty-eight point six percent. Bet a single number, and the casino pays thirty-five to one, while the true odds are thirty-six to one. That tiny gap is called the house edge. On a European wheel, it's two point seven percent. On an American wheel, with a second green pocket, the double zero, it jumps to about five point three percent.",
+  "sub": "",
+  "keys": {
+   "wheel": "European wheel",
+   "p37": "thirty-seven",
+   "even": "even money",
+   "p486": "forty-eight point six",
+   "single": "single number",
+   "gap": "house edge",
+   "eu": "two point seven",
+   "us": "double zero",
+   "p53": "five point three"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "Two point seven percent doesn't sound like much. And for one bet, it isn't. On any single spin, you can absolutely win. But a casino doesn't make one bet. It makes millions. This is the law of large numbers: the more bets are placed, the closer the results get to the math. Picture a thousand players, each making a hundred bets. Some walk away winners. Most don't. But the casino's total? It lands almost exactly on that two point seven percent, night after night. Your luck is random. The casino's income is predictable.",
+  "sub": "",
+  "keys": {
+   "small": "doesn't sound",
+   "win": "absolutely win",
+   "lln": "law of large numbers",
+   "thousand": "a thousand players",
+   "some": "winners",
+   "total": "casino's total",
+   "predictable": "predictable"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "At this point, a lot of people think they've found a loophole. It's called the Martingale. Bet ten dollars on red. If you lose, double it to twenty. Lose again, bet forty. Keep doubling, and the first time red hits, you win back everything plus ten dollars. Sounds foolproof, right? Here's the catch. Losing streaks happen far more often than people expect, and the bets explode fast. After just ten losses in a row, your next bet is over ten thousand dollars. And that's exactly why every table has a maximum bet. Hit the limit, and the system collapses, taking your whole bankroll with it. Casinos don't fear the Martingale. They love it.",
+  "sub": "",
+  "keys": {
+   "loophole": "loophole",
+   "mart": "Martingale",
+   "ten": "ten dollars",
+   "double": "double it",
+   "catch": "the catch",
+   "streak": "Losing streaks",
+   "p10k": "ten thousand",
+   "limit": "maximum bet",
+   "love": "They love it"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "Every game in the building has its own edge. Blackjack, played with perfect basic strategy, can get the edge down to around half a percent, but most players make mistakes, so they lose more. Baccarat's banker bet is about one percent. Roulette, as we saw, is two point seven to five point three. Slot machines are where the real money is. On the Las Vegas Strip, slots have kept about seven and a half percent of all money played, on average, for two decades. In November twenty twenty-five alone, Strip slot machines won over four hundred twenty million dollars.",
+  "sub": "",
+  "keys": {
+   "every": "Every game",
+   "bj": "Blackjack",
+   "bac": "Baccarat",
+   "rou": "Roulette",
+   "slots": "Slot machines",
+   "p75": "seven and a half",
+   "nov": "four hundred twenty"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "Slots are also designed around how your brain works. Take the near miss: two jackpot symbols, and the third one stops just above the line. In a well-known brain-scan study, near misses lit up the same reward areas as real wins, and made people want to keep playing. Then there are losses disguised as wins: you bet a dollar, win back fifty cents, and the machine still flashes and plays a winning sound. You lost money, but it feels like a win. And here's something most people don't realize: the spinning reels are just a show. The moment you press the button, a random number generator has already decided the result. Every spin is independent, so a machine is never hot, never cold, and never due.",
+  "sub": "",
+  "keys": {
+   "design": "designed",
+   "near": "near miss",
+   "scan": "brain-scan",
+   "reward": "reward areas",
+   "ldw": "losses disguised",
+   "flash": "flashes",
+   "feels": "feels like a win",
+   "rng": "random number generator",
+   "never": "never due"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "And casinos actually love it when someone wins big. A jackpot means flashing lights, ringing bells, and a crowd watching one happy winner. Everyone else in the room sees that and thinks, that could be me. What they don't see is the thousands of players who quietly fed the machine that paid it. One big winner is the best advertisement a casino can buy, and it's paid for by everyone else.",
+  "sub": "",
+  "keys": {
+   "bigwin": "wins big",
+   "lights": "flashing lights",
+   "couldbe": "that could be me",
+   "thousands": "thousands of players",
+   "ad": "best advertisement"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Casinos also know exactly how much you're worth to them before you even sit down. They call it theoretical loss: your average bet, times how many bets you make per hour, times how long you play, times the house edge. Say you bet twenty-five dollars a spin on roulette, about thirty-five spins an hour, for four hours. That's three and a half thousand dollars wagered, and an expected loss of about ninety-five dollars. That number is what pays for your free drinks, your comped dinner, and maybe your room. That's also why they hand out loyalty cards: every swipe tells them how fast you bet and how long you stay.",
+  "sub": "",
+  "keys": {
+   "worth": "worth to them",
+   "theo": "theoretical loss",
+   "formula": "average bet",
+   "ex": "twenty-five dollars",
+   "wager": "three and a half thousand",
+   "loss": "ninety-five",
+   "comps": "free drinks",
+   "card": "loyalty cards"
+  }
+ },
+ {
+  "s": 9,
+  "tts": "Now, a few popular myths. You've probably heard that casinos have no clocks or windows to make you lose track of time. Bill Friedman, one of the most famous casino design theorists, actually called that a myth, and said serious gamblers asked for it themselves. Chips are real psychology, though. Swapping cash for colorful plastic makes spending feel less real. But here's the truth: the casino doesn't need tricks to win. The edge does all the work. The tricks just keep you at the table longer.",
+  "sub": "",
+  "keys": {
+   "myths": "myths",
+   "clocks": "no clocks",
+   "friedman": "Bill Friedman",
+   "called": "called that a myth",
+   "chips": "Chips",
+   "plastic": "colorful plastic",
+   "truth": "the truth",
+   "edge": "The edge",
+   "longer": "longer"
+  }
+ },
+ {
+  "s": 10,
+  "tts": "So, back to Monte Carlo. Why did those players lose? Because a roulette wheel has no memory. After twenty-five blacks, the chance of red on the next spin is still eighteen out of thirty-seven. Nothing is ever due. That belief has a name: the gambler's fallacy. And can anyone actually beat the house? A few can, like skilled card counters at blackjack. It's legal, but casinos can simply ask them to leave.",
+  "sub": "",
+  "keys": {
+   "back": "back to Monte Carlo",
+   "memory": "no memory",
+   "still": "still eighteen",
+   "due": "Nothing is ever due",
+   "fallacy": "gambler's fallacy",
+   "beat": "beat the house",
+   "counters": "card counters",
+   "leave": "ask them to leave"
+  }
+ },
+ {
+  "s": 11,
+  "tts": "So the casino doesn't need to cheat. It just needs you to keep playing. If you do go, treat it like a night out, not an investment: decide what you're willing to spend, and walk away when it's gone. Because in the long run, the math always wins.",
+  "sub": "",
+  "keys": {
+   "noCheat": "doesn't need to cheat",
+   "keep": "keep playing",
+   "night": "night out",
+   "budget": "willing to spend",
+   "walk": "walk away",
+   "long": "long run"
+  }
+ }
+]
