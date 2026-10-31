@@ -51,8 +51,10 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
   don't copy the previous template — vary the hero visual, camera moves, transitions, a signature gimmick,
   palette, music mood. Experiment freely, but cheaply (reuse code/assets; don't burn ElevenLabs credits on
   throwaway generations).
-- Dark neon look, glowing pills/badges, header with the topic title only. **NO progress bar and NO chapter
-  counter ("0N / 08") at the top** (user request) — the story still has ~8 beats internally.
+- Dark neon look, glowing pills/badges. **Shorts header = small round channel logo + handle**, neat, top-left:
+  RU `@thewhydept_rus` with `brand/avatar/avatar_RU.png`, EN `@thewhydept_` with `brand/avatar/avatar_EN.png`
+  (Instagram/YouTube/TikTok share the name "The Why Dept"). **NO progress bar and NO chapter counter** at the top.
+- Horizontal long-form YouTube videos: no handle/logo overlay needed — just a clean, beautiful video.
 - Each video has its own palette but the same system. Persistent element at the bottom (ledger / chain / stage list).
 - Prefer real 3D (three.js / R3F via `@remotion/three` / MapLibre extrusions) where it helps; avoid crooked/ill-fitting geometry — verify with stills.
 - Covers: "ВЫ ЗНАЛИ? / DID YOU KNOW?" kicker + big 2-line title, key content inside the 3:4 safe area.
