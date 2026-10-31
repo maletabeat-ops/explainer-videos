@@ -1,0 +1,90 @@
+[
+ {
+  "s": 1,
+  "tts": "Where did Halloween come from? The pumpkins, the costumes, the candy all grew out of an ancient fear: the fear of the dead.",
+  "sub": "",
+  "keys": {
+   "q": "Halloween",
+   "pumpkin": "pumpkins",
+   "dead": "dead"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "Long ago, the Celts of Ireland celebrated Samhain: the end of the harvest and the start of the dark half of the year. Their day began at sunset, so it all kicked off on the evening of October thirty-first.",
+  "sub": "",
+  "keys": {
+   "celts": "Celts",
+   "samhain": "Samhain",
+   "dark": "dark half",
+   "sunset": "sunset",
+   "oct31": "October"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "They believed that on this night, the wall between worlds grew thin and the dead came back. So people lit bonfires and wore disguises, so the spirits wouldn't know them.",
+  "sub": "",
+  "keys": {
+   "border": "wall between",
+   "spirits": "dead came",
+   "fire": "bonfires",
+   "mask": "disguises"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "Later, the Church made November first All Saints' Day, or All Hallows. The night before became All Hallows' Eve, and that's where Halloween comes from.",
+  "sub": "",
+  "keys": {
+   "church": "Church",
+   "nov1": "November first",
+   "eve": "Eve",
+   "word": "that's where"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "The poor went door to door for soul cakes, and prayed for the family's dead in return. Meet the great-grandfather of trick-or-treating.",
+  "sub": "",
+  "keys": {
+   "poor": "poor",
+   "cakes": "soul cakes",
+   "pray": "prayed",
+   "proto": "great-grandfather"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "The Irish carved lanterns from turnips. Legend says Stingy Jack tricked the Devil, and now he wanders the dark forever with a glowing coal.",
+  "sub": "",
+  "keys": {
+   "turnip": "turnips",
+   "jack": "Stingy Jack",
+   "devil": "Devil",
+   "ember": "glowing coal"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "In the eighteen-forties, famine drove about two million people out of Ireland, many to America. There, the turnip lost to the pumpkin: bigger, and far easier to carve.",
+  "sub": "",
+  "keys": {
+   "famine": "famine",
+   "america": "America",
+   "pumpkin": "pumpkin",
+   "easy": "easier"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "By the nineteen-twenties, trick or treat was showing up in newspapers. Today, Americans spend about thirteen and a half billion dollars on Halloween. Not bad for a holiday born from a fear of ghosts.",
+  "sub": "",
+  "keys": {
+   "phrase": "trick or treat",
+   "today": "Today",
+   "b135": "thirteen",
+   "fear": "fear"
+  }
+ }
+]

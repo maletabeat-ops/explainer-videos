@@ -305,3 +305,48 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Quick math: $25 a spin × 35 spins an hour × 4 hours = $3,500 wagered. At a 2.7% edge, that's about $95 the casino expects to keep. That's what pays for the "free" drinks.
 > What game do you think has the worst odds? 👇
+
+---
+
+## 9. Откуда взялся Хэллоуин
+
+### 🇷🇺 RU (шортс)
+**Видео:** `otkuda_vzyalsya_halloween_RU.mp4` · **Обложка:** `cover_halloween_RU.png`
+
+**Название:** Вы знали, что первые фонари на Хэллоуин вырезали не из тыквы, а из репы? 🎃
+
+**Закреплённый комментарий:**
+> 📌 Слово «Хэллоуин» — это сокращённое All Hallows' Eve, «канун Дня всех святых». А тыква заменила репу только в Америке, куда в 1840-х от голода бежали ирландцы.
+> А вы празднуете Хэллоуин? Какой костюм был у вас самым удачным? 👇
+
+### 🇺🇸 EN (short)
+**Video:** `where_did_halloween_come_from_EN.mp4` · **Cover:** `cover_halloween_EN.png`
+
+**Title:** Did you know the first jack-o'-lanterns were turnips? 🎃
+
+**Pinned comment:**
+> 📌 "Halloween" is short for All Hallows' Eve, the night before All Saints' Day. The pumpkin only took over in America, after the Irish famine brought the tradition across the ocean in the 1840s.
+> What's the best costume you've ever worn? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 7:36)
+**Video:** `where_did_halloween_come_from_LONG_EN.mp4` · **Thumbnail:** `thumbnail_halloween_LONG_EN.png`
+
+**Title:** Where Halloween Really Came From (It Started With a Turnip)
+
+**Chapters (paste into the description):**
+```
+0:00 Tonight
+0:34 Samhain: the end of summer
+1:22 When the dead walk
+2:04 All Hallows' Eve
+2:45 Soul cakes
+3:20 Stingy Jack and the turnip
+4:20 Across the ocean
+5:04 Pranks and trick or treat
+5:49 War, candy and cartoons
+6:37 Halloween today
+```
+
+**Pinned comment:**
+> 📌 Fun fact: Shakespeare mentions the ancestor of trick-or-treating. In The Two Gentlemen of Verona, a character whines "like a beggar at Hallowmas", the poor who went door to door for soul cakes.
+> Turnip or pumpkin: which one would you rather carve? 👇
