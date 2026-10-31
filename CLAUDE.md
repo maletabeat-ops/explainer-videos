@@ -63,7 +63,14 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 
 ## Videos so far
 coffee (2D, EN voice is the old British one — needs re-voicing), dishwasher (2D), microwave (3D), UAE taxes (3D),
-switzerland salaries (Remotion), fridge (Remotion + R3F 3D, eleven_v4, CTA). Old "Dubai" version was replaced by UAE.
+switzerland salaries (Remotion), fridge (Remotion + R3F 3D, eleven_v4, CTA), shoplifting (Remotion, deal-tracker),
+casino (RU+EN shorts + 6:40 EN long-form 16:9; final files are the `_v2` versions without pop SFX).
+Old "Dubai" version was replaced by UAE.
+**Best starting template for a new topic:** `videos/casino/remotion` (short + long compositions, channel header,
+CTA with cx/cy, section lower thirds, music loop) + `tools/tts4.py` (shorts), `tools/tts_long.py` (long-form,
+per-section stitching), `tools/post.py`, `tools/capgen.py`, `tools/append_cta.py`. Copy node_modules from a
+previous project if present, else `npm ci`. Deliver files from `/home/user/` via SendUserFile; user downloads them.
+User prefs: communicate in Russian; short status updates; propose topics via a multiple-choice question.
 
 ## Lessons learned & self-review (user asked: review your own mistakes, keep improving)
 Past mistakes — never repeat:
