@@ -38,13 +38,21 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
     meaningful SFX tied to on-screen actions (pop for labels, door, compressor click, etc.). — see `.claude/skills`
    (official ElevenLabs skills: text-to-speech, music, sound-effects, voice-isolator, speech-to-text, dubbing...).
 
+## Long-form YouTube (EN) — per new topic, on request
+- Besides the RU + EN vertical shorts, the user may want a **horizontal 16:9 (1920×1080) EN video, 6–8 min**
+  (≥8 min enables mid-roll ads) for the English YouTube channel: a deeper, separate script on the same topic
+  (more facts/examples), NOT a stretched short. Reuse the short's Remotion scenes re-laid out for 16:9, its music
+  (loop/crossfade) and SFX → only TTS costs credits (~1 credit/char: ~4k for 4–5 min, ~7k for 8 min).
+- Use on-screen section titles (lower thirds) instead of chapter counters, and give the user YouTube chapter
+  timestamps, a title and a 1280×720 thumbnail.
+
 ## Style
 - **Every video gets its own twist** (user request): keep the series look (dark neon, header, captions, CTA), but
   don't copy the previous template — vary the hero visual, camera moves, transitions, a signature gimmick,
   palette, music mood. Experiment freely, but cheaply (reuse code/assets; don't burn ElevenLabs credits on
   throwaway generations).
-- Dark neon look, glowing pills/badges, header with topic title + "0N / 08" chapters, 8 chapters per video.
-  **NO progress bar at the top** (user request, from the shoplifting video on) — remove it from the Header component.
+- Dark neon look, glowing pills/badges, header with the topic title only. **NO progress bar and NO chapter
+  counter ("0N / 08") at the top** (user request) — the story still has ~8 beats internally.
 - Each video has its own palette but the same system. Persistent element at the bottom (ledger / chain / stage list).
 - Prefer real 3D (three.js / R3F via `@remotion/three` / MapLibre extrusions) where it helps; avoid crooked/ill-fitting geometry — verify with stills.
 - Covers: "ВЫ ЗНАЛИ? / DID YOU KNOW?" kicker + big 2-line title, key content inside the 3:4 safe area.
