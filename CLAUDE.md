@@ -64,7 +64,8 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 ## Videos so far
 coffee (2D, EN voice is the old British one — needs re-voicing), dishwasher (2D), microwave (3D), UAE taxes (3D),
 switzerland salaries (Remotion), fridge (Remotion + R3F 3D, eleven_v4, CTA), shoplifting (Remotion, deal-tracker),
-casino (RU+EN shorts + 6:40 EN long-form 16:9; final files are the `_v2` versions without pop SFX).
+casino (RU+EN shorts + 6:40 EN long-form 16:9; final files are the `_v2` versions without pop SFX),
+halloween origins (RU+EN shorts + 7:36 EN long; 3D turnip→pumpkin morph lantern, time ribbon of eras).
 Old "Dubai" version was replaced by UAE.
 **Best starting template for a new topic:** `videos/casino/remotion` (short + long compositions, channel header,
 CTA with cx/cy, section lower thirds, music loop) + `tools/tts4.py` (shorts), `tools/tts_long.py` (long-form,
@@ -74,6 +75,7 @@ User prefs: communicate in Russian; short status updates; propose topics via a m
 
 ## Lessons learned & self-review (user asked: review your own mistakes, keep improving)
 Past mistakes — never repeat:
+- Duplicate `keys` names across segments of one script (halloween: `pumpkin` in ch1 and ch7) → wrong timing; keep key names unique (post.py now warns). Use absolute paths in parallel shell loops (SFX once written to the wrong dir).
 - Wrong scope (Dubai instead of UAE). Re-read the topic; country ≠ city.
 - Crooked/ill-fitting 3D (oil derrick, donut chart), objects off-target (roulette ball landed in the wrong pocket:
   in three.js a sector at angle θ sits at (sin θ, cos θ); check placement math against a still).

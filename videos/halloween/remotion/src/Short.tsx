@@ -34,7 +34,9 @@ export const HallShort: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, data}
 	const t = useCurrentFrame() / FPS;
 	const sway = Math.sin(t * 0.7) * 0.32;
 	const flick = 0.5 + 0.5 * Math.sin(t * 13) * Math.sin(t * 7.3);
-	const pumpK = K.pumpkin; // chapter 7 key (turnip → pumpkin)
+	// chapter-7 'pumpkin' key collides with chapter 1 in timing post-processing → take it from the captions
+	const pc = data.captions.find((c: any) => c.startMs / 1000 > ch[6] && /^(тыкв|pumpkin)/i.test(c.text.trim()));
+	const pumpK = pc ? pc.startMs / 1000 : K.pumpkin;
 	const today = K.today;
 	const rpos = t < ch[3] ? 0 : t < ch[5] ? eio(P(t, ch[3], ch[3] + 1.2)) : t < ch[6] ? 1 + 0.5 * eio(P(t, ch[5], ch[5] + 1.2)) : t < ch[7] ? 1.5 + 0.5 * eio(P(t, ch[6], ch[6] + 1.5)) : 2 + eio(P(t, ch[7], ch[7] + 1.2)) + eio(P(t, today - 0.4, today + 0.8));
 	const ribO = P(t, ch[1], ch[1] + 0.6) * (K.cta !== undefined ? 1 - P(t, K.cta - 0.4, K.cta) : 1);

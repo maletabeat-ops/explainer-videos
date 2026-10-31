@@ -13,7 +13,11 @@ fl.append(''.join(parts)+f'concat=n={len(SEGS)}:v=0:a=1,atempo={TEMPO}[o]')
 subprocess.run(['ffmpeg','-v','error','-y','-i',f'{d}/voice_raw.mp3','-filter_complex',';'.join(fl),'-map','[o]','-b:a','192k',f'{d}/voice.mp3'],check=True)
 nt=lambda x,i:round((x-OFF+i*GAP)/TEMPO+OFF,3)
 for i,s in enumerate(SEGS):s['t0']=nt(s['t0'],i);s['t1']=nt(s['t1'],i)
+last={}
 for i,s in enumerate(SC):
-    for k in s['keys']:K[k]=nt(K[k],i)
+    for k in s['keys']:last[k]=i  # tts4 keeps the LAST segment's time for duplicate keys
+for k,i in last.items():K[k]=nt(K[k],i)
+dup=[k for k in last if sum(k in s['keys'] for s in SC)>1]
+if dup:print('WARNING duplicate keys (later segment wins):',dup)
 open(f'{d}/timing.js','w').write('const SEGS=%s;\nconst K=%s;\n'%(json.dumps(SEGS,ensure_ascii=False),json.dumps(K)))
 print(d,'end',SEGS[-1]['t1'])
