@@ -138,8 +138,7 @@ export const CasinoLong: React.FC<{data: any}> = ({data}) => {
 			{sfx('spin.mp3', 0.5, 0.3, 'sp')}{sfx('gasp.mp3', K.crowd, 0.35, 'g1')}{sfx('drop.mp3', K.gap + 0.4, 0.4, 'd1')}{sfx('chips.mp3', K.even, 0.35, 'c1')}
 			{sfx('chips.mp3', K.double, 0.35, 'c2')}{sfx('reels.mp3', ch[5] + 0.1, 0.3, 'r1')}{sfx('jackpot.mp3', K.lights - 0.2, 0.3, 'j1')}{sfx('card.mp3', K.counters, 0.3, 'cd')}
 			{sfx('drop.mp3', ch[10] + 2.7, 0.3, 'd2')}
-			{[K.p486, K.single, K.eu, K.us, K.lln, K.total, K.limit, K.bj, K.bac, K.rou, K.slots, K.nov, K.near, K.ldw, K.rng, K.couldbe, K.theo, K.loss, K.comps, K.called, K.chips, K.due, K.fallacy].map((k: number, i: number) => sfx('pop.mp3', k - 0.3, 0.25, 'p' + i))}
-			{K.cta !== undefined ? <>{sfx('pop.mp3', K.cta + 1.1, 0.45, 'tap')}{sfx('jackpot.mp3', K.cta + 2.0, 0.22, 'like')}</> : null}
+			{K.cta !== undefined ? <>{sfx('jackpot.mp3', K.cta + 2.0, 0.22, 'like')}</> : null}
 		</AbsoluteFill>
 	);
 };

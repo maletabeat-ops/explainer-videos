@@ -34,8 +34,9 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 9. **Ending CTA (always)**: the voice ends with a follow/like line (RU "Подпишись и поставь лайк — впереди ещё больше
    разборов!", EN similar) — `tools/append_cta.py` adds it with request stitching — plus the animated end card
    (Follow button tapped → "Following ✓", heart fills) from `videos/fridge/remotion/src/Overlays.tsx` `CTA`.
-10. **SFX**: NO whoosh/transition sounds on camera moves (user hates them, "like hitting a pipe"). Keep only
-    meaningful SFX tied to on-screen actions (pop for labels, door, compressor click, etc.). — see `.claude/skills`
+10. **SFX**: NO whoosh/transition sounds on camera moves (user hates them, "like hitting a pipe") and NO UI
+    "pop"/beep sounds on labels (user: a weird "pip" — removed from the casino videos). Keep only sparse SFX tied
+    to real on-screen actions (roulette ball, chips, door, compressor click, cash register...). — see `.claude/skills`
    (official ElevenLabs skills: text-to-speech, music, sound-effects, voice-isolator, speech-to-text, dubbing...).
 
 ## Long-form YouTube (EN) — per new topic, on request
@@ -63,3 +64,24 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 ## Videos so far
 coffee (2D, EN voice is the old British one — needs re-voicing), dishwasher (2D), microwave (3D), UAE taxes (3D),
 switzerland salaries (Remotion), fridge (Remotion + R3F 3D, eleven_v4, CTA). Old "Dubai" version was replaced by UAE.
+
+## Lessons learned & self-review (user asked: review your own mistakes, keep improving)
+Past mistakes — never repeat:
+- Wrong scope (Dubai instead of UAE). Re-read the topic; country ≠ city.
+- Crooked/ill-fitting 3D (oil derrick, donut chart), objects off-target (roulette ball landed in the wrong pocket:
+  in three.js a sector at angle θ sits at (sin θ, cos θ); check placement math against a still).
+- Camera too close / items cropped / title wider than the frame — check the LONGEST string in BOTH languages.
+- Voice must start at +0.5 s (timings include the offset) — once shipped 0.5 s early.
+- Caption words glued together (highlighted word scaled over the space) — keep word margins.
+- EN odd pauses from paragraph separators; standalone micro-sentences between pauses sound like a cut.
+- Annoying SFX (whoosh, pop). Fewer sounds > more sounds.
+- Background waits with `pgrep -f "<cmd>"` match themselves and never end — don't use them; chain commands
+  directly, and give each long render its own background task (2 h limit; long-form takes ~25–60 min).
+- Audio-only fixes don't need a video re-render: `npx remotion render <Comp> out.wav --codec=wav`, then
+  `ffmpeg -i video.mp4 -i out.wav -map 0:v -map 1:a -c:v copy -c:a aac out_v2.mp4`.
+QA checklist before delivering (do it every time):
+1. Stills at the END of every chapter (all elements visible) in BOTH languages; long-form: one per part.
+2. Key moments of animation logic (where the ball lands, what the chart shows) match the voice.
+3. `silencedetect` on the voice for pauses > 0.8 s inside sentences; print the SFX timeline and prune it.
+4. Loudness sanity (`volumedetect`, max < -0.5 dB); duration in target range.
+5. Facts: every number traceable to a source given to the user; unverified items flagged honestly.

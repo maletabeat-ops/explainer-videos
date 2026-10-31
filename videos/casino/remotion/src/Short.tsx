@@ -105,8 +105,7 @@ export const CasinoShort: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, dat
 			{sfx('spin.mp3', 0.6, 0.3, 'sp')}{sfx('chips.mp3', K.red - 0.2, 0.4, 'ch')}{sfx('drop.mp3', K.green, 0.45, 'dr')}
 			{sfx('reels.mp3', ch[4] + 0.2, 0.35, 'r1')}{sfx('reels.mp3', ch[5] + 0.1, 0.35, 'r2')}{sfx('card.mp3', K.p26 - 0.2, 0.3, 'cd')}{sfx('gasp.mp3', K.lost - 0.4, 0.35, 'gs')}
 			{sfx('drop.mp3', ch[7] + 1.7, 0.35, 'dr2')}
-			{[K.cheat, K.math, K.p37, K.edge, K.books, K.p75, K.brain, K.again, K.monte, K.bet].map((k: number, i: number) => sfx('pop.mp3', k - 0.3, 0.28, 'p' + i))}
-			{K.cta !== undefined ? <>{sfx('pop.mp3', K.cta + 1.1, 0.45, 'tap')}{sfx('jackpot.mp3', K.cta + 2.0, 0.25, 'like')}</> : null}
+			{K.cta !== undefined ? <>{sfx('jackpot.mp3', K.cta + 2.0, 0.25, 'like')}</> : null}
 		</AbsoluteFill>
 	);
 };
