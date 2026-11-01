@@ -3,3 +3,7 @@ log_*.txt
 list_*.txt
 seg_*/
 __pycache__/
+seg3_*/
+list3_*.txt
+ref3.*
+log3_*.txt
