@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {AbsoluteFill, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import {ThreeCanvas} from '@remotion/three';
 import * as THREE from 'three';
 import {C, DISPLAY, BODY, FPS, P, clamp, eio, eout} from './ui';
@@ -245,3 +245,52 @@ export const TennisBall: React.FC<{size: number; t: number}> = ({size, t}) => (
 	</svg>
 );
 export {eio};
+
+// ---------------- real product photo with a "breathing" CloudTec sole ----------------
+// shoe.png 658×316, sole band ≈ bottom 34%; hole centres measured on the cutout
+const HOLES = [0.1, 0.185, 0.275, 0.365, 0.465, 0.57, 0.68, 0.78, 0.86];
+export const ShoePhoto: React.FC<{w: number; squash?: number; glow?: number; float?: number; holesOn?: number; rot?: number}> = ({w, squash = 0, glow = 0, float = 0, holesOn = 0, rot = 0}) => {
+	const h = w * (316 / 658), sole = 0.34, sq = clamp(squash) * 0.2;
+	const dy = h * sole * sq;
+	const src = staticFile('shoe.png');
+	return (
+		<div style={{position: 'relative', width: w, height: h + 60, transform: `translateY(${-float}px) rotate(${rot}deg)`}}>
+			<div style={{position: 'absolute', left: w * 0.12, right: w * 0.08, top: h + 20 + float * 0.6, height: 34, borderRadius: '50%', background: 'rgba(0,0,0,.55)', filter: 'blur(14px)', transform: `scaleX(${1 - float / 300})`}} />
+			<Img src={src} style={{position: 'absolute', left: 0, top: dy, width: w, height: h, clipPath: `inset(0 0 ${sole * 100}% 0)`}} />
+			<div style={{position: 'absolute', left: 0, top: 0, width: w, height: h, transformOrigin: '50% 100%', transform: `scaleY(${1 - sq})`}}>
+				<Img src={src} style={{position: 'absolute', left: 0, top: 0, width: w, height: h, clipPath: `inset(${(1 - sole) * 100}% 0 0 0)`}} />
+				{HOLES.map((x, i) => {const on = clamp(holesOn * HOLES.length - i); return on > 0 ? <div key={i} style={{position: 'absolute', left: x * w - w * 0.028, top: 0.865 * h - h * 0.035, width: w * 0.056, height: h * 0.07, borderRadius: '50%', background: C.lime, opacity: on * (0.55 + 0.45 * glow), boxShadow: `0 0 ${18 + 30 * glow}px ${C.lime}`, mixBlendMode: 'screen'}} /> : null;})}
+			</div>
+		</div>
+	);
+};
+
+// ---------------- foam demo: soft sole swallows the push ----------------
+export const FoamDemo: React.FC<{w: number; t: number; layers: number[]; press: number; labels: string[]}> = ({w, t, layers, press, labels}) => {
+	const cols = [C.cyan, C.violet, '#e9edf1'];
+	const base = 60, add = 95;
+	const total = base + layers.reduce((a, k) => a + add * k, 0);
+	const sink = press * total * 0.55;
+	return (
+		<div style={{position: 'relative', width: w, height: 520}}>
+			{/* foot */}
+			<div style={{position: 'absolute', left: w / 2 - 170, top: 520 - total - 150 + sink * (0.9 + 0.1 * Math.sin(t * 6) * press), width: 340, height: 150, borderRadius: '90px 90px 40px 40px', background: 'linear-gradient(#3a4552,#232a33)', boxShadow: '0 10px 30px rgba(0,0,0,.5)'}} />
+			{/* sole stack */}
+			<div style={{position: 'absolute', left: w * 0.1, width: w * 0.8, bottom: 0, height: total - sink, display: 'flex', flexDirection: 'column-reverse', borderRadius: 30, overflow: 'hidden', boxShadow: `0 0 40px ${C.cyan}33`}}>
+				<div style={{height: base * (1 - press * 0.55), background: '#cfd6dd', flexShrink: 0}} />
+				{layers.map((k, i) => k > 0 ? <div key={i} style={{height: add * k * (1 - press * 0.55), background: cols[i], display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: DISPLAY, fontWeight: 900, fontSize: 42, color: C.ink, opacity: Math.min(1, k * 2), flexShrink: 0, overflow: 'hidden'}}><span style={{opacity: 1 - press * 1.2}}>{labels[i]}</span></div> : null)}
+			</div>
+		</div>
+	);
+};
+
+// ---------------- persistent pod meter (one hose ring per chapter) ----------------
+export const PodMeter: React.FC<{n: number; lit: number; t: number; o: number}> = ({n, lit, t, o}) => (
+	<div style={{display: 'flex', gap: 22, opacity: o}}>
+		{Array.from({length: n}).map((_, i) => {
+			const k = clamp(lit - i);
+			const pulse = k > 0 && k < 1 ? 1 - 0.3 * Math.sin(k * Math.PI) : 1;
+			return <div key={i} style={{width: 64, height: 64 * pulse, borderRadius: '50%', border: `14px solid ${k > 0 ? C.lime : 'rgba(244,247,250,.18)'}`, boxSizing: 'border-box', boxShadow: k > 0 ? `0 0 ${18 * k}px ${C.lime}` : undefined, background: '#0a0d10', alignSelf: 'flex-end'}} />;
+		})}
+	</div>
+);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {Audio} from '@remotion/media';
-import {Brother, Hose, Medal, RubberBlob, SalesBars, Scissors, Sneaker3D, SoundBars, StepTrail, SwissFlag, TennisBall, Ticker, TrackBg, WaffleIron} from './Comps';
+import {Brother, Hose, Medal, RubberBlob, SalesBars, Scissors, ShoePhoto, SoundBars, StepTrail, SwissFlag, TennisBall, Ticker, TrackBg, WaffleIron} from './Comps';
 import {CTA} from './CTA';
 import {SALES, chapters, gait, sfx} from './Short';
 import {At, Badge, BODY, C, DISPLAY, FPS, P, Pill, Title, Txt, eio, eout, pop} from './ui';
@@ -51,7 +51,7 @@ export const SneakLong: React.FC<{data: any}> = ({data}) => {
 			<TrackBg w={1920} h={1080} />
 			{/* 1 — cold open */}
 			<Win a={0} b={ch[1]}>
-				<AbsoluteFill style={{left: 760, top: 80}}><Sneaker3D w={1160} h={900} t={t} pods={P(t, K.pods1 - 1, K.pods1 + 0.5)} upper={P(t, 0.3, 1.2)} squash={gait(t, K.on)} yaw={0.35 + Math.sin(t * 0.5) * 0.15} glow={0.7} /></AbsoluteFill>
+				<At x={1340} y={520}><ShoePhoto w={1000} squash={gait(t, K.on)} holesOn={P(t, K.pods1 - 1, K.pods1 + 0.5)} glow={0.6} float={10 + 10 * Math.sin(t * 1.6)} /></At>
 				<Pop t={t} at={K.on} x={480} y={220}><Title text="On" col={C.white} size={150} glow={C.white} /></Pop>
 				<Pop t={t} at={K.b3} x={480} y={370}><Title text="CHF 3 BILLION" col={C.lime} size={86} glow={C.lime} /></Pop>
 				<Pop t={t} at={K.growth} x={340} y={500}><Badge text="+30%" col={C.lime} size={56} /></Pop>
@@ -116,7 +116,7 @@ export const SneakLong: React.FC<{data: any}> = ({data}) => {
 			</Win>
 			{/* 7 — how it works, On founded */}
 			<Win a={ch[6]} b={ch[7]}>
-				<AbsoluteFill style={{left: -120, top: 100}}><Sneaker3D w={1200} h={860} t={t} squash={t < K.squash ? 0 : t < K.y2010 ? gait(t, K.squash) : 0} yaw={0.12} glow={0.6 + 0.4 * P(t, K.cloudtec - 0.5, K.cloudtec)} dist={8.5} /></AbsoluteFill>
+				<At x={500} y={560}><ShoePhoto w={880} squash={t < K.squash ? 0 : t < K.y2010 ? gait(t, K.squash) : 0} holesOn={1} glow={0.6 + 0.4 * P(t, K.cloudtec - 0.5, K.cloudtec)} /></At>
 				<Pop t={t} at={K.squash} x={240} y={190}><Pill text="LAND: PODS SQUASH ↓" bg={C.cyan} size={36} /></Pop>
 				<Pop t={t} at={K.firm} x={680} y={190}><Pill text="PUSH: FIRM ↑" bg={C.lime} size={36} /></Pop>
 				<Pop t={t} at={K.firm + 3} x={480} y={900}><Badge text="+ SPEEDBOARD: A SPRINGY PLATE" col={C.white} size={34} /></Pop>
@@ -152,7 +152,7 @@ export const SneakLong: React.FC<{data: any}> = ({data}) => {
 			</Win>
 			{/* 10 — what if */}
 			<Win a={ch[9]} b={ch[10]} last>
-				<AbsoluteFill style={{left: 760, top: 160, opacity: cta}}><Sneaker3D w={1160} h={820} t={t} squash={gait(t, ch[9] + 1)} yaw={0.3 + Math.sin(t * 0.5) * 0.2} glow={0.8} /></AbsoluteFill>
+				<At x={1340} y={560} o={cta}><ShoePhoto w={1000} squash={gait(t, ch[9] + 1)} holesOn={1} glow={0.8} /></At>
 				{[['A HOT STOVE', K.stove2, C.amber], ['SILENT SOLES', K.word, C.cyan], ['TWO BROTHERS', K.brothers, C.red], ['A WAFFLE IRON', K.wafflend, C.white], ['A GARDEN HOSE', K.triathlete, C.lime]].map(([x, a, col]: any, j) => <At key={j} x={480} y={200 + j * 115} s={pop(t, a - 0.3)} o={cta}><Pill text={x} bg={col} size={40} fg={C.ink} /></At>)}
 				<At x={480} y={850} s={pop(t, K.whatif - 0.3)} o={cta}><Title text="WHAT IF?" col={C.lime} size={140} glow={C.lime} /></At>
 			</Win>

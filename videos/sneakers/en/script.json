@@ -1,10 +1,10 @@
 [
- {"s":1,"tts":"How did a garden hose turn into a three-billion-franc shoe brand? To get it, let's go back to the very first sneakers.","sub":"","keys":{"hook":"garden hose","b3hook":"three-billion","start":"first sneakers"}},
- {"s":2,"tts":"In eighteen thirty-nine, Charles Goodyear figured out how to vulcanize rubber. Rubber soles were so quiet, you could sneak up on people. That's how sneakers got their name.","sub":"","keys":{"goodyear":"Goodyear","rubber":"vulcanize","quiet":"quiet","sneak":"sneakers got"}},
- {"s":3,"tts":"In nineteen thirty-six, Jesse Owens won four gold medals in spikes made by the Dassler brothers. Then the brothers fell out and started two rivals: Adidas and Puma.","sub":"","keys":{"owens":"Owens","gold4":"four gold","split":"fell out","brands":"Adidas"}},
- {"s":4,"tts":"In nineteen seventy-one, coach Bill Bowerman poured urethane into his wife's waffle iron. That waffle sole became one of Nike's first big hits.","sub":"","keys":{"waffle":"waffle iron","nike":"Nike's"}},
- {"s":5,"tts":"In the late two-thousands, Swiss triathlete Olivier Bernhard cut up a garden hose and glued the pieces to a running shoe. Landing felt soft, and the push-off felt springy.","sub":"","keys":{"olivier":"Olivier","hose":"cut up","glue":"glued","soft":"soft","push":"springy"}},
- {"s":6,"tts":"In twenty ten, he and two friends founded a company called On, in Zurich. The hose pieces became patented clouds.","sub":"","keys":{"zurich":"Zurich","on":"called On","clouds":"clouds"}},
- {"s":7,"tts":"In twenty nineteen, Roger Federer invested. And in twenty twenty-one, On went public in New York, valued at over eleven billion dollars.","sub":"","keys":{"federer":"Federer","ipo":"went public","b11":"eleven"}},
- {"s":8,"tts":"Last year, sales jumped thirty percent, past three billion Swiss francs. Not bad for a piece of garden hose.","sub":"","keys":{"growth":"thirty","sales3":"past three","hoseEnd":"piece of"}}
+ {"s":1,"tts":"These sneakers sell over three billion Swiss francs a year. And they started with a garden hose.","sub":"","keys":{"photo":"sneakers","b3":"three billion","hose":"garden hose"}},
+ {"s":2,"tts":"For decades, big brands fought over the perfect sole: air, gel, softer and softer foam.","sub":"","keys":{"arms":"For decades","air":"air","gel":"gel","foam":"foam"}},
+ {"s":3,"tts":"But a sole that's too soft feels mushy when you push off.","sub":"","keys":{"mushy":"mushy"}},
+ {"s":4,"tts":"Swiss triathlete Olivier Bernhard cut a garden hose into pieces and glued them under his shoe.","sub":"","keys":{"olivier":"Olivier","cut":"cut a","glue":"glued"}},
+ {"s":5,"tts":"When your foot lands, the pieces squash and soak up the impact. Once they're fully compressed, they turn firm, and you push off like from a board.","sub":"","keys":{"land":"lands","squash":"squash","firm":"firm","push":"push off"}},
+ {"s":6,"tts":"Big brands reportedly weren't interested. So in twenty ten, he and two friends founded On, in Zurich.","sub":"","keys":{"declined":"weren't interested","zurich":"Zurich","on":"founded On"}},
+ {"s":7,"tts":"In twenty nineteen, Roger Federer invested. And in twenty twenty-one, On went public, valued at over eleven billion dollars.","sub":"","keys":{"federer":"Federer","ipo":"went public","b11":"eleven"}},
+ {"s":8,"tts":"Last year, sales grew thirty percent. That's what happens when you look at an ordinary hose and ask: what if?","sub":"","keys":{"growth":"thirty","whatif":"what if"}}
 ]

@@ -356,7 +356,7 @@ Would you still open a café after watching this, or just brew at home? 👇
 ## 10. История кроссовок и бренда On
 
 ### 🇷🇺 RU (шортс)
-**Видео:** `krossovki_on_RU.mp4` · **Обложка:** `cover_sneakers_RU.png`
+**Видео:** `krossovki_on_RU_v2.mp4` · **Обложка:** `cover_sneakers_RU.png`
 
 **Название:** Вы знали, что кроссовки On начались с садового шланга? 👟
 
@@ -365,7 +365,7 @@ Would you still open a café after watching this, or just brew at home? 👇
 > А вы бы надели кроссовки «из шланга»? 👇
 
 ### 🇺🇸 EN (short)
-**Video:** `sneakers_on_EN.mp4` · **Cover:** `cover_sneakers_EN.png`
+**Video:** `sneakers_on_EN_v2.mp4` · **Cover:** `cover_sneakers_EN.png`
 
 **Title:** Did you know On sneakers started with a garden hose? 👟
 
@@ -374,7 +374,7 @@ Would you still open a café after watching this, or just brew at home? 👇
 > Have you tried running in On? Worth the hype or not? 👇
 
 ### 🇺🇸 EN — YouTube long video (16:9, 8:01)
-**Video:** `sneakers_on_LONG_EN.mp4` · **Thumbnail:** `thumbnail_sneakers_LONG_EN.png`
+**Video:** `sneakers_on_LONG_EN_v2.mp4` · **Thumbnail:** `thumbnail_sneakers_LONG_EN.png`
 
 **Title:** From a Garden Hose to CHF 3 Billion: The Story of On and the Sneaker
 
