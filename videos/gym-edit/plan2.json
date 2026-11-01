@@ -1,0 +1,12 @@
+{"model_id":"music_v2_5","composition_plan":{"chunks":[
+{"text":"[Intro]\nDark airy pads, crisp fast hi-hats start immediately, soft sub bass","duration_ms":3333,
+ "positive_styles":["dark atmospheric trap","instrumental","144 bpm","crisp fast hi-hats","deep sub bass","ambient night pads","minimal haunting melody"],"negative_styles":["vocals","rap","acoustic","happy"],"context_adherence":"high"},
+{"text":"[Main]\nFull beat: punchy kick, snare on 3, rolling hi-hats, deep 808, haunting synth melody","duration_ms":10000,
+ "positive_styles":["dark atmospheric trap","144 bpm","rolling hi-hats","heavy 808","haunting synth"],"negative_styles":["vocals","rap"],"context_adherence":"high"},
+{"text":"[Break]\nDrums and hi-hats drop out, only pads and 808 sustain","duration_ms":3333,
+ "positive_styles":["dark atmospheric","144 bpm","sparse","pads"],"negative_styles":["vocals","drums"],"context_adherence":"high"},
+{"text":"[Main]\nFull beat returns hard: kick, snare, rolling hi-hats, 808, melody","duration_ms":10000,
+ "positive_styles":["dark atmospheric trap","144 bpm","rolling hi-hats","heavy 808","haunting synth"],"negative_styles":["vocals","rap"],"context_adherence":"high"},
+{"text":"[Outro]\nBeat stops, pad tail fades out","duration_ms":3000,
+ "positive_styles":["dark atmospheric","fade out"],"negative_styles":["vocals"],"context_adherence":"high"}
+]}}
