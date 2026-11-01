@@ -2,3 +2,4 @@ ref.mp3
 log_*.txt
 list_*.txt
 seg_*/
+__pycache__/
