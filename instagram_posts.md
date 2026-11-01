@@ -350,3 +350,48 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: Shakespeare mentions the ancestor of trick-or-treating. In The Two Gentlemen of Verona, a character whines "like a beggar at Hallowmas", the poor who went door to door for soul cakes.
 > Turnip or pumpkin: which one would you rather carve? 👇
+
+---
+
+## 10. История кроссовок и бренда On
+
+### 🇷🇺 RU (шортс)
+**Видео:** `krossovki_on_RU.mp4` · **Обложка:** `cover_sneakers_RU.png`
+
+**Название:** Вы знали, что кроссовки On начались с садового шланга? 👟
+
+**Закреплённый комментарий:**
+> 📌 Слово «сникерс» появилось потому, что в резиновой подошве можно было бесшумно подкрасться (англ. sneak). А On сегодня продаёт больше чем на 3 млрд франков в год — и всё началось с кусочков садового шланга.
+> А вы бы надели кроссовки «из шланга»? 👇
+
+### 🇺🇸 EN (short)
+**Video:** `sneakers_on_EN.mp4` · **Cover:** `cover_sneakers_EN.png`
+
+**Title:** Did you know On sneakers started with a garden hose? 👟
+
+**Pinned comment:**
+> 📌 "Sneakers" got their name because rubber soles let you sneak up on people. And On, now a CHF 3 billion a year brand, started with pieces of garden hose glued to a running shoe.
+> Have you tried running in On? Worth the hype or not? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:01)
+**Video:** `sneakers_on_LONG_EN.mp4` · **Thumbnail:** `thumbnail_sneakers_LONG_EN.png`
+
+**Title:** From a Garden Hose to CHF 3 Billion: The Story of On and the Sneaker
+
+**Chapters (paste into the description):**
+```
+0:00 From a garden hose
+0:38 Rubber that refused to melt
+1:27 Why they are called sneakers
+2:13 Two brothers, two brands
+2:57 A waffle iron and a swoosh
+3:44 The cushioning arms race
+4:38 The hose that worked
+5:29 Federer, Wall Street and Zendaya
+6:17 The numbers
+7:09 What if?
+```
+
+**Pinned comment:**
+> 📌 Fun fact: Nike's famous logo was designed by a student, Carolyn Davidson, for just $35. And the town where Adidas and Puma were born was nicknamed "the town of bent necks" because people looked at your shoes before talking to you.
+> Which sneaker brand are you wearing right now? 👇

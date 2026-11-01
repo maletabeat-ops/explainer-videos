@@ -1,0 +1,28 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		t1: 'КАК САДОВЫЙ ШЛАНГ', t2: 'СТАЛ БРЕНДОМ?', b3: 'CHF 3 000 000 000',
+		years: ['1839', '1936', '1971', '2010', '2021', '2025'],
+		gy: '1839 · ЧАРЛЬЗ ГУДЬИР', vulc: 'ВУЛКАНИЗАЦИЯ РЕЗИНЫ', quiet: 'ТИХИЙ ШАГ', sneak: 'SNEAK = КРАСТЬСЯ',
+		berlin: '1936 · БЕРЛИН', owens: 'ДЖЕССИ ОУЭНС', dassler: 'шиповки братьев Дасслер', split: 'БРАТЬЯ РАССОРИЛИСЬ',
+		bow: '1971 · БИЛЛ БАУЭРМАН', waffle: 'ВАФЕЛЬНАЯ ПОДОШВА',
+		ob: 'КОНЕЦ 2000-х · ОЛИВЬЕ БЕРНАР', obSub: 'швейцарский триатлет', soft: 'МЯГКО ↓', push: 'УПРУГО ↑',
+		zurich: 'ЦЮРИХ · 2010', founders: '3 ОСНОВАТЕЛЯ', clouds: 'ЗАПАТЕНТОВАННЫЕ «ОБЛАКА»',
+		fed: 'РОДЖЕР ФЕДЕРЕР · 2019', inv: 'ИНВЕСТОР', ipo: '2021 · IPO В НЬЮ-ЙОРКЕ', b11: '> $11 МЛРД',
+		growth: '+30%', sales: 'ПРОДАЖИ, CHF МЛРД', fmt: (v: number) => v.toFixed(1).replace('.', ','), fin: 'НЕПЛОХО ДЛЯ КУСКА ШЛАНГА',
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		t1: 'HOW A GARDEN HOSE', t2: 'BECAME A BRAND', b3: 'CHF 3,000,000,000',
+		years: ['1839', '1936', '1971', '2010', '2021', '2025'],
+		gy: '1839 · CHARLES GOODYEAR', vulc: 'VULCANIZED RUBBER', quiet: 'SILENT STEPS', sneak: 'SNEAK UP ON PEOPLE',
+		berlin: '1936 · BERLIN', owens: 'JESSE OWENS', dassler: 'spikes by the Dassler brothers', split: 'THE BROTHERS FELL OUT',
+		bow: '1971 · BILL BOWERMAN', waffle: 'THE WAFFLE SOLE',
+		ob: 'LATE 2000s · OLIVIER BERNHARD', obSub: 'Swiss triathlete', soft: 'SOFT LANDING ↓', push: 'SPRINGY ↑',
+		zurich: 'ZURICH · 2010', founders: '3 FOUNDERS', clouds: 'PATENTED “CLOUDS”',
+		fed: 'ROGER FEDERER · 2019', inv: 'INVESTOR', ipo: '2021 · IPO IN NEW YORK', b11: '> $11 BILLION',
+		growth: '+30%', sales: 'NET SALES, CHF BILLION', fmt: (v: number) => v.toFixed(1), fin: 'NOT BAD FOR A GARDEN HOSE',
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};
