@@ -32,11 +32,10 @@ def pieces():
 
 def between(spans): return "+".join(f"between(t,{a:.3f},{b:.3f})" for a, b in spans)
 
-slow_win = between([(c - SLOW * 2, c + SLOW * 2) for c in RAMPS])
 Z = "1" + "".join(f"+{amp}*exp(-max(0,t-{t0:.3f})*8)*gte(t,{t0:.3f})" for t0, amp in PUNCH)
 fc = (
     f"[0:v]setpts=PTS-STARTPTS,setpts='({remap(pieces())})/TB',fps={FPS},"
-    f"tmix=frames=2:enable='{slow_win}',format=yuv420p10le,split[m][t];"
+    f"format=yuv420p10le,split[m][t];"
     f"[t]format=yuv420p,geq=lum='{HEAT}':cb=128:cr=128,gblur=sigma=4,pseudocolor=p=inferno,"
     f"eq=brightness=-0.04,format=yuv420p10le[th];"
     f"[m][th]overlay=enable='{between(THERMAL)}',"
