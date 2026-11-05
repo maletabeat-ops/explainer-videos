@@ -395,3 +395,48 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: Nike's famous logo was designed by a student, Carolyn Davidson, for just $35. And the town where Adidas and Puma were born was nicknamed "the town of bent necks" because people looked at your shoes before talking to you.
 > Which sneaker brand are you wearing right now? 👇
+
+---
+
+## 11. История бренда Hennessy
+
+### 🇷🇺 RU (шортс)
+**Видео:** `hennessy_RU.mp4` · **Обложка:** `cover_hennessy_RU.png`
+
+**Название:** Вы знали, что главный французский коньяк основал ирландец? 🥃
+
+**Закреплённый комментарий:**
+> 📌 Hennessy основал в 1765 году ирландский солдат Ричард Хеннесси, а вкус с 1806 года охраняет одна семья блендеров — сейчас уже восьмое поколение. И да, буква H в LVMH — это Hennessy.
+> Какой факт удивил вас больше всего? 👇
+
+### 🇺🇸 EN (short)
+**Video:** `hennessy_EN.mp4` · **Cover:** `cover_hennessy_EN.png`
+
+**Title:** Did you know the king of French cognac was founded by an Irishman? 🥃
+
+**Pinned comment:**
+> 📌 Richard Hennessy, an Irish soldier in the French king's army, started the house in 1765. One family of master blenders has guarded the taste since 1806, now in its 8th generation. And yes, the H in LVMH is Hennessy.
+> Which fact surprised you the most? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:02)
+**Video:** `hennessy_LONG_EN.mp4` · **Thumbnail:** `thumbnail_hennessy_LONG_EN.png`
+
+**Title:** How an Irish Soldier Built the King of Cognac: The Story of Hennessy
+
+**Chapters (paste into the description):**
+```
+0:00 The best-selling cognac
+0:47 An Irish soldier in Cognac
+1:35 What makes cognac cognac
+2:29 VSOP, stars and X.O
+3:12 Eight generations of taste
+4:01 The American chapter
+4:48 Hip-hop and Henny
+5:31 The H in LVMH
+6:19 Tariffs and a hangover
+7:11 A story about time
+```
+
+**Pinned comment:**
+> 📌 Fun fact: about 2% of every barrel evaporates each year in the cellars of Cognac. Locals call it "the angels' share", and it feeds a black fungus that covers the town's walls.
+> Did you know about the Irish roots of Hennessy? 👇

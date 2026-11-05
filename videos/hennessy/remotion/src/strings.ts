@@ -1,0 +1,28 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		t1: 'САМЫЙ ПРОДАВАЕМЫЙ', t2: 'КОНЬЯК В МИРЕ', irish: 'ОСНОВАЛ ИРЛАНДЕЦ', usa1: 'ПЬЮТ ВСЕГО БОЛЬШЕ В США',
+		richard: 'РИЧАРД ХЕННЕССИ', king: 'НА СЛУЖБЕ КОРОЛЯ ФРАНЦИИ', house: 'ТОРГОВЫЙ ДОМ',
+		stars: '★ = ГОДЫ ВЫДЕРЖКИ', xo: 'X.O = «EXTRA OLD» · 1870',
+		fam: 'СЕМЬЯ ФИЙУ · С 1806', gen: 'ВОСЬМОЕ ПОКОЛЕНИЕ', blender: 'МАСТЕР-БЛЕНДЕРЫ',
+		ads: 'РЕКЛАМА ДЛЯ АФРОАМЕРИКАНЦЕВ', vp: '1963 · ВИЦЕ-ПРЕЗИДЕНТ', vpSub: 'чернокожий олимпийский призёр',
+		hip: 'ХИП-ХОП', tupac: 'ТУПАК · «HENNESSY»', usa: 'США — РЫНОК №1',
+		m71: '1971 · MOËT + HENNESSY', lv87: '1987 · + LOUIS VUITTON', lvmh: 'Louis Vuitton · Moët · Hennessy',
+		share: 'мирового рынка коньяка', tariffs: 'ПОШЛИНЫ', king2: 'ПРОДАЖИ ↓',
+		years: ['1765', '1806', '1870', '1963', '1971', '2025'],
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		t1: "THE WORLD'S", t2: 'TOP-SELLING COGNAC', irish: 'FOUNDED BY AN IRISHMAN', usa1: 'DRUNK MOSTLY IN THE U.S.',
+		richard: 'RICHARD HENNESSY', king: 'SERVED THE KING OF FRANCE', house: 'TRADING HOUSE',
+		stars: '★ = YEARS OF AGEING', xo: 'X.O = "EXTRA OLD" · 1870',
+		fam: 'THE FILLIOUX · SINCE 1806', gen: 'EIGHTH GENERATION', blender: 'MASTER BLENDERS',
+		ads: 'ADS FOR BLACK READERS', vp: '1963 · VICE PRESIDENT', vpSub: 'a Black Olympic medalist',
+		hip: 'HIP-HOP', tupac: 'TUPAC · “HENNESSY”', usa: 'U.S. = MARKET #1',
+		m71: '1971 · MOËT + HENNESSY', lv87: '1987 · + LOUIS VUITTON', lvmh: 'Louis Vuitton · Moët · Hennessy',
+		share: 'of all cognac sold', tariffs: 'TARIFFS', king2: 'SALES ↓',
+		years: ['1765', '1806', '1870', '1963', '1971', '2025'],
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};

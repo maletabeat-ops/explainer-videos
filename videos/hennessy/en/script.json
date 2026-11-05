@@ -1,0 +1,81 @@
+[
+ {
+  "s": 1,
+  "tts": "The world's best-selling cognac was founded by an Irish soldier. And most of it is drunk in America.",
+  "sub": "",
+  "keys": {
+   "soldier": "Irish soldier",
+   "america": "America"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "Richard Hennessy served the King of France, settled in a small town called Cognac, and in seventeen sixty-five started his own trading house.",
+  "sub": "",
+  "keys": {
+   "richard": "Richard",
+   "king": "King",
+   "town": "Cognac",
+   "y1765": "sixty-five"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "His descendants put stars on the labels, and in eighteen seventy they created X.O., for extra old.",
+  "sub": "",
+  "keys": {
+   "stars": "stars",
+   "xo": "X.O."
+  }
+ },
+ {
+  "s": 4,
+  "tts": "Since eighteen-oh-six, one family, the Fillioux, has guarded the taste. Today it's the eighth generation.",
+  "sub": "",
+  "keys": {
+   "y1806": "eighteen-oh-six",
+   "fillioux": "Fillioux",
+   "gen8": "eighth"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "In America, the brand was one of the first to advertise in magazines for Black readers, and in nineteen sixty-three it made a Black Olympic medalist a vice president.",
+  "sub": "",
+  "keys": {
+   "ads": "magazines",
+   "vp": "vice president",
+   "olymp": "Olympic"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "Hip-hop carried that loyalty forward: Tupac and dozens of rappers sang about Henny. Today, the U.S. is the brand's biggest market.",
+  "sub": "",
+  "keys": {
+   "hiphop": "Hip-hop",
+   "tupac": "Tupac",
+   "usa": "biggest market"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "In nineteen seventy-one, Hennessy merged with Moët champagne, and later with Louis Vuitton. That's the H in LVMH.",
+  "sub": "",
+  "keys": {
+   "moet": "Moët",
+   "lv": "Louis Vuitton",
+   "h": "the H"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Today it's roughly forty percent of all cognac. But last year, tariffs in the U.S. and China hit even the king of cognac.",
+  "sub": "",
+  "keys": {
+   "share": "forty",
+   "tariffs": "tariffs",
+   "king2": "king of cognac"
+  }
+ }
+]
