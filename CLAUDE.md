@@ -81,6 +81,8 @@ Past mistakes — never repeat:
   product photo (user-supplied; cut out with `rembg`, isnet-general-use) and animate it (e.g. split sole/upper layers).
   Also the hook must pay off fast: v1 spent 40 s on side history before the promised story — keep the short on the
   promised subject, history in one line, ~60–65 s. Avoid abstract placeholder shapes (grey blobs, clip-art people).
+- Hennessy EN short: a tiny "cut-off" between sentences — post.py cut at the midpoint between v4 alignment end/start,
+  clipping word tails. post.py now snaps cuts to real silences; after post.py, listen/silencedetect at boundaries.
 - Wrong scope (Dubai instead of UAE). Re-read the topic; country ≠ city.
 - Crooked/ill-fitting 3D (oil derrick, donut chart), objects off-target (roulette ball landed in the wrong pocket:
   in three.js a sector at angle θ sits at (sin θ, cos θ); check placement math against a still).
