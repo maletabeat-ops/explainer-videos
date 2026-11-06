@@ -1,0 +1,28 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		t1: 'САМЫЕ ЖЕЛАННЫЕ', t2: 'ЧАСЫ В МИРЕ', german: 'ПРИДУМАЛ НЕМЕЦ В ЛОНДОНЕ', fund: 'ВЛАДЕЛЕЦ — ФОНД',
+		hans: 'ХАНС ВИЛЬСДОРФ · 1905', firm: 'фирма в Лондоне · швейцарские механизмы', short: 'КОРОТКО · ЗВУЧИТ ОДИНАКОВО ВЕЗДЕ',
+		tax: 'ПОШЛИНЫ ↑', geneva: '1919 · ЖЕНЕВА',
+		oyster: '1926 · OYSTER', wp: 'ПЕРВЫЕ ВОДОНЕПРОНИЦАЕМЫЕ', gle: ['1927 · МЕРСЕДЕС ГЛЕЙТЦЕ', '10 часов в Ла-Манше', 'часы шли'],
+		perp: '1931 · АВТОПОДЗАВОД', scale: {top: 'ЭВЕРЕСТ · 1953', sea: 'уровень моря', bottom: 'МАРИАНСКАЯ ВПАДИНА · 1960'},
+		own: {own: 'КОМУ ПРИНАДЛЕЖИТ', fnd: 'Фонду Ханса Вильсдорфа', no1: 'АКЦИОНЕРЫ', no2: 'ОТЧЁТЫ'}, f45: '1945 · ФОНД',
+		mil: '1 000 000+', milSub: 'часов в год', q: {now: 'СЕЙЧАС', you: 'ВАШ НОМЕР'}, queue: 'ОЧЕРЕДИ',
+		b11: (v: number) => `≈ CHF ${v.toFixed(0)} МЛРД`, b11sub: 'в год · оценка аналитиков', word: 'СЛОВО ИЗ ЛОНДОНА',
+		years: ['1905', '1908', '1919', '1926', '1945', '1960', '2025'],
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		t1: "THE WORLD'S MOST", t2: 'WANTED WATCH', german: 'INVENTED BY A GERMAN IN LONDON', fund: 'OWNED BY A FOUNDATION',
+		hans: 'HANS WILSDORF · 1905', firm: 'a London firm · Swiss movements', short: 'SHORT · SOUNDS THE SAME EVERYWHERE',
+		tax: 'IMPORT DUTIES ↑', geneva: '1919 · GENEVA',
+		oyster: '1926 · OYSTER', wp: 'THE FIRST WATERPROOF WRISTWATCH', gle: ['1927 · MERCEDES GLEITZE', '10 hours in the Channel', 'still ticking'],
+		perp: '1931 · SELF-WINDING', scale: {top: 'EVEREST · 1953', sea: 'sea level', bottom: 'MARIANA TRENCH · 1960'},
+		own: {own: 'WHO OWNS IT', fnd: 'The Hans Wilsdorf Foundation', no1: 'SHAREHOLDERS', no2: 'PUBLIC ACCOUNTS'}, f45: '1945 · A FOUNDATION',
+		mil: '1,000,000+', milSub: 'watches a year', q: {now: 'NOW SERVING', you: 'YOUR NUMBER'}, queue: 'WAITLISTS',
+		b11: (v: number) => `≈ CHF ${v.toFixed(0)} BILLION`, b11sub: 'a year · analyst estimate', word: 'A WORD FROM LONDON',
+		years: ['1905', '1908', '1919', '1926', '1945', '1960', '2025'],
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};

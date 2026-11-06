@@ -440,3 +440,48 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: about 2% of every barrel evaporates each year in the cellars of Cognac. Locals call it "the angels' share", and it feeds a black fungus that covers the town's walls.
 > Did you know about the Irish roots of Hennessy? 👇
+
+---
+
+## 12. История Rolex
+
+### 🇷🇺 RU (шортс)
+**Видео:** `rolex_RU.mp4` · **Обложка:** `cover_rolex_RU.png`
+
+**Название:** Вы знали, что Rolex никому не принадлежит? ⌚
+
+**Закреплённый комментарий:**
+> 📌 Rolex основал немец Ханс Вильсдорф в Лондоне, а с 1960 года компанией владеет благотворительный фонд. Ни акционеров, ни публичных отчётов — только оценки аналитиков: около 11 млрд франков в год.
+> А вы бы встали в очередь за Rolex? 👇
+
+### 🇺🇸 EN (short)
+**Video:** `rolex_EN.mp4` · **Cover:** `cover_rolex_EN.png`
+
+**Title:** Did you know Rolex is owned by a charity? ⌚
+
+**Pinned comment:**
+> 📌 Rolex was started by a German, Hans Wilsdorf, in London, and since 1960 it has been owned by a charitable foundation. No shareholders, no public accounts, just analyst estimates of about CHF 11 billion a year.
+> Would you join a Rolex waitlist? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:02)
+**Video:** `rolex_LONG_EN.mp4` · **Thumbnail:** `thumbnail_rolex_LONG_EN.png`
+
+**Title:** No Owner, No Shareholders, $11B a Year: The Strange Story of Rolex
+
+**Chapters (paste into the description):**
+```
+0:00 A watch you can't buy
+0:42 A German orphan in London
+1:30 A word on a London bus
+2:18 War and the move to Geneva
+2:57 The Oyster
+3:48 From Everest to the Mariana Trench
+4:44 Owned by no one
+5:35 Built to be scarce
+6:32 How big is Rolex?
+7:13 Selling time
+```
+
+**Pinned comment:**
+> 📌 Fun fact: in 1927, swimmer Mercedes Gleitze spent about 10 hours in the freezing English Channel wearing a Rolex Oyster, and Wilsdorf bought the entire front page of the Daily Mail to tell the world it still worked.
+> Which Rolex fact surprised you most? 👇

@@ -1,0 +1,78 @@
+[
+ {
+  "s": 1,
+  "tts": "The world's most wanted watch was invented by a German in London. And it's owned not by a billionaire, but by a charitable foundation.",
+  "sub": "",
+  "keys": {
+   "german": "German",
+   "fund": "foundation"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "In nineteen-oh-five, Hans Wilsdorf started a London firm selling watches with Swiss movements. In nineteen-oh-eight, he made up the word Rolex: short, and it sounds the same in any language.",
+  "sub": "",
+  "keys": {
+   "hans": "Hans",
+   "london": "London firm",
+   "rolex": "Rolex:"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "After World War One, British import duties rose, and in nineteen nineteen the company moved to Geneva.",
+  "sub": "",
+  "keys": {
+   "tax": "duties",
+   "geneva": "Geneva"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "In nineteen twenty-six, Rolex made the first waterproof wristwatch, the Oyster. Swimmer Mercedes Gleitze wore one for ten hours in the freezing English Channel, and it kept ticking.",
+  "sub": "",
+  "keys": {
+   "oyster": "Oyster",
+   "gleitze": "Gleitze",
+   "ticking": "kept ticking"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "Then came the legends: self-winding, the top of Everest, and in nineteen sixty, a Rolex rode a submersible to the bottom of the Mariana Trench and came back in one piece.",
+  "sub": "",
+  "keys": {
+   "perpetual": "self-winding",
+   "everest": "Everest",
+   "trench": "Mariana"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "After his wife died, Wilsdorf created a foundation and left it the company. Rolex has no shareholders and publishes no accounts.",
+  "sub": "",
+  "keys": {
+   "wife": "wife",
+   "fund2": "created a foundation",
+   "noshare": "no shareholders"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "It makes more than a million watches a year, yet popular models are almost never in stores: there are waitlists.",
+  "sub": "",
+  "keys": {
+   "million": "million",
+   "queue": "waitlists"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Analysts estimate Rolex brings in about eleven billion Swiss francs a year. Not bad for a word made up in London.",
+  "sub": "",
+  "keys": {
+   "b11": "eleven",
+   "word": "word"
+  }
+ }
+]
