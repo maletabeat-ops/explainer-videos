@@ -41,11 +41,18 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 
 ## Long-form YouTube (EN) — per new topic, on request
 - Besides the RU + EN vertical shorts, the user may want a **horizontal 16:9 (1920×1080) EN video, 6–8 min**
-  (≥8 min enables mid-roll ads) for the English YouTube channel: a deeper, separate script on the same topic
+  (ALWAYS longer than 8:00 — target 8:15–9:00; ≥8 min enables mid-roll ads; write enough script, don't rely on padding) for the English YouTube channel: a deeper, separate script on the same topic
   (more facts/examples), NOT a stretched short. Reuse the short's Remotion scenes re-laid out for 16:9, its music
   (loop/crossfade) and SFX → only TTS costs credits (~1 credit/char: ~4k for 4–5 min, ~7k for 8 min).
 - Use on-screen section titles (lower thirds) instead of chapter counters, and give the user YouTube chapter
   timestamps, a title and a 1280×720 thumbnail.
+
+## Format "You just invented X" (user liked a reference reel, Nov 2026)
+- Second person, building an everyday device from scratch as a chain of problem → fix → new problem → fix,
+  ending with "Congrats, you just invented X. And it all started with …". Plain words, no jargon.
+- Ref was a 3D room with a worker character; ours: NO character — one persistent 3D diorama (R3F) that grows step by
+  step, camera moves (top-down ↔ close-up), small white callout labels, our dark series look. Bottom persistent element:
+  an "inventory" of parts added so far.
 
 ## Style
 - **Every video gets its own twist** (user request): keep the series look (dark neon, header, captions, CTA), but
