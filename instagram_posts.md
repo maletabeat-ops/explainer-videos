@@ -485,3 +485,48 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: in 1927, swimmer Mercedes Gleitze spent about 10 hours in the freezing English Channel wearing a Rolex Oyster, and Wilsdorf bought the entire front page of the Daily Mail to tell the world it still worked.
 > Which Rolex fact surprised you most? 👇
+
+---
+
+## 13. Изобретаем лифт (формат «Ты только что изобрёл…»)
+
+### 🇷🇺 RU (шортс)
+**Видео:** `lift_RU.mp4` · **Обложка:** `cover_elevator_RU.png`
+
+**Название:** Вы знали, что лифт можно изобрести за минуту? Попробуем 🛗
+
+**Закреплённый комментарий:**
+> 📌 Колесо, верёвка, противовес, мотор, рельсы, тормоз, двери и кнопки — каждая деталь лифта решает проблему предыдущей. А аварийный тормоз Элиша Отис показал в 1854 году, приказав перерезать собственный трос.
+> Какую вещь «изобретём» следующей? Пишите в комментариях 👇
+
+### 🇺🇸 EN (short)
+**Video:** `lift_EN.mp4` · **Cover:** `cover_elevator_EN.png`
+
+**Title:** Did you know you can invent the elevator in one minute? Let's try 🛗
+
+**Pinned comment:**
+> 📌 Wheel, rope, counterweight, motor, rails, safety brake, doors, buttons: every part of an elevator fixes the problem before it. And Elisha Otis showed off his safety brake in 1854 by having his own rope cut.
+> What should we invent next? Tell us below 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:13)
+**Video:** `lift_LONG_EN.mp4` · **Thumbnail:** `thumbnail_elevator_LONG_EN.png`
+
+**Title:** You Just Invented the Elevator (Every Part, Step by Step)
+
+**Chapters (paste into the description):**
+```
+0:00 Two hundred steps
+0:39 A rope and a wheel
+1:29 The counterweight trick
+2:13 Motors, ropes and rails
+3:02 What if the rope breaks?
+3:58 Governors, buffers and doors
+4:43 The doors and the strike
+5:41 The button puzzle
+6:26 The machine that built cities
+7:23 You just invented the elevator
+```
+
+**Pinned comment:**
+> 📌 Fun fact: before elevators, the top floors of a building were the cheapest, because nobody wanted to climb that high. Elevators flipped that and turned the top floor into the penthouse.
+> What everyday thing should we invent next? 👇
