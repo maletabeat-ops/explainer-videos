@@ -530,3 +530,49 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: before elevators, the top floors of a building were the cheapest, because nobody wanted to climb that high. Elevators flipped that and turned the top floor into the penthouse.
 > What everyday thing should we invent next? 👇
+
+---
+
+## 14. Изобретаем унитаз (новый стиль №2)
+
+### 🇷🇺 RU (шортс)
+**Видео:** `toilet_RU.mp4` · **Обложка:** `cover_toilet_RU.png`
+
+**Название:** Вы знали, зачем трубе под раковиной изгиб? 🚽
+
+**Закреплённый комментарий:**
+> 📌 В изгибе трубы всегда стоит немного воды — она работает как пробка и не пускает запах из канализации. Эту «изогнутую трубу» запатентовали ещё в 1775 году.
+> Угадали, что собирается, до конца ролика? 👇
+
+### 🇺🇸 EN (short)
+**Video:** `toilet_EN.mp4` · **Cover:** `cover_toilet_EN.png`
+
+**Title:** Did you know why the pipe under your sink is bent? 🚽
+
+**Pinned comment:**
+> 📌 A little water always sits in the bend of the pipe, acting like a plug that keeps sewer smell out. That bent pipe was patented back in 1775.
+> Did you guess what we were building before the end? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:16)
+**Video:** `toilet_LONG_EN.mp4` · **Thumbnail:** `thumbnail_toilet_LONG_EN.png`
+
+**Title:** You Use This Every Day. Let's Invent It From Scratch
+
+**Chapters (paste into the description):**
+```
+0:00 The bucket problem
+0:38 A hole and a pipe
+1:22 The smell comes back
+2:19 The siphon trick
+3:00 A tank and a chain
+3:39 The float
+4:17 The reveal
+4:53 Who really invented it
+5:43 Water and money
+6:23 Toilets in Japan, planes and space
+7:26 3.4 billion people
+```
+
+**Pinned comment:**
+> 📌 Fun fact: Thomas Crapper didn't invent the toilet. He was a real Victorian plumber who sold great ones, and the legend comes mostly from a joke book from 1969.
+> What everyday thing should we invent next? 👇
