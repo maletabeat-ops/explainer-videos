@@ -47,12 +47,16 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 - Use on-screen section titles (lower thirds) instead of chapter counters, and give the user YouTube chapter
   timestamps, a title and a 1280×720 thumbnail.
 
-## Format "You just invented X" (user liked a reference reel, Nov 2026)
+## "New style" = format "You just invented X" (user liked a reference reel, Nov 2026)
+- Mix: mostly the OLD style (brand/history/money explainers); the NEW style only from time to time.
 - Second person, building an everyday device from scratch as a chain of problem → fix → new problem → fix,
   ending with "Congrats, you just invented X. And it all started with …". Plain words, no jargon.
+- KEEP THE MYSTERY: never name the object at the start (no "Let's invent the elevator" title, no telling callouts);
+  the viewer should wonder what is being built until the reveal at the end. Cover/post title may name it.
+- NO bottom "inventory"/progress bar of parts (user removed it after the elevator video).
 - Ref was a 3D room with a worker character; ours: NO character — one persistent 3D diorama (R3F) that grows step by
-  step, camera moves (top-down ↔ close-up), small white callout labels, our dark series look. Bottom persistent element:
-  an "inventory" of parts added so far.
+  step, camera moves (top-down ↔ close-up), small white callout labels for parts, our dark series look.
+- First one: elevator (`videos/elevator`, has the inventory bar + title — don't repeat those).
 
 ## Style
 - **Every video gets its own twist** (user request): keep the series look (dark neon, header, captions, CTA), but
