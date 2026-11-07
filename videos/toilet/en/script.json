@@ -1,0 +1,79 @@
+[
+ {
+  "s": 1,
+  "tts": "Every morning, you carry out a bucket whose contents are best not to think about. Time to automate this.",
+  "sub": "",
+  "keys": {
+   "bucket": "bucket",
+   "auto": "automate"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "So you cut a hole in the floor and put a pipe under the bucket that runs down into a ditch. Nothing to carry anymore. It all just goes away.",
+  "sub": "",
+  "keys": {
+   "hole": "hole",
+   "pipe": "pipe",
+   "ditch": "ditch"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "But the smell coming up that pipe is unbearable. So you bend the pipe into a U. A little water always sits in the bend and blocks the smell, like a plug.",
+  "sub": "",
+  "keys": {
+   "smell": "smell",
+   "bend": "bend the pipe",
+   "plug": "plug"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "But the contents won't reach the bend on their own. They need a push. So you hang a tank of water up high, pull a chain, and the rush of water carries everything away.",
+  "sub": "",
+  "keys": {
+   "stuck": "won't reach",
+   "tank": "tank",
+   "pull": "pull a chain"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "Then the tank is empty, and hauling water is a chore. So you connect it to the water supply and add a float: as the tank fills, the float rises and shuts the valve by itself.",
+  "sub": "",
+  "keys": {
+   "empty": "empty",
+   "supply": "water supply",
+   "float": "float"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "You swap the bucket for a smooth porcelain bowl, so nothing sticks, and add a seat on top, for comfort.",
+  "sub": "",
+  "keys": {
+   "bowl": "porcelain bowl",
+   "seat": "seat"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "Congrats, you just invented the flush toilet. John Harington built one for Queen Elizabeth the First in fifteen ninety-six, and Alexander Cumming patented the bent pipe in seventeen seventy-five.",
+  "sub": "",
+  "keys": {
+   "congrats": "Congrats",
+   "harington": "Harington",
+   "cumming": "Cumming"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "So appreciate it: more than three billion people still don't have safe toilets. And it all started with a bucket.",
+  "sub": "",
+  "keys": {
+   "b34": "three billion",
+   "bucketend": "a bucket."
+  }
+ }
+]

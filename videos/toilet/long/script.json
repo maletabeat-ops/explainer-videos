@@ -1,0 +1,189 @@
+[
+ {
+  "s": 1,
+  "tts": "Every morning, you carry a bucket out of your house. You don't want to talk about what's inside. For most of human history, this was everyone's life. In old European cities, people simply emptied their buckets out of the window into the street, and in Edinburgh, they would shout a warning first, so people below could jump out of the way. Today, we're going to fix this problem from scratch. One step at a time. Every fix will create a new problem, and we'll fix that too. By the end, you'll have invented something you use every single day, and you'll never look at it the same way again. Can you guess what it is before the end?",
+  "sub": "",
+  "keys": {
+   "bucket": "carry a bucket",
+   "history": "human history",
+   "window": "out of the window",
+   "edinburgh": "Edinburgh",
+   "fix": "fix this problem",
+   "step": "One step",
+   "newproblem": "new problem",
+   "everyday": "every single day",
+   "guess": "Can you guess"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "First idea: stop carrying. You cut a hole in the floor and put a pipe under the bucket that runs down and away from the house, into a ditch. Gravity does the work. The pipe needs a gentle slope, about two percent, so things keep moving but water doesn't race ahead and leave solids behind. This idea is very old. More than four thousand years ago, homes in the city of Mohenjo-daro, in today's Pakistan, had drains connected to covered channels in the street. And ancient Rome built a giant sewer called the Cloaca Maxima, parts of which still work today. So now, nothing to carry. Everything just goes away. Problem solved? Not quite.",
+  "sub": "",
+  "keys": {
+   "carrying": "stop carrying",
+   "hole": "cut a hole",
+   "pipe": "put a pipe",
+   "ditch": "into a ditch",
+   "gravity": "Gravity",
+   "slope": "two percent",
+   "mohenjo": "Mohenjo-daro",
+   "rome": "ancient Rome",
+   "cloaca": "Cloaca Maxima",
+   "solved": "Problem solved"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "Because now the pipe works in both directions. Everything goes down, but the smell comes right back up. Sewer gas is a mix of nasty things, including hydrogen sulfide, the rotten egg smell, and methane. It's unpleasant, and in large amounts it can be dangerous. So how do you block a gas, but still let everything else through? Here's the genius move: you bend the pipe into a U. After every use, a little water stays trapped at the bottom of the bend. That water forms a seal, a liquid plug. Gas can't push through it, but anything coming from above simply pushes the old water out and leaves fresh water behind. The same trick sits under every sink in your home. And it's why, if a drain hasn't been used for months, it starts to smell: the water in the bend has evaporated. Pour a glass of water in, and the smell is gone.",
+  "sub": "",
+  "keys": {
+   "both": "both directions",
+   "smell": "smell comes",
+   "gas": "Sewer gas",
+   "sulfide": "hydrogen sulfide",
+   "methane": "methane",
+   "block": "block a gas",
+   "bend": "bend the pipe",
+   "seal": "forms a seal",
+   "plug": "liquid plug",
+   "sink": "every sink",
+   "evaporated": "evaporated",
+   "glass": "glass of water"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "But the bend creates a new problem. Things don't fall down a U on their own. They need a push. So you add water, a lot of it, very fast. And here's something surprising: a well-designed system doesn't just push. When a big rush of water fills the bend completely, it starts a siphon. The falling water in the pipe pulls everything behind it, like sucking on a straw. That's why there's a satisfying whoosh, and why it ends with a gurgle: the gurgle is air rushing in and breaking the siphon. Then the last bit of water settles in the bend and seals it again, ready for next time.",
+  "sub": "",
+  "keys": {
+   "push": "need a push",
+   "fast": "very fast",
+   "surprising": "surprising",
+   "siphon": "starts a siphon",
+   "straw": "straw",
+   "whoosh": "whoosh",
+   "gurgle": "gurgle",
+   "settles": "settles in the bend"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "But where does that rush of water come from? Pouring a bucket every time is exhausting. So you put a tank of water high up on the wall. The higher the tank, the faster the water arrives. To release it, you add a chain with a handle. Pull, a valve opens at the bottom of the tank, and everything empties in seconds. In the eighteen hundreds, this is exactly what these systems looked like: a tank near the ceiling, a long pipe, and a dangling chain. Later, engineers learned to shape the bowl and the pipes so well that the tank could sit much lower, right behind you, with a small lever instead of a chain.",
+  "sub": "",
+  "keys": {
+   "where": "where does",
+   "exhausting": "exhausting",
+   "tank": "tank of water",
+   "higher": "The higher",
+   "chain": "chain with a handle",
+   "pull": "Pull,",
+   "valve": "a valve opens",
+   "ceiling": "near the ceiling",
+   "dangling": "dangling chain",
+   "lower": "much lower",
+   "lever": "small lever"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "Next problem: the tank is now empty, and you're definitely not carrying water up a ladder. So you connect the tank to the water supply. But how does it know when to stop? You add a float. It's a hollow ball on a lever arm, sitting on the water. As the tank fills, the float rises, and the arm slowly pushes a valve closed. When the tank is full, the water stops by itself. No electricity, no sensors, just buoyancy. And just in case the valve ever fails, you add an overflow tube, so extra water drains away instead of flooding your floor.",
+  "sub": "",
+  "keys": {
+   "empty": "tank is now empty",
+   "supply": "water supply",
+   "stop": "when to stop",
+   "float": "add a float",
+   "ball": "hollow ball",
+   "rises": "the float rises",
+   "full": "tank is full",
+   "buoyancy": "buoyancy",
+   "overflow": "overflow tube"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "One last thing. That old metal bucket is hard to clean, and things stick to it. So you replace it with a smooth bowl made of glazed ceramic, vitreous china, so slippery that water rinses it clean with every flush. You shape it so the water swirls around the sides. And you add a seat on top, because comfort matters. Now look at what you've built: a bowl, a bent pipe with a water seal, a tank with a chain, a float valve and a drain to the sewer. Congratulations. You just invented the flush toilet.",
+  "sub": "",
+  "keys": {
+   "onelast": "One last thing",
+   "clean": "hard to clean",
+   "bowl": "smooth bowl",
+   "vitreous": "vitreous china",
+   "swirls": "swirls",
+   "seat": "add a seat",
+   "built": "what you've built",
+   "congrats": "Congratulations",
+   "toilet": "flush toilet"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "So who really invented it? In fifteen ninety-six, the English courtier Sir John Harington built a flushing device at his home and called it the Ajax, a pun on an old slang word for toilet. His godmother, Queen Elizabeth the First, reportedly had one installed. But there were no sewers to connect it to, so the idea went nowhere for almost two centuries. In seventeen seventy-five, the Scottish watchmaker Alexander Cumming patented a design with the bent pipe, the water seal you just invented. Three years later, Joseph Bramah improved the valve. And Thomas Crapper? He was a real Victorian plumber who sold excellent toilets and helped popularize them. But he didn't invent the toilet. That legend comes largely from a humorous book published in nineteen sixty-nine.",
+  "sub": "",
+  "keys": {
+   "who": "who really",
+   "harington": "John Harington",
+   "ajax": "the Ajax",
+   "queen": "Queen Elizabeth",
+   "nosewers": "no sewers",
+   "cumming": "Alexander Cumming",
+   "bramah": "Joseph Bramah",
+   "crapper": "Thomas Crapper",
+   "popularize": "popularize",
+   "legend": "That legend",
+   "book": "humorous book"
+  }
+ },
+ {
+  "s": 9,
+  "tts": "The toilet changed cities, but it also uses a lot of water. Older toilets could use thirteen liters or more for a single flush. In the United States, a law passed in nineteen ninety-two limited new toilets to one point six gallons, about six liters. Many modern designs use less, and dual-flush toilets give you two buttons: a small flush and a full one. Toilets are still one of the biggest users of water in a typical home, so these small changes add up to billions of liters every day. Some cities even reuse treated water, or rainwater, just for flushing.",
+  "sub": "",
+  "keys": {
+   "cities": "changed cities",
+   "thirteen": "thirteen liters",
+   "law": "a law passed",
+   "gallons": "one point six gallons",
+   "dual": "dual-flush",
+   "buttons": "two buttons",
+   "biggest": "biggest users",
+   "billions": "billions of liters",
+   "rainwater": "rainwater"
+  }
+ },
+ {
+  "s": 10,
+  "tts": "Of course, people have kept improving it ever since. In Japan, a large share of homes now have high-tech toilet seats with built-in bidet sprays, warm seats, and even a button that plays the sound of running water, for privacy. On airplanes, there's no room for big tanks or long pipes, so toilets use a vacuum instead: a valve opens, and air pressure sucks everything away with that famous loud roar, using only a small cup of water. And in space, where nothing falls at all, gravity can't help. In twenty twenty, NASA sent a new titanium toilet to the International Space Station. The project cost about twenty-three million dollars, and it uses fans to pull waste away with a strong flow of air. Astronauts recycle most of their water, so the station turns yesterday's urine into today's drinking water. Every one of these designs is still solving the same problem you started with: getting rid of the bucket, without bringing back the smell.",
+  "sub": "",
+  "keys": {
+   "improving": "improving",
+   "japan": "In Japan",
+   "bidet": "bidet",
+   "privacy": "privacy",
+   "airplanes": "airplanes",
+   "vacuum": "vacuum",
+   "roar": "roar",
+   "space": "in space",
+   "nasa": "NASA sent",
+   "m23": "twenty-three million",
+   "fans": "fans",
+   "recycle": "recycle",
+   "samebucket": "same problem"
+  }
+ },
+ {
+  "s": 11,
+  "tts": "And here's the part that should make you grateful. According to the United Nations, about three point four billion people still don't have safely managed sanitation. Hundreds of millions still have no toilet at all. Simple pipes, bends and clean water save more lives from disease than many medicines. There's even a World Toilet Day, every November nineteenth. So the next time you hear that whoosh and that little gurgle, remember the whole chain you invented today: a hole, a pipe, a bend full of water, a tank, a chain, a float, and a bowl. And it all started with a bucket.",
+  "sub": "",
+  "keys": {
+   "grateful": "grateful",
+   "un": "United Nations",
+   "b34": "three point four billion",
+   "hundreds": "Hundreds of millions",
+   "lives": "save more lives",
+   "day": "World Toilet Day",
+   "next": "next time",
+   "chainrecap": "the whole chain",
+   "bucketend": "with a bucket."
+  }
+ }
+]
