@@ -1,0 +1,174 @@
+[
+ {
+  "s": 1,
+  "tts": "Imagine you live on the tenth floor. Every day you carry your groceries up two hundred steps, and every day you think: there has to be a better way. Today, we're going to invent that better way from scratch. One problem at a time. Each time we fix something, a new problem will show up, and we'll fix that too. And at every step, we'll look at who actually solved it in real life, and when. By the end, you'll have invented the machine that made skyscrapers possible. You don't need to be an engineer. You just need to keep asking: what could go wrong next? Let's start with the simplest thing you can think of: a rope.",
+  "sub": "",
+  "keys": {
+   "tenth": "tenth floor",
+   "steps": "two hundred steps",
+   "scratch": "from scratch",
+   "problem": "One problem",
+   "who": "who actually solved",
+   "skyscrapers": "skyscrapers",
+   "rope0": "a rope"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "You put a wheel on the roof, throw a rope over it, and tie a box to the end. Pull the other end, and the box goes up. This idea is ancient. The Greek inventor Archimedes is often credited with building hoists like this more than two thousand years ago. In the Roman Colosseum, wild animals were lifted from the tunnels under the arena into the light, on wooden platforms pulled by teams of workers turning big wheels. And in seventeen forty-three, King Louis the Fifteenth of France had a small private lift built at Versailles, so he could visit his mistress upstairs without using the stairs. Servants inside the walls did the pulling. But there's a problem. With you and your groceries inside, the box weighs a couple of hundred pounds, and you have to lift every single one of them.",
+  "sub": "",
+  "keys": {
+   "wheel": "wheel on the roof",
+   "pull": "Pull the other end",
+   "archimedes": "Archimedes",
+   "colosseum": "Colosseum",
+   "animals": "wild animals",
+   "versailles": "Versailles",
+   "louis": "Louis the Fifteenth",
+   "servants": "Servants",
+   "heavy": "couple of hundred pounds"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "So here's the trick. On the other end of the rope, you hang a heavy weight, almost as heavy as the box. Now the two sides balance each other, like a seesaw. To move the box, you only have to overcome the small difference between them, plus a bit of friction. This is the counterweight, and almost every elevator you've ever ridden has one, hidden in the shaft, quietly moving down whenever you go up. Engineers usually make it as heavy as the empty car plus about half of its maximum load. That way, the motor works least when the car is half full, and the system never has to lift the full weight of the car by brute force. It's the single biggest energy saver in the whole machine.",
+  "sub": "",
+  "keys": {
+   "trick": "here's the trick",
+   "weight": "heavy weight",
+   "seesaw": "seesaw",
+   "difference": "small difference",
+   "cw": "counterweight",
+   "hidden": "hidden in the shaft",
+   "half": "half of its maximum",
+   "motor0": "motor works least",
+   "saver": "energy saver"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "Even with a counterweight, pulling a rope all day is boring. So you add a motor. In the eighteen hundreds, lifts in factories and warehouses ran on steam engines or on water pressure. Then, in eighteen eighty, the German inventor Werner von Siemens showed an electric elevator. Today, most elevators use an electric motor that turns a grooved wheel, and the friction between the wheel and the steel ropes moves the car. And by the way, modern elevators don't hang on a single rope. They hang on several steel ropes, and usually any one of them is strong enough to hold the car by itself. One more fix: so the box doesn't swing and bump into the walls, you put it in a vertical tunnel, a shaft, and guide it along steel rails on both sides.",
+  "sub": "",
+  "keys": {
+   "boring": "boring",
+   "steam": "steam engines",
+   "water": "water pressure",
+   "siemens": "Werner von Siemens",
+   "y1880": "eighteen eighty",
+   "grooved": "grooved wheel",
+   "ropes": "several steel ropes",
+   "strong": "strong enough",
+   "shaft": "a shaft",
+   "rails": "steel rails"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "Now, the scariest problem of all. What if the rope breaks? In the early days, that was a real fear, and it's why most people refused to ride in lifts. The fix came from an American mechanic named Elisha Otis. His idea: a spring connected to the rope. While the rope is pulling, the spring stays tucked in. But if the rope goes slack, the spring snaps open and pushes metal teeth into notches along the rails. The car locks in place. In eighteen fifty-four, at an exhibition in New York, Otis stood on a raised platform in front of a crowd and had the only rope cut with an axe. The platform dropped a few inches, then stopped. He called out to the crowd that all was safe. Three years later, the first passenger elevator with his safety brake opened in a New York store. It climbed at about forty feet per minute.",
+  "sub": "",
+  "keys": {
+   "scariest": "scariest problem",
+   "breaks": "rope breaks",
+   "refused": "refused",
+   "otis": "Elisha Otis",
+   "spring": "a spring",
+   "teeth": "metal teeth",
+   "locks": "locks in place",
+   "y1854": "eighteen fifty-four",
+   "axe": "with an axe",
+   "inches": "few inches",
+   "safe": "all was safe",
+   "y1857": "Three years later",
+   "forty": "forty feet"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "Modern elevators take this idea further. There's a separate device at the top of the shaft called a governor. It watches how fast the car is moving, and if it ever goes faster than it should, even with the ropes intact, it triggers the safety brake. At the bottom of the shaft there are big buffers, like shock absorbers, just in case. Together, these layers make a true free fall almost impossible. Which brings us to the next danger: not the car falling, but you falling. If a door on your floor opened while the car was somewhere else, you could step straight into an empty shaft. So you add a rule: each door on each floor is locked, and it can only open when the car is right there.",
+  "sub": "",
+  "keys": {
+   "further": "further",
+   "governor": "governor",
+   "faster": "goes faster",
+   "buffers": "buffers",
+   "freefall": "free fall",
+   "danger": "next danger",
+   "empty": "empty shaft",
+   "locked": "is locked",
+   "right": "right there"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "In eighteen eighty-seven, an African American inventor named Alexander Miles patented a system that opened and closed both the car door and the shaft door automatically. Before that, someone often had to close them by hand, and people regularly forgot. His idea is the ancestor of the doors you use every day. And speaking of people, for decades almost every elevator had a human operator. You'd step in, say your floor, and the operator would drive the car with a lever. Automatic elevators existed by the early nineteen hundreds, but passengers didn't trust a car with nobody in charge. What changed their minds? In nineteen forty-five, elevator operators in New York went on strike, and thousands of office workers had to climb dozens of floors. After that, buildings switched to automatic elevators, with an emergency stop button, an alarm, a phone, and a calm recorded voice to make people feel safe.",
+  "sub": "",
+  "keys": {
+   "miles": "Alexander Miles",
+   "y1887": "eighteen eighty-seven",
+   "automatically": "automatically",
+   "forgot": "forgot",
+   "operator": "human operator",
+   "lever": "lever",
+   "trust": "didn't trust",
+   "strike": "strike",
+   "climb": "climb dozens",
+   "switched": "switched",
+   "phone": "a phone",
+   "voice": "recorded voice"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "So now you need buttons, so the car knows where to stop. That sounds simple, but it hides a clever puzzle. If ten people press ten buttons in a building with six elevators, which car should go where? Early systems just answered calls in order. Modern controllers are smarter. Some buildings now ask you to choose your floor before you even step in, and then they tell you which elevator to take, grouping people who are going to nearby floors. Fewer stops, shorter trips. And there's one more button you've probably pressed many times: the door close button. In many elevators it does work, but in some buildings it's disabled or delayed, to give slower passengers time to get in.",
+  "sub": "",
+  "keys": {
+   "buttons": "you need buttons",
+   "puzzle": "clever puzzle",
+   "ten": "ten people",
+   "order": "in order",
+   "smarter": "smarter",
+   "choose": "choose your floor",
+   "grouping": "grouping",
+   "fewer": "Fewer stops",
+   "close": "door close button",
+   "disabled": "disabled"
+  }
+ },
+ {
+  "s": 9,
+  "tts": "Now step back and look at what you've built. Before elevators, the top floors of a building were the cheapest, because nobody wanted to climb that high. Elevators flipped that. The top floor became the penthouse, the most expensive place to live. Elevators made tall cities possible. And they keep getting faster: the quickest ones today, in skyscrapers in China, climb at around twenty meters per second, about seventy kilometers per hour. In the tallest towers, steel ropes become so heavy that they start to limit how high one elevator can go, so engineers split the trip into stages with sky lobbies, and companies are now using lighter ropes made of carbon fiber. And despite all the movies, elevators are one of the safest ways to move around a city. If you ever get stuck, the right move is boring: press the alarm, stay inside, and wait. Don't try to climb out.",
+  "sub": "",
+  "keys": {
+   "step": "step back",
+   "cheapest": "cheapest",
+   "flipped": "flipped",
+   "penthouse": "penthouse",
+   "cities": "tall cities",
+   "faster2": "faster",
+   "twenty": "twenty meters",
+   "heavyrope": "so heavy",
+   "lobbies": "sky lobbies",
+   "carbon": "carbon fiber",
+   "safest": "safest ways",
+   "stuck": "get stuck",
+   "alarm": "press the alarm"
+  }
+ },
+ {
+  "s": 10,
+  "tts": "So, let's count what you invented today. A wheel and a rope, to lift the box. A counterweight, so you don't have to lift it all. A motor, to do the work. Rails and a shaft, to keep it steady. A safety brake, so a broken rope isn't the end. Doors that only open when the car is there. And buttons, so it knows where to go. Every single piece was somebody's answer to a real problem, and the company Elisha Otis started is still one of the biggest elevator makers in the world today. Congratulations, you just invented the elevator. And it all started with a bag of groceries and a long staircase.",
+  "sub": "",
+  "keys": {
+   "count": "let's count",
+   "wheelrope": "A wheel and a rope",
+   "cwend": "A counterweight,",
+   "motorend": "A motor,",
+   "railsend": "Rails and a shaft",
+   "brakeend": "A safety brake",
+   "doorsend": "Doors that only",
+   "buttonsend": "And buttons",
+   "congrats": "Congratulations",
+   "groceries": "bag of groceries"
+  }
+ }
+]

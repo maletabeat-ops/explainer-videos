@@ -1,0 +1,76 @@
+[
+ {
+  "s": 1,
+  "tts": "You live on the tenth floor, and you're tired of hauling groceries up the stairs.",
+  "sub": "",
+  "keys": {
+   "floor": "tenth",
+   "stairs": "stairs"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "So you put a wheel on the roof, throw a rope over it, and tie on a box. Pull, and the box goes up. But with you inside, it weighs a couple hundred pounds.",
+  "sub": "",
+  "keys": {
+   "wheel": "wheel",
+   "box": "box",
+   "pullup": "Pull",
+   "heavy": "hundred"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "So on the other end of the rope, you hang a weight that's almost as heavy: a counterweight. Now they balance each other, and moving the box is easy.",
+  "sub": "",
+  "keys": {
+   "cw": "counterweight",
+   "balance": "balance"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "Pulling is still a chore, so you put a motor at the top to turn the wheel. And so the box doesn't swing, you run it on rails inside a shaft.",
+  "sub": "",
+  "keys": {
+   "motor": "motor",
+   "rails": "rails"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "But if the rope snaps, the box falls. So you add a spring with teeth: while the rope is tight, it stays tucked in. If the rope breaks, the teeth bite into the rails, and the box stops.",
+  "sub": "",
+  "keys": {
+   "snap": "snaps",
+   "spring": "spring",
+   "grab": "bite"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "And so nobody steps into an empty shaft, the doors on each floor only open when the box is there.",
+  "sub": "",
+  "keys": {
+   "doors": "doors"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "Finally, you add buttons, so the motor knows where to stop.",
+  "sub": "",
+  "keys": {
+   "buttons": "buttons"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Congrats, you just invented the elevator. And that safety brake? In eighteen fifty-four, Elisha Otis showed it off by having his own rope cut in front of a crowd. He didn't fall.",
+  "sub": "",
+  "keys": {
+   "congrats": "Congrats",
+   "otis": "Otis",
+   "cut": "cut"
+  }
+ }
+]
