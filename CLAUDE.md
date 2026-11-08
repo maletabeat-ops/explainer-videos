@@ -54,6 +54,9 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 - KEEP THE MYSTERY: never name the object at the start (no "Let's invent the elevator" title, no telling callouts);
   the viewer should wonder what is being built until the reveal at the end. Cover/post title may name it.
 - NO bottom "inventory"/progress bar of parts (user removed it after the elevator video).
+- LENGTH (user, after the toilet video): new-style shorts were too short — tell each step a bit more fully, aim for
+  at least ~1:20 of pure narration (before the CTA), and after the reveal add a short "interesting fact" remark about
+  the thing (history/number/twist) before the CTA.
 - Ref was a 3D room with a worker character; ours: NO character — one persistent 3D diorama (R3F) that grows step by
   step, camera moves (top-down ↔ close-up), small white callout labels for parts, our dark series look.
 - First one: elevator (`videos/elevator`, has the inventory bar + title — don't repeat those).
