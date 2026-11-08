@@ -1,0 +1,28 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		t1: 'СИРОП ИЗ АПТЕКИ', t2: '→ СИМВОЛ НОВОГО ГОДА',
+		y1886: '1886 · АТЛАНТА', pem: 'аптекарь Джон Пембертон', soda: 'СИРОП + ГАЗИРОВКА', nine: '9 СТАКАНОВ В ДЕНЬ',
+		candler: 'ЭЙСА КЭНДЛЕР', candlerSub: 'выкупил рецепт', stamp: 'ПРАВА НА РОЗЛИВ', y1899: '1899 · ВСЕГО $1',
+		y1915: '1915 · ФИГУРНАЯ БУТЫЛКА', dark: 'УЗНАТЬ НА ОЩУПЬ В ТЕМНОТЕ',
+		y1985: '1985 · НОВЫЙ РЕЦЕПТ', newc: 'НОВЫЙ ВКУС', days: 'ДНЕЙ', back: 'СТАРЫЙ РЕЦЕПТ ВЕРНУЛИ',
+		y1931: '1931 · ХЭДДОН САНДБЛОМ', sw: ['зелёный', 'синий', 'коричневый', 'КРАСНЫЙ'], before: 'красный Санта был и раньше…', world: '…но мировым его сделала реклама',
+		song: '«ПРАЗДНИК К НАМ ПРИХОДИТ»', y1995: '1995 · СВЕТЯЩИЕСЯ ГРУЗОВИКИ', c100: ['100+', 'стран показывали ролик'],
+		b2: (v: number) => `≈ ${(v).toFixed(1).replace('.', ',')} МЛРД`, b2sub: 'порций в день', end: 'а начиналось с 9 стаканов в аптеке',
+		years: ['1886', '1899', '1915', '1931', '1985', '1995', '2025'],
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		t1: 'A PHARMACY SYRUP', t2: '→ THE TASTE OF CHRISTMAS',
+		y1886: '1886 · ATLANTA', pem: 'pharmacist John Pemberton', soda: 'SYRUP + SODA WATER', nine: '9 GLASSES A DAY',
+		candler: 'ASA CANDLER', candlerSub: 'bought the formula', stamp: 'BOTTLING RIGHTS', y1899: '1899 · JUST $1',
+		y1915: '1915 · THE CURVY BOTTLE', dark: 'RECOGNIZE IT IN THE DARK',
+		y1985: '1985 · A NEW RECIPE', newc: 'NEW TASTE', days: 'DAYS', back: 'THE OLD RECIPE IS BACK',
+		y1931: '1931 · HADDON SUNDBLOM', sw: ['green', 'blue', 'brown', 'RED'], before: 'red Santa existed before…', world: '…the ads made him global',
+		song: '“HOLIDAYS ARE COMING”', y1995: '1995 · THE GLOWING TRUCKS', c100: ['100+', 'countries aired the ad'],
+		b2: (v: number) => `≈ ${(v).toFixed(1)} BILLION`, b2sub: 'servings a day', end: 'it started with 9 glasses a day',
+		years: ['1886', '1899', '1915', '1931', '1985', '1995', '2025'],
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};

@@ -1,0 +1,79 @@
+[
+ {
+  "s": 1,
+  "tts": "A pharmacy syrup became the most recognized drink on Earth, and the unofficial taste of Christmas. How did that happen?",
+  "sub": "",
+  "keys": {
+   "pharmacy": "pharmacy",
+   "newyear": "Christmas"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "In eighteen eighty-six, pharmacist John Pemberton in Atlanta cooked up a syrup to mix with soda water. In the first year, it sold about nine glasses a day.",
+  "sub": "",
+  "keys": {
+   "pemberton": "Pemberton",
+   "soda": "soda water",
+   "nine": "nine"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "Businessman Asa Candler bought the formula, and in eighteen ninety-nine the bottling rights were sold for just one dollar.",
+  "sub": "",
+  "keys": {
+   "candler": "Candler",
+   "dollar": "one dollar"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "In nineteen fifteen came the curvy bottle, designed so you could recognize it by touch, even in the dark.",
+  "sub": "",
+  "keys": {
+   "bottle": "curvy bottle",
+   "dark": "dark"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "There was a famous flop, too: in nineteen eighty-five, they changed the recipe, people were furious, and seventy-nine days later the old Coke was back.",
+  "sub": "",
+  "keys": {
+   "newcoke": "changed the recipe",
+   "angry": "furious",
+   "d79": "seventy-nine"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "And Christmas? That's thanks to artist Haddon Sundblom. Starting in nineteen thirty-one, he painted a warm, chubby Santa in red for Coke's ads. The red suit existed before, but these ads made him the Santa the whole world knows.",
+  "sub": "",
+  "keys": {
+   "sundblom": "Sundblom",
+   "santa": "chubby Santa",
+   "red": "in red",
+   "world": "whole world"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "In nineteen ninety-five came the glowing trucks and the jingle Holidays Are Coming. The ad aired in more than a hundred countries, and for many people, it's when the holidays officially start.",
+  "sub": "",
+  "keys": {
+   "trucks": "glowing trucks",
+   "song": "Holidays Are Coming",
+   "countries": "hundred countries"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Today, people drink about two billion servings of its drinks every single day. And it all started with nine glasses in a pharmacy.",
+  "sub": "",
+  "keys": {
+   "b2": "two billion",
+   "nine2": "nine glasses"
+  }
+ }
+]
