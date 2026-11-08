@@ -576,3 +576,49 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: Thomas Crapper didn't invent the toilet. He was a real Victorian plumber who sold great ones, and the legend comes mostly from a joke book from 1969.
 > What everyday thing should we invent next? 👇
+
+---
+
+## 15. История Coca-Cola и почему она пахнет Новым годом
+
+### 🇷🇺 RU (шортс)
+**Видео:** `cocacola_RU.mp4` · **Обложка:** `cover_cocacola_RU.png`
+
+**Название:** Вы знали, почему Coca-Cola пахнет Новым годом? 🎄
+
+**Закреплённый комментарий:**
+> 📌 Coca-Cola не придумала красного Санта-Клауса — его рисовали и раньше. Но с 1931 года её реклама каждую зиму показывала миллионам людей одного и того же доброго Санту, а в 1995-м появились светящиеся грузовики «Праздник к нам приходит».
+> А у вас Новый год начинается с этой рекламы? 👇
+
+### 🇺🇸 EN (short)
+**Video:** `cocacola_EN.mp4` · **Cover:** `cover_cocacola_EN.png`
+
+**Title:** Did you know why Coke tastes like Christmas? 🎄
+
+**Pinned comment:**
+> 📌 Coca-Cola didn't invent the red Santa, he existed before. But from 1931, its ads showed millions of people the same warm Santa every winter, and in 1995 came the glowing "Holidays Are Coming" trucks.
+> Do your holidays start with that ad? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:46)
+**Video:** `cocacola_LONG_EN.mp4` · **Thumbnail:** `thumbnail_cocacola_LONG_EN.png`
+
+**Title:** How a Medicine Became the Taste of Christmas: The Story of Coca-Cola
+
+**Chapters (paste into the description):**
+```
+0:00 Two billion a day
+0:43 A pharmacist in Atlanta
+1:37 Asa Candler's marketing machine
+2:18 The one-dollar deal
+2:56 The bottle you can feel in the dark
+3:39 A Coke for every soldier
+4:19 The cola wars
+5:08 New Coke: 79 days
+6:01 How Coke shaped Santa
+7:06 Holidays are coming
+7:49 A secret in a vault
+```
+
+**Pinned comment:**
+> 📌 Fun fact: during WWII, the German branch of Coca-Cola couldn't get the syrup, so it invented a new drink from whatever it could find. They called it Fanta.
+> Coke or Pepsi? 👇
