@@ -47,6 +47,9 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
   Not "How credit works" but "The bank made $X off you — here's how"; not "Review of X" but "Why nobody tells you X…".
   First line = the most shocking concrete number/claim; titles, covers and on-screen hook follow the same angle.
   Keep it dynamic: short sentences, a twist every ~8 s, "but here's the catch / what nobody tells you".
+- MORE MYSTERY in EVERY video (old AND new style, user Nov 2026): open with a riddle/secret/paradox, hold back the
+  answer (open loops: "but that's not the strangest part…", "the real reason comes at the end"), reveal late.
+  Titles/covers tease the secret instead of stating the topic. Applies from the next video on; don't redo old ones.
 
 ## Long-form YouTube (EN) — per new topic, on request
 - Besides the RU + EN vertical shorts, the user may want a **horizontal 16:9 (1920×1080) EN video, 6–8 min**
