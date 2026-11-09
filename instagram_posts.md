@@ -628,18 +628,18 @@ Would you still open a café after watching this, or just brew at home? 👇
 ## 16. На чём зарабатывают фитнес-блогеры
 
 ### 🇷🇺 RU (шортс)
-**Видео:** `fitness_RU.mp4` · **Обложка:** `cover_fitness_RU.png`
+**Видео:** `fitness_RU_v2.mp4` · **Обложка:** `cover_fitness_RU.png`
 
-**Название:** Вы знали, что фитнес-блогеры зарабатывают не на просмотрах? 💪
+**Название:** Фитнес-блогер заработала $1,8 млрд — и не на просмотрах. Откуда деньги? 💪
 
 **Закреплённый комментарий:**
 > 📌 Просмотры платят копейки. Деньги — в промокодах, своих программах и собственных брендах: бренд энергетиков фитнес-блогера Кэти Хёрн купили за $1,8 млрд. Но больше $100 000 в год получают лишь около 4% авторов.
 > А вы покупали что-то по промокоду блогера? 👇
 
 ### 🇺🇸 EN (short)
-**Video:** `fitness_EN.mp4` · **Cover:** `cover_fitness_EN.png`
+**Video:** `fitness_EN_v2.mp4` · **Cover:** `cover_fitness_EN.png`
 
-**Title:** Did you know fitness influencers don't get rich from views? 💪
+**Title:** A fitness influencer made $1.8 billion, and not from views. Here's how 💪
 
 **Pinned comment:**
 > 📌 Views pay pennies. The money is in promo codes, programs and their own brands: fitness influencer Katy Hearn's energy drink brand sold for $1.8 billion. But only about 4% of creators make over $100K a year.
