@@ -622,3 +622,49 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: during WWII, the German branch of Coca-Cola couldn't get the syrup, so it invented a new drink from whatever it could find. They called it Fanta.
 > Coke or Pepsi? 👇
+
+---
+
+## 16. На чём зарабатывают фитнес-блогеры
+
+### 🇷🇺 RU (шортс)
+**Видео:** `fitness_RU.mp4` · **Обложка:** `cover_fitness_RU.png`
+
+**Название:** Вы знали, что фитнес-блогеры зарабатывают не на просмотрах? 💪
+
+**Закреплённый комментарий:**
+> 📌 Просмотры платят копейки. Деньги — в промокодах, своих программах и собственных брендах: бренд энергетиков фитнес-блогера Кэти Хёрн купили за $1,8 млрд. Но больше $100 000 в год получают лишь около 4% авторов.
+> А вы покупали что-то по промокоду блогера? 👇
+
+### 🇺🇸 EN (short)
+**Video:** `fitness_EN.mp4` · **Cover:** `cover_fitness_EN.png`
+
+**Title:** Did you know fitness influencers don't get rich from views? 💪
+
+**Pinned comment:**
+> 📌 Views pay pennies. The money is in promo codes, programs and their own brands: fitness influencer Katy Hearn's energy drink brand sold for $1.8 billion. But only about 4% of creators make over $100K a year.
+> Have you ever bought something with an influencer's code? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:34)
+**Video:** `fitness_LONG_EN.mp4` · **Thumbnail:** `thumbnail_fitness_LONG_EN.png`
+
+**Title:** How Fitness Influencers Really Make Money (It's Not the Views)
+
+**Chapters (paste into the description):**
+```
+0:00 Fitness influencers are everywhere
+0:41 Why fitness is perfect content
+1:22 2020: the gyms close
+2:09 Step 1: views
+2:45 Step 2: brand deals and promo codes
+3:40 Step 3: programs and apps
+4:23 Kayla Itsines and the $400M app
+5:09 Step 4: your own brand
+5:58 The work behind the reels
+6:51 The uncomfortable truth
+7:38 They sell trust
+```
+
+**Pinned comment:**
+> 📌 Fun fact: Gymshark's founder started by sending clothes to fitness YouTubers. In 2020, an investor bought a stake valuing the brand at about £1 billion.
+> Which fitness creator do you actually trust? 👇
