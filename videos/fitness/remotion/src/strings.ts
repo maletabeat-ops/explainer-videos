@@ -1,0 +1,28 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		t1: 'ПОЧЕМУ ВСЕ СТАЛИ', t2: 'ФИТНЕС-БЛОГЕРАМИ?', spoiler: 'СПОЙЛЕР: НЕ С ПРОСМОТРОВ', followers: 'подписчиков', fmtF: (v: number) => v >= 1e6 ? (v / 1e6).toFixed(1).replace('.', ',') + ' млн' : Math.round(v / 1000) + ' тыс',
+		cards: ['ТРЕНИРОВКА ДНЯ', 'ЧТО Я ЕМ ЗА ДЕНЬ', 'ДО / ПОСЛЕ'], perfect: 'ИДЕАЛЬНЫЙ КОНТЕНТ', gyms: 'ЗАЛЫ ЗАКРЫТЫ', home: 'ТРЕНИРОВКИ ДОМА',
+		views: 'ПРОСМОТРЫ = КОПЕЙКИ', promo: 'ПРОМОКОД', pct: '−20%', cut: '% С КАЖДОЙ ПОКУПКИ',
+		programs: 'СВОИ ПРОГРАММЫ', once: 'СНЯТО 1 РАЗ', thousands: 'ПРОДАНО ТЫСЯЧИ РАЗ',
+		brand: 'СВОЙ БРЕНД', katy: ['2025 · КЭТИ ХЁРН', 'бренд энергетиков и добавок'], b18: (v: number) => `$${v.toFixed(1).replace('.', ',')} МЛРД`,
+		kayla: ['КАЙЛА ИЦИНЕС', 'приложение с тренировками'], sold: 'ПРОДАЛА · 2021', back: 'ВЫКУПИЛА ДЕШЕВЛЕ · 2023',
+		p4: '≈ 4%', p4sub: 'авторов получают > $100 000 в год (оценка)', rest: 'ОСТАЛЬНЫХ ТЫ НЕ ВИДИШЬ',
+		trust: 'ДОВЕРИЕ', product: 'ПРОДУКТ', notw: 'ОНИ ПРОДАЮТ НЕ ТРЕНИРОВКИ',
+		ladder: ['ПРОСМОТРЫ', 'ПРОМОКОДЫ', 'ПРОГРАММЫ', 'СВОЙ БРЕНД'],
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		t1: 'WHY IS EVERYONE', t2: 'A FITNESS INFLUENCER?', spoiler: "SPOILER: IT'S NOT THE VIEWS", followers: 'followers', fmtF: (v: number) => v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : Math.round(v / 1000) + 'K',
+		cards: ['WORKOUT OF THE DAY', 'WHAT I EAT IN A DAY', 'BEFORE / AFTER'], perfect: 'PERFECT CONTENT', gyms: 'GYMS CLOSED', home: 'HOME WORKOUTS',
+		views: 'VIEWS = PENNIES', promo: 'PROMO CODE', pct: '−20%', cut: 'A CUT OF EVERY SALE',
+		programs: 'THEIR OWN PROGRAMS', once: 'FILMED ONCE', thousands: 'SOLD THOUSANDS OF TIMES',
+		brand: 'THEIR OWN BRAND', katy: ['2025 · KATY HEARN', 'energy drink & supplement brand'], b18: (v: number) => `$${v.toFixed(1)} BILLION`,
+		kayla: ['KAYLA ITSINES', 'workout app'], sold: 'SOLD · 2021', back: 'BOUGHT BACK CHEAPER · 2023',
+		p4: '≈ 4%', p4sub: 'of creators earn > $100K a year (estimate)', rest: "YOU DON'T SEE THE REST",
+		trust: 'TRUST', product: 'PRODUCT', notw: "THEY'RE NOT SELLING WORKOUTS",
+		ladder: ['VIEWS', 'PROMO CODES', 'PROGRAMS', 'OWN BRAND'],
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};
