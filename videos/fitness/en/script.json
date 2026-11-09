@@ -1,17 +1,17 @@
 [
  {
   "s": 1,
-  "tts": "Why is everyone suddenly a fitness influencer? And do they really all make good money? Spoiler: the money isn't coming from views.",
+  "tts": "A fitness influencer sold her brand for one point eight billion dollars. Meanwhile, a million views pays way less than you'd think. So where does the money really come from?",
   "sub": "",
   "keys": {
-   "why": "everyone",
-   "truth": "really",
-   "spoiler": "views"
+   "why": "one point eight",
+   "truth": "million views",
+   "spoiler": "where does"
   }
  },
  {
   "s": 2,
-  "tts": "Fitness is perfect content. A new workout every day, new meals, and a visible result: before and after. Then the pandemic closed the gyms, and millions of people started working out at home, from videos.",
+  "tts": "First, why are there suddenly so many of them? Fitness is perfect content: a new workout every day, and the most powerful format on the internet, before and after. Then the pandemic closed the gyms, and millions of people started working out at home, from videos.",
   "sub": "",
   "keys": {
    "perfect": "perfect",
@@ -22,17 +22,17 @@
  },
  {
   "s": 3,
-  "tts": "But views pay pennies. So the first step is sponsorships and promo codes: an influencer recommends a protein powder or leggings and gets a cut of every sale.",
+  "tts": "But here's the first surprise: views pay pennies. That's why almost every video has a promo code. An influencer recommends a protein powder and gets a cut of every purchase you make.",
   "sub": "",
   "keys": {
    "cheap": "pennies",
-   "promo": "promo codes",
+   "promo": "promo code",
    "percent": "a cut"
   }
  },
  {
   "s": 4,
-  "tts": "Step two: their own programs and online coaching. A workout is filmed once, but sold thousands of times, at almost no extra cost.",
+  "tts": "Next, their own programs. A workout is filmed once and sold thousands of times. That's almost pure profit.",
   "sub": "",
   "keys": {
    "programs": "programs",
@@ -42,17 +42,17 @@
  },
  {
   "s": 5,
-  "tts": "Step three: their own brand. Fitness influencer Katy Hearn started an energy drink and supplement brand, and in twenty twenty-five it sold for one point eight billion dollars.",
+  "tts": "And at the top, their own brand. Katy Hearn started out posting workouts, and in twenty twenty-five her energy drink brand sold for one point eight billion.",
   "sub": "",
   "keys": {
    "brand": "own brand",
    "katy": "Katy Hearn",
-   "b18": "one point eight"
+   "b18": "sold for one"
   }
  },
  {
   "s": 6,
-  "tts": "And trainer Kayla Itsines sold her workout app for hundreds of millions, then later bought it back for far less.",
+  "tts": "Kayla Itsines sold her workout app for hundreds of millions, and two years later bought it back for a fraction of that.",
   "sub": "",
   "keys": {
    "kayla": "Itsines",
@@ -62,22 +62,22 @@
  },
  {
   "s": 7,
-  "tts": "But here's the catch: they're the exception. By some estimates, only about four percent of creators make over a hundred thousand dollars a year. Most earn very little. You just don't see them.",
+  "tts": "But here's what nobody tells you. Only about four percent of creators make over a hundred thousand dollars a year. Most make almost nothing. You just never see them.",
   "sub": "",
   "keys": {
-   "catch": "catch",
+   "catch": "nobody tells you",
    "p4": "four percent",
-   "rest": "Most earn"
+   "rest": "Most make"
   }
  },
  {
   "s": 8,
-  "tts": "So a successful fitness influencer isn't really selling workouts. They're selling trust, and then turning it into a product of their own.",
+  "tts": "So a fitness influencer isn't selling you workouts. They're selling trust. And you pay for it, one promo code at a time.",
   "sub": "",
   "keys": {
-   "notworkouts": "selling workouts",
+   "notworkouts": "selling you workouts",
    "trust": "trust",
-   "product": "product"
+   "product": "one promo code"
   }
  }
 ]

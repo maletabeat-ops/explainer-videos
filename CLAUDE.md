@@ -9,7 +9,10 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 2. **Write RU and EN scripts in parallel** — localize, don't translate (units, currency, local examples,
    natural phrasing). Keep both voiceovers within ~5% length. Each script is `videos/<topic>/<lang>/script.json`:
    segments `{s: chapter 1..8, tts, sub, keys: {name: "word in tts"}}`; `keys` drive animation timing.
-3. **Voice (ElevenLabs, eleven_v3)** via `tools/tts2.py <dir> eleven_v3 <voice>` (RU) or
+3. **Voice — DEFAULT NOW: `tools/tts_smooth.py <dir> <voice> <lang> "<CTA>" [tempo]`** (user, Nov 2026: speech must flow
+   "on one breath": ONE request for the whole script + CTA, no cutting/inserted silences, global atempo only, light
+   denoise). The older tts4 + post.py + append_cta chain caused audible cut-offs and on/off noise floor — don't use it.
+   Legacy: **Voice (ElevenLabs, eleven_v3)** via `tools/tts2.py <dir> eleven_v3 <voice>` (RU) or
    `tools/tts3.py <dir> eleven_v3 <voice> 0.92 NLNL` (EN, paragraph pauses). Writes `voice.mp3`, `align.json`, `timing.js`.
    - RU voice: **George** `JBFqnCBsd6RMkjVDRZzb` (user loves it for Russian).
    - EN voice: **Jessica** `cgSgspJ2msm6clMCkdW9` on `eleven_v4` (user's choice since the fridge video; young
@@ -38,6 +41,12 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
     "pop"/beep sounds on labels (user: a weird "pip" — removed from the casino videos). Keep only sparse SFX tied
     to real on-screen actions (roulette ball, chips, door, compressor click, cash register...). — see `.claude/skills`
    (official ElevenLabs skills: text-to-speech, music, sound-effects, voice-isolator, speech-to-text, dubbing...).
+
+## Hooks & packaging (user, Nov 2026)
+- Package every topic through curiosity + emotion: numbers, money, "what happens if…", conflict, secrets.
+  Not "How credit works" but "The bank made $X off you — here's how"; not "Review of X" but "Why nobody tells you X…".
+  First line = the most shocking concrete number/claim; titles, covers and on-screen hook follow the same angle.
+  Keep it dynamic: short sentences, a twist every ~8 s, "but here's the catch / what nobody tells you".
 
 ## Long-form YouTube (EN) — per new topic, on request
 - Besides the RU + EN vertical shorts, the user may want a **horizontal 16:9 (1920×1080) EN video, 6–8 min**

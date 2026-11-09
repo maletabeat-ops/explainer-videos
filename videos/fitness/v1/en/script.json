@@ -1,0 +1,83 @@
+[
+ {
+  "s": 1,
+  "tts": "Why is everyone suddenly a fitness influencer? And do they really all make good money? Spoiler: the money isn't coming from views.",
+  "sub": "",
+  "keys": {
+   "why": "everyone",
+   "truth": "really",
+   "spoiler": "views"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "Fitness is perfect content. A new workout every day, new meals, and a visible result: before and after. Then the pandemic closed the gyms, and millions of people started working out at home, from videos.",
+  "sub": "",
+  "keys": {
+   "perfect": "perfect",
+   "before": "before and after",
+   "pandemic": "pandemic",
+   "home": "at home"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "But views pay pennies. So the first step is sponsorships and promo codes: an influencer recommends a protein powder or leggings and gets a cut of every sale.",
+  "sub": "",
+  "keys": {
+   "cheap": "pennies",
+   "promo": "promo codes",
+   "percent": "a cut"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "Step two: their own programs and online coaching. A workout is filmed once, but sold thousands of times, at almost no extra cost.",
+  "sub": "",
+  "keys": {
+   "programs": "programs",
+   "once": "once",
+   "thousands": "thousands"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "Step three: their own brand. Fitness influencer Katy Hearn started an energy drink and supplement brand, and in twenty twenty-five it sold for one point eight billion dollars.",
+  "sub": "",
+  "keys": {
+   "brand": "own brand",
+   "katy": "Katy Hearn",
+   "b18": "one point eight"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "And trainer Kayla Itsines sold her workout app for hundreds of millions, then later bought it back for far less.",
+  "sub": "",
+  "keys": {
+   "kayla": "Itsines",
+   "app": "workout app",
+   "back": "bought it back"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "But here's the catch: they're the exception. By some estimates, only about four percent of creators make over a hundred thousand dollars a year. Most earn very little. You just don't see them.",
+  "sub": "",
+  "keys": {
+   "catch": "catch",
+   "p4": "four percent",
+   "rest": "Most earn"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "So a successful fitness influencer isn't really selling workouts. They're selling trust, and then turning it into a product of their own.",
+  "sub": "",
+  "keys": {
+   "notworkouts": "selling workouts",
+   "trust": "trust",
+   "product": "product"
+  }
+ }
+]

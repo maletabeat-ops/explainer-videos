@@ -36,10 +36,10 @@ export const FitShort: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, data})
 			<GymBg />
 			{/* 1 */}
 			<Win a={0} b={ch[1]}>
-				<At x={540} y={250} s={pop(t, 0.1)}><Title text={S.t1} col={C.white} size={lang === 'ru' ? 84 : 86} /></At>
-				<At x={540} y={350} s={pop(t, 0.35)}><Title text={S.t2} col={C.pink} size={lang === 'ru' ? 86 : 74} glow={C.pink} /></At>
+				<At x={540} y={250} s={pop(t, 0.1)}><Title text={S.t1} col={C.white} size={lang === 'ru' ? 66 : 70} /></At>
+				<At x={540} y={370} s={pop(t, K.why - 0.3)}><Title text={S.t2} col={C.volt} size={130} glow={C.volt} /></At>
 				<At x={540} y={800}><Dumbbell3D w={1000} h={760} t={t} glow={0.7} /></At>
-				<At x={540} y={1300} s={t < K.spoiler - 0.4 ? 0 : 2 - eout(P(t, K.spoiler - 0.4, K.spoiler - 0.1))} rot={-4}><div style={{fontFamily: DISPLAY, fontWeight: 900, fontSize: lang === 'ru' ? 52 : 50, color: C.volt, border: `7px solid ${C.volt}`, borderRadius: 18, padding: '8px 26px', background: 'rgba(12,9,24,.8)', boxShadow: `0 0 30px ${C.volt}66`}}>{S.spoiler}</div></At>
+				<At x={540} y={1300} s={t < K.spoiler - 0.4 ? 0 : 2 - eout(P(t, K.spoiler - 0.4, K.spoiler - 0.1))} rot={-4}><div style={{fontFamily: DISPLAY, fontWeight: 900, fontSize: lang === 'ru' ? 54 : 44, color: C.pink, border: `7px solid ${C.pink}`, borderRadius: 18, padding: '8px 26px', background: 'rgba(12,9,24,.8)', boxShadow: `0 0 30px ${C.pink}66`}}>{S.spoiler}</div></At>
 			</Win>
 			{/* 2 */}
 			<Win a={ch[1]} b={ch[2]}>
@@ -87,13 +87,13 @@ export const FitShort: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, data})
 				<At x={540} y={260} s={pop(t, K.catch - 0.3)}><Title text={S.p4} col={C.volt} size={150} glow={C.volt} /></At>
 				<At x={540} y={380} s={pop(t, K.p4 - 0.2)}><Txt text={S.p4sub} col={C.white} size={lang === 'ru' ? 34 : 36} /></At>
 				<At x={540} y={830} s={pop(t, K.catch)}><People100 k={P(t, K.catch, K.catch + 2)} hi={P(t, K.p4 - 0.2, K.p4 + 0.5)} size={70} /></At>
-				<At x={540} y={1300} s={pop(t, K.rest - 0.3)}><Pill text={S.rest} bg={C.white} size={42} /></At>
+				<At x={540} y={1300} s={pop(t, K.rest - 0.3)}><Pill text={S.rest} bg={C.white} size={lang === 'ru' ? 34 : 42} /></At>
 			</Win>
 			{/* 8 */}
 			<Win a={ch[7]} b={ch[8]} last>
 				<At x={540} y={260} s={pop(t, K.notworkouts - 0.4)} o={cta}><Title text={S.notw} col={C.white} size={lang === 'ru' ? 62 : 58} /></At>
 				<At x={540} y={700} o={cta}><Dumbbell3D w={900} h={600} t={t} glow={0.9} dist={7.6} /></At>
-				<At x={540} y={1130} s={pop(t, K.trust - 0.3)} o={cta}><div style={{display: 'flex', alignItems: 'center', gap: 24}}><Pill text={S.trust} bg={C.pink} fg="#fff" size={58} /><div style={{fontFamily: DISPLAY, fontWeight: 900, fontSize: 80, color: C.white, opacity: P(t, K.product - 0.8, K.product - 0.4)}}>→</div><div style={{transform: `scale(${pop(t, K.product - 0.4)})`}}><Pill text={S.product} bg={C.volt} size={58} /></div></div></At>
+				<At x={540} y={1130} s={pop(t, K.trust - 0.3)} o={cta}><div style={{display: 'flex', alignItems: 'center', gap: 24}}><Pill text={S.trust} bg={C.pink} fg="#fff" size={50} /><div style={{fontFamily: DISPLAY, fontWeight: 900, fontSize: 80, color: C.white, opacity: P(t, K.product - 0.8, K.product - 0.4)}}>→</div><div style={{transform: `scale(${pop(t, K.product - 0.4)})`}}><Pill text={S.product} bg={C.volt} size={44} /></div></div></At>
 			</Win>
 			<At x={540} y={1478}><Ladder w={940} steps={S.ladder} lit={lit} o={P(t, ch[2] - 0.4, ch[2] + 0.2) * cta} /></At>
 			<Brand S={S} />
