@@ -1,0 +1,82 @@
+[
+ {
+  "s": 1,
+  "tts": "Every day, millions of people press a button that does absolutely nothing. You might have pressed it today.",
+  "sub": "",
+  "keys": {
+   "millions": "millions",
+   "nothing": "nothing",
+   "you": "You might"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "It's the crosswalk button. In two thousand four, New York City admitted that out of about three thousand two hundred buttons, more than two thousand five hundred were fake.",
+  "sub": "",
+  "keys": {
+   "crosswalk": "crosswalk",
+   "nyc": "New York",
+   "n3250": "three thousand",
+   "n2500": "two thousand five"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "The lights had long since switched to computer timing. But the buttons stayed, because removing each one costs hundreds of dollars.",
+  "sub": "",
+  "keys": {
+   "computer": "computer timing",
+   "left": "stayed",
+   "cost": "hundreds"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "But that's not the strangest part. The door close button in an elevator is often disabled too, so someone with a cane or a stroller has time to get in. Usually, only firefighters can make it work.",
+  "sub": "",
+  "keys": {
+   "lift": "elevator",
+   "cane": "cane",
+   "fire": "firefighters"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "And in some offices, according to repair technicians, there's a thermostat on the wall that isn't connected to anything. People turn it, and they instantly feel warmer.",
+  "sub": "",
+  "keys": {
+   "office": "offices",
+   "thermo": "thermostat",
+   "warmer": "warmer"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "So why do they exist? Psychologists call it the illusion of control. Once you've pressed the button, waiting gets easier, and getting angry gets harder.",
+  "sub": "",
+  "keys": {
+   "why": "why do",
+   "illusion": "illusion of control",
+   "wait": "waiting"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "Without a button, you're just standing there, not knowing how long it'll take. With one, you've done everything you could.",
+  "sub": "",
+  "keys": {
+   "stand": "standing",
+   "could": "everything you could"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "So that button does work. Just not on the traffic light. It works on you.",
+  "sub": "",
+  "keys": {
+   "works": "does work",
+   "notlight": "traffic light",
+   "onyou": "on you"
+  }
+ }
+]

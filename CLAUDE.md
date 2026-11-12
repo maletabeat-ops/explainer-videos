@@ -93,9 +93,10 @@ switzerland salaries (Remotion), fridge (Remotion + R3F 3D, eleven_v4, CTA), sho
 casino (RU+EN shorts + 6:40 EN long-form 16:9; final files are the `_v2` versions without pop SFX),
 halloween origins (RU+EN shorts + 7:36 EN long; 3D turnip→pumpkin morph lantern, time ribbon of eras),
 sneakers/On (v2: real photo with breathing CloudTec sole, pod-meter; 8:01 EN long; final files `_v2`).
+buttons (placebo buttons; mystery hook, case-file bar; long via new `tools/tts_long_smooth.py` = per-section stitched requests, no inserted silence, one global filter; 8:54).
 Old "Dubai" version was replaced by UAE.
 **Best starting template for a new topic:** `videos/casino/remotion` (short + long compositions, channel header,
-CTA with cx/cy, section lower thirds, music loop) + `tools/tts4.py` (shorts), `tools/tts_long.py` (long-form,
+CTA with cx/cy, section lower thirds, music loop) + `tools/tts4.py` (shorts), `tools/tts_long_smooth.py` (long-form, smooth, preferred; old `tools/tts_long.py`
 per-section stitching), `tools/post.py`, `tools/capgen.py`, `tools/append_cta.py`. Copy node_modules from a
 previous project if present, else `npm ci`. Deliver files from `/home/user/` via SendUserFile; user downloads them.
 User prefs: communicate in Russian; short status updates; propose topics via a multiple-choice question.

@@ -668,3 +668,46 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 Fun fact: Gymshark's founder started by sending clothes to fitness YouTubers. In 2020, an investor bought a stake valuing the brand at about £1 billion.
 > Which fitness creator do you actually trust? 👇
+
+## 17. Кнопка, которая ничего не делает (placebo buttons)
+
+### 🇷🇺 RU — Reels / Shorts (1:13)
+**Видео:** `buttons_RU.mp4` · **Обложка:** `cover_buttons_RU.png`
+
+**Название:** Эту кнопку нажимают миллионы. Но она ничего не делает 🤫
+
+**Закреп:**
+> 📌 В 2004 году в Нью-Йорке проверили кнопки на переходах: из ~3 250 больше 2 500 не делали ничего. Убирать их дорого, поэтому их просто оставили.
+> А ты жмёшь кнопку «закрыть двери» в лифте? 👇
+
+### 🇺🇸 EN — Reels / Shorts (1:12)
+**Video:** `buttons_EN.mp4` · **Cover:** `cover_buttons_EN.png`
+
+**Title:** Millions press this button every day. It does nothing 🤫
+
+**Pinned comment:**
+> 📌 In 2004, NYC checked its crosswalk buttons: of about 3,250, more than 2,500 did nothing at all. Removing them cost too much, so they stayed.
+> Be honest: do you still press "door close"? 👇
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:54)
+**Video:** `buttons_LONG_EN.mp4` · **Thumbnail:** `thumb_buttons_LONG.png`
+
+**Title:** The Buttons That Do Nothing (And Why Nobody Tells You)
+
+**Chapters (paste into the description):**
+```
+0:00 The button that does nothing
+0:43 Case file one: the crosswalk
+1:29 New York, 2004
+2:22 Not all of them are fake
+3:19 Case file two: the elevator
+4:17 Case file three: the thermostat
+5:11 The illusion of control
+6:11 Designing the wait
+7:13 Is it a lie?
+8:05 So what does it actually do?
+```
+
+**Pinned comment:**
+> 📌 The weirdest one: Houston airport's fix for baggage complaints wasn't faster bags. They made passengers walk six times farther, and the complaints nearly disappeared.
+> Which "fake" button have you pressed the most? 👇

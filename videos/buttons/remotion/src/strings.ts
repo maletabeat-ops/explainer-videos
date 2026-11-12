@@ -1,0 +1,28 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		t1: 'ЭТА КНОПКА', t2: 'НИЧЕГО НЕ ДЕЛАЕТ', hookSub: 'а ты нажимаешь её каждый день', signLabel: 'НАЖМИ\nИ ЖДИ',
+		nyc: '2004 · НЬЮ-ЙОРК', of: 'из 3 250 кнопок', fakeN: '2 500+', fakeSub: 'МУЛЯЖИ',
+		timer: 'СВЕТОФОРОМ УПРАВЛЯЕТ РАСПИСАНИЕ', cost: 'СНЯТЬ = СОТНИ $', stay: '…ПОЭТОМУ ИХ ОСТАВИЛИ',
+		strange: 'НО ЭТО ЕЩЁ НЕ САМОЕ СТРАННОЕ', lift: '«ЗАКРЫТЬ ДВЕРИ»', cane: 'ЧТОБЫ УСПЕЛ ЗАЙТИ ЧЕЛОВЕК С ТРОСТЬЮ', fire: 'РАБОТАЕТ ДЛЯ ПОЖАРНЫХ',
+		office: 'ОФИСНЫЙ ТЕРМОСТАТ', thermo: 'НИ К ЧЕМУ НЕ ПОДКЛЮЧЁН', warmer: '«СТАЛО ТЕПЛЕЕ»',
+		why: 'ЗАЧЕМ?', illusion: 'ИЛЛЮЗИЯ КОНТРОЛЯ', stress: 'РАЗДРАЖЕНИЕ', control: 'КОНТРОЛЬ',
+		without: 'БЕЗ КНОПКИ: ПРОСТО ЖДЁШЬ', with: 'С КНОПКОЙ: «Я СДЕЛАЛ ВСЁ»',
+		works: 'КНОПКА РАБОТАЕТ', on: 'НО НЕ НА СВЕТОФОР…', you: 'А НА ТЕБЯ',
+		cases: ['СВЕТОФОР', 'ЛИФТ', 'ТЕРМОСТАТ'],
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		t1: 'THIS BUTTON', t2: 'DOES NOTHING', hookSub: 'and you press it every day', signLabel: 'PUSH\nAND WAIT',
+		nyc: '2004 · NEW YORK CITY', of: 'out of ~3,250 buttons', fakeN: '2,500+', fakeSub: 'WERE FAKE',
+		timer: 'THE LIGHTS RUN ON A TIMER', cost: 'REMOVING ONE = $100s', stay: '…SO THEY STAYED',
+		strange: "BUT THAT'S NOT THE STRANGEST PART", lift: '“DOOR CLOSE”', cane: 'SO SOMEONE WITH A CANE CAN GET IN', fire: 'WORKS FOR FIREFIGHTERS',
+		office: 'THE OFFICE THERMOSTAT', thermo: 'CONNECTED TO NOTHING', warmer: '“FEELS WARMER”',
+		why: 'WHY?', illusion: 'THE ILLUSION OF CONTROL', stress: 'FRUSTRATION', control: 'CONTROL',
+		without: 'NO BUTTON: YOU JUST WAIT', with: "BUTTON: “I DID ALL I COULD”",
+		works: 'THE BUTTON WORKS', on: 'NOT ON THE LIGHT…', you: 'ON YOU',
+		cases: ['CROSSWALK', 'ELEVATOR', 'THERMOSTAT'],
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};
