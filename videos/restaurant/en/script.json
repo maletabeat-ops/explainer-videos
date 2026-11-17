@@ -1,0 +1,93 @@
+[
+ {
+  "s": 1,
+  "tts": "You're on a long journey. Sixty miles behind you, a hundred more ahead, and your stomach is empty. So where do you eat?",
+  "sub": "",
+  "keys": {
+   "road": "long journey",
+   "hungry": "empty",
+   "where": "where do you eat"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "You knock on the first house by the road. Inside, a huge pot of stew is bubbling. You hand her a coin, and she fills a bowl for you. Soon, ten more hungry travelers are sitting at her table. And you realize: people will pay for this. So you build a house by the road, with one big pot and one long table.",
+  "sub": "",
+  "keys": {
+   "knock": "knock",
+   "pot": "pot of stew",
+   "coin": "a coin",
+   "ten": "ten more",
+   "build": "So you build",
+   "longtable": "one long table"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "But latecomers get nothing: the pot is scraped clean. And some people simply hate stew. So you cook a few dishes ahead of time: soup, a roast, a pie. And you write them in chalk on a board by the door.",
+  "sub": "",
+  "keys": {
+   "late": "latecomers",
+   "hate": "hate stew",
+   "dishes": "a few dishes",
+   "board": "on a board"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "Next problem: at one long table, strangers bump elbows and grab food from the shared bowl. So you saw the table into little tables. Everyone gets their own plate and their own portion.",
+  "sub": "",
+  "keys": {
+   "elbows": "bump elbows",
+   "saw": "saw the table",
+   "plate": "their own plate"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "But you're alone, and while you're serving, everything on the stove burns. So you build a wall. In the back, a kitchen just for cooking, in the front, a room for guests. And between them, a little window, where a helper picks up the plates and carries them out.",
+  "sub": "",
+  "keys": {
+   "alone": "you're alone",
+   "burn": "burns",
+   "wall": "build a wall",
+   "kitchen": "a kitchen",
+   "hall": "a room for guests",
+   "window": "little window"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "One fight is left: money. One guest had soup, another had three dishes, and they pay the same? So you write a price next to every dish, and at the end, a little bill with everything added up. And you hang a sign over the door, so travelers can see you from far away.",
+  "sub": "",
+  "keys": {
+   "money": "money",
+   "price": "a price",
+   "bill": "little bill",
+   "sign": "a sign"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "Congratulations, you just invented the restaurant. And it all started with a bowl of soup. Literally: in Paris in the seventeen sixties, a restaurant was the soup itself, a rich broth meant to restore your strength.",
+  "sub": "",
+  "keys": {
+   "congrats": "Congratulations",
+   "soup": "bowl of soup",
+   "paris": "Paris",
+   "broth": "rich broth",
+   "restore": "restore your strength"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "But here's the twist: in China, in the cities of Kaifeng and Hangzhou, places where you could choose your dish were already open around the year eleven hundred. Six hundred years before Paris.",
+  "sub": "",
+  "keys": {
+   "twist": "the twist",
+   "china": "China",
+   "y1100": "eleven hundred",
+   "earlier": "Six hundred"
+  }
+ }
+]

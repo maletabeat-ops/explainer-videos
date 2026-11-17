@@ -711,3 +711,23 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 The weirdest one: Houston airport's fix for baggage complaints wasn't faster bags. They made passengers walk six times farther, and the complaints nearly disappeared.
 > Which "fake" button have you pressed the most? 👇
+
+## 18. Ресторан (новый стиль «Ты только что изобрёл…»)
+
+### 🇷🇺 RU — Reels / Shorts (~1:55)
+**Видео:** `restaurant_RU.mp4` · **Обложка:** `cover_restaurant_RU.png`
+
+**Название:** Ты голоден в дороге. Через 6 шагов ты изобретёшь то, куда ходишь каждую неделю 🍲
+
+**Закреп:**
+> 📌 Слово «ресторан» сначала означало… суп. В Париже 1760-х так называли крепкий бульон, который «восстанавливает силы». Но в Китае места с выбором блюд были ещё около 1100 года.
+> Что бы ты изобрёл следующим? 👇
+
+### 🇺🇸 EN — Reels / Shorts (~1:58)
+**Video:** `restaurant_EN.mp4` · **Cover:** `cover_restaurant_EN.png`
+
+**Title:** You're starving on the road. Six fixes later, you've invented something you use every week 🍲
+
+**Pinned comment:**
+> 📌 The word "restaurant" first meant… a soup. In 1760s Paris it was a rich broth meant to "restore" you. But in China, places where you could choose your dish existed around 1100 AD.
+> What should we "invent" next? 👇

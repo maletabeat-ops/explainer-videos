@@ -1,0 +1,28 @@
+export const STR: Record<'ru' | 'en', any> = {
+	ru: {
+		handle: '@thewhydept_rus', logo: 'logo_ru_s.png',
+		road: '100 КМ ПОЗАДИ · 200 ВПЕРЕДИ', hungry: 'ГОЛОДЕН', where: 'ГДЕ ПОЕСТЬ?',
+		pot: 'КОТЁЛ ПОХЛЁБКИ', coin: 'МОНЕТА = МИСКА', ten: '+10 ГОЛОДНЫХ', longtable: 'ОДИН ДЛИННЫЙ СТОЛ',
+		late: 'ОПОЗДАЛ = НИЧЕГО', hate: 'НЕ ЛЮБИТ ПОХЛЁБКУ', dishes: 'НЕСКОЛЬКО БЛЮД', board: 'СПИСОК НА ДОСКЕ',
+		elbows: 'ТЕСНО И ШУМНО', saw: 'РАСПИЛИТЬ СТОЛ', plate: 'СВОЯ ТАРЕЛКА',
+		burn: 'ВСЁ ПРИГОРАЕТ', wall: 'СТЕНА', kitchen: 'КУХНЯ', hall: 'ЗАЛ', window: 'ОКОШКО ВЫДАЧИ',
+		money: 'СПОР О ДЕНЬГАХ', price: 'ЦЕНА У КАЖДОГО БЛЮДА', bill: 'СЧЁТ', sign: 'ВЫВЕСКА',
+		reveal1: 'ТЫ ИЗОБРЁЛ', reveal2: 'РЕСТОРАН', signText: 'РЕСТОРАН',
+		paris: ['ПАРИЖ · 1760-е', '«Ресторан» — это суп', 'крепкий бульон, «восстанавливающий» силы'],
+		china: ['ПОВОРОТ: КИТАЙ · ~1100 г.', 'Кайфэн и Ханчжоу', 'выбор блюд — на 600+ лет раньше Парижа'],
+		sub: 'ПОДПИСАТЬСЯ', subbed: 'ВЫ ПОДПИСАНЫ ✓', like: 'ЛАЙК',
+	},
+	en: {
+		handle: '@thewhydept_', logo: 'logo_en_s.png',
+		road: '60 MI BEHIND · 100 AHEAD', hungry: 'STARVING', where: 'WHERE DO YOU EAT?',
+		pot: 'A POT OF STEW', coin: 'A COIN = A BOWL', ten: '+10 HUNGRY', longtable: 'ONE LONG TABLE',
+		late: 'LATE = NOTHING', hate: 'HATES STEW', dishes: 'A FEW DISHES', board: 'A LIST ON A BOARD',
+		elbows: 'CROWDED & NOISY', saw: 'SAW THE TABLE', plate: 'YOUR OWN PLATE',
+		burn: 'EVERYTHING BURNS', wall: 'A WALL', kitchen: 'KITCHEN', hall: 'DINING ROOM', window: 'PASS-THROUGH WINDOW',
+		money: 'THE MONEY FIGHT', price: 'A PRICE PER DISH', bill: 'THE BILL', sign: 'A SIGN',
+		reveal1: 'YOU INVENTED', reveal2: 'THE RESTAURANT', signText: 'RESTAURANT',
+		paris: ['PARIS · 1760s', '“Restaurant” = a soup', 'a broth to “restore” your strength'],
+		china: ['TWIST: CHINA · ~1100 AD', 'Kaifeng & Hangzhou', 'choosing dishes 600+ years before Paris'],
+		sub: 'FOLLOW', subbed: 'FOLLOWING ✓', like: 'LIKE',
+	},
+};

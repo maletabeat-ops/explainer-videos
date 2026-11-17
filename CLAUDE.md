@@ -94,6 +94,7 @@ casino (RU+EN shorts + 6:40 EN long-form 16:9; final files are the `_v2` version
 halloween origins (RU+EN shorts + 7:36 EN long; 3D turnip→pumpkin morph lantern, time ribbon of eras),
 sneakers/On (v2: real photo with breathing CloudTec sole, pod-meter; 8:01 EN long; final files `_v2`).
 buttons (placebo buttons; mystery hook, case-file bar; long via new `tools/tts_long_smooth.py` = per-section stitched requests, no inserted silence, one global filter; 8:54).
+restaurant (new style; R3F dollhouse: roof lifts, long table sawn into small tables, partition wall + pass window, sign with CanvasTexture text "?"→name at reveal; ~1:55).
 Old "Dubai" version was replaced by UAE.
 **Best starting template for a new topic:** `videos/casino/remotion` (short + long compositions, channel header,
 CTA with cx/cy, section lower thirds, music loop) + `tools/tts4.py` (shorts), `tools/tts_long_smooth.py` (long-form, smooth, preferred; old `tools/tts_long.py`
