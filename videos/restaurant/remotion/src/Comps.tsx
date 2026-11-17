@@ -21,7 +21,7 @@ const CamRig: React.FC<{cam: Cam}> = ({cam}) => {
 	return null;
 };
 const Std: React.FC<{c: string; e?: number; r?: number; m?: number; o?: number}> = ({c, e = 0, r = 0.7, m = 0, o = 1}) => <meshStandardMaterial color={c} emissive={c} emissiveIntensity={e} roughness={r} metalness={m} transparent={o < 1} opacity={o} />;
-const WOOD = '#8a5a3b', WOOD2 = '#6b4029', WALL = '#5a2433', FLOOR = '#3b2420';
+const WOOD = '#c48a5c', WOOD2 = '#8f5a38', WALL = '#d0705a', FLOOR = '#b98457';
 
 export type Show = {roof: number; pot: number; stew: number; coin: number; stools: number; table: number; dishes: number; board: number; shake: number; split: number; plates: number; smoke: number; wall: number; window: number; tray: number; prices: number; bill: number; sign: number; lamps: number; steam: number; knock: number};
 // long table pieces → small tables
@@ -57,21 +57,21 @@ export const Restaurant3D: React.FC<{w: number; h: number; t: number; cam: Cam; 
 	return (
 		<ThreeCanvas width={w} height={h} camera={{fov: 34, position: cam.p}}>
 			<CamRig cam={cam} />
-			<color attach="background" args={['#120a12']} />
-			<fog attach="fog" args={['#120a12', 16, 36]} />
-			<ambientLight intensity={0.45} />
-			<hemisphereLight args={['#ffd9b0', '#2a1020', 0.5]} />
-			<directionalLight position={[5, 9, 7]} intensity={1.3} />
-			<directionalLight position={[-6, 3, -2]} intensity={0.5} color="#c49bff" />
+			<color attach="background" args={['#3a2c3c']} />
+			<fog attach="fog" args={['#3a2c3c', 22, 45]} />
+			<ambientLight intensity={0.9} />
+			<hemisphereLight args={['#fff1dc', '#6a4a5a', 1.1]} />
+			<directionalLight position={[5, 10, 8]} intensity={2.4} color="#fff4e6" />
+			<directionalLight position={[-6, 5, 4]} intensity={0.9} color="#d9c8ff" />
 			<pointLight position={[0, 1.8, 0.4]} intensity={2 + 3 * s.lamps} color="#ffb347" distance={7} />
 			<pointLight position={[-0.6, 1.0, -2.3]} intensity={1.5 + 1.5 * s.pot} color="#ff7a2a" distance={3.5} />
 			{/* ground + road */}
-			<mesh position={[0, -0.06, 2]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[30, 24]} /><Std c="#1f1418" r={1} /></mesh>
-			<mesh position={[0, -0.03, 3.9]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[30, 1.8]} /><Std c="#2c2226" r={1} /></mesh>
+			<mesh position={[0, -0.06, 2]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[30, 24]} /><Std c="#6b8a5a" r={1} /></mesh>
+			<mesh position={[0, -0.03, 3.9]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[30, 1.8]} /><Std c="#8a7a6e" r={1} /></mesh>
 			{Array.from({length: 14}).map((_, i) => <mesh key={'rd' + i} position={[-13 + i * 2, -0.02, 3.9]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[0.9, 0.08]} /><Std c={C.amber} e={0.5} /></mesh>)}
 			{/* floor + walls (cut-away) */}
 			<mesh position={[0, 0.05, -0.3]}><boxGeometry args={[4.2, 0.1, 5.6]} /><Std c={FLOOR} /></mesh>
-			{Array.from({length: 7}).map((_, i) => <mesh key={'fl' + i} position={[-1.8 + i * 0.6, 0.105, -0.3]}><boxGeometry args={[0.02, 0.01, 5.6]} /><Std c="#2c1916" /></mesh>)}
+			{Array.from({length: 7}).map((_, i) => <mesh key={'fl' + i} position={[-1.8 + i * 0.6, 0.105, -0.3]}><boxGeometry args={[0.02, 0.01, 5.6]} /><Std c="#9a6a44" /></mesh>)}
 			<mesh position={[0, 1.15, -3.05]}><boxGeometry args={[4.2, 2.2, 0.1]} /><Std c={WALL} /></mesh>
 			<mesh position={[-2.05, 1.15, -0.3]}><boxGeometry args={[0.1, 2.2, 5.6]} /><Std c={WALL} /></mesh>
 			<mesh position={[2.05, 0.35, -0.3]}><boxGeometry args={[0.1, 0.6, 5.6]} /><Std c={WALL} /></mesh>
@@ -81,8 +81,8 @@ export const Restaurant3D: React.FC<{w: number; h: number; t: number; cam: Cam; 
 			{s.knock > 0 && s.knock < 1 ? <mesh position={[0, 1.05, 2.45]}><planeGeometry args={[0.78, 1.95]} /><meshBasicMaterial color="#ffb347" transparent opacity={0.5 * Math.sin(s.knock * Math.PI)} side={THREE.DoubleSide} /></mesh> : null}
 			{/* roof (gable), lifts away */}
 			{s.roof < 1 ? <group position={[0, roofY, -0.3]}>
-				<mesh position={[-1.15, 0.6, 0]} rotation={[0, 0, 0.62]}><boxGeometry args={[2.8, 0.12, 5.9]} /><Std c="#3a1a22" o={1 - clamp(s.roof * 1.5)} /></mesh>
-				<mesh position={[1.15, 0.6, 0]} rotation={[0, 0, -0.62]}><boxGeometry args={[2.8, 0.12, 5.9]} /><Std c="#3a1a22" o={1 - clamp(s.roof * 1.5)} /></mesh>
+				<mesh position={[-1.15, 0.6, 0]} rotation={[0, 0, 0.62]}><boxGeometry args={[2.8, 0.12, 5.9]} /><Std c="#8a3a2e" o={1 - clamp(s.roof * 1.5)} /></mesh>
+				<mesh position={[1.15, 0.6, 0]} rotation={[0, 0, -0.62]}><boxGeometry args={[2.8, 0.12, 5.9]} /><Std c="#8a3a2e" o={1 - clamp(s.roof * 1.5)} /></mesh>
 			</group> : null}
 			{s.roof < 1 ? <group>
 				<mesh position={[-1.25, 1.1, 2.45]}><boxGeometry args={[1.6, 2.2, 0.1]} /><Std c={WALL} o={1 - clamp(s.roof * 1.5)} /></mesh>
@@ -92,14 +92,14 @@ export const Restaurant3D: React.FC<{w: number; h: number; t: number; cam: Cam; 
 				<mesh position={[0, 1.05, 2.47]}><planeGeometry args={[0.78, 1.95]} /><Std c="#4a2a1c" o={1 - clamp(s.roof * 1.5)} /></mesh>
 			</group> : null}
 			{/* hearth + pot (back left) */}
-			<mesh position={[-0.6, 0.25, -2.45]}><boxGeometry args={[1.0, 0.3, 0.8]} /><Std c="#4a3a36" r={0.95} /></mesh>
+			<mesh position={[-0.6, 0.25, -2.45]}><boxGeometry args={[1.0, 0.3, 0.8]} /><Std c="#8a7a74" r={0.95} /></mesh>
 			{[0, 1, 2].map((i) => <mesh key={'fire' + i} position={[-0.6 + (i - 1) * 0.18, 0.48 + 0.05 * Math.sin(t * 9 + i), -2.45]} scale={[1, 1 + 0.25 * Math.sin(t * 11 + i * 2), 1]}><coneGeometry args={[0.1, 0.32, 8]} /><meshBasicMaterial color={i === 1 ? '#ffd27a' : '#ff6a2a'} /></mesh>)}
 			{s.pot > 0 ? <group position={[-0.6, 0.55, -2.45]} scale={eout(clamp(s.pot))}>
 				<mesh geometry={potLathe}><meshStandardMaterial color="#2a2a2e" metalness={0.6} roughness={0.4} side={THREE.DoubleSide} /></mesh>
 				<mesh position={[0, 0.12 + 0.36 * s.stew, 0]} rotation={[-Math.PI / 2, 0, 0]}><circleGeometry args={[0.37, 32]} /><Std c="#b0652a" e={0.25} /></mesh>
 			</group> : null}
 			{/* stove (back right) with smoke */}
-			<mesh position={[0.9, 0.45, -2.6]}><boxGeometry args={[1.1, 0.8, 0.7]} /><Std c="#3c3c44" m={0.3} /></mesh>
+			<mesh position={[0.9, 0.45, -2.6]}><boxGeometry args={[1.1, 0.8, 0.7]} /><Std c="#5a5a66" m={0.3} /></mesh>
 			<mesh position={[0.9, 0.86, -2.6]}><boxGeometry args={[1.0, 0.03, 0.6]} /><Std c="#ff5a2a" e={0.6 * s.smoke + 0.15} /></mesh>
 			{s.smoke > 0 ? Array.from({length: 7}).map((_, i) => {const q = (t * 0.45 + i / 7) % 1; return <mesh key={'sm' + i} position={[0.9 + Math.sin(i * 2.3 + t) * 0.2, 1.0 + q * 1.6, -2.6]} scale={0.18 + q * 0.3}><sphereGeometry args={[1, 12, 12]} /><meshBasicMaterial color="#6f6a72" transparent opacity={0.4 * s.smoke * (1 - q)} /></mesh>;}) : null}
 			{/* prepared dishes on the counter */}
@@ -143,10 +143,10 @@ export const Restaurant3D: React.FC<{w: number; h: number; t: number; cam: Cam; 
 			{s.coin > 0 && s.coin < 1 ? <mesh position={[-0.05, 0.6 + 0.9 * Math.sin(Math.min(1, s.coin * 1.6) * Math.PI), -1.95]} rotation={[s.coin * 18, 0, 0]}><cylinderGeometry args={[0.09, 0.09, 0.02, 20]} /><meshStandardMaterial color="#ffd27a" emissive="#ffb347" emissiveIntensity={0.6} metalness={0.9} roughness={0.25} /></mesh> : null}
 			{/* partition wall with pass-through window */}
 			{s.wall > 0 ? <group position={[0, 0.1, -1.55]}>
-				<mesh position={[-1.0, wallH / 2, 0]}><boxGeometry args={[2.0, wallH, 0.1]} /><Std c="#6a2a3c" /></mesh>
-				<mesh position={[1.65, wallH / 2, 0]}><boxGeometry args={[0.7, wallH, 0.1]} /><Std c="#6a2a3c" /></mesh>
-				{wallH > 1.3 ? <mesh position={[0.65, 0.4, 0]}><boxGeometry args={[1.3, 0.8, 0.1]} /><Std c="#6a2a3c" /></mesh> : null}
-				{wallH > 1.8 ? <mesh position={[0.65, 1.9, 0]}><boxGeometry args={[1.3, 0.6, 0.1]} /><Std c="#6a2a3c" /></mesh> : null}
+				<mesh position={[-1.0, wallH / 2, 0]}><boxGeometry args={[2.0, wallH, 0.1]} /><Std c="#e8c9a8" /></mesh>
+				<mesh position={[1.65, wallH / 2, 0]}><boxGeometry args={[0.7, wallH, 0.1]} /><Std c="#e8c9a8" /></mesh>
+				{wallH > 1.3 ? <mesh position={[0.65, 0.4, 0]}><boxGeometry args={[1.3, 0.8, 0.1]} /><Std c="#e8c9a8" /></mesh> : null}
+				{wallH > 1.8 ? <mesh position={[0.65, 1.9, 0]}><boxGeometry args={[1.3, 0.6, 0.1]} /><Std c="#e8c9a8" /></mesh> : null}
 				{s.window > 0 ? <>
 					<mesh position={[0.65, 0.82, 0.12]}><boxGeometry args={[1.35, 0.05, 0.3]} /><Std c={WOOD} /></mesh>
 					<lineSegments position={[0.65, 1.2, 0]}><edgesGeometry args={[new THREE.BoxGeometry(1.3, 0.8, 0.12)]} /><lineBasicMaterial color="#ffb347" transparent opacity={clamp(s.window)} /></lineSegments>

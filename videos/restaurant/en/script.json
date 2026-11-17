@@ -69,25 +69,10 @@
  },
  {
   "s": 7,
-  "tts": "Congratulations, you just invented the restaurant. And it all started with a bowl of soup. Literally: in Paris in the seventeen sixties, a restaurant was the soup itself, a rich broth meant to restore your strength.",
+  "tts": "Congratulations, you just invented the restaurant.",
   "sub": "",
   "keys": {
-   "congrats": "Congratulations",
-   "soup": "bowl of soup",
-   "paris": "Paris",
-   "broth": "rich broth",
-   "restore": "restore your strength"
-  }
- },
- {
-  "s": 8,
-  "tts": "But here's the twist: in China, in the cities of Kaifeng and Hangzhou, places where you could choose your dish were already open around the year eleven hundred. Six hundred years before Paris.",
-  "sub": "",
-  "keys": {
-   "twist": "the twist",
-   "china": "China",
-   "y1100": "eleven hundred",
-   "earlier": "Six hundred"
+   "congrats": "Congratulations"
   }
  }
 ]

@@ -33,7 +33,7 @@ export const showAt = (t: number, K: any): Show => ({
 	coin: P(t, K.coin - 0.2, K.coin + 1.0), table: P(t, K.ten - 0.7, K.ten - 0.1), stools: P(t, K.ten - 0.2, K.ten + 0.8),
 	dishes: P(t, K.dishes - 0.3, K.dishes + 1.2), board: P(t, K.board - 0.3, K.board + 1.6), shake: P(t, K.elbows - 0.3, K.elbows + 1.4), split: P(t, K.saw, K.saw + 1.6), plates: P(t, K.plate - 0.3, K.plate + 0.3),
 	smoke: P(t, K.burn - 0.4, K.burn + 0.2) * (1 - P(t, K.wall + 1, K.wall + 2.5)), wall: P(t, K.wall - 0.2, K.wall + 1.0), window: P(t, K.window - 0.2, K.window + 0.3), tray: P(t, K.window + 0.6, K.window + 1.0),
-	prices: P(t, K.price - 0.2, K.price + 1.2), bill: P(t, K.bill - 0.3, K.bill + 0.2), sign: P(t, K.sign - 0.3, K.sign + 1.2), lamps: P(t, K.congrats - 0.5, K.congrats + 1), steam: P(t, K.soup - 0.5, K.soup + 0.5),
+	prices: P(t, K.price - 0.2, K.price + 1.2), bill: P(t, K.bill - 0.3, K.bill + 0.2), sign: P(t, K.sign - 0.3, K.sign + 1.2), lamps: P(t, K.congrats - 0.5, K.congrats + 1), steam: P(t, K.congrats + 0.5, K.congrats + 1.5),
 });
 export const camAt = (t: number, ch: number[], cams: Cam[], orbitFrom: number) => {
 	let c = 0; while (c < cams.length - 1 && t >= ch[c + 1]) c++;
@@ -49,14 +49,14 @@ export const CAMS: Cam[] = [
 	{p: [2.2, 7.5, 9.5], l: [0, 0.4, -0.2]},
 	{p: [-0.5, 6.0, 8.2], l: [-0.85, 0.8, 0.1]},
 	{p: [0.01, 12.5, 3.2], l: [0, 0, 0]},
-	{p: [2.8, 5.8, 4.4], l: [0.1, 0.7, -1.3]},
-	{p: [0.2, 4.8, 7.6], l: [-1.05, 1.0, 1.1]},
+	{p: [3.6, 7.6, 6.8], l: [0.2, 0.6, -1.0]},
+	{p: [2.2, 6.6, 10.5], l: [-0.6, 1.0, 0.6]},
 	{p: [3.0, 6.8, 14.5], l: [-0.9, 1.1, 0.7]},
 	{p: [3.0, 6.8, 14.5], l: [-0.9, 1.1, 0.7]},
 ];
 
 export const RestShort: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, data}) => {
-	const S = STR[lang], K = data.k, ch = chapters(data), dur = data.dur;
+	const S = STR[lang], K = data.k, ch = chapters(data, 7), dur = data.dur;
 	const t = useCurrentFrame() / FPS;
 	const cam = camAt(t, ch, CAMS, 6), show = showAt(t, K);
 	const cta = K.cta !== undefined ? 1 - P(t, K.cta - 0.4, K.cta) : 1;
@@ -66,7 +66,7 @@ export const RestShort: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, data}
 			<AbsoluteFill><Restaurant3D w={1080} h={1920} t={t} cam={cam} show={show} signText={S.signText} /></AbsoluteFill>
 			{C1(K.road - 0.2, ch[1], 540, 330, S.road, C.white)}
 			{C1(K.hungry, ch[1], 540, 440, S.hungry, C.red)}
-			{t > K.where - 0.4 && t < ch[1] ? <At x={540} y={590} s={pop(t, K.where - 0.3)} o={1 - P(t, ch[1] - 0.3, ch[1])}><Title text={S.where} col={C.amber} size={lang === 'ru' ? 96 : 84} glow={C.amber} /></At> : null}
+			{C1(K.where, ch[1], 540, 550, S.where, C.amber)}
 			{C1(K.pot, ch[2], 540, 330, S.pot, C.amber)}
 			{C1(K.coin, ch[2], 540, 440, S.coin, C.gold)}
 			{C1(K.ten, ch[2], 540, 550, S.ten, C.white)}
@@ -91,8 +91,6 @@ export const RestShort: React.FC<{lang: 'ru' | 'en'; data: any}> = ({lang, data}
 			{t > K.congrats - 0.4 ? <>
 				<At x={540} y={270} s={pop(t, K.congrats - 0.3)} o={cta}><Title text={S.reveal1} col={C.white} size={lang === 'ru' ? 84 : 80} /></At>
 				<At x={540} y={385} s={pop(t, K.congrats + 0.7, 0.6)} o={cta}><Title text={S.reveal2} col={C.amber} size={lang === 'ru' ? 128 : 100} glow={C.amber} /></At>
-				<At x={540} y={1300} s={pop(t, K.paris - 0.4)} o={(1 - P(t, K.twist - 0.5, K.twist - 0.2)) * cta}><Card w={820} col={C.amber} top={S.paris[0]} big={S.paris[1]} sub={S.paris[2]} /></At>
-				<At x={540} y={1300} s={pop(t, K.twist - 0.3)} o={cta}><Card w={820} col={C.red} top={S.china[0]} big={S.china[1]} sub={S.china[2]} /></At>
 			</> : null}
 			<Brand S={S} />
 			<CTA K={K} S={S} />

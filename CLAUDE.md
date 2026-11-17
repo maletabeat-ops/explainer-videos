@@ -66,9 +66,12 @@ a Russian channel and an American (English) channel. Each video is ~60–75 s ("
 - KEEP THE MYSTERY: never name the object at the start (no "Let's invent the elevator" title, no telling callouts);
   the viewer should wonder what is being built until the reveal at the end. Cover/post title may name it.
 - NO bottom "inventory"/progress bar of parts (user removed it after the elevator video).
-- LENGTH (user, after the toilet video): new-style shorts were too short — tell each step a bit more fully, aim for
-  at least ~1:20 of pure narration (before the CTA), and after the reveal add a short "interesting fact" remark about
-  the thing (history/number/twist) before the CTA.
+- LENGTH: tell each step a bit more fully, aim for ~1:20–1:30 of pure narration (before the CTA).
+- ENDING (user, after the restaurant video — overrides the earlier "fun fact" rule): NOTHING after the reveal.
+  Start straight with the problem, chain problem → modern fix, end on "Congrats, you just invented X." → CTA.
+  No hook title/preview, no history cards, no facts at the end.
+- LOOK: BRIGHT, clearly visible diorama (like the reference reel): light warm materials, strong ambient/hemisphere +
+  key light, light background — the dark restaurant v1 was rejected as "too dark, hard to see".
 - Ref was a 3D room with a worker character; ours: NO character — one persistent 3D diorama (R3F) that grows step by
   step, camera moves (top-down ↔ close-up), small white callout labels for parts, our dark series look.
 - First one: elevator (`videos/elevator`, has the inventory bar + title — don't repeat those).
@@ -94,7 +97,7 @@ casino (RU+EN shorts + 6:40 EN long-form 16:9; final files are the `_v2` version
 halloween origins (RU+EN shorts + 7:36 EN long; 3D turnip→pumpkin morph lantern, time ribbon of eras),
 sneakers/On (v2: real photo with breathing CloudTec sole, pod-meter; 8:01 EN long; final files `_v2`).
 buttons (placebo buttons; mystery hook, case-file bar; long via new `tools/tts_long_smooth.py` = per-section stitched requests, no inserted silence, one global filter; 8:54).
-restaurant (new style; R3F dollhouse: roof lifts, long table sawn into small tables, partition wall + pass window, sign with CanvasTexture text "?"→name at reveal; ~1:55).
+restaurant (new style; R3F dollhouse: roof lifts, long table sawn into small tables, partition wall + pass window, sign with CanvasTexture text "?"→name at reveal; v2 = bright + no ending facts, ~1:30, final files `_v2`).
 Old "Dubai" version was replaced by UAE.
 **Best starting template for a new topic:** `videos/casino/remotion` (short + long compositions, channel header,
 CTA with cx/cy, section lower thirds, music loop) + `tools/tts4.py` (shorts), `tools/tts_long_smooth.py` (long-form, smooth, preferred; old `tools/tts_long.py`

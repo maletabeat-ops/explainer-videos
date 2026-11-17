@@ -14,7 +14,7 @@ export const STR: Record<'ru' | 'en', any> = {
 	},
 	en: {
 		handle: '@thewhydept_', logo: 'logo_en_s.png',
-		road: '60 MI BEHIND · 100 AHEAD', hungry: 'STARVING', where: 'WHERE DO YOU EAT?',
+		road: '60 MI BEHIND · 100 AHEAD', hungry: 'STARVING', where: 'WHERE TO EAT?',
 		pot: 'A POT OF STEW', coin: 'A COIN = A BOWL', ten: '+10 HUNGRY', longtable: 'ONE LONG TABLE',
 		late: 'LATE = NOTHING', hate: 'HATES STEW', dishes: 'A FEW DISHES', board: 'A LIST ON A BOARD',
 		elbows: 'CROWDED & NOISY', saw: 'SAW THE TABLE', plate: 'YOUR OWN PLATE',
