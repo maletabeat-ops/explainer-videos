@@ -731,3 +731,13 @@ Would you still open a café after watching this, or just brew at home? 👇
 **Pinned comment:**
 > 📌 The word "restaurant" first meant… a soup. In 1760s Paris it was a rich broth meant to "restore" you. But in China, places where you could choose your dish existed around 1100 AD.
 > What should we "invent" next? 👇
+
+**🇷🇺 Описание (RU, v2):**
+> Ты голоден в дороге, вокруг только чужие дома. Котёл похлёбки, монета, длинный стол… а потом одна проблема за другой: опоздавшим ничего не досталось, за столом тесно, на плите всё пригорает, гости спорят о деньгах. Шаг за шагом решаем каждую и в конце получаем то, куда ты ходишь каждую неделю 🍲
+> Какую вещь «изобретём» следующей? Пиши в комментариях 👇
+> #изобретения #какэтоработает #ресторан #историявещей #интересныефакты #познавательное #3dанимация #thewhydept
+
+**🇺🇸 Description (EN, v2):**
+> You're starving on the road and all you see are strangers' doors. A pot of stew, a coin, one long table… then problem after problem: latecomers get nothing, the table is too crowded, the stove burns everything, guests fight over the bill. Fix them one by one and you end up with something you visit every week 🍲
+> What should we "invent" next? Tell us in the comments 👇
+> #inventions #howitworks #restaurant #historyofthings #funfacts #learnontiktok #3danimation #thewhydept
