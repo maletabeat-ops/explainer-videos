@@ -23,7 +23,8 @@ const CamRig: React.FC<{cam: Cam}> = ({cam}) => {
 const Std: React.FC<{c: string; e?: number; r?: number; m?: number; o?: number}> = ({c, e = 0, r = 0.7, m = 0, o = 1}) => <meshStandardMaterial color={c} emissive={c} emissiveIntensity={e} roughness={r} metalness={m} transparent={o < 1} opacity={o} />;
 const WOOD = '#c48a5c', WOOD2 = '#8f5a38', WALL = '#d0705a', FLOOR = '#b98457';
 
-export type Show = {roof: number; pot: number; stew: number; coin: number; stools: number; table: number; dishes: number; board: number; shake: number; split: number; plates: number; smoke: number; wall: number; window: number; tray: number; prices: number; bill: number; sign: number; lamps: number; steam: number; knock: number};
+export type Extra = {slips?: number; stations?: number; icebox?: number; crate?: number; book?: number; tub?: number; tips?: number; signOn?: number};
+export type Show = Extra & {roof: number; pot: number; stew: number; coin: number; stools: number; table: number; dishes: number; board: number; shake: number; split: number; plates: number; smoke: number; wall: number; window: number; tray: number; prices: number; bill: number; sign: number; lamps: number; steam: number; knock: number};
 // long table pieces → small tables
 const SMALL: [number, number][] = [[-1.05, -0.55], [1.05, -0.55], [-1.05, 1.45], [1.05, 1.45]];
 const LONGZ = [-1.2, -0.2, 0.8, 1.8];
@@ -171,7 +172,7 @@ export const Restaurant3D: React.FC<{w: number; h: number; t: number; cam: Cam; 
 					<mesh position={[-0.35, 0.3, 0]}><boxGeometry args={[0.04, 0.25, 0.04]} /><Std c="#2a2a2e" /></mesh>
 					<mesh position={[0.35, 0.3, 0]}><boxGeometry args={[0.04, 0.25, 0.04]} /><Std c="#2a2a2e" /></mesh>
 					<mesh position={[0, 0, 0]}><boxGeometry args={[1.5, 0.6, 0.06]} /><Std c="#2a1418" /></mesh>
-					<mesh position={[0, 0, 0.035]}><planeGeometry args={[1.38, 0.48]} /><meshBasicMaterial map={s.lamps > 0.5 ? texOn : texQ} transparent opacity={0.6 + 0.4 * s.lamps} /></mesh>
+					<mesh position={[0, 0, 0.035]}><planeGeometry args={[1.38, 0.48]} /><meshBasicMaterial map={(s.signOn ?? s.lamps) > 0.5 ? texOn : texQ} transparent opacity={0.6 + 0.4 * Math.max(s.lamps, s.sign)} /></mesh>
 				</group>
 			</group> : null}
 			{/* warm street lamps glow at the end */}
@@ -179,6 +180,33 @@ export const Restaurant3D: React.FC<{w: number; h: number; t: number; cam: Cam; 
 				<mesh position={[0, 1.3, 0]}><cylinderGeometry args={[0.04, 0.05, 2.6, 8]} /><Std c="#2a2a2e" /></mesh>
 				<mesh position={[0, 2.65, 0]}><sphereGeometry args={[0.13, 12, 12]} /><meshBasicMaterial color="#ffd27a" transparent opacity={clamp(s.lamps)} /></mesh>
 			</group>) : null}
+			{/* LONG-FORM EXTRAS */}
+			{(s.slips ?? 0) > 0 ? <group position={[0.65, 1.72, -1.47]}>
+				<mesh><boxGeometry args={[1.3, 0.03, 0.03]} /><meshStandardMaterial color="#c9c3bd" metalness={0.7} roughness={0.3} /></mesh>
+				{Array.from({length: 6}).map((_, i) => {const k = clamp((s.slips ?? 0) * 6 - i); return k > 0 ? <mesh key={'sl' + i} position={[-0.55 + i * 0.22, -0.11, 0.02]} rotation={[0, 0, (i % 2 ? 0.06 : -0.05)]} scale={eout(k)}><planeGeometry args={[0.16, 0.2]} /><meshBasicMaterial color="#fffaf0" side={THREE.DoubleSide} /></mesh> : null;})}
+			</group> : null}
+			{(s.stations ?? 0) > 0 ? [[-0.6, -2.0, '#ff7a4a'], [0.9, -2.15, '#ffd27a'], [1.3, -1.45, '#8fe388']].map(([x, z, col]: any, i) => <mesh key={'stn' + i} position={[x, 1.45 + 0.05 * Math.sin(t * 2 + i), z]} rotation={[-Math.PI / 2, 0, 0]} scale={eout(clamp((s.stations ?? 0) * 3 - i))}><torusGeometry args={[0.36, 0.045, 12, 48]} /><meshBasicMaterial color={col} /></mesh>) : null}
+			{(s.icebox ?? 0) > 0 ? <group position={[-1.65, 0, -2.7]} scale={eout(clamp(s.icebox ?? 0))}>
+				<mesh position={[0, 0.35, 0]}><boxGeometry args={[0.5, 0.6, 0.5]} /><Std c={WOOD} /></mesh>
+				{Array.from({length: 6}).map((_, i) => <mesh key={'ice' + i} position={[-0.13 + (i % 3) * 0.13, 0.7 + Math.floor(i / 3) * 0.08, -0.06 + Math.floor(i / 3) * 0.1]} rotation={[0.3 * i, 0.5 * i, 0]}><boxGeometry args={[0.12, 0.1, 0.12]} /><meshStandardMaterial color="#cfefff" emissive="#9fdcff" emissiveIntensity={0.35} transparent opacity={0.85} roughness={0.1} /></mesh>)}
+			</group> : null}
+			{(s.crate ?? 0) > 0 ? <group position={[-2.6, 0, -2.2 + (1 - eout(clamp(s.crate ?? 0))) * 2]} >
+				<mesh position={[0, 0.2, 0]}><boxGeometry args={[0.6, 0.35, 0.45]} /><Std c="#d6a46a" /></mesh>
+				{[['#ff6a3d', -0.15, 0], ['#8fe388', 0.05, 0.08], ['#ffe08a', 0.18, -0.08], ['#ff6a3d', 0.0, -0.1], ['#fff6ec', -0.12, 0.1]].map(([col, x, z]: any, i) => <mesh key={'veg' + i} position={[x, 0.42, z]}><sphereGeometry args={[0.09, 12, 12]} /><Std c={col} /></mesh>)}
+			</group> : null}
+			{(s.book ?? 0) > 0 ? <group position={[0.85, 0, 2.05]} scale={eout(clamp(s.book ?? 0))}>
+				<mesh position={[0, 0.5, 0]}><cylinderGeometry args={[0.04, 0.06, 1.0, 10]} /><Std c={WOOD2} /></mesh>
+				<mesh position={[0, 1.02, 0]} rotation={[-0.5, 0, 0]}><boxGeometry args={[0.42, 0.04, 0.3]} /><Std c={WOOD2} /></mesh>
+				<mesh position={[0, 1.06, 0.01]} rotation={[-0.5, 0, 0]}><boxGeometry args={[0.38, 0.05, 0.26]} /><Std c="#8a2f45" /></mesh>
+				<mesh position={[0, 1.09, 0.02]} rotation={[-0.5, 0, 0]}><planeGeometry args={[0.34, 0.22]} /><meshBasicMaterial color="#fffaf0" side={THREE.DoubleSide} /></mesh>
+			</group> : null}
+			{(s.tub ?? 0) > 0 ? <group position={[-1.65, 0, -1.95]} scale={eout(clamp(s.tub ?? 0))}>
+				<mesh position={[0, 0.3, 0]}><boxGeometry args={[0.5, 0.5, 0.42]} /><Std c={WOOD} /></mesh>
+				<mesh position={[0, 0.56, 0]}><boxGeometry args={[0.42, 0.04, 0.34]} /><meshStandardMaterial color="#9fdcff" emissive="#9fdcff" emissiveIntensity={0.3} /></mesh>
+				{[0, 1, 2, 3].map((i) => <mesh key={'pl' + i} position={[-0.12 + i * 0.08, 0.72, -0.12]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[0.13, 0.13, 0.015, 18]} /><Std c="#f6efe6" /></mesh>)}
+				{[0, 1, 2].map((k) => {const q = (t * 0.6 + k / 3) % 1; return <mesh key={'bub' + k} position={[0.1 - k * 0.08, 0.6 + q * 0.4, 0.05]} scale={0.03 + q * 0.04}><sphereGeometry args={[1, 8, 8]} /><meshBasicMaterial color="#ffffff" transparent opacity={0.5 * (1 - q)} /></mesh>;})}
+			</group> : null}
+			{(s.tips ?? 0) > 0 ? [0, 1, 2].map((i) => <mesh key={'tip' + i} position={[-1.05 + 0.3, 0.83 + i * 0.02 + (1 - eout(clamp((s.tips ?? 0) * 3 - i))) * 0.6, -0.55 + 0.25]}><cylinderGeometry args={[0.07, 0.07, 0.02, 18]} /><meshStandardMaterial color="#ffd27a" emissive="#ffb347" emissiveIntensity={0.5} metalness={0.9} roughness={0.25} /></mesh>) : null}
 		</ThreeCanvas>
 	);
 };

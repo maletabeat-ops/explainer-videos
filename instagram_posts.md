@@ -741,3 +741,35 @@ Would you still open a café after watching this, or just brew at home? 👇
 > You're starving on the road and all you see are strangers' doors. A pot of stew, a coin, one long table… then problem after problem: latecomers get nothing, the table is too crowded, the stove burns everything, guests fight over the bill. Fix them one by one and you end up with something you visit every week 🍲
 > What should we "invent" next? Tell us in the comments 👇
 > #inventions #howitworks #restaurant #historyofthings #funfacts #learnontiktok #3danimation #thewhydept
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:52)
+**Video:** `restaurant_LONG_EN.mp4` · **Thumbnail:** `thumb_restaurant_LONG.png`
+
+**Title:** You're Starving on the Road. Fix 15 Problems and You'll Invent Something You Use Every Week
+
+**Description:**
+```
+You've been walking since sunrise, your stomach is empty, and every door is closed. All you have is a few coins. So you knock on a stranger's door… and then you solve one problem after another: the pot runs dry, guests hate stew, strangers fight at the long table, the roast burns while you serve, orders get mixed up, food goes bad, nobody knows who pays what. Fifteen fixes later, you've built something you probably visit every single week. Can you guess what it is before the end?
+
+0:00 Hungry on the road
+0:32 A coin for a bowl
+1:08 A house by the road
+1:36 The pot runs dry
+2:14 What is there to eat?
+2:41 The long table
+3:14 You can't be in two places
+3:48 The forgotten orders
+4:20 One cook, too many dishes
+4:57 The food goes bad
+5:32 Who pays what?
+6:04 The crowd at the door
+6:32 Mountains of dishes
+7:06 Why come back?
+7:41 Nobody can find you
+8:09 Look what you built
+
+#inventions #howitworks #historyofthings #3danimation #thewhydept
+```
+
+**Pinned comment:**
+> 📌 At which step did you figure out what we were building? Be honest 👇

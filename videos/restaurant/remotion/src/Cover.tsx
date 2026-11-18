@@ -16,3 +16,13 @@ export const CoverShort: React.FC<{lang: 'ru' | 'en'}> = ({lang}) => {
 		</AbsoluteFill>
 	);
 };
+export const Thumb: React.FC = () => (
+	<AbsoluteFill style={{background: C.navy}}>
+		<Restaurant3D w={1280} h={720} t={2} cam={{p: [3.2, 5.0, 9.5], l: [-3.6, 0.9, 0.9]}} show={{...FULL, signOn: 0}} signText="RESTAURANT" />
+		<AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(30,20,32,.85) 0%, rgba(30,20,32,0) 55%)'}} />
+		<At x={330} y={170}><Pill text="FROM SCRATCH" bg={C.amber} size={34} /></At>
+		<At x={330} y={300}><Title text="INVENT IT" col={C.white} size={96} /></At>
+		<At x={330} y={410}><Title text="IN 15 STEPS" col={C.amber} size={86} glow={C.amber} /></At>
+		<At x={330} y={540}><Title text="Can you guess it?" col={C.white} size={42} /></At>
+	</AbsoluteFill>
+);

@@ -1,0 +1,255 @@
+[
+ {
+  "s": 1,
+  "title": "Hungry on the road",
+  "tts": "You've been walking since sunrise. Your legs ache, your water is gone, and your stomach has been growling for hours. Behind you, sixty miles of dusty road. Ahead of you, a hundred more. Every door you pass is closed. You have a few coins in your pocket, and nothing to spend them on. Food is something people make at home, for their own family. So you do the only thing you can think of. You walk up to the next house, the one with smoke coming out of the chimney, and you knock.",
+  "keys": {
+   "walking": "walking since sunrise",
+   "growling": "growling",
+   "sixty": "sixty miles",
+   "closed": "Every door you pass is closed",
+   "coins0": "a few coins",
+   "home": "for their own family",
+   "smoke": "smoke coming out",
+   "knock": "you knock"
+  }
+ },
+ {
+  "s": 2,
+  "title": "A coin for a bowl",
+  "tts": "A woman opens the door. Behind her, over the fire, a huge iron pot of stew is bubbling, enough for her whole family and then some. You hold out a coin. A minute later you're sitting at her table with a hot bowl in your hands. And here's the thing: the next day, another traveler knocks. Then two more. Soon there are ten strangers at her table every evening, and her little coin box is filling up faster than anything her farm ever earned. And that gives you an idea. What if you did this on purpose?",
+  "keys": {
+   "woman": "A woman opens",
+   "pot": "iron pot of stew",
+   "holdcoin": "You hold out a coin",
+   "bowl": "hot bowl",
+   "nextday": "the next day",
+   "ten": "ten strangers",
+   "coinbox": "coin box",
+   "idea": "gives you an idea",
+   "purpose": "on purpose"
+  }
+ },
+ {
+  "s": 3,
+  "title": "A house by the road",
+  "tts": "So you build your own house, right next to the road, where every traveler has to walk past. Inside, you keep it simple. One big hearth. One big pot. And one long table with benches on both sides, so as many people as possible can squeeze in. Every morning you cook a giant pot of stew, and every evening tired travelers pour in through the door, drop a coin, and get a bowl. But the more people come, the more problems you discover.",
+  "keys": {
+   "build": "build your own house",
+   "rightnext": "right next to the road",
+   "hearth": "One big hearth",
+   "bigpot": "One big pot",
+   "longtable": "one long table",
+   "benches": "benches",
+   "morning": "Every morning",
+   "pour": "pour in",
+   "problems": "more problems"
+  }
+ },
+ {
+  "s": 4,
+  "title": "Problem: the pot runs dry",
+  "tts": "The first problem shows up at nine o'clock one evening. A family arrives, exhausted, and you have to tell them: sorry, the pot is empty. Everyone who came early ate it all. They leave hungry, and they'll never come back. And some people who do arrive in time simply hate stew. They want bread and cheese, or meat, or something sweet. So you change the plan. Instead of one giant pot, you cook several different dishes in the morning: a soup, a roast, a pie, maybe some bread and cheese. More choice, and when one dish runs out, there's still something else to eat.",
+  "keys": {
+   "nine": "nine o'clock",
+   "empty": "the pot is empty",
+   "hungryleave": "They leave hungry",
+   "hatestew": "hate stew",
+   "cheese": "bread and cheese",
+   "changeplan": "change the plan",
+   "several": "several different dishes",
+   "roast": "a roast",
+   "runsout": "when one dish runs out"
+  }
+ },
+ {
+  "s": 5,
+  "title": "Problem: what is there to eat?",
+  "tts": "But now every single guest asks the same question: so, what do you have today? You explain it once, twice, fifty times a night, and your voice is gone by dinner. So you hang a dark board on the wall by the entrance, and every morning you write the day's dishes on it in chalk. Now guests can read it, think, and choose before they even sit down. Without realizing it, you've just made a list of everything you offer.",
+  "keys": {
+   "askq": "what do you have today",
+   "fifty": "fifty times",
+   "voicegone": "your voice is gone",
+   "darkboard": "a dark board",
+   "chalk": "in chalk",
+   "choose": "and choose",
+   "list": "a list of everything"
+  }
+ },
+ {
+  "s": 6,
+  "title": "Problem: the long table",
+  "tts": "The next problem is the long table itself. Strangers are packed shoulder to shoulder. They bump elbows, they reach across each other, they grab the best pieces from the shared bowls. A couple wants to talk without twenty people listening. Fights break out. So one morning, you take a saw and cut the long table into small tables, each with a couple of seats. Every group gets its own table. Every guest gets their own plate and their own portion. Suddenly, eating out feels private, and calm.",
+  "keys": {
+   "packed": "shoulder to shoulder",
+   "elbows": "bump elbows",
+   "grab": "grab the best pieces",
+   "couple": "A couple",
+   "fights": "Fights break out",
+   "saw": "take a saw",
+   "smalltables": "small tables",
+   "ownplate": "their own plate",
+   "private": "feels private"
+  }
+ },
+ {
+  "s": 7,
+  "title": "Problem: you can't be in two places",
+  "tts": "Now there's a new problem, and it's you. You're cooking at the fire, and a guest is waving for more bread. You run to the table, and behind you, the roast starts to burn. The whole room is full of smoke and noise. So you build a wall. Behind it, a kitchen, where food is only cooked. In front of it, a dining room, where food is only eaten. And you cut a window in the wall, so plates can pass from one side to the other. Then you hire a helper, whose only job is to carry food out and bring empty plates back.",
+  "keys": {
+   "itsyou": "it's you",
+   "waving": "waving for more bread",
+   "burn7": "starts to burn",
+   "smokenoise": "smoke and noise",
+   "wall": "you build a wall",
+   "kitchen": "a kitchen",
+   "dining": "a dining room",
+   "window": "cut a window",
+   "helper": "hire a helper",
+   "carry": "carry food out"
+  }
+ },
+ {
+  "s": 8,
+  "title": "Problem: the forgotten orders",
+  "tts": "Your helper is fast, but there's a limit to what anyone can remember. Table three wants two soups and a pie. Table five wants the roast, but without the onions. By the time the helper reaches the kitchen, half of it is mixed up, and the wrong food goes to the wrong people. So you give the helper a stack of paper slips. Every order gets written down, with the table number at the top, and pinned in a row above the kitchen window. The first slip is cooked first. Nothing gets forgotten, and nobody gets someone else's dinner.",
+  "keys": {
+   "remember": "what anyone can remember",
+   "table3": "Table three",
+   "onions": "without the onions",
+   "mixed": "mixed up",
+   "slips": "paper slips",
+   "writtendown": "written down",
+   "tablenum": "table number",
+   "pinned": "pinned in a row",
+   "firstslip": "The first slip"
+  }
+ },
+ {
+  "s": 9,
+  "title": "Problem: one cook, too many dishes",
+  "tts": "Now the orders come in clearly, but they come in all at once. At seven in the evening, twenty slips are hanging in the window, and you're alone at the stove, chopping, frying, baking and plating at the same time. So you split the kitchen into stations. One cook stands at the fire and only does meat. Another only does soups and sauces. A third only does bread and desserts. And every morning, before the first guest arrives, everyone chops, measures and prepares everything they'll need, so during the rush, they only have to cook. The kitchen now works like a machine.",
+  "keys": {
+   "allatonce": "all at once",
+   "twenty": "twenty slips",
+   "alone": "you're alone at the stove",
+   "stations": "into stations",
+   "meat": "only does meat",
+   "sauces": "soups and sauces",
+   "desserts": "bread and desserts",
+   "prepares": "prepares everything",
+   "machine": "works like a machine"
+  }
+ },
+ {
+  "s": 10,
+  "title": "Problem: the food goes bad",
+  "tts": "Cooking so much means buying a lot of food, and food doesn't wait. In summer, the meat starts to smell by the second day, the milk turns sour, the vegetables go soft. You're throwing away money every week. So you dig a cellar under the kitchen floor, where it's always cool, and you fill a big wooden box with ice to keep the meat and milk cold. And instead of buying huge amounts once a month, you make a deal with the farmers nearby: every morning, they bring you fresh vegetables, eggs and meat, just as much as you need for the day.",
+  "keys": {
+   "doesntwait": "food doesn't wait",
+   "smell": "starts to smell",
+   "sour": "milk turns sour",
+   "throwing": "throwing away money",
+   "cellar": "dig a cellar",
+   "icebox": "wooden box with ice",
+   "deal": "make a deal",
+   "farmers": "farmers nearby",
+   "fresh": "fresh vegetables"
+  }
+ },
+ {
+  "s": 11,
+  "title": "Problem: who pays what?",
+  "tts": "Then come the arguments about money. One guest ate a bowl of soup. Another ate soup, a roast, a pie, and drank half a jug of wine. And at the end of the night, they both put down the same coin. It's not fair to the first guest, and it's ruining you with the second. So next to every dish on your board, you write a price. And when a table is finished, the helper adds up everything they ordered on a little piece of paper and brings it over. Everyone pays exactly for what they ate, no more, no less, and nobody argues.",
+  "keys": {
+   "arguments": "arguments about money",
+   "jug": "half a jug of wine",
+   "samecoin": "the same coin",
+   "notfair": "not fair",
+   "price": "you write a price",
+   "addsup": "adds up everything",
+   "littlepaper": "little piece of paper",
+   "exactly": "pays exactly"
+  }
+ },
+ {
+  "s": 12,
+  "title": "Problem: the crowd at the door",
+  "tts": "Word spreads, and on Saturdays, the whole town wants to come at the same time. People crowd at the door, waiting for a table, getting angry, and some just give up and leave. So you put a thick book by the door. People can come by earlier, or send a message, and write their name, the day, the time, and how many seats they need. Now you know exactly how many guests are coming, how much food to buy, and the table is waiting for them when they arrive.",
+  "keys": {
+   "wordspreads": "Word spreads",
+   "saturdays": "on Saturdays",
+   "crowd": "crowd at the door",
+   "giveup": "give up and leave",
+   "thickbook": "a thick book",
+   "writename": "write their name",
+   "howmany": "how many guests",
+   "waiting12": "table is waiting"
+  }
+ },
+ {
+  "s": 13,
+  "title": "Problem: mountains of dishes",
+  "tts": "With so many guests, there's a new monster growing in the corner of your kitchen: dirty plates. Bowls, cups, pans, knives, all piling up higher and higher, until there's nothing clean left to serve on. Your cooks are washing between orders, and the food is getting slower. So you build a corner just for washing, with big tubs of hot water and racks to dry everything, and you hire one more person whose only job is to keep the plates clean and flowing back to the kitchen. Without that job, the whole place stops.",
+  "keys": {
+   "monster": "new monster",
+   "dirtyplates": "dirty plates",
+   "piling": "piling up",
+   "nothingclean": "nothing clean",
+   "slower": "getting slower",
+   "washcorner": "a corner just for washing",
+   "tubs": "tubs of hot water",
+   "onemore": "one more person",
+   "glamorous": "Without that job"
+  }
+ },
+ {
+  "s": 14,
+  "title": "Problem: why come back?",
+  "tts": "Here's a strange problem. Your food is good, but people only come when they're starving. They eat fast and leave. You want them to come back on purpose, for the evening, for the experience. So you change the room. Warm candles on every table. A little music in the corner. Your helper smiles, remembers names, and recommends the best dish of the day. Guests start lingering for hours, ordering dessert, celebrating birthdays. And many of them, on the way out, leave an extra coin on the table for the helper, as a thank you.",
+  "keys": {
+   "strange": "strange problem",
+   "starving": "when they're starving",
+   "eatfast": "eat fast and leave",
+   "experience": "for the experience",
+   "candles": "Warm candles",
+   "music": "A little music",
+   "smiles": "helper smiles",
+   "lingering": "lingering for hours",
+   "birthdays": "celebrating birthdays",
+   "extracoin": "extra coin"
+  }
+ },
+ {
+  "s": 15,
+  "title": "Problem: nobody can find you",
+  "tts": "There's one last problem. New travelers walk right past your door, because from the road, your place looks like any other house. They have no idea there's warm food, a free table, and a menu inside. So you hang a big sign above the door, with a name everyone can remember, and a lamp that burns all night, so it can be seen from far down the road. Now hungry travelers walk toward the light, just like you did on that first evening.",
+  "keys": {
+   "lastproblem": "one last problem",
+   "walkpast": "walk right past",
+   "anyother": "like any other house",
+   "bigsign": "a big sign",
+   "name15": "a name everyone can remember",
+   "lamp": "a lamp that burns all night",
+   "towardlight": "toward the light",
+   "firstevening": "that first evening"
+  }
+ },
+ {
+  "s": 16,
+  "title": "You just invented…",
+  "tts": "So let's look at what you've built. A house by the road, where anyone can walk in. Different dishes cooked every day, and a list of them by the door. Small tables, with a plate for every guest. A kitchen behind a wall, with cooks at their stations and orders pinned in a row. A cool cellar and fresh food from the farm every morning. Prices on every dish, a bill at the end, a book of reservations, a washing corner, candles on the tables, and a glowing sign over the door. Congratulations, you just invented the restaurant.",
+  "keys": {
+   "look": "what you've built",
+   "walkin": "anyone can walk in",
+   "listdoor": "a list of them by the door",
+   "plateeach": "a plate for every guest",
+   "behindwall": "kitchen behind a wall",
+   "cellar16": "A cool cellar",
+   "bill16": "a bill at the end",
+   "reservations": "a book of reservations",
+   "glowing": "glowing sign",
+   "congrats": "Congratulations"
+  }
+ }
+]
