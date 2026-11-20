@@ -773,3 +773,23 @@ You've been walking since sunrise, your stomach is empty, and every door is clos
 
 **Pinned comment:**
 > 📌 At which step did you figure out what we were building? Be honest 👇
+
+## 19. Овербукинг: почему продают больше билетов, чем мест
+
+**Файлы:** `overbooking_RU.mp4`, `overbooking_EN.mp4` · обложки `cover_overbooking_RU.png`, `cover_overbooking_EN.png`
+
+### 🇷🇺 RU
+**Название:** Твоё место продали дважды — и это не ошибка ✈️
+**Закреплённый комментарий:**
+> 📌 А ты бы отдал своё место за $800? Или тебя уже снимали с рейса? Расскажи 👇
+**Описание:**
+> На самолёт 180 мест, а билетов продали 189. Зачем авиакомпании продают места, которых нет, сколько платят тем, кому места не хватило, и почему это скоро может коснуться и тебя ✈️
+> #овербукинг #авиакомпании #самолёт #путешествия #какэтоработает #интересныефакты #познавательное #thewhydept
+
+### 🇺🇸 EN
+**Title:** Your Seat Was Sold Twice — And It's Not a Mistake ✈️
+**Pinned comment:**
+> 📌 Would you give up your seat for $800 — or hold out for cash? 👇
+**Description:**
+> 180 seats, 189 tickets. Why airlines sell seats that don't exist, how the gate turns into an auction, and the one thing gate agents won't push: if you're bumped against your will, you can insist on cash ✈️
+> #overbooking #airlines #travelhacks #flying #howitworks #funfacts #thewhydept

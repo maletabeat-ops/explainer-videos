@@ -1,0 +1,89 @@
+[
+ {
+  "s": 1,
+  "tts": "This plane has one hundred eighty seats. The airline sold one hundred eighty-nine tickets. And that's not a mistake.",
+  "sub": "",
+  "keys": {
+   "seats": "eighty seats",
+   "tickets": "eighty-nine",
+   "noerror": "not a mistake"
+  }
+ },
+ {
+  "s": 2,
+  "tts": "Airlines do it every single day. It's called overbooking. But why sell seats that don't exist? And how can it actually pay you? Stay till the end.",
+  "sub": "",
+  "keys": {
+   "everyday": "every single day",
+   "overbook": "overbooking",
+   "why": "don't exist",
+   "you": "pay you"
+  }
+ },
+ {
+  "s": 3,
+  "tts": "Here's the thing: on every flight, somebody doesn't show up. They're late, they're sick, they changed their plans. On average, five to fifteen percent of passengers.",
+  "sub": "",
+  "keys": {
+   "noshow": "show up",
+   "late": "late",
+   "pct": "fifteen percent"
+  }
+ },
+ {
+  "s": 4,
+  "tts": "And an empty seat is money gone forever: once the plane takes off, nobody can sell it. So a computer predicts how many people will skip this exact flight, on this day, in this season.",
+  "sub": "",
+  "keys": {
+   "empty": "empty seat",
+   "burned": "forever",
+   "computer": "computer",
+   "season": "season"
+  }
+ },
+ {
+  "s": 5,
+  "tts": "But here's the catch. Sometimes everyone shows up. And the gate turns into an auction: who'll take a later flight for a voucher? Two hundred dollars… four hundred… eight hundred.",
+  "sub": "",
+  "keys": {
+   "catch": "catch",
+   "all": "everyone shows",
+   "auction": "auction",
+   "b200": "Two hundred",
+   "b400": "four hundred",
+   "b800": "eight hundred"
+  }
+ },
+ {
+  "s": 6,
+  "tts": "In twenty seventeen, on a United flight, the bidding stopped at eight hundred. Nobody took it. So a passenger, doctor David Dao, was dragged out of his seat. The video went around the world.",
+  "sub": "",
+  "keys": {
+   "united": "United",
+   "dao": "David Dao",
+   "dragged": "dragged",
+   "world": "around the world"
+  }
+ },
+ {
+  "s": 7,
+  "tts": "After the scandal, United raised its offer to up to ten thousand dollars. And by federal law, if you're bumped against your will, you're owed up to two thousand one hundred fifty dollars.",
+  "sub": "",
+  "keys": {
+   "k10": "ten thousand",
+   "law": "federal law",
+   "k2150": "two thousand one"
+  }
+ },
+ {
+  "s": 8,
+  "tts": "Now here's what nobody tells you. That money is cash, not a voucher. Offered a voucher instead? You can say no and insist on a check. Most people just take the voucher.",
+  "sub": "",
+  "keys": {
+   "secret": "nobody tells you",
+   "cash": "cash",
+   "check": "a check",
+   "most": "Most people"
+  }
+ }
+]
