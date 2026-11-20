@@ -20,3 +20,15 @@ export const CoverShort: React.FC<{lang: 'ru' | 'en'}> = ({lang}) => {
 		</AbsoluteFill>
 	);
 };
+
+export const Thumb: React.FC = () => (
+	<AbsoluteFill>
+		<RunwayBg w={1280} h={720} />
+		<At x={1000} y={290} rot={-6}><Pass w={500} seat="14C" route="JFK → LAX" name="SMITH / JOHN" label="SEAT" /></At>
+		<At x={1030} y={420} rot={4}><Pass w={500} seat="14C" route="JFK → LAX" name="YOU" label="SEAT" col={C.yellow} stamp="× 2" stampK={1} stampX="55%" stampY="20%" /></At>
+		<At x={340} y={150}><Pill text="NOBODY TELLS YOU THIS" bg={C.red} fg="#fff" size={30} /></At>
+		<At x={340} y={280}><Title text="YOUR SEAT" col={C.white} size={88} /></At>
+		<At x={340} y={385}><Title text="SOLD TWICE" col={C.yellow} size={88} glow={C.yellow} /></At>
+		<At x={340} y={520}><Badge text="…and it can pay you up to $2,150" col={C.green} size={32} /></At>
+	</AbsoluteFill>
+);

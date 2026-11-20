@@ -134,10 +134,10 @@ export const Doc: React.FC<{w: number; head: string; lines: string[]; stamp: str
 );
 
 // ---------- voucher / check cards ----------
-export const Ticket: React.FC<{w: number; title: string; big: string; col: string; cross?: number; glow?: number}> = ({w, title, big, col, cross = 0, glow = 0}) => (
+export const Ticket: React.FC<{w: number; title: string; big: string; col: string; cross?: number; glow?: number; bigSize?: number}> = ({w, title, big, col, cross = 0, glow = 0, bigSize = 74}) => (
 	<div style={{position: 'relative', width: w, padding: '26px 30px', borderRadius: 24, background: 'rgba(8,14,26,.92)', border: `4px solid ${col}`, boxShadow: `0 0 ${20 + 40 * glow}px ${col}${glow > 0.5 ? 'cc' : '55'}`, boxSizing: 'border-box', textAlign: 'center'}}>
 		<div style={{fontFamily: DISPLAY, fontWeight: 800, fontSize: 34, color: C.mute}}>{title}</div>
-		<div style={{fontFamily: DISPLAY, fontWeight: 900, fontSize: 74, color: col, lineHeight: 1.1}}>{big}</div>
+		<div style={{fontFamily: DISPLAY, fontWeight: 900, fontSize: bigSize, color: col, lineHeight: 1.1, whiteSpace: 'nowrap'}}>{big}</div>
 		{cross > 0 ? <svg width={w} height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={{position: 'absolute', inset: 0}}><line x1="6" y1="90" x2={6 + 88 * clamp(cross)} y2={90 - 80 * clamp(cross)} stroke={C.red} strokeWidth="5" strokeLinecap="round" /></svg> : null}
 	</div>
 );

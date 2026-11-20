@@ -28,7 +28,7 @@ export const Win: React.FC<{a: number; b: number; children: React.ReactNode; las
 export const sfx = (src: string, at: number, vol: number, key: string) => <Sequence key={key} from={Math.max(0, Math.round(at * FPS))} layout="none"><Audio src={staticFile('sfx/' + src)} volume={vol} /></Sequence>;
 const money = (v: number, lang: string) => '$' + (lang === 'ru' ? Math.round(v).toLocaleString('ru-RU').replace(/ /g, ' ') : Math.round(v).toLocaleString('en-US'));
 
-const Seat: React.FC<{size: number; burn: number}> = ({size, burn}) => (
+export const Seat: React.FC<{size: number; burn: number}> = ({size, burn}) => (
 	<svg width={size} height={size * 1.1} viewBox="0 0 100 110" style={{filter: `drop-shadow(0 0 ${40 * burn}px #ff6a1e)`}}>
 		<rect x="18" y="4" width="64" height="66" rx="16" fill={burn > 0.5 ? '#4a4f5c' : C.cyan} opacity={1 - 0.6 * clamp((burn - 0.5) * 2)} />
 		<rect x="10" y="64" width="80" height="26" rx="10" fill={burn > 0.5 ? '#3a3f4c' : '#2fb8e0'} opacity={1 - 0.6 * clamp((burn - 0.5) * 2)} />
@@ -36,7 +36,7 @@ const Seat: React.FC<{size: number; burn: number}> = ({size, burn}) => (
 		<rect x="40" y="90" width="20" height="18" fill="#26324a" />
 	</svg>
 );
-const Plane: React.FC<{size: number}> = ({size}) => (
+export const Plane: React.FC<{size: number}> = ({size}) => (
 	<svg width={size} height={size} viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="#e9eef7" /></svg>
 );
 

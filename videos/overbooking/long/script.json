@@ -1,0 +1,249 @@
+[
+ {
+  "s": 1,
+  "title": "Sold twice",
+  "tts": "This plane has one hundred eighty seats. The airline sold one hundred eighty-nine tickets. Nobody made a typo, and no computer crashed. It happens on purpose, on thousands of flights, every single day. It even has a name: overbooking. And if you fly often enough, one day the seat printed on your boarding pass will also be printed on somebody else's. In the next few minutes, I'll show you three secrets airlines don't advertise. Why selling seats that don't exist actually makes sense. Who gets kicked off first when it goes wrong. And how, if it ever happens to you, you can walk away with a lot more than an apology.",
+  "keys": {
+   "a_seats": "eighty seats",
+   "a_tickets": "eighty-nine tickets",
+   "a_purpose": "on purpose",
+   "a_name": "overbooking",
+   "a_twice": "somebody else's",
+   "a_three": "three secrets",
+   "a_why": "makes sense",
+   "a_who": "kicked off first",
+   "a_pay": "a lot more"
+  }
+ },
+ {
+  "s": 2,
+  "title": "The people who never show up",
+  "tts": "Let's start with the strangest fact. On almost every flight, somebody who bought a ticket simply doesn't show up. They oversleep. They get stuck in traffic. They catch the flu, or their meeting gets cancelled, or they booked two flights just in case and only take one. Depending on the route and the season, airlines see somewhere between five and fifteen percent of passengers vanish like this. On a hundred-eighty-seat plane, that can be more than twenty empty seats. Now think about what an empty seat really is. A shop can sell a sweater tomorrow. A plane can't. The second that door closes, every empty seat on board is gone forever. It flew across the country carrying nothing but air.",
+  "keys": {
+   "b_noshow": "doesn't show up",
+   "b_sleep": "oversleep",
+   "b_traffic": "traffic",
+   "b_flu": "flu",
+   "b_two": "two flights",
+   "b_pct": "fifteen percent",
+   "b_twenty": "twenty empty",
+   "b_sweater": "sweater",
+   "b_gone": "gone forever",
+   "b_air": "nothing but air"
+  }
+ },
+ {
+  "s": 3,
+  "title": "The forecasting machine",
+  "tts": "So airlines fight back with math. Every big carrier runs what's called a revenue management system, a forecasting machine fed with years of history. It knows how many people skipped this exact flight last Tuesday, and the Tuesday before that. It knows that business routes on Monday morning behave differently from beach flights in August. It knows that people on cheap, non-refundable fares almost always show up, while people on flexible tickets disappear far more often. Put all of that together and the machine makes a bet. On this flight, about nine people won't come. So instead of selling one hundred eighty seats, it sells one hundred eighty-nine. If the forecast is right, the plane leaves full, nobody notices, and the airline just earned nine extra fares. But a forecast is still a guess. And sometimes, everybody shows up.",
+  "keys": {
+   "c_math": "math",
+   "c_rm": "revenue management",
+   "c_tuesday": "last Tuesday",
+   "c_monday": "Monday morning",
+   "c_beach": "beach flights",
+   "c_cheap": "non-refundable",
+   "c_flex": "flexible tickets",
+   "c_bet": "makes a bet",
+   "c_nine": "about nine",
+   "c_sells": "it sells",
+   "c_full": "leaves full",
+   "c_guess": "still a guess",
+   "c_everyone": "everybody shows"
+  }
+ },
+ {
+  "s": 4,
+  "title": "The man who sued",
+  "tts": "For a long time, airlines kept this practice quiet. Then, in April of nineteen seventy-two, they bumped the wrong passenger. Ralph Nader, the most famous consumer advocate in America, arrived at the airport in Washington with a confirmed reservation on an Allegheny Airlines flight to Hartford, where he was supposed to give a speech. There was no seat for him. That same month, Allegheny bumped nine hundred forty-five people. Across the country that year, it happened to around eighty-three thousand. Nader sued. A court awarded him twenty-five thousand dollars in punitive damages, and the case went all the way to the Supreme Court. Suddenly, everybody knew the secret: airlines were selling more seats than they had.",
+  "keys": {
+   "d_quiet": "quiet",
+   "d_1972": "seventy-two",
+   "d_nader": "Ralph Nader",
+   "d_alleg": "Allegheny",
+   "d_noseat": "no seat",
+   "d_945": "forty-five",
+   "d_83k": "eighty-three thousand",
+   "d_sued": "Nader sued",
+   "d_25k": "twenty-five thousand",
+   "d_court": "Supreme Court",
+   "d_secret": "knew the secret"
+  }
+ },
+ {
+  "s": 5,
+  "title": "An economist's idea",
+  "tts": "The fix came from an economist named Julian Simon. Back in nineteen sixty-eight, he had published a short paper with a playful title: An Almost Practical Solution to Airline Overbooking. His idea was simple. Instead of picking victims at random, why not ask? Some passengers are in a hurry. Others would happily wait a few hours if the price was right. So let the airline run a little auction and pay whoever is willing to give up a seat for the least. For years, nobody listened. Then, in nineteen seventy-eight, American regulators adopted a version of it: before bumping anyone against their will, airlines had to ask for volunteers first. That rule is still why, today, a gate agent picks up a microphone and starts making offers.",
+  "keys": {
+   "e_simon": "Julian Simon",
+   "e_1968": "sixty-eight",
+   "e_title": "Almost Practical",
+   "e_ask": "why not ask",
+   "e_hurry": "in a hurry",
+   "e_wait": "happily wait",
+   "e_auction": "little auction",
+   "e_least": "for the least",
+   "e_nobody": "nobody listened",
+   "e_1978": "seventy-eight",
+   "e_vol": "volunteers first",
+   "e_mic": "microphone"
+  }
+ },
+ {
+  "s": 6,
+  "title": "The auction at the gate",
+  "tts": "You've probably heard it. This flight is oversold, and we're looking for volunteers. In exchange, we're offering a seat on a later flight and a two-hundred-dollar travel voucher. Silence. Make that four hundred. A few people look up from their phones. Six hundred. Eight hundred. Somebody stands up. And this works remarkably well. In twenty twenty-four, U.S. airlines convinced around two hundred ninety thousand passengers to give up their seats voluntarily, while only about twenty-five thousand were bumped against their will. More than ten volunteers for every person who was forced off. Most of the time, the auction ends quietly. But not always.",
+  "keys": {
+   "f_heard": "heard it",
+   "f_oversold": "oversold",
+   "f_200": "two-hundred-dollar",
+   "f_silence": "Silence",
+   "f_400": "four hundred",
+   "f_600": "Six hundred",
+   "f_800": "Eight hundred",
+   "f_stands": "stands up",
+   "f_290": "two hundred ninety",
+   "f_25": "twenty-five thousand",
+   "f_ten": "ten volunteers",
+   "f_notalways": "not always"
+  }
+ },
+ {
+  "s": 7,
+  "title": "Flight 3411",
+  "tts": "April ninth, twenty seventeen. United Express flight three-four-one-one, Chicago to Louisville. Everyone has already boarded. Then the airline realizes it needs four seats for its own crew members, who have to get to Louisville to work another flight. The offer goes out. Four hundred dollars. Then eight hundred. Nobody moves. So the airline chooses four passengers to remove. Three of them leave. The fourth, a doctor named David Dao, says he has patients to see the next morning and refuses. Airport security officers pull him out of his seat and drag him down the aisle. Other passengers film everything on their phones. Within a day, the videos are seen by millions of people around the world.",
+  "keys": {
+   "g_date": "April ninth",
+   "g_flight": "three-four-one-one",
+   "g_boarded": "already boarded",
+   "g_crew": "own crew",
+   "g_offer": "offer goes out",
+   "g_o400": "Four hundred dollars",
+   "g_o800": "Then eight hundred",
+   "g_nobody": "Nobody moves",
+   "g_four": "four passengers",
+   "g_dao": "David Dao",
+   "g_refuses": "refuses",
+   "g_drag": "drag him",
+   "g_film": "film everything",
+   "g_millions": "millions of people"
+  }
+ },
+ {
+  "s": 8,
+  "title": "Ten thousand dollars",
+  "tts": "The backlash was enormous, and it changed the rules of the game. United settled with Dr. Dao for an amount that was never disclosed. It promised it would no longer remove passengers who were already seated, unless there was a safety issue. And it raised the maximum it would offer a volunteer to ten thousand dollars. Delta moved almost at the same time, allowing its supervisors to offer up to nearly ten thousand dollars as well. Think about that. The same seat that couldn't attract a single taker at eight hundred dollars could now be worth more than ten times as much. Airlines had learned that the cheapest volunteer is still far cheaper than one viral video.",
+  "keys": {
+   "h_backlash": "backlash",
+   "h_settled": "settled",
+   "h_seated": "already seated",
+   "h_10k": "ten thousand dollars",
+   "h_delta": "Delta",
+   "h_nearly": "nearly ten thousand",
+   "h_think": "Think about that",
+   "h_taker": "single taker",
+   "h_times": "ten times",
+   "h_viral": "viral video"
+  }
+ },
+ {
+  "s": 9,
+  "title": "Who gets bumped first",
+  "tts": "But here's the part most travelers never read. If there aren't enough volunteers, who gets picked? It's written in a long legal document called the contract of carriage, and on most airlines it isn't random. The people most likely to be bumped are the ones who checked in last, who paid the lowest fare, who don't have a seat assignment yet, and who have no frequent flyer status. Families traveling with small children and passengers with disabilities are usually protected. In other words, the cheaper and later you are, the more likely it's your name that gets called.",
+  "keys": {
+   "i_part": "never read",
+   "i_who": "who gets picked",
+   "i_contract": "contract of carriage",
+   "i_random": "isn't random",
+   "i_last": "checked in last",
+   "i_low": "lowest fare",
+   "i_noseat": "seat assignment",
+   "i_status": "frequent flyer",
+   "i_families": "Families",
+   "i_cheaper": "cheaper and later"
+  }
+ },
+ {
+  "s": 10,
+  "title": "What the law says",
+  "tts": "And if it is your name, here's what the law says. In the United States, if you're bumped against your will and the airline gets you to your destination within an hour of your original arrival, you get nothing. Between one and two hours late on a domestic flight, you're owed double your one-way fare, up to one thousand seventy-five dollars. More than two hours late, it's four times the fare, up to two thousand one hundred fifty dollars. And here's the key: that's money, not a coupon. The airline must tell you that you can take cash or a check instead of a voucher. Most people never ask.",
+  "keys": {
+   "j_law": "law says",
+   "j_hour": "within an hour",
+   "j_nothing": "get nothing",
+   "j_double": "double",
+   "j_1075": "seventy-five dollars",
+   "j_four": "four times",
+   "j_2150": "two thousand one hundred fifty",
+   "j_money": "that's money",
+   "j_check": "a check",
+   "j_never": "never ask"
+  }
+ },
+ {
+  "s": 11,
+  "title": "Around the world",
+  "tts": "Other countries play by different rules. In the European Union, compensation doesn't depend on your ticket price at all. It depends on the distance: two hundred fifty euros for short flights, four hundred for medium ones, and six hundred euros for long-haul trips. Canada pays by how late you arrive: nine hundred Canadian dollars for a delay under six hours, and up to two thousand four hundred if you're stuck for nine hours or more. And in Russia, overbooking isn't even allowed by law yet. But in the summer of twenty twenty-six, the transport ministry proposed changing that, so the same auction may soon reach Moscow too.",
+  "keys": {
+   "k_rules": "different rules",
+   "k_eu": "European Union",
+   "k_250": "two hundred fifty euros",
+   "k_400": "four hundred for",
+   "k_600": "six hundred euros",
+   "k_canada": "Canada",
+   "k_900": "nine hundred Canadian",
+   "k_2400": "two thousand four hundred",
+   "k_russia": "in Russia",
+   "k_ministry": "transport ministry",
+   "k_moscow": "Moscow"
+  }
+ },
+ {
+  "s": 12,
+  "title": "Is it getting rarer?",
+  "tts": "Here's the twist. Overbooking is still everywhere, but getting bumped against your will has become rare. Back in nineteen seventy-two, around eighty-three thousand Americans lost their seats. Today, with far more people flying, it's roughly two or three passengers out of every hundred thousand. In twenty twenty-five, Delta reported zero involuntary bumps for the entire year, while Frontier had the highest rate, about two and a half per ten thousand. The forecasting machines got smarter, and cheap non-refundable tickets mean that when people don't show up, the airline usually keeps their money anyway.",
+  "keys": {
+   "l_twist": "the twist",
+   "l_rare": "become rare",
+   "l_83": "eighty-three thousand Americans",
+   "l_today": "Today",
+   "l_ratio": "hundred thousand",
+   "l_2025": "twenty twenty-five",
+   "l_zero": "zero",
+   "l_frontier": "Frontier",
+   "l_smarter": "got smarter",
+   "l_keeps": "keeps their money"
+  }
+ },
+ {
+  "s": 13,
+  "title": "Make it pay you",
+  "tts": "So how do you turn all of this to your advantage? If you can't afford to be bumped, check in as early as possible, pick your seat in advance, and join the airline's loyalty program, even at the lowest level. But if your plans are flexible, listen for that announcement and walk up to the desk before anyone else. Don't grab the first offer. Ask for a confirmed seat on the next flight, not just a standby. Ask for meals, and a hotel if it's overnight. Check when the voucher expires and what it can be used for. And remember: if they take your seat against your will, the voucher is optional, and the check is yours.",
+  "keys": {
+   "m_adv": "your advantage",
+   "m_early": "check in as early",
+   "m_seat": "pick your seat",
+   "m_loyal": "loyalty program",
+   "m_flex": "flexible",
+   "m_desk": "walk up",
+   "m_first": "first offer",
+   "m_confirmed": "confirmed seat",
+   "m_hotel": "hotel",
+   "m_expires": "voucher expires",
+   "m_check": "the check is yours"
+  }
+ },
+ {
+  "s": 14,
+  "title": "One seat, two tickets",
+  "tts": "So the next time you hear this flight is oversold, you'll know exactly what's happening. A machine placed a bet on how many of you would stay home, and today it lost. Somewhere in the system, one seat has two names on it. The only question is which one gets to keep it, and how much the other one gets paid to let go.",
+  "keys": {
+   "n_next": "next time",
+   "n_bet": "placed a bet",
+   "n_lost": "it lost",
+   "n_two": "two names",
+   "n_keep": "keep it",
+   "n_paid": "gets paid"
+  }
+ }
+]

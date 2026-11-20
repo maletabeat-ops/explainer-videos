@@ -793,3 +793,33 @@ You've been walking since sunrise, your stomach is empty, and every door is clos
 **Description:**
 > 180 seats, 189 tickets. Why airlines sell seats that don't exist, how the gate turns into an auction, and the one thing gate agents won't push: if you're bumped against your will, you can insist on cash ✈️
 > #overbooking #airlines #travelhacks #flying #howitworks #funfacts #thewhydept
+
+### 🇺🇸 EN — YouTube long video (16:9, 8:57)
+**Video:** `overbooking_LONG_EN.mp4` · **Thumbnail:** `thumb_overbooking_LONG.png`
+
+**Title:** Your Seat Was Sold Twice — The Airline Secret That Can Pay You $2,150
+
+**Description:**
+```
+180 seats. 189 tickets. Not a typo — airlines oversell flights on purpose, every single day. In this video: why selling seats that don't exist actually makes sense, the 1972 lawsuit that exposed it, the economist who invented the gate auction, what really happened on United flight 3411, who gets bumped first, and how to walk away with cash instead of a voucher.
+
+0:00 Sold twice
+0:37 The people who never show up
+1:20 The forecasting machine
+2:10 The man who sued
+2:52 An economist's idea
+3:36 The auction at the gate
+4:16 Flight 3411
+4:59 Ten thousand dollars
+5:36 Who gets bumped first
+6:08 What the law says
+6:43 Around the world
+7:19 Is it getting rarer?
+7:53 Make it pay you
+8:28 One seat, two tickets
+
+#overbooking #airlines #travelhacks #flying #howitworks #thewhydept
+```
+
+**Pinned comment:**
+> 📌 What's the most an airline ever offered you to give up your seat? 👇
