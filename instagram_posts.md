@@ -823,3 +823,17 @@ You've been walking since sunrise, your stomach is empty, and every door is clos
 
 **Pinned comment:**
 > 📌 What's the most an airline ever offered you to give up your seat? 👇
+
+## 20. Укус комара — пиксельный луп без голоса (новый формат)
+
+**Файлы:** `mosquito_RU.mp4`, `mosquito_EN.mp4` (25,6 с, бесшовная петля) · обложки `cover_mosquito_RU.png`, `cover_mosquito_EN.png`
+
+### 🇷🇺 RU
+**Название:** Что комар оставляет внутри тебя 🦟
+**Закреплённый комментарий:**
+> 📌 Посмотри ещё раз и найди момент, когда начинается зуд 👀 Тебя комары кусают чаще других? 👇
+
+### 🇺🇸 EN
+**Title:** What a Mosquito Leaves Inside You 🦟
+**Pinned comment:**
+> 📌 Watch it again — can you spot the exact moment the itch starts? 👀 Do mosquitoes love you more than everyone else? 👇
