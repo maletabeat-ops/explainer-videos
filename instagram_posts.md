@@ -826,7 +826,7 @@ You've been walking since sunrise, your stomach is empty, and every door is clos
 
 ## 20. Укус комара — пиксельный луп без голоса (новый формат)
 
-**Файлы:** `mosquito_RU.mp4`, `mosquito_EN.mp4` (25,6 с, бесшовная петля) · обложки `cover_mosquito_RU.png`, `cover_mosquito_EN.png`
+**Файлы:** `mosquito_RU_v2.mp4`, `mosquito_EN_v2.mp4` (25,6 с, бесшовная петля) · обложки `cover_mosquito_RU.png`, `cover_mosquito_EN.png`
 
 ### 🇷🇺 RU
 **Название:** Что комар оставляет внутри тебя 🦟

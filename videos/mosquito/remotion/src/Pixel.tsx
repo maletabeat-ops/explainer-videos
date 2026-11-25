@@ -3,293 +3,353 @@ import {AbsoluteFill, continueRender, delayRender, staticFile, useCurrentFrame} 
 import {N, T} from './timeline';
 import {STR} from './strings';
 
-export const W = 180, H = 320, S = 6;
-type Ctx = CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
+// Pipeline: draw smooth vector art at 1080x1920 (scene units = 270x480, scale 4) -> downsample to 270x480
+// -> posterize with ordered dithering (pixel-art look) -> crisp pixel text/HUD -> upscale x4 nearest.
+export const W = 270, H = 480, K = 4;
+type C2 = CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
 type Lang = 'ru' | 'en';
 const clamp = (x: number, a = 0, b = 1) => Math.max(a, Math.min(b, x));
 const P = (t: number, a: number, b: number) => clamp((t - a) / (b - a));
 const eio = (k: number) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
+const eout = (k: number) => 1 - Math.pow(1 - k, 3);
 const hash = (n: number) => {const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s);};
-const hex = (c: string) => [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)];
-const mix = (a: number[], b: number[], k: number) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => (v + 0.5) / 16);
+const BG = '#11181b', GRID = '#1b272b', INK = '#0c1012', TXT = '#f4f1e8';
 
-// ---------- palette ----------
-const BG = '#11181b', GRID = '#1a262a', INK = '#0c1012', TXT = '#f4f1e8';
-const SK = {light: hex('#f6caa9'), base: hex('#eeb594'), mid: hex('#e09c7e'), shadow: hex('#c47a62'), line: hex('#9a5442')};
+// ---------------- vector helpers (scene units) ----------------
+const circle = (c: C2, x: number, y: number, r: number) => {c.beginPath(); c.arc(x, y, Math.max(0.01, r), 0, Math.PI * 2);};
+const ellipse = (c: C2, x: number, y: number, rx: number, ry: number, rot = 0) => {c.beginPath(); c.ellipse(x, y, Math.max(0.01, rx), Math.max(0.01, ry), rot, 0, Math.PI * 2);};
+const radial = (c: C2, x: number, y: number, r: number, stops: [number, string][]) => {const g = c.createRadialGradient(x, y, 0, x, y, r); stops.forEach(([o, col]) => g.addColorStop(o, col)); return g;};
+const linear = (c: C2, x0: number, y0: number, x1: number, y1: number, stops: [number, string][]) => {const g = c.createLinearGradient(x0, y0, x1, y1); stops.forEach(([o, col]) => g.addColorStop(o, col)); return g;};
+const stroke = (c: C2, pts: number[][], col: string, w: number) => {c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < pts.length - 1; i++) {const mx = (pts[i][0] + pts[i + 1][0]) / 2, my = (pts[i][1] + pts[i + 1][1]) / 2; c.quadraticCurveTo(pts[i][0], pts[i][1], mx, my);} const l = pts[pts.length - 1]; c.lineTo(l[0], l[1]); c.strokeStyle = col; c.lineWidth = w; c.lineCap = 'round'; c.lineJoin = 'round'; c.stroke();};
 
-// ---------- primitives ----------
-const rect = (c: Ctx, x: number, y: number, w: number, h: number, col: string) => {c.fillStyle = col; c.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));};
-const px = (c: Ctx, x: number, y: number, col: string) => rect(c, x, y, 1, 1, col);
-const ell = (c: Ctx, cx: number, cy: number, rx: number, ry: number, col: string) => {
-	c.fillStyle = col; const R = Math.round(ry);
-	for (let y = -R; y <= R; y++) {const s = Math.round(rx * Math.sqrt(Math.max(0, 1 - (y / (ry + 0.5)) ** 2))); c.fillRect(Math.round(cx) - s, Math.round(cy) + y, 2 * s + 1, 1);}
+const grid = (c: C2) => {c.fillStyle = BG; c.fillRect(-200, -200, W + 400, H + 400); c.fillStyle = GRID; for (let x = -192; x < W + 200; x += 16) c.fillRect(x, -200, 0.5, H + 400); for (let y = -200; y < H + 200; y += 16) c.fillRect(-200, y, W + 400, 0.5);};
+
+// ---------------- the arm (back of the left forearm + hand, top-down) ----------------
+const armPath = (c: C2, dx = 0, dy = 0) => {
+	c.beginPath();
+	const p = (x: number, y: number) => [x + dx, y + dy] as const;
+	c.moveTo(...p(84, 490));
+	c.bezierCurveTo(...p(86, 400), ...p(92, 300), ...p(100, 205));   // left edge of forearm up to wrist
+	c.bezierCurveTo(...p(101, 192), ...p(97, 182), ...p(93, 168));   // wrist -> base of thumb
+	c.bezierCurveTo(...p(78, 152), ...p(62, 128), ...p(58, 112));    // thumb outer edge
+	c.bezierCurveTo(...p(55, 102), ...p(62, 97), ...p(69, 103));     // thumb tip
+	c.bezierCurveTo(...p(78, 114), ...p(88, 124), ...p(95, 126));    // thumb inner edge back to hand
+	c.bezierCurveTo(...p(96, 110), ...p(96, 90), ...p(98, 70));      // index finger outer
+	c.bezierCurveTo(...p(99, 42), ...p(100, 22), ...p(102, 10));
+	c.bezierCurveTo(...p(104, -2), ...p(118, -2), ...p(119, 10));    // index tip
+	c.bezierCurveTo(...p(120, 30), ...p(121, 52), ...p(122, 58));
+	c.bezierCurveTo(...p(122, 30), ...p(124, 6), ...p(127, -6));     // middle finger
+	c.bezierCurveTo(...p(129, -18), ...p(144, -18), ...p(145, -6));
+	c.bezierCurveTo(...p(146, 20), ...p(146, 46), ...p(147, 56));
+	c.bezierCurveTo(...p(148, 34), ...p(150, 12), ...p(152, 2));     // ring finger
+	c.bezierCurveTo(...p(154, -10), ...p(169, -9), ...p(169, 4));
+	c.bezierCurveTo(...p(169, 28), ...p(170, 50), ...p(171, 64));
+	c.bezierCurveTo(...p(173, 50), ...p(175, 36), ...p(177, 30));    // little finger
+	c.bezierCurveTo(...p(180, 20), ...p(192, 22), ...p(192, 34));
+	c.bezierCurveTo(...p(192, 70), ...p(190, 110), ...p(186, 140));  // outer edge of hand
+	c.bezierCurveTo(...p(183, 165), ...p(176, 185), ...p(174, 205)); // wrist (ulna side)
+	c.bezierCurveTo(...p(178, 300), ...p(186, 400), ...p(190, 490));
+	c.closePath();
 };
-const line = (c: Ctx, x0: number, y0: number, x1: number, y1: number, col: string, w = 1) => {
-	x0 = Math.round(x0); y0 = Math.round(y0); x1 = Math.round(x1); y1 = Math.round(y1);
-	const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let e = dx + dy; c.fillStyle = col;
-	for (;;) {c.fillRect(x0, y0, w, w); if (x0 === x1 && y0 === y1) break; const e2 = 2 * e; if (e2 >= dy) {e += dy; x0 += sx;} if (e2 <= dx) {e += dx; y0 += sy;}}
+const drawArm = (c: C2) => {
+	// soft cast shadow
+	c.save(); c.filter = 'blur(6px)'; c.fillStyle = 'rgba(0,0,0,0.55)'; armPath(c, 12, 10); c.fill(); c.restore();
+	c.save(); armPath(c); c.clip();
+	// base + cylindrical lighting across the arm
+	c.fillStyle = linear(c, 70, 0, 200, 0, [[0, '#d88d6e'], [0.16, '#f3c3a3'], [0.38, '#f7cfb2'], [0.62, '#eeb594'], [0.85, '#d99476'], [1, '#b86e55']]); c.fillRect(0, -40, W, H + 80);
+	// hand slightly lighter on top + finger separations and shading
+	const fingers = [[110, 4, 58], [136, -10, 56], [160, -2, 64], [183, 28, 70]];
+	for (const [x, top, base] of fingers) {c.fillStyle = linear(c, x - 10, 0, x + 10, 0, [[0, 'rgba(160,80,60,0.35)'], [0.3, 'rgba(255,230,210,0.25)'], [0.7, 'rgba(255,230,210,0.05)'], [1, 'rgba(150,70,50,0.35)']]); c.fillRect(x - 11, top - 10, 22, base - top + 14);}
+	// knuckles (soft bumps) and joint creases
+	for (const [x, , base] of fingers) {c.fillStyle = radial(c, x, base + 10, 9, [[0, 'rgba(255,235,220,0.55)'], [1, 'rgba(255,235,220,0)']]); circle(c, x, base + 10, 9); c.fill();
+		for (const dy of [-18, -38]) {stroke(c, [[x - 5, base + dy], [x, base + dy + 1.5], [x + 5, base + dy]], 'rgba(150,80,60,0.55)', 0.9); stroke(c, [[x - 4, base + dy + 1.6], [x + 4, base + dy + 1.6]], 'rgba(255,225,205,0.5)', 0.7);}}
+	// extensor tendons fanning to the fingers
+	for (const [x, , base] of fingers) stroke(c, [[x, base + 14], [x * 0.55 + 140 * 0.45, 120], [137 + (x - 147) * 0.15, 168]], 'rgba(255,228,205,0.35)', 2.2);
+	// veins
+	stroke(c, [[150, 175], [158, 150], [150, 120], [158, 96]], 'rgba(150,120,160,0.28)', 2.2); stroke(c, [[120, 200], [117, 260], [124, 330], [118, 420]], 'rgba(150,120,160,0.18)', 2.6);
+	// wrist creases
+	stroke(c, [[104, 200], [130, 204], [168, 200]], 'rgba(160,85,65,0.45)', 0.9); stroke(c, [[106, 206], [134, 210], [166, 206]], 'rgba(160,85,65,0.3)', 0.8);
+	// forearm highlight & ulna bump
+	c.fillStyle = radial(c, 112, 330, 60, [[0, 'rgba(255,240,228,0.35)'], [1, 'rgba(255,240,228,0)']]); ellipse(c, 112, 330, 16, 120); c.fill();
+	c.fillStyle = radial(c, 168, 214, 10, [[0, 'rgba(255,230,210,0.5)'], [1, 'rgba(255,230,210,0)']]); circle(c, 168, 214, 10); c.fill();
+	c.restore();
+	// nails
+	const nails = [[110.5, 4, -0.02], [136.2, -9, 0], [160.5, -1, 0.02], [184.5, 30, 0.06]];
+	for (const [x, y, r] of nails) {c.fillStyle = linear(c, x, y, x, y + 14, [[0, '#f6e0da'], [1, '#e3b3a8']]); ellipse(c, x, y + 7, 5.2, 7.5, r); c.fill(); c.strokeStyle = 'rgba(150,80,65,0.7)'; c.lineWidth = 0.8; c.stroke(); c.fillStyle = 'rgba(255,255,255,0.7)'; ellipse(c, x - 1.8, y + 4, 1.2, 2.6, r); c.fill();}
+	c.fillStyle = '#f0d6cf'; ellipse(c, 63.5, 104, 4.5, 5.5, 0.9); c.fill(); c.strokeStyle = 'rgba(150,80,65,0.7)'; c.stroke();
+	// outline
+	armPath(c); c.strokeStyle = '#8a4636'; c.lineWidth = 1.3; c.stroke();
 };
-const poly = (c: Ctx, pts: number[][], col: string, w = 1) => {for (let i = 1; i < pts.length; i++) line(c, pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1], col, w);};
-const text = (c: Ctx, s: string, x: number, y: number, col = TXT, align: CanvasTextAlign = 'left', size = 8) => {
+
+// ---------------- mosquito (vector, local units, head at origin, body along +x) ----------------
+const MANG = -0.62; // body tilt (tail up-right)
+const rot = (x: number, y: number, a: number) => [x * Math.cos(a) - y * Math.sin(a), x * Math.sin(a) + y * Math.cos(a)];
+const tipLocal = [-19, 8];
+const mosquito = (c: C2, x: number, y: number, s: number, f: number, flying: boolean, fill: number, legsDown = 1) => {
+	c.save(); c.translate(x, y); c.scale(s, s); c.rotate(MANG);
+	const lw = 0.55;
+	// legs (jointed, white bands)
+	const legs: number[][][] = [
+		[[4, 1.5], [0, 8], [-6, 14 * legsDown + 4], [-12, 18 * legsDown + 6]],
+		[[6, 2], [5, 10], [2, 18 * legsDown + 2], [0, 24 * legsDown + 2]],
+		[[8, 1.5], [14, 9], [18, 17 * legsDown], [24, 22 * legsDown]],
+		[[5, -1], [2, -8], [-4, -10], [-10, -9]],
+		[[7, -1.5], [12, -9], [20, -12], [26, -10]],
+		[[8, 2], [18, 4], [28, 12 * legsDown], [34, 18 * legsDown]],
+	];
+	for (const l of legs) {stroke(c, l, '#1e1816', lw * 1.5); for (let i = 2; i < l.length; i++) {const [ax, ay] = l[i - 1], [bx, by] = l[i]; const k = 0.08; stroke(c, [[ax + (bx - ax) * 0.02, ay + (by - ay) * 0.02], [ax + (bx - ax) * (0.02 + k), ay + (by - ay) * (0.02 + k)]], '#d9d3c8', lw * 1.2);}}
+	// wings
+	const ph = flying ? Math.sin(f * 2.6) : -0.9;
+	for (const [off, al] of [[0, 0.45], [1, 0.32]] as [number, number][]) {
+		c.save(); c.translate(7, -2.5); c.rotate(-0.25 + ph * 0.55 + off * 0.18);
+		c.fillStyle = `rgba(205,232,255,${al})`; ellipse(c, 11, 0, 12, 3.2); c.fill(); c.strokeStyle = 'rgba(150,190,220,0.8)'; c.lineWidth = 0.4; c.stroke();
+		stroke(c, [[0, 0], [21, -0.8]], 'rgba(140,180,210,0.6)', 0.3); stroke(c, [[3, 0.5], [20, 1.6]], 'rgba(140,180,210,0.5)', 0.3); c.restore();
+	}
+	// abdomen
+	const segs = 7;
+	for (let i = segs - 1; i >= 0; i--) {
+		const k = i / (segs - 1); const sx = 12 + i * 2.6; const ry = (3.4 - 1.6 * k) * (1 + fill * 0.75 * Math.sin(Math.PI * Math.min(1, 0.15 + k)));
+		c.fillStyle = fill > 0.05 ? linear(c, sx, -ry, sx, ry, [[0, '#e8606a'], [0.5, '#c22a37'], [1, '#7a1220']]) : linear(c, sx, -ry, sx, ry, [[0, '#4a3f38'], [0.5, '#2b2420'], [1, '#14100e']]);
+		ellipse(c, sx, 0, 2.2, ry); c.fill();
+		c.fillStyle = fill > 0.05 ? `rgba(255,220,220,${0.5 - fill * 0.3})` : '#e9e4da'; ellipse(c, sx - 1.6, 0, 0.5, ry * 0.92); c.fill();
+	}
+	if (fill > 0.05) {c.fillStyle = 'rgba(255,255,255,0.5)'; ellipse(c, 20, -2.2 * (1 + fill * 0.5), 6, 0.6); c.fill();}
+	// thorax with lyre pattern
+	c.fillStyle = radial(c, 6, -1.5, 6, [[0, '#5a4c44'], [1, '#1e1816']]); ellipse(c, 6.5, 0, 5.2, 4.3); c.fill();
+	stroke(c, [[4, -2.5], [6, -1], [5, 1.5]], '#f2eee6', 0.55); stroke(c, [[8.5, -2.5], [7, -1], [8, 1.5]], '#f2eee6', 0.55); stroke(c, [[6.5, -3.4], [6.5, 2.8]], '#f2eee6', 0.35);
+	// head, eye, palps, antennae, proboscis
+	c.fillStyle = radial(c, -0.5, -0.5, 3.2, [[0, '#3a302c'], [1, '#120e0c']]); circle(c, 0, 0.5, 2.8); c.fill();
+	c.fillStyle = radial(c, -1, -0.2, 2, [[0, '#7a2a2a'], [1, '#2a0e0e']]); circle(c, -0.8, 0, 1.7); c.fill(); c.fillStyle = 'rgba(255,255,255,0.7)'; circle(c, -1.4, -0.6, 0.45); c.fill();
+	stroke(c, [[-1.5, -1.5], [-6, -6], [-9, -8]], '#1e1816', 0.45); stroke(c, [[-1, -2], [-4, -8], [-5, -11]], '#1e1816', 0.45);
+	for (let k = 0.3; k < 1; k += 0.2) {stroke(c, [[-1.5 - 7.5 * k, -1.5 - 6.5 * k], [-1.5 - 7.5 * k - 1.2, -1.5 - 6.5 * k + 1]], 'rgba(30,24,22,0.6)', 0.25);}
+	stroke(c, [[-2, 2], [-7, 4.5], [-10, 5]], '#2a2220', 0.6);
+	stroke(c, [[-2.2, 1.5], [tipLocal[0], tipLocal[1]]], '#1e1816', 0.75);
+	c.restore();
+};
+
+// ---------------- skin cross-section ----------------
+const SURF = 140, CAP1 = 225, CAP2 = 300, DERM_END = 345;
+const cap1 = (x: number) => CAP1 + 2.5 * Math.sin(x / 26), cap2 = (x: number) => CAP2 + 2.5 * Math.sin(x / 22 + 1);
+let FAT: number[][] | null = null, EPI: number[][] | null = null;
+const prep = () => {
+	FAT = []; let tries = 0;
+	while (FAT.length < 160 && tries < 20000) {tries++; const x = hash(tries) * (W + 40) - 20, y = DERM_END - 6 + hash(tries + 777) * 160; if (FAT.every(([a, b]) => (a - x) ** 2 + ((b - y) * 1.15) ** 2 > 19 ** 2)) FAT.push([x, y]);}
+	FAT = FAT.map(([x, y]) => {const d = Math.min(...FAT!.filter(([a, b]) => a !== x || b !== y).map(([a, b]) => Math.hypot(a - x, (b - y) * 1.15))); return [x, y, d * 0.5];});
+	EPI = []; for (let i = 0; i < 260; i++) EPI.push([hash(i * 3.1) * W, 147 + hash(i * 5.7) * 17, 2 + hash(i) * 1.5]);
+};
+type St = {bump: number; red: number; dil: number};
+const bumpAt = (x: number, st: St) => st.bump * 22 * Math.exp(-(((x - 135) / 44) ** 2));
+const layerPath = (c: C2, yTop: (x: number) => number, yBot: number) => {c.beginPath(); c.moveTo(-10, yBot); for (let x = -10; x <= W + 10; x += 3) c.lineTo(x, yTop(x)); c.lineTo(W + 10, yBot); c.closePath();};
+const drawSection = (c: C2, f: number, st: St, lang: Lang, labels: boolean) => {
+	if (!FAT) prep();
+	grid(c);
+	const lift = (x: number, y: number) => y - bumpAt(x, st) * clamp((DERM_END + 40 - y) / (DERM_END + 40 - SURF));
+	// fat (hypodermis)
+	c.fillStyle = '#b06a2c'; c.fillRect(-10, DERM_END - 10, W + 20, H);
+	for (const [x, y, r] of FAT!) {c.fillStyle = radial(c, x - r * 0.3, y - r * 0.35, r * 1.2, [[0, '#f6d27a'], [0.55, '#e8b052'], [1, '#c98634']]); ellipse(c, x, lift(x, y), r * 0.96, r * 0.86); c.fill(); c.fillStyle = 'rgba(255,245,210,0.35)'; ellipse(c, x - r * 0.35, lift(x, y) - r * 0.4, r * 0.35, r * 0.18); c.fill();}
+	// dermis
+	layerPath(c, (x) => lift(x, SURF + 24), DERM_END + 2); c.fillStyle = linear(c, 0, SURF, 0, DERM_END, [[0, '#ee9ea3'], [1, '#d97a86']]); c.fill();
+	layerPath(c, (x) => lift(x, DERM_END - 2) , DERM_END + 6); c.fillStyle = '#c56a6a'; c.fill();
+	// collagen bands
+	c.save(); layerPath(c, (x) => lift(x, SURF + 26), DERM_END); c.clip();
+	for (let k = 0; k < 15; k++) {const y0 = SURF + 34 + k * 12.5; const pts: number[][] = []; for (let x = -10; x <= W + 10; x += 12) pts.push([x, lift(x, y0 + 3 * Math.sin(x / 19 + k * 1.3))]); stroke(c, pts, k % 3 === 0 ? 'rgba(200,100,115,0.45)' : 'rgba(255,210,212,0.55)', k % 3 === 0 ? 1 : 1.6);}
+	// redness around the bite
+	if (st.red > 0) {c.fillStyle = radial(c, 135, lift(135, 215), 110, [[0, `rgba(235,70,85,${0.45 * st.red})`], [1, 'rgba(235,70,85,0)']]); c.fillRect(0, 0, W, H);}
+	c.restore();
+	// capillaries
+	for (const [cf, dil] of [[cap1, st.dil], [cap2, st.dil * 0.6]] as [(x: number) => number, number][]) {
+		const pts: number[][] = []; for (let x = -10; x <= W + 10; x += 6) pts.push([x, lift(x, cf(x))]);
+		const w0 = 11 + dil * 6; stroke(c, pts, '#6e1220', w0 + 2.4); stroke(c, pts, '#b82634', w0); stroke(c, pts, '#d8414c', w0 * 0.55); stroke(c, pts.map(([x, y]) => [x, y - w0 * 0.28]), 'rgba(255,140,140,0.55)', 1.1);
+	}
+	// flowing red blood cells
+	for (let i = 0; i < 34; i++) {const fast = 0.9 + (i % 4) * 0.18; const x = ((i * 37 + f * fast) % (W + 30)) - 15; const cf = i % 2 ? cap1 : cap2; const y = lift(x, cf(x)) + ((i % 3) - 1) * 2.2; c.fillStyle = '#e2444f'; ellipse(c, x, y, 2.6, 1.6, 0.2); c.fill(); c.fillStyle = '#a81c2a'; ellipse(c, x, y, 1.1, 0.6, 0.2); c.fill();}
+	// epidermis + stratum corneum
+	const epiTop = (x: number) => lift(x, SURF), epiBot = (x: number) => lift(x, SURF + 24 + 3 * Math.sin(x / 7));
+	c.beginPath(); c.moveTo(-10, epiBot(-10)); for (let x = -10; x <= W + 10; x += 2) c.lineTo(x, epiBot(x)); for (let x = W + 10; x >= -10; x -= 2) c.lineTo(x, epiTop(x)); c.closePath();
+	c.fillStyle = linear(c, 0, SURF, 0, SURF + 26, [[0, '#f9d9cc'], [0.25, '#f1b9aa'], [1, '#e99a98']]); c.fill();
+	c.save(); c.clip(); for (const [x, y, r] of EPI!) {c.strokeStyle = 'rgba(255,230,225,0.6)'; c.lineWidth = 0.6; ellipse(c, x, lift(x, y), r * 1.4, r); c.stroke(); c.fillStyle = 'rgba(200,120,125,0.45)'; circle(c, x, lift(x, y), 0.7); c.fill();} c.restore();
+	stroke(c, Array.from({length: 100}, (_, i) => {const x = -10 + i * 3; return [x, epiBot(x)];}), '#cf7a82', 1.2);
+	stroke(c, Array.from({length: 100}, (_, i) => {const x = -10 + i * 3; return [x, epiTop(x) + 0.4];}), '#fff0ea', 1.1);
+	stroke(c, Array.from({length: 100}, (_, i) => {const x = -10 + i * 3; return [x, epiTop(x) - 0.6];}), '#9a5a50', 0.9);
+	// nerve
+	const NP = [[20, 500], [40, 440], [64, 392], [92, 346], [118, 300], [132, 270]].map(([x, y]) => [x, lift(x, y)]);
+	if (f >= T.mastLab - 12) {c.globalAlpha = P(f, T.mastLab - 12, T.mastLab + 6); stroke(c, NP, '#7a5e16', 4.2); stroke(c, NP, '#f2d65c', 2.4); stroke(c, NP.map(([x, y]) => [x - 0.6, y - 0.4]), '#fff3b0', 0.7); for (const [dx, dy] of [[-8, -12], [8, -11], [10, 4]]) stroke(c, [[132, lift(132, 270)], [132 + dx, lift(132 + dx, 270 + dy)]], '#f2d65c', 1.4); c.globalAlpha = 1;}
+	// mast cells
+	const MC = [[92, 262], [135, 268], [180, 260]];
+	if (f >= T.salA) MC.forEach(([x0, y0], j) => {
+		const x = x0, y = lift(x0, y0); const bk = P(f, T.burst + j * 2, T.burst + j * 2 + 7);
+		if (bk < 1) {const r = 11 * (1 - 0.3 * bk); const wob = f >= T.mastLab && f < T.burst ? Math.sin(f * 0.8 + j) * 0.8 : 0;
+			c.fillStyle = radial(c, x - 3, y - 3, r * 1.3, [[0, '#c7a2f0'], [0.7, '#8e5cc8'], [1, '#5a2f86']]); ellipse(c, x + wob, y, r + 1, r); c.fill(); c.strokeStyle = '#3f1f63'; c.lineWidth = 0.9; c.stroke();
+			c.fillStyle = '#6a3a9a'; ellipse(c, x + 1 + wob, y + 1, r * 0.36, r * 0.3); c.fill();
+			for (let g = 0; g < 18; g++) {const a = g * 2.39 + j, rr = (r - 3) * Math.sqrt(hash(g * 3 + j)); c.fillStyle = '#ffe14d'; circle(c, x + wob + Math.cos(a) * rr, y + Math.sin(a) * rr * 0.9, 0.9); c.fill();}}
+		else if (f < T.burst + 34) {c.globalAlpha = 1 - P(f, T.burst + 10, T.burst + 34); c.strokeStyle = '#8e5cc8'; c.lineWidth = 1.2; for (let a = 0; a < 8; a++) {c.beginPath(); c.arc(x, y, 13 + (f - T.burst) * 0.25, a * 0.8, a * 0.8 + 0.4); c.stroke();} c.globalAlpha = 1;}
+		if (f >= T.burst + j * 2) {const fade = 1 - P(f, T.nerveB - 10, T.zoutA); for (let i = 0; i < 40; i++) {const a = hash(i * 7 + j * 31) * Math.PI * 2, v = 12 + hash(i + j * 13) * 50; const tt = eout(P(f, T.burst + j * 2, T.burst + j * 2 + 50)); const px = x + Math.cos(a) * v * tt + Math.sin(f * 0.1 + i) * 1.5, py = y + Math.sin(a) * v * 0.7 * tt; c.globalAlpha = fade; c.fillStyle = radial(c, px, py, 3, [[0, 'rgba(255,240,140,1)'], [1, 'rgba(255,225,77,0)']]); circle(c, px, py, 3); c.fill(); c.fillStyle = '#fff6a8'; circle(c, px, py, 0.8); c.fill(); c.globalAlpha = 1;}}
+	});
+	// leaking plasma
+	if (f >= T.swellA && f < T.zoutA) for (let i = 0; i < 50; i++) {const k = P(f, T.swellA + i * 0.7, T.swellA + i * 0.7 + 34); if (k <= 0) continue; const x = 85 + hash(i + 3) * 100; c.fillStyle = 'rgba(190,230,248,0.85)'; circle(c, x, lift(x, cap1(x)) - 8 - k * (18 + hash(i) * 50), 1); c.fill();}
+	// saliva cloud
+	const salFade = 1 - P(f, T.nerveB - 20, T.zoutA);
+	if (f >= T.salA && salFade > 0) {c.globalAlpha = salFade; for (let i = 0; i < 70; i++) {const born = T.salA + i * 0.45; if (f < born) continue; const a = hash(i + 7) * Math.PI * 2, r = (4 + (i % 9) * 2.6) * Math.sqrt(P(f, born, born + 26)); const x = 135 + Math.cos(a) * r * 1.5, y = lift(135, CAP1) - 6 + Math.sin(a) * r * 0.8; c.fillStyle = radial(c, x, y, 2.4, [[0, '#b8ffb0'], [1, 'rgba(80,200,90,0)']]); circle(c, x, y, 2.4); c.fill(); c.fillStyle = '#5fcf5a'; circle(c, x, y, 0.8); c.fill();} c.globalAlpha = 1;}
+	// mosquito + stylets
+	const tipD = f < T.pierceA ? 0 : f < T.pierceB ? eio(P(f, T.pierceA, T.pierceB)) : f < T.withA ? 1 : 1 - eio(P(f, T.withA, T.withB));
+	const probe = f >= T.pierceB && f < T.probeB ? Math.sin(f * 0.55) * 5 * (1 - P(f, T.probeB - 6, T.probeB)) : 0;
+	const tx = 135 + probe, ty = SURF + tipD * (CAP1 - SURF - 2);
+	const fly = eio(P(f, T.flyA, T.flyB)); const fill = P(f, T.suckA, T.suckB);
+	const S4 = 2.9; const [ox, oy] = rot(tipLocal[0] * S4, tipLocal[1] * S4, MANG); const hx = 135 - ox, hy = SURF - 2 - oy; // head so that labium tip touches skin
+	if (fly < 1) {
+		if (tipD > 0 && fly === 0) {stroke(c, [[135, SURF - 1], [tx, ty]], '#241a18', 2.2); stroke(c, [[135.6, SURF - 1], [tx + 0.6, ty]], '#8a7262', 0.6); c.fillStyle = '#241a18'; circle(c, tx, ty, 1.2); c.fill();}
+		// labium bends as stylets go in
+		mosquito(c, hx + fly * 220, hy - fly * 180, S4, f, fly > 0, fill, 0.72 - fly * 0.4);
+	}
+	// blood going up
+	if (f >= T.suckA && f < T.suckB) for (let k = 0; k < 6; k++) {const p = ((f - T.suckA) / 16 + k / 6) % 1; const yy = ty - p * (ty - SURF + 2); c.fillStyle = '#ff4a55'; ellipse(c, 135, yy, 1.2, 1.8); c.fill();}
+	// nerve signals
+	if (f >= T.nerveA && f < T.nerveB) for (let k = 0; k < 3; k++) {const p = ((f - T.nerveA) / 20 + k / 3) % 1; const seg = p * (NP.length - 1); const si = NP.length - 2 - Math.floor(seg), sk = seg % 1; const a = NP[si + 1], b = NP[si]; const xx = a[0] + (b[0] - a[0]) * sk, yy = a[1] + (b[1] - a[1]) * sk; c.fillStyle = radial(c, xx, yy, 7, [[0, 'rgba(255,255,255,1)'], [0.4, 'rgba(255,246,168,0.8)'], [1, 'rgba(255,225,77,0)']]); circle(c, xx, yy, 7); c.fill();}
+	void labels; void lang;
+};
+const sectionLabels = (c: C2, f: number, st: St, lang: Lang) => {
+	const L = STR[lang]; const surfY = (x: number) => SURF - bumpAt(x, st);
+	label(c, f, T.lab[0], T.mastLab, L.epi, 6, 112, 26, 152);
+	label(c, f, T.lab[1], T.mastLab, L.derm, 6, 186, 20, 200);
+	label(c, f, T.lab[2], T.mastLab, L.cap, 6, 318, 40, 302);
+	label(c, f, T.lab[3], T.mastLab, L.fat, 10, 404, 34, 386);
+	label(c, f, T.pierceA + 10, T.salA, L.sty, 152, 172, 138, 186);
+	if (f >= T.salA + 4 && f < T.suckA) {label(c, f, T.salA + 4, T.suckA, L.sal, 152, 176, 146, 218, '#9cf09a'); if (f >= T.salA + 16) text(c, typed(L.sal2, f, T.salA + 16), lang === 'ru' ? 160 : 152, 188, '#9cf09a');}
+	label(c, f, T.suckA + 4, T.withA, L.blood, 152, 172, 138, 186, '#ff8a8a');
+	label(c, f, T.mastLab, T.burst + 4, L.mast, lang === 'ru' ? 150 : 170, 322, 180, 270, '#d8c2ff');
+	label(c, f, T.burst + 6, T.nerveA, L.hist, 6, 322, 92, 270, '#ffe14d');
+	label(c, f, T.bumpLab, T.zoutA, L.bump, 176, 84, 150, Math.round(surfY(150)), '#ffb0a8');
+	label(c, f, T.nerveA - 4, T.zoutA, L.nerve, 62, 430, 47, 424, '#f2d65c');
+	if (f >= T.itch && f < T.nerveB) {const on = Math.floor((f - T.itch) / 4) % 2 === 0; text(c, L.itch, 135, 44, on ? '#ff4a4a' : '#ffffff', 'center', 16);}
+};
+
+// ---------------- outside view ----------------
+const SPOT = {x: 139, y: 322};
+const S_OUT = 2.0;
+const LANDH = (() => {const [ox, oy] = rot(tipLocal[0] * S_OUT, tipLocal[1] * S_OUT, MANG); return {x: SPOT.x - ox, y: SPOT.y - oy};})();
+const bumpOut = (f: number) => (f < T.zoutA ? 0 : f < T.ffA ? 1 : 1 - eio(P(f, T.ffA, T.ffB - 8)));
+const mosqOutPos = (f: number) => {
+	const inLen = N - T.inA + T.land; const u = f >= T.inA ? (f - T.inA) / inLen : f < T.land ? (f + N - T.inA) / inLen : 1;
+	const k = eio(u); return {x: 330 + (LANDH.x - 330) * k + 20 * Math.sin(u * 9) * (1 - u), y: 70 + (LANDH.y - 70) * k + 16 * Math.sin(u * 13) * (1 - u), u};
+};
+const drawOutside = (c: C2, f: number) => {
+	grid(c); drawArm(c);
+	const amp = bumpOut(f);
+	if (amp > 0) {
+		const r = 9 + 9 * amp; c.fillStyle = radial(c, SPOT.x, SPOT.y, r * 1.6, [[0, `rgba(220,80,80,${0.75 * amp})`], [0.5, `rgba(235,120,110,${0.45 * amp})`], [1, 'rgba(235,140,120,0)']]); circle(c, SPOT.x, SPOT.y, r * 1.6); c.fill();
+		c.fillStyle = radial(c, SPOT.x - 2, SPOT.y - 3, r * 0.8, [[0, `rgba(255,225,210,${0.8 * amp})`], [1, 'rgba(255,200,190,0)']]); circle(c, SPOT.x - 1, SPOT.y - 2, r * 0.7); c.fill();
+		c.fillStyle = `rgba(170,40,50,${amp})`; circle(c, SPOT.x, SPOT.y, 1.3); c.fill();
+	}
+	if (f >= T.scrA && f < T.ffB) {c.globalAlpha = 1 - P(f, T.ffA, T.ffA + 45); for (let i = 0; i < 4; i++) if (f > T.scrA + 6 + i * 8) stroke(c, [[SPOT.x - 9 + i * 4.5, SPOT.y - 9], [SPOT.x - 5 + i * 4.5, SPOT.y + 9]], 'rgba(205,60,65,0.85)', 1.1); c.globalAlpha = 1;}
+	if (f >= T.inA || f < T.zoutA - 300) {const m = mosqOutPos(f); mosquito(c, m.x, m.y, S_OUT, f, m.u < 1, 0);}
+	// scratching finger (vector)
+	if (f >= T.scrA && f < T.scrB) {
+		const k = eout(P(f, T.scrA, T.scrA + 9)) * (1 - eio(P(f, T.scrB - 9, T.scrB))); const osc = Math.sin((f - T.scrA) * 1.15) * 7;
+		const fx = SPOT.x + 4 + (1 - k) * 150, fy = SPOT.y - 2 + osc;
+		c.save(); c.filter = 'blur(3px)'; c.fillStyle = 'rgba(0,0,0,0.45)'; c.beginPath(); c.roundRect(fx + 6, fy - 6, 200, 26, 12); c.fill(); c.restore();
+		c.beginPath(); c.roundRect(fx, fy - 12, 200, 24, 12); c.fillStyle = linear(c, 0, fy - 12, 0, fy + 12, [[0, '#f8d3b6'], [0.45, '#eeb594'], [1, '#c4785e']]); c.fill(); c.strokeStyle = '#8a4636'; c.lineWidth = 1.2; c.stroke();
+		stroke(c, [[fx + 34, fy - 9], [fx + 35, fy + 9]], 'rgba(150,80,60,0.5)', 0.9); stroke(c, [[fx + 38, fy - 9], [fx + 39, fy + 9]], 'rgba(150,80,60,0.4)', 0.8);
+		c.fillStyle = linear(c, fx, 0, fx + 12, 0, [[0, '#f8e6e0'], [1, '#e2b0a4']]); ellipse(c, fx + 7, fy, 7, 8); c.fill(); c.strokeStyle = 'rgba(150,80,65,0.7)'; c.lineWidth = 0.8; c.stroke(); c.fillStyle = 'rgba(255,255,255,0.75)'; ellipse(c, fx + 4, fy - 3, 2, 1.3); c.fill();
+	}
+	if (f >= T.spark && f < T.spark + 24) {const k = Math.sin(P(f, T.spark, T.spark + 24) * Math.PI); for (const [ox, oy, sz] of [[0, 0, 8], [-14, -15, 4], [12, -9, 3.5]]) {const r = sz * k; c.fillStyle = 'rgba(255,255,255,0.95)'; c.beginPath(); c.moveTo(SPOT.x + ox - r, SPOT.y + oy); c.lineTo(SPOT.x + ox, SPOT.y + oy - r * 0.18); c.lineTo(SPOT.x + ox + r, SPOT.y + oy); c.lineTo(SPOT.x + ox, SPOT.y + oy + r * 0.18); c.fill(); c.beginPath(); c.moveTo(SPOT.x + ox, SPOT.y + oy - r); c.lineTo(SPOT.x + ox + r * 0.18, SPOT.y + oy); c.lineTo(SPOT.x + ox, SPOT.y + oy + r); c.lineTo(SPOT.x + ox - r * 0.18, SPOT.y + oy); c.fill();}}
+};
+const outsideOverlay = (c: C2, f: number, lang: Lang) => {
+	const S_ = STR[lang];
+	if (f >= T.inA || f < T.retB) {const m = mosqOutPos(f); const ff = f < T.inA ? f + N : f; label(c, ff, T.female + N, T.retB + N, S_.female, 176, 236, Math.round(m.x) + 6, Math.round(m.y) - 8, '#ffb0d0');}
+	if (f >= T.retA && f < T.zinA + 6) {const k = eio(P(f, T.retA, T.retB)); const r = Math.round(44 - 24 * k); const col = Math.floor(f / 3) % 2 ? '#7fe0d0' : '#c8fff6'; for (const [sx, sy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {const cx = SPOT.x + sx * r, cy = SPOT.y + sy * r; c.fillStyle = INK; c.fillRect(Math.min(cx, cx - sx * 7) - 1, cy - 1, 9, 3); c.fillRect(cx - 1, Math.min(cy, cy - sy * 7) - 1, 3, 9); c.fillStyle = col; c.fillRect(Math.min(cx, cx - sx * 7), cy, 8, 1); c.fillRect(cx, Math.min(cy, cy - sy * 7), 1, 8);}}
+	if (f >= T.scrA + 10 && f < T.scrB) {text(c, typed(S_.scr1, f, T.scrA + 10), 135, 404, TXT, 'center'); text(c, typed(S_.scr2, f, T.scrA + 22), 135, 416, '#ff6a6a', 'center');}
+};
+
+// ---------------- pixel text / labels (drawn on the low-res canvas) ----------------
+const text = (c: C2, s: string, x: number, y: number, col = TXT, align: CanvasTextAlign = 'left', size = 8) => {
 	c.font = `${size}px PS2P`; c.textBaseline = 'top'; c.textAlign = align; x = Math.round(x); y = Math.round(y);
 	c.fillStyle = INK; for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [1, 1], [1, -1], [-1, 1]]) c.fillText(s, x + dx, y + dy);
 	c.fillStyle = col; c.fillText(s, x, y);
 };
 const typed = (s: string, f: number, a: number) => s.slice(0, Math.max(0, Math.floor((f - a) * 1.2)));
-// label with leader line; visible in [a, b)
-const label = (c: Ctx, f: number, a: number, b: number, s: string, tx: number, ty: number, pxx: number, pyy: number, col = TXT) => {
+const pline = (c: C2, x0: number, y0: number, x1: number, y1: number, col: string, w = 1) => {
+	x0 = Math.round(x0); y0 = Math.round(y0); x1 = Math.round(x1); y1 = Math.round(y1);
+	const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let e = dx + dy; c.fillStyle = col;
+	for (;;) {c.fillRect(x0 - (w > 1 ? 1 : 0), y0 - (w > 1 ? 1 : 0), w, w); if (x0 === x1 && y0 === y1) break; const e2 = 2 * e; if (e2 >= dy) {e += dy; x0 += sx;} if (e2 <= dx) {e += dx; y0 += sy;}}
+};
+const label = (c: C2, f: number, a: number, b: number, s: string, tx: number, ty: number, px: number, py: number, col = TXT) => {
 	if (f < a || f >= b) return;
-	const k = P(f, a, a + 6); const ax = tx + (tx < pxx ? Math.min(s.length * 8, 8 * s.length) / 2 : 0);
-	const ex = Math.round(pxx + (ax - pxx) * 0), ey = pyy;
-	const lx = Math.round(ex + (tx + (tx <= pxx ? s.length * 4 : 4) - ex) * k), ly = Math.round(ey + (ty + (ty < pyy ? 9 : -2) - ey) * k);
-	line(c, ex, ey, lx, ly, INK, 2); line(c, ex, ey, lx, ly, TXT); rect(c, ex - 1, ey - 1, 3, 3, INK); px(c, ex, ey, TXT);
-	if (k >= 1) text(c, typed(s, f, a + 6), tx, ty, col);
+	const k = eout(P(f, a, a + 7)); const ex = tx + (tx <= px ? Math.min(s.length * 8, 40) : 4), ey = ty + (ty < py ? 10 : -2);
+	const lx = px + (ex - px) * k, ly = py + (ey - py) * k;
+	pline(c, px, py, lx, ly, INK, 3); pline(c, px, py, lx, ly, TXT); c.fillStyle = INK; c.fillRect(Math.round(px) - 2, Math.round(py) - 2, 5, 5); c.fillStyle = TXT; c.fillRect(Math.round(px) - 1, Math.round(py) - 1, 3, 3);
+	if (k >= 1) text(c, typed(s, f, a + 7), tx, ty, col);
 };
 
-// ---------- background grid ----------
-const grid = (c: Ctx) => {rect(c, 0, 0, W, H, BG); c.fillStyle = GRID; for (let x = 4; x < W; x += 12) c.fillRect(x, 0, 1, H); for (let y = 6; y < H; y += 12) c.fillRect(0, y, W, 1);};
-
-// ---------- the arm (cached mask + shaded image) ----------
-let ARM: ImageData | null = null;
-const fingerC = [69, 83, 97, 111], fingerTop = [8, 0, 2, 12];
-const span = (y: number): [number, number, number, number][] => {
-	const out: [number, number, number, number][] = [];
-	if (y >= 112) {const cx = 92 + (y - 112) * 0.04, hw = 25 + (y - 112) * 0.04; out.push([cx - hw, cx + hw, cx, hw]);}
-	else if (y >= 96) out.push([67, 115, 91, 24]);
-	else if (y >= 52) {const hw = 24 + (96 - y) * 0.2; out.push([90 - hw, 90 + hw, 90, hw]); if (y >= 64 && y <= 96) {const t0 = 90 - hw - 10 + (y - 64) * 0.25; out.push([t0, 90 - hw + 2, t0 + 5, 6]);}}
-	if (y < 58) fingerC.forEach((fc, i) => {const top = fingerTop[i]; if (y < top) return; const sh = Math.max(0, top + 4 - y); const hw = 6 - sh * 0.9; out.push([fc - hw, fc + hw, fc, 6]);});
-	return out;
-};
-const buildArm = () => {
-	const img = new ImageData(W, H); const m = new Uint8Array(W * H);
-	for (let y = 0; y < H; y++) for (const [a, b] of span(y)) for (let x = Math.round(a); x <= Math.round(b); x++) if (x >= 0 && x < W) m[y * W + x] = 1;
-	for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
-		if (!m[y * W + x]) continue;
-		const edge = x === 0 || x === W - 1 || y === 0 || !m[y * W + x - 1] || !m[y * W + x + 1] || !m[(y - 1) * W + x] || (y < H - 1 && !m[(y + 1) * W + x]);
-		let col = SK.base;
-		const sp = span(y).find(([a, b]) => x >= Math.round(a) - 0 && x <= Math.round(b)); const rel = sp ? (x - sp[2]) / sp[3] : 0;
-		if (rel < -0.8) col = SK.mid; else if (rel < -0.15) col = SK.light; else if (rel < 0.45) col = SK.base; else if (rel < 0.8) col = SK.mid; else col = SK.shadow;
-		if (edge) col = SK.line;
-		const i = (y * W + x) * 4; img.data[i] = col[0]; img.data[i + 1] = col[1]; img.data[i + 2] = col[2]; img.data[i + 3] = 255;
-	}
-	ARM = img;
-};
-const drawArm = (c: Ctx) => {
-	if (!ARM) buildArm();
-	// cast shadow
-	c.fillStyle = '#090c0e'; for (let y = 0; y < H; y++) for (const [a, b] of span(y)) c.fillRect(Math.round(a) + 8, y + 6, Math.round(b - a), 1);
-	const tmp = new OffscreenCanvas(W, H); tmp.getContext('2d')!.putImageData(ARM!, 0, 0); c.drawImage(tmp, 0, 0);
-	// details: nails, knuckles, wrist crease, veins
-	fingerC.forEach((fc, i) => {const t = fingerTop[i]; ell(c, fc, t + 5, 3, 3, '#c9958a'); ell(c, fc, t + 5, 2, 2, '#f3d6d0'); px(c, fc - 1, t + 4, '#fff0ec'); rect(c, fc - 3, 50, 5, 2, '#f8d6bc'); rect(c, fc + 2, 39, 1, 1, SK.mid.map(Math.round).join(',') ? '#d99478' : '#d99478');});
-	line(c, 73, 101, 82, 100, '#c98267'); line(c, 86, 100, 104, 101, '#c98267'); line(c, 86, 101, 104, 102, '#f8d0b4');
-	poly(c, [[80, 66], [83, 78], [87, 92]], '#e3a487'); poly(c, [[100, 64], [97, 77], [94, 92]], '#e3a487');
-	ell(c, 78, 140, 2, 6, '#f9d6bd'); ell(c, 80, 180, 1, 5, '#f9d6bd');
-};
-
-// ---------- mosquito sprite (s = scale, head at x,y facing down-left) ----------
-const mosq = (c: Ctx, x: number, y: number, f: number, s: number, flying: boolean, fill: number) => {
-	const L = (pts: number[][], col: string) => poly(c, pts.map(([a, b]) => [x + a * s, y + b * s]), col);
-	const legs = flying ? [[[0, 0], [-4, 5], [-5, 9]], [[1, 1], [0, 6], [1, 10]], [[2, 0], [6, 5], [8, 9]]] : [[[0, 0], [-6, 3], [-9, 8]], [[1, 1], [-1, 6], [-2, 10]], [[2, 0], [7, 3], [10, 8]], [[3, -1], [9, -1], [13, 4]]];
-	for (const l of legs) L(l, '#2a2220');
-	// abdomen: chain of circles with stripes
-	for (let i = 0; i < 6; i++) {const k = i / 5; const r = (2.4 - 0.9 * k + fill * 1.2 * Math.sin(Math.PI * Math.min(1, k * 1.3))) * s; const col = fill > 0.15 ? (i % 2 ? '#b0303a' : '#d0464c') : i % 2 ? '#e8e2d8' : '#3a332e'; ell(c, x + (3 + i * 2.2) * s, y - (3 + i * 1.9) * s, r, r, i === 0 ? '#3a332e' : col);}
-	ell(c, x + 1 * s, y - 1 * s, 2.6 * s, 2.4 * s, '#4a3f38'); px(c, x + 1 * s, y - 2 * s, '#e8e2d8'); px(c, x + 2 * s, y - 1 * s, '#e8e2d8');
-	ell(c, x - 2 * s, y + 1.5 * s, 1.6 * s, 1.6 * s, '#2e2622'); px(c, x - 2.6 * s, y + 1 * s, '#c84a3a');
-	L([[-2, 1], [-5, -2]], '#2a2220'); L([[-2, 1], [-6, 0]], '#2a2220'); if (s < 3) L([[-3, 2.5], [-6, 6]], '#2a2220');
-	// wings
-	const up = flying ? (Math.floor(f / 1.5) % 2 === 0) : false;
-	c.globalAlpha = 0.6;
-	if (up) {ell(c, x + 4 * s, y - 8 * s, 2 * s, 5 * s, '#cfe9ff'); ell(c, x + 6 * s, y - 6 * s, 1.6 * s, 4 * s, '#b4d8f5');}
-	else {ell(c, x + 7 * s, y - 2 * s, 5 * s, 1.8 * s, '#cfe9ff'); ell(c, x + 6 * s, y + 0 * s, 4 * s, 1.4 * s, '#b4d8f5');}
-	c.globalAlpha = 1;
-};
-
-// ---------- fat cells (voronoi, cached) ----------
-let FAT: Int16Array | null = null; const FW = W, FH = 220;
-const buildFat = () => {
-	const seeds: number[][] = []; for (let i = 0; i < 70; i++) seeds.push([hash(i) * FW, hash(i + 99) * FH]);
-	FAT = new Int16Array(FW * FH);
-	for (let y = 0; y < FH; y++) for (let x = 0; x < FW; x++) {let bi = 0, bd = 1e9; for (let i = 0; i < seeds.length; i++) {const dx = x - seeds[i][0], dy = (y - seeds[i][1]) * 1.15; const d = dx * dx + dy * dy; if (d < bd) {bd = d; bi = i;}} FAT[y * FW + x] = bi;}
-};
-const C = {surf: hex('#f7d2c4'), epi: hex('#eeb1a4'), epiDot: hex('#f6c9bd'), ridge: hex('#d27c80'), derm: hex('#e58f93'), fib: hex('#f0aeb0'), capW: hex('#7e1a26'), capI: hex('#c9333f'), capH: hex('#de4d56'), fatF: [hex('#e0a548'), hex('#d99c40'), hex('#e6ad52')], fatB: hex('#9c6230'), fatH: hex('#f0c46a'), deep: hex('#c0806a'), red: hex('#e8606a'), bg: hex(BG), grid: hex(GRID)};
-const SURF = 92;
-const cap1 = (x: number) => 150 + 1.5 * Math.sin(x / 20), cap2 = (x: number) => 196 + 1.5 * Math.sin(x / 17 + 1);
-
-type State = {bump: number; red: number; dil: number};
-const drawSection = (c: Ctx, f: number, st: State, lang: Lang) => {
-	if (!FAT) buildFat();
-	const img = c.createImageData(W, H); const d = img.data;
-	for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
-		const g = Math.exp(-(((x - 90) / 30) ** 2)); const b = st.bump * 14 * g;
-		const yy = y + b * clamp((250 - y) / 170);
-		let col: number[];
-		if (yy < SURF) col = (x - 4) % 12 === 0 || (y - 6) % 12 === 0 ? C.grid : C.bg;
-		else if (yy < SURF + 2) col = C.surf;
-		else {
-			const rb = SURF + 14 + Math.round(2 * Math.sin(x / 5));
-			if (yy < rb - 1) col = (x * 7 + Math.floor(yy) * 3) % 9 === 0 ? C.epiDot : C.epi;
-			else if (yy <= rb) col = C.ridge;
-			else if (yy < 228) {
-				col = C.derm;
-				for (let k = 0; k < 12; k++) {const yk = 114 + 10 * k + 2 * Math.sin(x / 14 + k * 1.7); if (Math.abs(yy - yk) < 0.6) {col = C.fib; break;}}
-				for (const [cf, extra] of [[cap1, st.dil], [cap2, st.dil * 0.6]] as [(x: number) => number, number][]) {const th = 3.2 + extra * 2; const dd = Math.abs(yy - cf(x)); if (dd < th - 1) col = dd < 0.6 ? C.capH : C.capI; else if (dd < th) col = C.capW;}
-			} else if (yy < 230) col = C.deep;
-			else {
-				const fy = Math.min(FH - 1, Math.floor(yy - 230)), id = FAT![fy * FW + x];
-				const r = x < W - 1 ? FAT![fy * FW + x + 1] : id, dn = fy < FH - 1 ? FAT![(fy + 1) * FW + x] : id, up = fy > 0 ? FAT![(fy - 1) * FW + x] : id;
-				col = r !== id || dn !== id ? C.fatB : up !== id ? C.fatH : C.fatF[id % 3];
-			}
-			if (st.red > 0 && yy < 228) {const w = st.red * 0.55 * Math.exp(-(((x - 90) / 36) ** 2) - (((yy - 140) / 50) ** 2)); col = mix(col, C.red, w);}
-		}
-		const i = (y * W + x) * 4; d[i] = col[0]; d[i + 1] = col[1]; d[i + 2] = col[2]; d[i + 3] = 255;
-	}
-	c.putImageData(img, 0, 0);
-	const S_ = STR[lang];
-	const surfY = (x: number) => SURF - st.bump * 14 * Math.exp(-(((x - 90) / 30) ** 2));
-	// flowing red blood cells
-	for (let i = 0; i < 26; i++) {const x = ((i * 23 + f * (0.9 + (i % 3) * 0.2)) % 200) - 10; const cf = i % 2 ? cap1 : cap2; rect(c, x, cf(x) - 1 + (i % 3 === 0 ? 1 : 0), 2, 1, '#f06a72');}
-	// nerve
-	const nerveVis = P(f, T.mastLab - 10, T.mastLab + 10);
-	const NP = [[14, 320], [24, 290], [40, 256], [60, 224], [78, 190], [86, 178]];
-	if (nerveVis > 0) {poly(c, NP, '#8a6d1c', 3); poly(c, NP, '#f2d65c', 1); line(c, 86, 178, 81, 169, '#f2d65c'); line(c, 86, 178, 93, 170, '#f2d65c'); line(c, 86, 178, 91, 183, '#f2d65c');}
-	// mosquito + stylets
-	const tipD = f < T.pierceA ? 0 : f < T.pierceB ? eio(P(f, T.pierceA, T.pierceB)) : f < T.withA ? 1 : 1 - eio(P(f, T.withA, T.withB));
-	const probe = f >= T.pierceB && f < T.probeB ? Math.sin(f * 0.7) * 3 * (1 - P(f, T.probeB - 6, T.probeB)) : 0;
-	const tx = 90 + probe, ty = SURF + tipD * (cap1(90) - SURF);
-	const fly = P(f, T.flyA, T.flyB);
-	const mx = 96 + fly * 120, my = 70 - fly * 100;
-	const fill = P(f, T.suckA, T.suckB);
-	if (fly < 1) {
-		if (fly === 0) {poly(c, [[87, 78], [82, 84], [90, SURF]], '#3a302a', 2); if (tipD > 0) {line(c, 90, SURF, tx, ty, '#2b2020', 2); line(c, 91, SURF, tx + 1, ty, '#7a665a');}}
-		mosq(c, mx, my, f, 3.6, fly > 0, fill);
-	}
-	// saliva
-	const salFade = 1 - P(f, T.ffA - 200, T.zoutA);
-	if (f >= T.salA && salFade > 0) for (let i = 0; i < 60; i++) {const born = T.salA + i * 0.55; if (f < born) continue; const a = hash(i + 7) * Math.PI * 2, r = (3 + (i % 9) * 1.6) * Math.sqrt(P(f, born, born + 24)); c.globalAlpha = salFade; px(c, 90 + Math.cos(a) * r * 1.4, cap1(90) - 4 + Math.sin(a) * r * 0.8, i % 3 ? '#7fe07a' : '#3fae48'); c.globalAlpha = 1;}
-	// blood going up the stylets
-	if (f >= T.suckA && f < T.suckB) for (let k = 0; k < 5; k++) {const p = ((f - T.suckA) / 14 + k / 5) % 1; const yy = ty - p * (ty - 80); rect(c, 90, yy, 2, 2, '#e8404a');}
-	// mast cells
-	const MC = [[62, 172], [92, 175], [120, 171]];
-	if (f >= T.salA) MC.forEach(([x, y], j) => {
-		const bk = P(f, T.burst + j * 2, T.burst + j * 2 + 6);
-		if (bk < 1) {const r = 8 - 3 * bk; const wob = f >= T.mastLab && f < T.burst ? Math.round(Math.sin(f * 0.9 + j) * 0.6) : 0; ell(c, x + wob, y, r + 1, r, '#5a2f86'); ell(c, x + wob, y, r, r - 1, '#9b6fd0'); for (let g = 0; g < 11; g++) px(c, x + wob + Math.round(Math.cos(g * 2.4 + j) * (r - 2.5) * hash(g + j)), y + Math.round(Math.sin(g * 2.4 + j) * (r - 3) * hash(g * 3 + j)), '#ffe14d');}
-		else if (f < T.burst + 30) {c.globalAlpha = 1 - P(f, T.burst + 8, T.burst + 30); for (let a = 0; a < 10; a++) px(c, x + Math.cos(a * 0.63) * 9, y + Math.sin(a * 0.63) * 8, '#9b6fd0'); c.globalAlpha = 1;}
-		if (f >= T.burst + j * 2) for (let i = 0; i < 34; i++) {const a = hash(i * 7 + j * 31) * Math.PI * 2, v = 8 + hash(i + j * 13) * 32; const tt = Math.pow(Math.max(0, f - T.burst - j * 2), 0.55) / Math.pow(60, 0.55); const fade = 1 - P(f, T.nerveB - 10, T.zoutA); if (fade <= 0) continue; c.globalAlpha = fade; px(c, x + Math.cos(a) * v * Math.min(1, tt), y + Math.sin(a) * v * 0.7 * Math.min(1, tt), (f + i) % 6 < 3 ? '#ffe14d' : '#fff6a8'); c.globalAlpha = 1;}
-	});
-	// leaking fluid
-	if (f >= T.swellA && f < T.zoutA) for (let i = 0; i < 40; i++) {const k = P(f, T.swellA + i * 0.8, T.swellA + i * 0.8 + 30); if (k <= 0) continue; const x = 60 + hash(i + 3) * 60; px(c, x, cap1(x) - 4 - k * (12 + hash(i) * 36), '#bfe6f7');}
-	// nerve signals + itch
-	if (f >= T.nerveA && f < T.nerveB) for (let k = 0; k < 3; k++) {const p = ((f - T.nerveA) / 22 + k / 3) % 1; const seg = p * (NP.length - 1); const si = NP.length - 2 - Math.floor(seg), sk = seg % 1; const a = NP[si + 1], b2 = NP[si]; const xx = a[0] + (b2[0] - a[0]) * sk, yy = a[1] + (b2[1] - a[1]) * sk; ell(c, xx, yy, 2, 2, '#ffffff'); ell(c, xx, yy, 1, 1, '#fff6a8');}
-	// labels
-	const L = S_;
-	label(c, f, T.lab[0], T.mastLab, L.epi, 4, 70, 18, 99);
-	label(c, f, T.lab[1], T.mastLab, L.derm, 4, 124, 14, 134);
-	label(c, f, T.lab[2], T.mastLab, L.cap, 4, 208, 30, 197);
-	label(c, f, T.lab[3], T.mastLab, L.fat, 8, 266, 24, 252);
-	label(c, f, T.pierceA + 10, T.salA, L.sty, 100, 112, 92, 120);
-	if (f >= T.salA + 6 && f < T.suckA) {label(c, f, T.salA + 4, T.suckA, L.sal, 100, 116, 98, 144, '#9cf09a'); if (f >= T.salA + 14) text(c, typed(L.sal2, f, T.salA + 14), lang === 'ru' ? 82 : 100, 126, '#9cf09a');}
-	label(c, f, T.suckA + 4, T.withA, L.blood, 100, 112, 92, 120, '#ff8a8a');
-	label(c, f, T.mastLab, T.burst + 4, L.mast, lang === 'ru' ? 72 : 102, 210, 120, 171, '#cfb4ff');
-	label(c, f, T.burst + 6, T.nerveA, L.hist, 4, 210, 62, 172, '#ffe14d');
-	label(c, f, T.bumpLab, T.zoutA, L.bump, 112, 50, 98, Math.round(surfY(98)), '#ffb0a8');
-	label(c, f, T.nerveA - 4, T.zoutA, L.nerve, 44, 284, 31, 276, '#f2d65c');
-	if (f >= T.itch && f < T.nerveB) {const on = Math.floor((f - T.itch) / 4) % 2 === 0; text(c, L.itch, 90, 26, on ? '#ff4a4a' : '#ffffff', 'center', 16);}
-};
-
-// ---------- outside view ----------
-const LAND = {x: 105, y: 203}, SPOT = {x: 93, y: 215};
-const drawOutside = (c: Ctx, f: number, lang: Lang) => {
-	grid(c); drawArm(c);
-	const S_ = STR[lang];
-	// bump amount outside
-	const amp = f < T.zoutA ? 0 : f < T.ffA ? 1 : 1 - P(f, T.ffA, T.ffB - 8);
-	if (amp > 0) {c.globalAlpha = Math.min(1, amp * 1.6); ell(c, SPOT.x, SPOT.y, 5 + 5 * amp, 4 + 4 * amp, '#e9958a'); ell(c, SPOT.x, SPOT.y, 3 + 3 * amp, 2 + 3 * amp, '#e07a6a'); ell(c, SPOT.x, SPOT.y, 1 + amp, 1 + amp, '#c8504a'); px(c, SPOT.x - 3, SPOT.y - 3, '#ffd9c6'); px(c, SPOT.x - 2, SPOT.y - 4, '#ffd9c6'); c.globalAlpha = 1;}
-	// scratch marks
-	if (f >= T.scrA && f < T.ffB) {c.globalAlpha = 1 - P(f, T.ffA, T.ffA + 40); for (let i = 0; i < 4; i++) if (f > T.scrA + 6 + i * 8) line(c, SPOT.x - 6 + i * 3, SPOT.y - 6, SPOT.x - 3 + i * 3, SPOT.y + 6, '#d24a48'); c.globalAlpha = 1;}
-	// mosquito: arriving (wraps around the loop end) and sitting
-	const inLen = N - T.inA + T.land; const u = f >= T.inA ? (f - T.inA) / inLen : f < T.land ? (f + N - T.inA) / inLen : 1;
-	if (f >= T.inA || f < T.zoutA - 300) {
-		const k = eio(u);
-		const mx = 200 + (LAND.x - 200) * k + 14 * Math.sin(u * 9) * (1 - u), my = 50 + (LAND.y - 50) * k + 10 * Math.sin(u * 13) * (1 - u);
-		mosq(c, mx, my, f, 2, u < 1, 0);
-		label(c, f < T.inA ? f + N : f, T.female + N, T.retB + N, S_.female, 118, 150, Math.round(mx) + 4, Math.round(my) - 6, '#ffb0d0');
-		label(c, f, T.female, T.retB, S_.female, 118, 150, Math.round(mx) + 4, Math.round(my) - 6, '#ffb0d0');
-	}
-	// reticle
-	if (f >= T.retA && f < T.zinB) {const k = eio(P(f, T.retA, T.retB)); const r = Math.round(30 - 16 * k); const col = Math.floor(f / 3) % 2 ? '#7fe0d0' : '#c8fff6'; for (const [sx, sy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {const cx = SPOT.x + sx * r, cy = SPOT.y + sy * r; line(c, cx, cy, cx - sx * 5, cy, col); line(c, cx, cy, cx, cy - sy * 5, col);}}
-	// scratching finger
-	if (f >= T.scrA && f < T.scrB) {
-		const k = P(f, T.scrA, T.scrA + 8) * (1 - P(f, T.scrB - 8, T.scrB)); const osc = Math.round(Math.sin((f - T.scrA) * 1.2) * 5);
-		const fx = SPOT.x + 4 + (1 - k) * 90, fy = SPOT.y - 2 + osc;
-		rect(c, fx + 6, fy - 8, 120, 16, '#9a5442'); rect(c, fx + 7, fy - 7, 120, 14, '#eeb594'); rect(c, fx + 7, fy - 7, 120, 4, '#f6caa9'); rect(c, fx + 7, fy + 4, 120, 3, '#d99478'); line(c, fx + 26, fy - 5, fx + 26, fy + 4, '#d99478'); line(c, fx + 28, fy - 5, fx + 28, fy + 4, '#d99478');
-		ell(c, fx + 7, fy, 7, 7, '#9a5442'); ell(c, fx + 7, fy, 6, 6, '#eeb594'); rect(c, fx + 1, fy - 4, 7, 8, '#c9958a'); rect(c, fx + 2, fy - 3, 6, 6, '#f3d6d0'); px(c, fx + 3, fy - 2, '#ffffff');
-		if (f > T.scrA + 10) {text(c, typed(S_.scr1, f, T.scrA + 10), 90, 262, TXT, 'center'); text(c, typed(S_.scr2, f, T.scrA + 22), 90, 274, '#ff6a6a', 'center');}
-	}
-	// sparkle
-	if (f >= T.spark && f < T.spark + 22) {const k = Math.sin(P(f, T.spark, T.spark + 22) * Math.PI); for (const [ox, oy, sz] of [[0, 0, 4], [-9, -10, 2], [8, -6, 2]]) {const r = Math.round(sz * k); line(c, SPOT.x + ox - r, SPOT.y + oy, SPOT.x + ox + r, SPOT.y + oy, '#ffffff'); line(c, SPOT.x + ox, SPOT.y + oy - r, SPOT.x + ox, SPOT.y + oy + r, '#ffffff'); px(c, SPOT.x + ox, SPOT.y + oy, '#fff6a8');}}
-};
-
-// ---------- HUD ----------
+// ---------------- HUD ----------------
 let LOGO: HTMLImageElement | null = null;
-const hud = (c: Ctx, f: number, lang: Lang) => {
+const hud = (c: C2, f: number, lang: Lang) => {
 	const S_ = STR[lang];
-	if (LOGO && LOGO.complete) {c.imageSmoothingEnabled = false; c.drawImage(LOGO, 3, 3, 11, 11);}
-	text(c, S_.handle, 17, 5, TXT, 'left', 8);
-	if (f >= T.pierceA && f < T.withB) {const x = W - 4 - S_.slow.length * 8; for (let i = 0; i < 4; i++) line(c, x - 9, 18 + i, x - 9, 24 - i, '#7fe0d0'); line(c, x - 9 + 0, 18, x - 6, 21, '#7fe0d0'); for (let i = 0; i < 4; i++) rect(c, x - 9 + i, 18 + i, 1, 7 - 2 * i, '#7fe0d0'); text(c, S_.slow, x, 18, '#7fe0d0');}
-	if (f >= T.ffA && f < T.ffB) {const day = 1 + Math.min(3, Math.floor(P(f, T.ffA, T.ffB) * 4)); const s = `${S_.day} ${day}`; const x = W - 4 - s.length * 8; for (const o of [0, 5]) for (let i = 0; i < 4; i++) rect(c, x - 14 + o + i, 18 + i, 1, 7 - 2 * i, '#ffd24a'); text(c, s, x, 18, '#ffd24a');}
+	if (LOGO && LOGO.complete) {c.imageSmoothingEnabled = true; c.save(); c.beginPath(); c.arc(11, 11, 8, 0, Math.PI * 2); c.clip(); c.drawImage(LOGO, 3, 3, 16, 16); c.restore();}
+	text(c, S_.handle, 23, 7, TXT, 'left', 8);
+	const tri = (x: number, y: number, col: string) => {c.fillStyle = col; for (let i = 0; i < 4; i++) c.fillRect(x + i, y + i, 1, 7 - 2 * i);};
+	if (f >= T.pierceA && f < T.withB) {const x = W - 6 - S_.slow.length * 8; tri(x - 9, 27, '#7fe0d0'); text(c, S_.slow, x, 27, '#7fe0d0');}
+	if (f >= T.ffA && f < T.ffB) {const day = 1 + Math.min(3, Math.floor(P(f, T.ffA, T.ffB) * 4)); const s = `${S_.day} ${day}`; const x = W - 6 - s.length * 8; tri(x - 15, 27, '#ffd24a'); tri(x - 9, 27, '#ffd24a'); text(c, s, x, 27, '#ffd24a');}
 };
 
-// ---------- compositing ----------
+// ---------------- frame compositor ----------------
+const sceneState = (f: number): St => ({bump: eio(P(f, T.swellA, T.swellB)), red: P(f, T.swellA - 10, T.swellB), dil: P(f, T.burst, T.swellB)});
 const shake = (f: number) => {
-	let a = 0; if (f >= T.land && f < T.land + 4) a = 1; if (f >= T.probeB && f < T.probeB + 5) a = 1; if (f >= T.burst && f < T.burst + 8) a = 2; if (f >= T.itch && f < T.itch + 14) a = 2;
-	return a ? [Math.round((hash(f) - 0.5) * 2 * a), Math.round((hash(f + 50) - 0.5) * 2 * a)] : [0, 0];
+	let a = 0; if (f >= T.land && f < T.land + 4) a = 0.6; if (f >= T.probeB && f < T.probeB + 5) a = 1; if (f >= T.burst && f < T.burst + 8) a = 2.2; if (f >= T.itch && f < T.itch + 14) a = 2;
+	return [(hash(f) - 0.5) * 2 * a, (hash(f + 50) - 0.5) * 2 * a];
 };
-const sceneState = (f: number): State => ({bump: eio(P(f, T.swellA, T.swellB)), red: P(f, T.swellA - 10, T.swellB), dil: P(f, T.burst, T.swellB)});
-
-export const renderFrame = (main: Ctx, f: number, lang: Lang) => {
-	const A = new OffscreenCanvas(W, H).getContext('2d')!, B = new OffscreenCanvas(W, H).getContext('2d')!;
-	const inside = f >= T.zinA && f < T.zoutB;
-	let mode: 'out' | 'in' | 'zin' | 'zout' = 'out';
-	if (f >= T.zinA && f < T.zinB) mode = 'zin'; else if (f >= T.zinB && f < T.zoutA) mode = 'in'; else if (f >= T.zoutA && f < T.zoutB) mode = 'zout';
-	const zoomed = (scale: number) => {drawOutside(A, f, lang); const sw = W / scale, sh = H / scale; const sx = SPOT.x - SPOT.x / scale, sy = SPOT.y - SPOT.y / scale; const Z = new OffscreenCanvas(W, H).getContext('2d')!; Z.imageSmoothingEnabled = false; Z.drawImage(A.canvas, sx, sy, sw, sh, 0, 0, W, H); return Z;};
-	let out: OffscreenCanvasRenderingContext2D;
-	if (mode === 'out') {drawOutside(A, f, lang); out = A;}
-	else if (mode === 'in') {drawSection(B as any, f, sceneState(f), lang); out = B;}
-	else {
-		const zin = mode === 'zin';
-		const scale = zin ? 1 + 5 * eio(P(f, T.zinA, T.zinB - 4)) : 1 + 5 * (1 - eio(P(f, T.zoutA + 4, T.zoutB)));
-		const wIn = zin ? P(f, T.zinA + 14, T.zinB) : 1 - P(f, T.zoutA, T.zoutA + 10);
-		const Z = zoomed(scale); drawSection(B as any, f, sceneState(zin ? T.zinB : T.zoutA - 1), lang);
-		const zi = Z.getImageData(0, 0, W, H), bi = B.getImageData(0, 0, W, H);
-		for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (BAYER[(y % 4) * 4 + (x % 4)] < wIn) {const i = (y * W + x) * 4; zi.data[i] = bi.data[i]; zi.data[i + 1] = bi.data[i + 1]; zi.data[i + 2] = bi.data[i + 2];}
-		Z.putImageData(zi, 0, 0); out = Z;
-	}
-	void inside;
-	// fast-forward streaks
-	if (f >= T.ffA && f < T.ffB) {out.fillStyle = 'rgba(255,255,255,0.10)'; for (let i = 0; i < 5; i++) out.fillRect(0, Math.floor(hash(f * 3 + i) * H), W, 1 + (i % 2));}
-	hud(out as any, f, lang);
+let HR: OffscreenCanvas | null = null, HR2: OffscreenCanvas | null = null, LR: OffscreenCanvas | null = null, LR2: OffscreenCanvas | null = null;
+const toPixels = (src: OffscreenCanvas, dst: OffscreenCanvas) => {
+	const d = dst.getContext('2d', {willReadFrequently: true})!; d.imageSmoothingEnabled = true; d.imageSmoothingQuality = 'high'; d.clearRect(0, 0, W, H); d.drawImage(src, 0, 0, W, H);
+	const img = d.getImageData(0, 0, W, H), a = img.data; const STEP = 14;
+	for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {const t = BAYER[(y & 3) * 4 + (x & 3)] - 0.5; const i = (y * W + x) * 4; for (let ch = 0; ch < 3; ch++) a[i + ch] = Math.max(0, Math.min(255, Math.round((a[i + ch] + t * STEP) / STEP) * STEP));}
+	d.putImageData(img, 0, 0); return d;
+};
+export const renderFrame = (main: CanvasRenderingContext2D, f: number, lang: Lang) => {
+	HR ??= new OffscreenCanvas(W * K, H * K); HR2 ??= new OffscreenCanvas(W * K, H * K); LR ??= new OffscreenCanvas(W, H); LR2 ??= new OffscreenCanvas(W, H);
+	const h = HR.getContext('2d')!, h2 = HR2.getContext('2d')!;
 	const [sx, sy] = shake(f);
-	main.imageSmoothingEnabled = false; main.fillStyle = BG; main.fillRect(0, 0, W, H); main.drawImage(out.canvas, sx, sy);
+	let mode: 'out' | 'in' | 'z' = 'out'; let zin = true;
+	if (f >= T.zinA && f < T.zinB) {mode = 'z'; zin = true;} else if (f >= T.zinB && f < T.zoutA) mode = 'in'; else if (f >= T.zoutA && f < T.zoutB) {mode = 'z'; zin = false;}
+	const drawOut = (cx: OffscreenCanvasRenderingContext2D, scale: number) => {cx.setTransform(K, 0, 0, K, 0, 0); cx.translate(sx, sy); cx.translate(SPOT.x, SPOT.y); cx.scale(scale, scale); cx.translate(-SPOT.x, -SPOT.y); drawOutside(cx, f);};
+	const drawIn = (cx: OffscreenCanvasRenderingContext2D, ff: number) => {cx.setTransform(K, 0, 0, K, 0, 0); cx.translate(sx, sy); drawSection(cx, f, sceneState(ff), lang, true);};
+	let low: OffscreenCanvasRenderingContext2D;
+	if (mode === 'out') {drawOut(h, 1); low = toPixels(HR, LR);}
+	else if (mode === 'in') {drawIn(h, f); low = toPixels(HR, LR);}
+	else {
+		const scale = zin ? 1 + 7 * eio(P(f, T.zinA, T.zinB - 2)) : 1 + 7 * (1 - eio(P(f, T.zoutA + 2, T.zoutB)));
+		const wIn = zin ? P(f, T.zinA + 12, T.zinB) : 1 - P(f, T.zoutA, T.zoutA + 12);
+		drawOut(h, scale); drawIn(h2, zin ? T.zinB : T.zoutA - 1);
+		const A = toPixels(HR, LR), B = toPixels(HR2, LR2);
+		const ia = A.getImageData(0, 0, W, H), ib = B.getImageData(0, 0, W, H);
+		for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (BAYER[(y & 3) * 4 + (x & 3)] < wIn) {const i = (y * W + x) * 4; ia.data[i] = ib.data[i]; ia.data[i + 1] = ib.data[i + 1]; ia.data[i + 2] = ib.data[i + 2];}
+		A.putImageData(ia, 0, 0); low = A;
+	}
+	low.setTransform(1, 0, 0, 1, 0, 0);
+	if (mode === 'in') sectionLabels(low, f, sceneState(f), lang);
+	if (mode === 'out') outsideOverlay(low, f, lang);
+	if (f >= T.ffA && f < T.ffB) {low.fillStyle = 'rgba(255,255,255,0.10)'; for (let i = 0; i < 6; i++) low.fillRect(0, Math.floor(hash(f * 3 + i) * H), W, 1 + (i % 2));}
+	hud(low, f, lang);
+	main.imageSmoothingEnabled = false; main.drawImage(low.canvas, 0, 0);
 };
 
-// ---------- Remotion component ----------
+// ---------------- Remotion component ----------------
 let fontsReady: Promise<void> | null = null;
-const loadFonts = () => {
+const loadFonts = (lang: Lang) => {
 	if (fontsReady) return fontsReady;
 	const faces = [new FontFace('PS2P', `url(${staticFile('fonts/press-start-2p-latin-400-normal.woff2')})`, {unicodeRange: 'U+0000-00FF, U+2000-206F'}), new FontFace('PS2P', `url(${staticFile('fonts/press-start-2p-cyrillic-400-normal.woff2')})`, {unicodeRange: 'U+0400-04FF'})];
-	fontsReady = Promise.all(faces.map((ff) => ff.load().then((l) => {(document.fonts as any).add(l);}))).then(() => new Promise<void>((res) => {LOGO = new Image(); LOGO.onload = () => res(); LOGO.onerror = () => res(); LOGO.src = staticFile('logo_en_s.png');}));
+	fontsReady = Promise.all(faces.map((ff) => ff.load().then((l) => {(document.fonts as any).add(l);}))).then(() => new Promise<void>((res) => {LOGO = new Image(); LOGO.onload = () => res(); LOGO.onerror = () => res(); LOGO.src = staticFile(STR[lang].logo);}));
 	return fontsReady;
 };
 export const PixelLoop: React.FC<{lang: Lang; at?: number}> = ({lang, at}) => {
-	const f = at ?? useCurrentFrame() % N; const ref = useRef<HTMLCanvasElement>(null);
+	const cur = useCurrentFrame(); const f = at ?? cur % N; const ref = useRef<HTMLCanvasElement>(null);
 	const [handle] = useState(() => delayRender('fonts'));
 	const [ready, setReady] = useState(false);
-	useEffect(() => {loadFonts().then(() => {if (lang === 'ru' && LOGO) {const im = new Image(); im.onload = () => {LOGO = im; setReady(true); continueRender(handle);}; im.src = staticFile(STR[lang].logo);} else {setReady(true); continueRender(handle);}});}, [handle, lang]);
+	useEffect(() => {loadFonts(lang).then(() => {setReady(true); continueRender(handle);});}, [handle, lang]);
 	useEffect(() => {if (!ready || !ref.current) return; renderFrame(ref.current.getContext('2d')!, f, lang);}, [f, ready, lang]);
 	return (
 		<AbsoluteFill style={{background: BG}}>
-			<canvas ref={ref} width={W} height={H} style={{width: W * S, height: H * S, imageRendering: 'pixelated'}} />
+			<canvas ref={ref} width={W} height={H} style={{width: W * K, height: H * K, imageRendering: 'pixelated'}} />
 		</AbsoluteFill>
 	);
 };
