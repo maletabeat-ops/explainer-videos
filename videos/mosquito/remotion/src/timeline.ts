@@ -1,10 +1,12 @@
-// all times in frames @30fps; video is a seamless loop of N frames
-export const N = 768;
+// all times in frames @30fps; 120 BPM -> beat = 15 frames, bar = 60 frames; loop = 16 bars = 960 frames (32 s)
+export const N = 960, BEAT = 15, BAR = 60;
 export const T = {
-	land: 75, retA: 70, retB: 100, zinA: 100, zinB: 126,
-	lab: [130, 140, 150, 160], female: 40,
-	pierceA: 168, pierceB: 200, probeB: 226, salA: 228, salB: 262, suckA: 262, suckB: 330, withA: 330, withB: 348, flyA: 344, flyB: 372,
-	mastLab: 360, burst: 386, swellA: 392, swellB: 440, bumpLab: 428,
-	nerveA: 444, itch: 456, nerveB: 494, zoutA: 494, zoutB: 516,
-	scrA: 522, scrB: 566, ffA: 572, ffB: 680, spark: 682, inA: 700,
+	land: 60, retA: 60, retB: 105, zinA: 120, zinB: 150,
+	lab: [180, 195, 210, 225], female: 15,
+	pierceA: 240, pierceB: 270, probeB: 300, salA: 300, salB: 360, suckA: 360, suckB: 480, withA: 480, withB: 495, flyA: 495, flyB: 525,
+	mastLab: 510, burst: 600, swellA: 603, swellB: 655, bumpLab: 640,
+	nerveA: 660, itch: 660, nerveB: 720, zoutA: 720, zoutB: 750,
+	scrA: 752, scrB: 830, ffA: 840, ffB: 900, spark: 900, inA: 900,
 };
+// beat pulse 1 -> 0 after each beat
+export const pulse = (f: number, every = BEAT, decay = 4) => Math.exp(-(((f % every) + every) % every) / decay);

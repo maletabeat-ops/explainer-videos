@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {AbsoluteFill, continueRender, delayRender, staticFile, useCurrentFrame} from 'remotion';
-import {N, T} from './timeline';
+import {BEAT, N, T, pulse} from './timeline';
 import {STR} from './strings';
 
 // Pipeline: draw smooth vector art at 1080x1920 (scene units = 270x480, scale 4) -> downsample to 270x480
@@ -15,6 +15,8 @@ const eout = (k: number) => 1 - Math.pow(1 - k, 3);
 const hash = (n: number) => {const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s);};
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => (v + 0.5) / 16);
 const BG = '#11181b', GRID = '#1b272b', INK = '#0c1012', TXT = '#f4f1e8';
+export type Style = 'pixel' | 'flat' | 'paper';
+let STYLE: Style = 'pixel';
 
 // ---------------- vector helpers (scene units) ----------------
 const circle = (c: C2, x: number, y: number, r: number) => {c.beginPath(); c.arc(x, y, Math.max(0.01, r), 0, Math.PI * 2);};
@@ -23,7 +25,7 @@ const radial = (c: C2, x: number, y: number, r: number, stops: [number, string][
 const linear = (c: C2, x0: number, y0: number, x1: number, y1: number, stops: [number, string][]) => {const g = c.createLinearGradient(x0, y0, x1, y1); stops.forEach(([o, col]) => g.addColorStop(o, col)); return g;};
 const stroke = (c: C2, pts: number[][], col: string, w: number) => {c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < pts.length - 1; i++) {const mx = (pts[i][0] + pts[i + 1][0]) / 2, my = (pts[i][1] + pts[i + 1][1]) / 2; c.quadraticCurveTo(pts[i][0], pts[i][1], mx, my);} const l = pts[pts.length - 1]; c.lineTo(l[0], l[1]); c.strokeStyle = col; c.lineWidth = w; c.lineCap = 'round'; c.lineJoin = 'round'; c.stroke();};
 
-const grid = (c: C2) => {c.fillStyle = BG; c.fillRect(-200, -200, W + 400, H + 400); c.fillStyle = GRID; for (let x = -192; x < W + 200; x += 16) c.fillRect(x, -200, 0.5, H + 400); for (let y = -200; y < H + 200; y += 16) c.fillRect(-200, y, W + 400, 0.5);};
+const grid = (c: C2) => {const sh = c.shadowColor; c.shadowColor = 'transparent'; c.fillStyle = STYLE === 'paper' ? '#1d2a2e' : BG; c.fillRect(-200, -200, W + 400, H + 400); c.fillStyle = GRID; for (let x = -192; x < W + 200; x += 16) c.fillRect(x, -200, 0.5, H + 400); for (let y = -200; y < H + 200; y += 16) c.fillRect(-200, y, W + 400, 0.5); c.shadowColor = sh;};
 
 // ---------------- the arm (back of the left forearm + hand, top-down) ----------------
 const armPath = (c: C2, dx = 0, dy = 0) => {
@@ -160,10 +162,10 @@ const drawSection = (c: C2, f: number, st: St, lang: Lang, labels: boolean) => {
 	// capillaries
 	for (const [cf, dil] of [[cap1, st.dil], [cap2, st.dil * 0.6]] as [(x: number) => number, number][]) {
 		const pts: number[][] = []; for (let x = -10; x <= W + 10; x += 6) pts.push([x, lift(x, cf(x))]);
-		const w0 = 11 + dil * 6; stroke(c, pts, '#6e1220', w0 + 2.4); stroke(c, pts, '#b82634', w0); stroke(c, pts, '#d8414c', w0 * 0.55); stroke(c, pts.map(([x, y]) => [x, y - w0 * 0.28]), 'rgba(255,140,140,0.55)', 1.1);
+		const w0 = 11 + dil * 6 + pulse(f) * 1.6; stroke(c, pts, '#6e1220', w0 + 2.4); stroke(c, pts, '#b82634', w0); stroke(c, pts, '#d8414c', w0 * 0.55); stroke(c, pts.map(([x, y]) => [x, y - w0 * 0.28]), 'rgba(255,140,140,0.55)', 1.1);
 	}
 	// flowing red blood cells
-	for (let i = 0; i < 34; i++) {const fast = 0.9 + (i % 4) * 0.18; const x = ((i * 37 + f * fast) % (W + 30)) - 15; const cf = i % 2 ? cap1 : cap2; const y = lift(x, cf(x)) + ((i % 3) - 1) * 2.2; c.fillStyle = '#e2444f'; ellipse(c, x, y, 2.6, 1.6, 0.2); c.fill(); c.fillStyle = '#a81c2a'; ellipse(c, x, y, 1.1, 0.6, 0.2); c.fill();}
+	for (let i = 0; i < 34; i++) {const fast = 0.9 + (i % 4) * 0.18; const surge = Math.floor(f / BEAT) * 6 + eout(P(f % BEAT, 0, 8)) * 6; const x = ((i * 37 + f * fast * 0.6 + surge) % (W + 30)) - 15; const cf = i % 2 ? cap1 : cap2; const y = lift(x, cf(x)) + ((i % 3) - 1) * 2.2; c.fillStyle = '#e2444f'; ellipse(c, x, y, 2.6, 1.6, 0.2); c.fill(); c.fillStyle = '#a81c2a'; ellipse(c, x, y, 1.1, 0.6, 0.2); c.fill();}
 	// epidermis + stratum corneum
 	const epiTop = (x: number) => lift(x, SURF), epiBot = (x: number) => lift(x, SURF + 24 + 3 * Math.sin(x / 7));
 	c.beginPath(); c.moveTo(-10, epiBot(-10)); for (let x = -10; x <= W + 10; x += 2) c.lineTo(x, epiBot(x)); for (let x = W + 10; x >= -10; x -= 2) c.lineTo(x, epiTop(x)); c.closePath();
@@ -179,7 +181,7 @@ const drawSection = (c: C2, f: number, st: St, lang: Lang, labels: boolean) => {
 	const MC = [[92, 262], [135, 268], [180, 260]];
 	if (f >= T.salA) MC.forEach(([x0, y0], j) => {
 		const x = x0, y = lift(x0, y0); const bk = P(f, T.burst + j * 2, T.burst + j * 2 + 7);
-		if (bk < 1) {const r = 11 * (1 - 0.3 * bk); const wob = f >= T.mastLab && f < T.burst ? Math.sin(f * 0.8 + j) * 0.8 : 0;
+		if (bk < 1) {const r = 11 * (1 - 0.3 * bk); const wob = f >= T.mastLab && f < T.burst ? (pulse(f, f >= T.burst - 60 ? BEAT / 2 : BEAT, 3) * 2.2 * (j % 2 ? -1 : 1)) : 0;
 			c.fillStyle = radial(c, x - 3, y - 3, r * 1.3, [[0, '#c7a2f0'], [0.7, '#8e5cc8'], [1, '#5a2f86']]); ellipse(c, x + wob, y, r + 1, r); c.fill(); c.strokeStyle = '#3f1f63'; c.lineWidth = 0.9; c.stroke();
 			c.fillStyle = '#6a3a9a'; ellipse(c, x + 1 + wob, y + 1, r * 0.36, r * 0.3); c.fill();
 			for (let g = 0; g < 18; g++) {const a = g * 2.39 + j, rr = (r - 3) * Math.sqrt(hash(g * 3 + j)); c.fillStyle = '#ffe14d'; circle(c, x + wob + Math.cos(a) * rr, y + Math.sin(a) * rr * 0.9, 0.9); c.fill();}}
@@ -190,12 +192,12 @@ const drawSection = (c: C2, f: number, st: St, lang: Lang, labels: boolean) => {
 	if (f >= T.swellA && f < T.zoutA) for (let i = 0; i < 50; i++) {const k = P(f, T.swellA + i * 0.7, T.swellA + i * 0.7 + 34); if (k <= 0) continue; const x = 85 + hash(i + 3) * 100; c.fillStyle = 'rgba(190,230,248,0.85)'; circle(c, x, lift(x, cap1(x)) - 8 - k * (18 + hash(i) * 50), 1); c.fill();}
 	// saliva cloud
 	const salFade = 1 - P(f, T.nerveB - 20, T.zoutA);
-	if (f >= T.salA && salFade > 0) {c.globalAlpha = salFade; for (let i = 0; i < 70; i++) {const born = T.salA + i * 0.45; if (f < born) continue; const a = hash(i + 7) * Math.PI * 2, r = (4 + (i % 9) * 2.6) * Math.sqrt(P(f, born, born + 26)); const x = 135 + Math.cos(a) * r * 1.5, y = lift(135, CAP1) - 6 + Math.sin(a) * r * 0.8; c.fillStyle = radial(c, x, y, 2.4, [[0, '#b8ffb0'], [1, 'rgba(80,200,90,0)']]); circle(c, x, y, 2.4); c.fill(); c.fillStyle = '#5fcf5a'; circle(c, x, y, 0.8); c.fill();} c.globalAlpha = 1;}
+	if (f >= T.salA && salFade > 0) {c.globalAlpha = salFade; for (let i = 0; i < 70; i++) {const born = T.salA + Math.floor(i / 18) * BEAT + (i % 18) * 0.15; if (f < born) continue; const a = hash(i + 7) * Math.PI * 2, r = (4 + (i % 9) * 2.6) * Math.sqrt(P(f, born, born + 26)); const x = 135 + Math.cos(a) * r * 1.5, y = lift(135, CAP1) - 6 + Math.sin(a) * r * 0.8; c.fillStyle = radial(c, x, y, 2.4, [[0, '#b8ffb0'], [1, 'rgba(80,200,90,0)']]); circle(c, x, y, 2.4); c.fill(); c.fillStyle = '#5fcf5a'; circle(c, x, y, 0.8); c.fill();} c.globalAlpha = 1;}
 	// mosquito + stylets
-	const tipD = f < T.pierceA ? 0 : f < T.pierceB ? eio(P(f, T.pierceA, T.pierceB)) : f < T.withA ? 1 : 1 - eio(P(f, T.withA, T.withB));
-	const probe = f >= T.pierceB && f < T.probeB ? Math.sin(f * 0.55) * 5 * (1 - P(f, T.probeB - 6, T.probeB)) : 0;
+	const tipD = f < T.pierceA ? 0 : f < T.pierceB ? (eout(P(f, T.pierceA, T.pierceA + 6)) * 0.55 + eout(P(f, T.pierceA + BEAT, T.pierceA + BEAT + 6)) * 0.45) : f < T.withA ? 1 : 1 - eio(P(f, T.withA, T.withB));
+	const probe = f >= T.pierceB && f < T.probeB ? Math.sin(((f - T.pierceB) / 7.5) * Math.PI) * 5 * (1 - P(f, T.probeB - 4, T.probeB)) : 0;
 	const tx = 135 + probe, ty = SURF + tipD * (CAP1 - SURF - 2);
-	const fly = eio(P(f, T.flyA, T.flyB)); const fill = P(f, T.suckA, T.suckB);
+	const fly = eio(P(f, T.flyA, T.flyB)); const nb = (T.suckB - T.suckA) / BEAT; const fill = f < T.suckA ? 0 : f >= T.suckB ? 1 : (Math.floor((f - T.suckA) / BEAT) + eout(P((f - T.suckA) % BEAT, 0, 6))) / nb;
 	const S4 = 2.9; const [ox, oy] = rot(tipLocal[0] * S4, tipLocal[1] * S4, MANG); const hx = 135 - ox, hy = SURF - 2 - oy; // head so that labium tip touches skin
 	if (fly < 1) {
 		if (tipD > 0 && fly === 0) {stroke(c, [[135, SURF - 1], [tx, ty]], '#241a18', 2.2); stroke(c, [[135.6, SURF - 1], [tx + 0.6, ty]], '#8a7262', 0.6); c.fillStyle = '#241a18'; circle(c, tx, ty, 1.2); c.fill();}
@@ -203,9 +205,9 @@ const drawSection = (c: C2, f: number, st: St, lang: Lang, labels: boolean) => {
 		mosquito(c, hx + fly * 220, hy - fly * 180, S4, f, fly > 0, fill, 0.72 - fly * 0.4);
 	}
 	// blood going up
-	if (f >= T.suckA && f < T.suckB) for (let k = 0; k < 6; k++) {const p = ((f - T.suckA) / 16 + k / 6) % 1; const yy = ty - p * (ty - SURF + 2); c.fillStyle = '#ff4a55'; ellipse(c, 135, yy, 1.2, 1.8); c.fill();}
+	if (f >= T.suckA && f < T.suckB) for (let k = 0; k < 3; k++) {const p = eio(P((f - T.suckA) % BEAT, 0, BEAT - 1)) * 0.34 + k * 0.33; const yy = ty - p * (ty - SURF + 2); c.fillStyle = '#ff4a55'; ellipse(c, 135, yy, 1.6, 2.6); c.fill();}
 	// nerve signals
-	if (f >= T.nerveA && f < T.nerveB) for (let k = 0; k < 3; k++) {const p = ((f - T.nerveA) / 20 + k / 3) % 1; const seg = p * (NP.length - 1); const si = NP.length - 2 - Math.floor(seg), sk = seg % 1; const a = NP[si + 1], b = NP[si]; const xx = a[0] + (b[0] - a[0]) * sk, yy = a[1] + (b[1] - a[1]) * sk; c.fillStyle = radial(c, xx, yy, 7, [[0, 'rgba(255,255,255,1)'], [0.4, 'rgba(255,246,168,0.8)'], [1, 'rgba(255,225,77,0)']]); circle(c, xx, yy, 7); c.fill();}
+	if (f >= T.nerveA && f < T.nerveB) for (let k = 0; k < 2; k++) {const p = clamp(eout(P((f - T.nerveA) % BEAT, 0, BEAT)) * 0.55 + k * 0.44, 0, 0.999); if (k === 1 && f < T.nerveA + BEAT) continue; const seg = p * (NP.length - 1); const si = NP.length - 2 - Math.floor(seg), sk = seg % 1; const a = NP[si + 1], b = NP[si]; const xx = a[0] + (b[0] - a[0]) * sk, yy = a[1] + (b[1] - a[1]) * sk; c.fillStyle = radial(c, xx, yy, 7, [[0, 'rgba(255,255,255,1)'], [0.4, 'rgba(255,246,168,0.8)'], [1, 'rgba(255,225,77,0)']]); circle(c, xx, yy, 7); c.fill();}
 	void labels; void lang;
 };
 const sectionLabels = (c: C2, f: number, st: St, lang: Lang) => {
@@ -221,14 +223,14 @@ const sectionLabels = (c: C2, f: number, st: St, lang: Lang) => {
 	label(c, f, T.burst + 6, T.nerveA, L.hist, 6, 322, 92, 270, '#ffe14d');
 	label(c, f, T.bumpLab, T.zoutA, L.bump, 176, 84, 150, Math.round(surfY(150)), '#ffb0a8');
 	label(c, f, T.nerveA - 4, T.zoutA, L.nerve, 62, 430, 47, 424, '#f2d65c');
-	if (f >= T.itch && f < T.nerveB) {const on = Math.floor((f - T.itch) / 4) % 2 === 0; text(c, L.itch, 135, 44, on ? '#ff4a4a' : '#ffffff', 'center', 16);}
+	if (f >= T.itch && f < T.nerveB) {const on = (f - T.itch) % BEAT < 7; text(c, L.itch, 135, 44, on ? '#ff4a4a' : '#ffffff', 'center', 16);}
 };
 
 // ---------------- outside view ----------------
 const SPOT = {x: 139, y: 322};
 const S_OUT = 2.0;
 const LANDH = (() => {const [ox, oy] = rot(tipLocal[0] * S_OUT, tipLocal[1] * S_OUT, MANG); return {x: SPOT.x - ox, y: SPOT.y - oy};})();
-const bumpOut = (f: number) => (f < T.zoutA ? 0 : f < T.ffA ? 1 : 1 - eio(P(f, T.ffA, T.ffB - 8)));
+const bumpOut = (f: number) => (f < T.zoutA ? 0 : f < T.ffA ? 1 : f >= T.ffB ? 0 : 1 - (Math.floor((f - T.ffA) / BEAT) + eout(P((f - T.ffA) % BEAT, 0, 6))) / 4);
 const mosqOutPos = (f: number) => {
 	const inLen = N - T.inA + T.land; const u = f >= T.inA ? (f - T.inA) / inLen : f < T.land ? (f + N - T.inA) / inLen : 1;
 	const k = eio(u); return {x: 330 + (LANDH.x - 330) * k + 20 * Math.sin(u * 9) * (1 - u), y: 70 + (LANDH.y - 70) * k + 16 * Math.sin(u * 13) * (1 - u), u};
@@ -245,7 +247,7 @@ const drawOutside = (c: C2, f: number) => {
 	if (f >= T.inA || f < T.zoutA - 300) {const m = mosqOutPos(f); mosquito(c, m.x, m.y, S_OUT, f, m.u < 1, 0);}
 	// scratching finger (vector)
 	if (f >= T.scrA && f < T.scrB) {
-		const k = eout(P(f, T.scrA, T.scrA + 9)) * (1 - eio(P(f, T.scrB - 9, T.scrB))); const osc = Math.sin((f - T.scrA) * 1.15) * 7;
+		const k = eout(P(f, T.scrA, T.scrA + 9)) * (1 - eio(P(f, T.scrB - 9, T.scrB))); const osc = Math.sin(((f - T.scrA) / 7.5) * Math.PI) * 7;
 		const fx = SPOT.x + 4 + (1 - k) * 150, fy = SPOT.y - 2 + osc;
 		c.save(); c.filter = 'blur(3px)'; c.fillStyle = 'rgba(0,0,0,0.45)'; c.beginPath(); c.roundRect(fx + 6, fy - 6, 200, 26, 12); c.fill(); c.restore();
 		c.beginPath(); c.roundRect(fx, fy - 12, 200, 24, 12); c.fillStyle = linear(c, 0, fy - 12, 0, fy + 12, [[0, '#f8d3b6'], [0.45, '#eeb594'], [1, '#c4785e']]); c.fill(); c.strokeStyle = '#8a4636'; c.lineWidth = 1.2; c.stroke();
@@ -258,12 +260,12 @@ const outsideOverlay = (c: C2, f: number, lang: Lang) => {
 	const S_ = STR[lang];
 	if (f >= T.inA || f < T.retB) {const m = mosqOutPos(f); const ff = f < T.inA ? f + N : f; label(c, ff, T.female + N, T.retB + N, S_.female, 176, 236, Math.round(m.x) + 6, Math.round(m.y) - 8, '#ffb0d0');}
 	if (f >= T.retA && f < T.zinA + 6) {const k = eio(P(f, T.retA, T.retB)); const r = Math.round(44 - 24 * k); const col = Math.floor(f / 3) % 2 ? '#7fe0d0' : '#c8fff6'; for (const [sx, sy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {const cx = SPOT.x + sx * r, cy = SPOT.y + sy * r; c.fillStyle = INK; c.fillRect(Math.min(cx, cx - sx * 7) - 1, cy - 1, 9, 3); c.fillRect(cx - 1, Math.min(cy, cy - sy * 7) - 1, 3, 9); c.fillStyle = col; c.fillRect(Math.min(cx, cx - sx * 7), cy, 8, 1); c.fillRect(cx, Math.min(cy, cy - sy * 7), 1, 8);}}
-	if (f >= T.scrA + 10 && f < T.scrB) {text(c, typed(S_.scr1, f, T.scrA + 10), 135, 404, TXT, 'center'); text(c, typed(S_.scr2, f, T.scrA + 22), 135, 416, '#ff6a6a', 'center');}
+	if (f >= T.scrA + 10 && f < T.scrB) {text(c, typed(S_.scr1, f, T.scrA + 10), 135, 402, TXT, 'center'); text(c, typed(S_.scr2, f, T.scrA + 22), 135, 420, '#ff6a6a', 'center');}
 };
 
 // ---------------- pixel text / labels (drawn on the low-res canvas) ----------------
 const text = (c: C2, s: string, x: number, y: number, col = TXT, align: CanvasTextAlign = 'left', size = 8) => {
-	c.font = `${size}px PS2P`; c.textBaseline = 'top'; c.textAlign = align; x = Math.round(x); y = Math.round(y);
+	c.font = STYLE === 'pixel' ? `${size}px PS2P` : `900 ${size * 1.25}px InterBlack`; c.textBaseline = 'top'; c.textAlign = align; x = Math.round(x); y = Math.round(y);
 	c.fillStyle = INK; for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [1, 1], [1, -1], [-1, 1]]) c.fillText(s, x + dx, y + dy);
 	c.fillStyle = col; c.fillText(s, x, y);
 };
@@ -273,8 +275,23 @@ const pline = (c: C2, x0: number, y0: number, x1: number, y1: number, col: strin
 	const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let e = dx + dy; c.fillStyle = col;
 	for (;;) {c.fillRect(x0 - (w > 1 ? 1 : 0), y0 - (w > 1 ? 1 : 0), w, w); if (x0 === x1 && y0 === y1) break; const e2 = 2 * e; if (e2 >= dy) {e += dy; x0 += sx;} if (e2 <= dx) {e += dx; y0 += sy;}}
 };
+const back = (k: number) => {const c1 = 1.9; return k <= 0 ? 0 : 1 + (c1 + 1) * Math.pow(k - 1, 3) + c1 * Math.pow(k - 1, 2);};
 const label = (c: C2, f: number, a: number, b: number, s: string, tx: number, ty: number, px: number, py: number, col = TXT) => {
 	if (f < a || f >= b) return;
+	if (STYLE !== 'pixel') {
+		const k = back(P(f, a, a + 7)), out = 1 - P(f, b - 5, b); if (k <= 0 || out <= 0) return;
+		c.save(); c.globalAlpha = out;
+		c.font = `900 10px InterBlack`; const tw = c.measureText(s).width; const bw = tw + 10, bh = 15;
+		const bx = tx, by = ty - 3, cx = bx + bw / 2, cy = by + bh / 2; const ex = cx + (px - cx) * 0, ey = cy;
+		const lk = eout(P(f, a, a + 6));
+		c.shadowColor = 'rgba(0,0,0,0.45)'; c.shadowBlur = 6; c.shadowOffsetY = 2.5;
+		c.strokeStyle = '#fffaf0'; c.lineWidth = 1.3; c.lineCap = 'round'; c.beginPath(); c.moveTo(px, py); c.lineTo(px + (ex - px) * lk, py + (ey - py) * lk); c.stroke();
+		c.fillStyle = '#fffaf0'; circle(c, px, py, 2.2); c.fill();
+		c.translate(cx, cy); c.rotate(((a / 15) % 2 ? 1 : -1) * 0.035); c.scale(k, k);
+		c.fillStyle = col === TXT ? '#fffaf0' : col; c.beginPath(); c.roundRect(-bw / 2, -bh / 2, bw, bh, 3); c.fill();
+		c.shadowColor = 'transparent'; c.fillStyle = '#1a1412'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(s, 0, 0.8);
+		c.restore(); return;
+	}
 	const k = eout(P(f, a, a + 7)); const ex = tx + (tx <= px ? Math.min(s.length * 8, 40) : 4), ey = ty + (ty < py ? 10 : -2);
 	const lx = px + (ex - px) * k, ly = py + (ey - py) * k;
 	pline(c, px, py, lx, ly, INK, 3); pline(c, px, py, lx, ly, TXT); c.fillStyle = INK; c.fillRect(Math.round(px) - 2, Math.round(py) - 2, 5, 5); c.fillStyle = TXT; c.fillRect(Math.round(px) - 1, Math.round(py) - 1, 3, 3);
@@ -289,7 +306,7 @@ const hud = (c: C2, f: number, lang: Lang) => {
 	text(c, S_.handle, 23, 7, TXT, 'left', 8);
 	const tri = (x: number, y: number, col: string) => {c.fillStyle = col; for (let i = 0; i < 4; i++) c.fillRect(x + i, y + i, 1, 7 - 2 * i);};
 	if (f >= T.pierceA && f < T.withB) {const x = W - 6 - S_.slow.length * 8; tri(x - 9, 27, '#7fe0d0'); text(c, S_.slow, x, 27, '#7fe0d0');}
-	if (f >= T.ffA && f < T.ffB) {const day = 1 + Math.min(3, Math.floor(P(f, T.ffA, T.ffB) * 4)); const s = `${S_.day} ${day}`; const x = W - 6 - s.length * 8; tri(x - 15, 27, '#ffd24a'); tri(x - 9, 27, '#ffd24a'); text(c, s, x, 27, '#ffd24a');}
+	if (f >= T.ffA && f < T.ffB) {const day = 1 + Math.min(3, Math.floor((f - T.ffA) / BEAT)); const s = `${S_.day} ${day}`; const x = W - 6 - s.length * 8; tri(x - 15, 27, '#ffd24a'); tri(x - 9, 27, '#ffd24a'); text(c, s, x, 27, '#ffd24a');}
 };
 
 // ---------------- frame compositor ----------------
@@ -305,7 +322,40 @@ const toPixels = (src: OffscreenCanvas, dst: OffscreenCanvas) => {
 	for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {const t = BAYER[(y & 3) * 4 + (x & 3)] - 0.5; const i = (y * W + x) * 4; for (let ch = 0; ch < 3; ch++) a[i + ch] = Math.max(0, Math.min(255, Math.round((a[i + ch] + t * STEP) / STEP) * STEP));}
 	d.putImageData(img, 0, 0); return d;
 };
-export const renderFrame = (main: CanvasRenderingContext2D, f: number, lang: Lang) => {
+const paperTex = (() => {let t: OffscreenCanvas | null = null; return () => {if (t) return t; t = new OffscreenCanvas(W * K, H * K); const x = t.getContext('2d')!; const im = x.createImageData(W * K, H * K); for (let i = 0; i < im.data.length; i += 4) {const v = 128 + (hash(i * 0.37) - 0.5) * 60; im.data[i] = v; im.data[i + 1] = v; im.data[i + 2] = v; im.data[i + 3] = 255;} x.putImageData(im, 0, 0); return t;};})();
+const renderSmooth = (main: CanvasRenderingContext2D, f: number, lang: Lang) => {
+	HR ??= new OffscreenCanvas(W * K, H * K); const h = HR.getContext('2d')!;
+	const inSec = f >= (T.zinA + T.zinB) / 2 && f < (T.zoutA + T.zoutB) / 2;
+	const kb = pulse(f, BEAT, 3.5) * (f >= T.burst && f < T.nerveB ? 1.6 : 1);
+	const zoomK = f >= T.zinA && f < T.zinB ? 1 + 7 * eio(P(f, T.zinA, T.zinB - 2)) : f >= T.zoutA && f < T.zoutB ? 1 + 7 * (1 - eio(P(f, T.zoutA + 2, T.zoutB))) : 1;
+	const [sx, sy] = shake(f);
+	h.setTransform(K, 0, 0, K, 0, 0); h.translate(sx, sy);
+	const cz = 1 + 0.012 * kb; h.translate(W / 2, H / 2); h.scale(cz, cz); h.translate(-W / 2, -H / 2);
+	const trans = (f >= T.zinA && f < T.zinB) || (f >= T.zoutA && f < T.zoutB);
+	const paperOn = (cx: OffscreenCanvasRenderingContext2D) => {if (STYLE === 'paper') {cx.shadowColor = 'rgba(10,4,2,0.5)'; cx.shadowBlur = 12; cx.shadowOffsetY = 5;}};
+	if (trans) {
+		// crossfade: zoomed outside view <-> cross-section
+		const zin = f < T.zinB; const mid = zin ? T.zinA + 18 : T.zoutA + 10; const wIn = zin ? eio(P(f, mid - 7, mid + 5)) : 1 - eio(P(f, mid - 5, mid + 7));
+		h.save(); h.translate(SPOT.x, SPOT.y); h.scale(zoomK, zoomK); h.translate(-SPOT.x, -SPOT.y); paperOn(h); drawOutside(h, f); h.restore();
+		HR2 ??= new OffscreenCanvas(W * K, H * K); const h2 = HR2.getContext('2d')!; h2.setTransform(K, 0, 0, K, 0, 0); h2.translate(W / 2, H / 2); const sz = zin ? 1.25 - 0.25 * eout(P(f, mid - 7, T.zinB)) : 1 + 0.25 * eio(P(f, T.zoutA, mid + 7)); h2.scale(sz, sz); h2.translate(-W / 2, -H / 2); paperOn(h2);
+		drawSection(h2, f, sceneState(zin ? T.zinB : T.zoutA - 1), lang, true); h2.shadowColor = 'transparent';
+		h.save(); h.setTransform(1, 0, 0, 1, 0, 0); h.globalAlpha = wIn; h.drawImage(HR2, 0, 0); h.restore();
+	} else {
+	if (!inSec) {h.translate(SPOT.x, SPOT.y); h.scale(zoomK, zoomK); h.translate(-SPOT.x, -SPOT.y);}
+	paperOn(h);
+	if (inSec) drawSection(h, f, sceneState(f), lang, true); else drawOutside(h, f);
+	}
+	h.shadowColor = 'transparent'; h.shadowBlur = 0; h.shadowOffsetY = 0;
+	if (STYLE === 'paper') {h.setTransform(1, 0, 0, 1, 0, 0); h.globalCompositeOperation = 'overlay'; h.globalAlpha = 0.35; h.drawImage(paperTex(), 0, 0); h.globalAlpha = 1; h.globalCompositeOperation = 'source-over'; h.setTransform(K, 0, 0, K, 0, 0);}
+	h.setTransform(1, 0, 0, 1, 0, 0);
+	h.setTransform(K, 0, 0, K, 0, 0); h.translate(sx, sy);
+	if (!trans) {if (inSec) sectionLabels(h, f, sceneState(f), lang); else outsideOverlay(h, f, lang);}
+	if (f >= T.ffA && f < T.ffB) {h.fillStyle = 'rgba(255,250,240,0.10)'; for (let i = 0; i < 6; i++) h.fillRect(0, hash(f * 3 + i) * H, W, 0.8);}
+	h.setTransform(K, 0, 0, K, 0, 0); hud(h, f, lang);
+	main.drawImage(HR, 0, 0);
+};
+export const renderFrame = (main: CanvasRenderingContext2D, f: number, lang: Lang, style: Style = 'pixel') => {
+	STYLE = style; if (style !== 'pixel') return renderSmooth(main, f, lang);
 	HR ??= new OffscreenCanvas(W * K, H * K); HR2 ??= new OffscreenCanvas(W * K, H * K); LR ??= new OffscreenCanvas(W, H); LR2 ??= new OffscreenCanvas(W, H);
 	const h = HR.getContext('2d')!, h2 = HR2.getContext('2d')!;
 	const [sx, sy] = shake(f);
@@ -337,19 +387,19 @@ export const renderFrame = (main: CanvasRenderingContext2D, f: number, lang: Lan
 let fontsReady: Promise<void> | null = null;
 const loadFonts = (lang: Lang) => {
 	if (fontsReady) return fontsReady;
-	const faces = [new FontFace('PS2P', `url(${staticFile('fonts/press-start-2p-latin-400-normal.woff2')})`, {unicodeRange: 'U+0000-00FF, U+2000-206F'}), new FontFace('PS2P', `url(${staticFile('fonts/press-start-2p-cyrillic-400-normal.woff2')})`, {unicodeRange: 'U+0400-04FF'})];
+	const faces = [new FontFace('PS2P', `url(${staticFile('fonts/press-start-2p-latin-400-normal.woff2')})`, {unicodeRange: 'U+0000-00FF, U+2000-206F'}), new FontFace('PS2P', `url(${staticFile('fonts/press-start-2p-cyrillic-400-normal.woff2')})`, {unicodeRange: 'U+0400-04FF'}), new FontFace('InterBlack', `url(${staticFile('fonts/InterDisplay-Black.otf')})`)];
 	fontsReady = Promise.all(faces.map((ff) => ff.load().then((l) => {(document.fonts as any).add(l);}))).then(() => new Promise<void>((res) => {LOGO = new Image(); LOGO.onload = () => res(); LOGO.onerror = () => res(); LOGO.src = staticFile(STR[lang].logo);}));
 	return fontsReady;
 };
-export const PixelLoop: React.FC<{lang: Lang; at?: number}> = ({lang, at}) => {
+export const PixelLoop: React.FC<{lang: Lang; at?: number; style?: Style}> = ({lang, at, style = 'pixel'}) => {
 	const cur = useCurrentFrame(); const f = at ?? cur % N; const ref = useRef<HTMLCanvasElement>(null);
 	const [handle] = useState(() => delayRender('fonts'));
 	const [ready, setReady] = useState(false);
 	useEffect(() => {loadFonts(lang).then(() => {setReady(true); continueRender(handle);});}, [handle, lang]);
-	useEffect(() => {if (!ready || !ref.current) return; renderFrame(ref.current.getContext('2d')!, f, lang);}, [f, ready, lang]);
+	useEffect(() => {if (!ready || !ref.current) return; renderFrame(ref.current.getContext('2d')!, f, lang, style);}, [f, ready, lang, style]);
 	return (
 		<AbsoluteFill style={{background: BG}}>
-			<canvas ref={ref} width={W} height={H} style={{width: W * K, height: H * K, imageRendering: 'pixelated'}} />
+			<canvas ref={ref} width={style === 'pixel' ? W : W * K} height={style === 'pixel' ? H : H * K} style={{width: W * K, height: H * K, imageRendering: style === 'pixel' ? 'pixelated' : 'auto'}} />
 		</AbsoluteFill>
 	);
 };
