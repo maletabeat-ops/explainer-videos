@@ -7,13 +7,13 @@ type C2 = CanvasRenderingContext2D;
 const D2R = Math.PI / 180;
 const OUT = '#0b0e14';
 const PAL = ['#0b0e14', '#151b26', '#1e2533', '#2a3242', '#3a4456', '#4d5970', '#66738c', '#8794ab', '#a9b4c6', '#d2d9e4', '#f2f4f7',
-	'#2b5bb5', '#3f7be0', '#7fb2ff', '#c46a1f', '#ff8a2e', '#ffc04a', '#fff1a8', '#6b4a2b', '#9a6a3a', '#c8943f', '#b33a2a', '#e25a3a', '#5a5f66', '#8a8f97', '#c9cbd0'].map((h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]);
+	'#2b5bb5', '#3f7be0', '#7fb2ff', '#c46a1f', '#ff8a2e', '#ffc04a', '#fff1a8', '#6b4a2b', '#9a6a3a', '#c8943f', '#b33a2a', '#e25a3a', '#5a5f66', '#8a8f97', '#c9cbd0', '#2a1b3d', '#4a2a52', '#7a3a5a', '#b5525a', '#e07a52', '#f5a65a', '#ffd27a', '#c98a4b', '#a86a3a', '#7a4a2a', '#3a3f4a', '#2a2e37', '#d9542b', '#a8381c', '#ff7a4a', '#16181d', '#5a3a2a'].map((h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]);
 
 // ---------- helpers ----------
-const hatch = (c: C2, col: string, gap = 5, ang = 45) => {const p = document.createElement('canvas'); p.width = p.height = gap; const x = p.getContext('2d')!; x.fillStyle = col; for (let i = 0; i < gap; i++) x.fillRect(i, (ang > 0 ? gap - 1 - i : i), 1, 1); return c.createPattern(p, 'repeat')!;};
-const poly = (c: C2, pts: number[][], fill: string | CanvasPattern, stroke = OUT, lw = 2) => {c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (const p of pts.slice(1)) c.lineTo(p[0], p[1]); c.closePath(); c.fillStyle = fill; c.fill(); if (stroke) {c.strokeStyle = stroke; c.lineWidth = lw; c.stroke();}};
-const rect = (c: C2, x: number, y: number, w: number, h: number, fill: string | CanvasPattern, stroke: string | null = OUT, lw = 2) => {c.fillStyle = fill; c.fillRect(x, y, w, h); if (stroke) {c.strokeStyle = stroke; c.lineWidth = lw; c.strokeRect(x, y, w, h);}};
-const circ = (c: C2, x: number, y: number, r: number, fill: string | CanvasPattern, stroke: string | null = OUT, lw = 2) => {c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fillStyle = fill; c.fill(); if (stroke) {c.strokeStyle = stroke; c.lineWidth = lw; c.stroke();}};
+export const hatch = (c: C2, col: string, gap = 5, ang = 45) => {const p = document.createElement('canvas'); p.width = p.height = gap; const x = p.getContext('2d')!; x.fillStyle = col; for (let i = 0; i < gap; i++) x.fillRect(i, (ang > 0 ? gap - 1 - i : i), 1, 1); return c.createPattern(p, 'repeat')!;};
+export const poly = (c: C2, pts: number[][], fill: string | CanvasPattern, stroke: string | null = OUT, lw = 2) => {c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (const p of pts.slice(1)) c.lineTo(p[0], p[1]); c.closePath(); c.fillStyle = fill; c.fill(); if (stroke) {c.strokeStyle = stroke; c.lineWidth = lw; c.stroke();}};
+export const rect = (c: C2, x: number, y: number, w: number, h: number, fill: string | CanvasPattern, stroke: string | null = OUT, lw = 2) => {c.fillStyle = fill; c.fillRect(x, y, w, h); if (stroke) {c.strokeStyle = stroke; c.lineWidth = lw; c.strokeRect(x, y, w, h);}};
+export const circ = (c: C2, x: number, y: number, r: number, fill: string | CanvasPattern, stroke: string | null = OUT, lw = 2) => {c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fillStyle = fill; c.fill(); if (stroke) {c.strokeStyle = stroke; c.lineWidth = lw; c.stroke();}};
 const valveLift = (local: number, open: number, close: number) => {if (local < open || local > close) return 0; const k = (local - open) / (close - open); return Math.sin(k * Math.PI);};
 
 // ---------- one cylinder in its own local frame (axis = -y, crank center at 0,0) ----------
@@ -74,9 +74,8 @@ const drawCylinder = (c: C2, local: number, alpha: number, side: number, t: numb
 };
 
 const T_FIRE_B = 405;
+export const drawPanels = (c: C2) => {c.fillStyle = '#121722'; c.fillRect(-2000, -2000, 5000, 5000); for (let y = -600; y < CH + 600; y += 60) for (let x = -600; x < CW + 600; x += 60) {rect(c, x + 2, y + 2, 56, 56, (Math.abs(x / 60 + y / 60)) % 2 ? '#161c28' : '#141a25', '#0d1119', 2); circ(c, x + 8, y + 8, 2, '#2a3242', null);}};
 export const drawEngine = (c: C2, theta: number, t: number) => {
-	// background: riveted dark panels
-	c.fillStyle = '#121722'; c.fillRect(0, 0, CW, CH); for (let y = 0; y < CH; y += 60) for (let x = 0; x < CW; x += 60) {rect(c, x + 2, y + 2, 56, 56, (x / 60 + y / 60) % 2 ? '#161c28' : '#141a25', '#0d1119', 2); circ(c, x + 8, y + 8, 2, '#2a3242', null);}
 	c.save(); c.translate(CW / 2, 640);
 	// crankcase (cut, hatched)
 	const H = hatch(c, '#4d5970', 5);
@@ -95,10 +94,11 @@ export const drawEngine = (c: C2, theta: number, t: number) => {
 	const px = -Math.sin(al) * R, py = -Math.cos(al) * R; circ(c, px, py, 17, '#ff9a2e'); circ(c, px, py, 7, '#fff1a8', null);
 	c.restore();
 };
-const snap = (c: C2) => {const im = c.getImageData(0, 0, CW, CH), a = im.data; for (let i = 0; i < a.length; i += 4) {let best = 0, bd = 1e9; for (let k = 0; k < PAL.length; k++) {const d = (a[i] - PAL[k][0]) ** 2 + (a[i + 1] - PAL[k][1]) ** 2 + (a[i + 2] - PAL[k][2]) ** 2; if (d < bd) {bd = d; best = k;}} a[i] = PAL[best][0]; a[i + 1] = PAL[best][1]; a[i + 2] = PAL[best][2];} c.putImageData(im, 0, 0);};
+const SNAPC = new Map<number, number>();
+export const snap = (c: C2) => {const im = c.getImageData(0, 0, CW, CH), a = im.data; for (let i = 0; i < a.length; i += 4) {const key = ((a[i] >> 2) << 12) | ((a[i + 1] >> 2) << 6) | (a[i + 2] >> 2); let best = SNAPC.get(key); if (best === undefined) {best = 0; let bd = 1e9; for (let k = 0; k < PAL.length; k++) {const d = (a[i] - PAL[k][0]) ** 2 + (a[i + 1] - PAL[k][1]) ** 2 + (a[i + 2] - PAL[k][2]) ** 2; if (d < bd) {bd = d; best = k;}} SNAPC.set(key, best);} a[i] = PAL[best][0]; a[i + 1] = PAL[best][1]; a[i + 2] = PAL[best][2];} c.putImageData(im, 0, 0);};
 export const CutTest: React.FC<{theta?: number}> = ({theta}) => {
 	const f = useCurrentFrame(); const ref = useRef<HTMLCanvasElement>(null); const [h] = useState(() => delayRender('f'));
-	useEffect(() => {const c = ref.current!.getContext('2d')!; drawEngine(c, theta ?? (f * 720) / 15, f); snap(c); continueRender(h);}, [f, theta, h]);
+	useEffect(() => {const c = ref.current!.getContext('2d')!; drawPanels(c); drawEngine(c, theta ?? (f * 720) / 15, f); snap(c); continueRender(h);}, [f, theta, h]);
 	void staticFile;
 	return <AbsoluteFill style={{background: '#121722'}}><canvas ref={ref} width={CW} height={CH} style={{width: 1080, height: 1920, imageRendering: 'pixelated'}} /></AbsoluteFill>;
 };

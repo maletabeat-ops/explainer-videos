@@ -840,7 +840,7 @@ You've been walking since sunrise, your stomach is empty, and every door is clos
 
 ## 21. V-twin «потейто-потейто» — пиксельное 3D, всё в ритм двигателя (только EN, RU пока на паузе)
 
-**Файлы:** `vtwin_EN.mp4` (32 с, бесшовная петля, 120 BPM) · обложка `cover_vtwin_EN.png`
+**Файлы:** `vtwin_EN_v2.mp4` (32 с, детальный пиксель-арт разрез, бесшовная петля, 120 BPM) · обложка `cover_vtwin_EN_v2.png`
 
 ### 🇺🇸 EN
 **Title:** Why This Engine Says "Potato-Potato" 🏍️
