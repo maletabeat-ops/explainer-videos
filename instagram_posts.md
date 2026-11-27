@@ -837,3 +837,12 @@ You've been walking since sunrise, your stomach is empty, and every door is clos
 **Title:** What a Mosquito Leaves Inside You 🦟
 **Pinned comment:**
 > 📌 Watch it again — can you spot the exact moment the itch starts? 👀 Do mosquitoes love you more than everyone else? 👇
+
+## 21. V-twin «потейто-потейто» — пиксельное 3D, всё в ритм двигателя (только EN, RU пока на паузе)
+
+**Файлы:** `vtwin_EN.mp4` (32 с, бесшовная петля, 120 BPM) · обложка `cover_vtwin_EN.png`
+
+### 🇺🇸 EN
+**Title:** Why This Engine Says "Potato-Potato" 🏍️
+**Pinned comment:**
+> 📌 Sound ON — the beat you hear IS the engine: fire, 405°, fire, 315°, repeat. Which engine should we slow down next? 👇
