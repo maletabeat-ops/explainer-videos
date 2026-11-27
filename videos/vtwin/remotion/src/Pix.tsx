@@ -12,47 +12,79 @@ const theta = (f: number) => (720 * (f >= 645 && f < 660 ? 645 : f)) / BEAT;
 // ---------------- bike scene (side view, idling at sunset) ----------------
 const ENG = {x: 300, y: 590}; // bike engine crank point (bike space)
 const rev = (f: number) => (f >= 660 && f < 780 ? Math.sin(P(f, 660, 780) * Math.PI) : 0);
+const SCROLL = (f: number) => (f / N) * 11520; // px per loop; every layer's pattern width divides its share -> seamless
+const wrap = (x: number, w: number) => ((x % w) + w) % w;
 const drawBikeScene = (c: C2, f: number) => {
-	// sky bands + sun + mesas + desert + road
+	const S = SCROLL(f) * (1 + 0 * rev(f));
+	// sky bands + sun
 	const sky = c.createLinearGradient(0, 0, 0, 640); [[0, '#2a1b3d'], [0.3, '#4a2a52'], [0.55, '#7a3a5a'], [0.72, '#b5525a'], [0.86, '#e07a52'], [1, '#f5a65a']].forEach(([o, col]) => sky.addColorStop(o as number, col as string)); c.fillStyle = sky; c.fillRect(-400, -400, 1400, 1100);
 	circ(c, 360, 520, 120, '#ffd27a', null); for (let k = 0; k < 6; k++) rect(c, 230, 560 + k * 13, 260, 3 + k, '#f5a65a', null);
-	poly(c, [[-200, 640], [-40, 560], [10, 560], [60, 600], [140, 600], [190, 540], [260, 540], [300, 600], [700, 600], [800, 640]], '#4a2a52', null);
-	poly(c, [[-300, 640], [80, 610], [120, 590], [170, 590], [210, 622], [460, 600], [520, 580], [580, 580], [640, 620], [900, 640]], '#7a3a5a', null);
-	rect(c, -400, 640, 1400, 400, '#c98a4b', null); for (let k = 0; k < 40; k++) rect(c, ((k * 97) % 1100) - 300, 650 + ((k * 37) % 60), 6 + (k % 3) * 4, 2, '#a86a3a', null);
-	rect(c, -400, 700, 1400, 140, '#3a3f4a', null); rect(c, -400, 700, 1400, 4, '#d2d9e4', null); for (let k = -4; k < 12; k++) rect(c, k * 120 + 20, 768, 60, 5, '#ffd27a', null); rect(c, -400, 840, 1400, 400, '#a86a3a', null);
-	// cactus + sign
-	poly(c, [[52, 690], [52, 610], [66, 600], [80, 610], [80, 690]], '#5a3a2a', OUT, 2); poly(c, [[52, 640], [34, 640], [34, 616], [44, 616], [44, 630], [52, 630]], '#5a3a2a', OUT, 2);
-	// bike
-	const shake = (sinceFire(f) < 2 ? -2 : 0) + Math.sin(f * 2.1) * rev(f) * 2;
-	c.save(); c.translate(0, shake);
-	// shadow
-	c.fillStyle = 'rgba(0,0,0,0.35)'; c.beginPath(); c.ellipse(300, 706, 210, 10, 0, 0, Math.PI * 2); c.fill();
-	const wheel = (x: number) => {circ(c, x, 640, 64, '#16181d'); circ(c, x, 640, 50, '#2a2e37'); circ(c, x, 640, 44, '#3a3f4a'); for (let k = 0; k < 12; k++) {const a = (k / 12) * Math.PI * 2; c.strokeStyle = '#a9b4c6'; c.lineWidth = 2; c.beginPath(); c.moveTo(x, 640); c.lineTo(x + Math.cos(a) * 44, 640 + Math.sin(a) * 44); c.stroke();} circ(c, x, 640, 10, '#d2d9e4');};
+	// far mesas (0.1x, pattern 576)
+	const far = [[0, 640], [60, 560], [130, 560], [170, 600], [260, 600], [300, 545], [380, 545], [420, 600], [576, 640]];
+	for (let r = -1; r < 3; r++) {const ox = r * 576 - wrap(S * 0.1, 576) - 100; poly(c, far.map(([x, y]) => [x + ox, y]), '#4a2a52', null);}
+	// mid mesas (0.25x, pattern 720)
+	const mid = [[0, 640], [80, 612], [120, 586], [200, 586], [240, 622], [420, 610], [470, 578], [560, 578], [600, 616], [720, 640]];
+	for (let r = -1; r < 3; r++) {const ox = r * 720 - wrap(S * 0.25, 720) - 100; poly(c, mid.map(([x, y]) => [x + ox, y]), '#7a3a5a', null);}
+	// desert ground with streaks (0.75x)
+	rect(c, -400, 640, 1400, 60, '#c98a4b', null);
+	for (let k = 0; k < 30; k++) {const x = wrap(k * 97 - S * 0.75, 720) - 100; rect(c, x, 648 + ((k * 37) % 46), 8 + (k % 3) * 6, 2, '#a86a3a', null);}
+	// cacti (0.75x, pattern 720)
+	for (const [cx0, h] of [[60, 70], [330, 50], [560, 84]]) {const x = wrap(cx0 - S * 0.75, 720) - 100; poly(c, [[x, 690], [x, 690 - h], [x + 8, 690 - h - 8], [x + 16, 690 - h], [x + 16, 690]], '#5a3a2a', OUT, 2); poly(c, [[x, 690 - h * 0.5], [x - 14, 690 - h * 0.5], [x - 14, 690 - h * 0.8], [x - 6, 690 - h * 0.8], [x - 6, 690 - h * 0.62], [x, 690 - h * 0.62]], '#5a3a2a', OUT, 2);}
+	// road
+	rect(c, -400, 700, 1400, 140, '#3a3f4a', null); rect(c, -400, 700, 1400, 4, '#d2d9e4', null); rect(c, -400, 836, 1400, 4, '#d2d9e4', null);
+	for (let k = 0; k < 8; k++) rect(c, wrap(k * 120 - S, 960) - 200, 768, 64, 5, '#ffd27a', null);
+	for (let k = 0; k < 16; k++) rect(c, wrap(k * 60 + 17 - S, 960) - 200, 720 + ((k * 29) % 100), 10, 2, '#2a2e37', null);
+	rect(c, -400, 840, 1400, 400, '#a86a3a', null);
+	// roadside posts (1.0x, pattern 360) and near grass tufts (1.4x, pattern 576)
+	for (let k = 0; k < 3; k++) {const x = wrap(k * 360 - S, 1080) - 200; rect(c, x, 652, 8, 48, '#d2d9e4', OUT, 2); rect(c, x, 660, 8, 8, '#e25a3a', null);}
+	// speed lines in the sky
+	for (let k = 0; k < 7; k++) {const y = 380 + ((k * 53) % 220); const x = wrap(k * 210 - S * 2.2, 1200) - 300; c.globalAlpha = 0.35; rect(c, x, y, 120 + (k % 3) * 60, 2, '#ffd27a', null); c.globalAlpha = 1;}
+	// ---- bike + rider ----
+	const bob = (sinceFire(f) < 2 ? -2 : 0) + Math.sin(f * 2.1) * rev(f) * 2 + Math.round(Math.sin((f / N) * Math.PI * 64));
+	c.save(); c.translate(0, bob);
+	c.fillStyle = 'rgba(0,0,0,0.35)'; c.beginPath(); c.ellipse(300, 706, 220, 9, 0, 0, Math.PI * 2); c.fill();
+	const wa = (f / N) * 344 * (Math.PI / 6);
+	const wheel = (x: number) => {circ(c, x, 640, 64, '#16181d'); for (let k = 0; k < 16; k++) {const a = (k / 16) * Math.PI * 2 + wa; rect(c, x + Math.cos(a) * 58 - 2, 640 + Math.sin(a) * 58 - 2, 4, 4, '#2a2e37', null);} circ(c, x, 640, 48, '#2a2e37'); circ(c, x, 640, 44, '#3a3f4a', '#8794ab', 2);
+		for (let k = 0; k < 12; k++) {const a = (k / 12) * Math.PI * 2 + wa; c.strokeStyle = '#c9cbd0'; c.lineWidth = 2; c.beginPath(); c.moveTo(x + Math.cos(a) * 8, 640 + Math.sin(a) * 8); c.lineTo(x + Math.cos(a + 0.25) * 44, 640 + Math.sin(a + 0.25) * 44); c.stroke();}
+		circ(c, x, 640, 22, 'rgba(0,0,0,0)', '#8794ab', 3); circ(c, x, 640, 10, '#d2d9e4');};
 	wheel(140); wheel(462);
-	// rear fender + front fender
+	// chain + sprocket + rear shock
+	circ(c, 140, 640, 18, '#5a5f66'); c.strokeStyle = '#2a2e37'; c.lineWidth = 4; c.beginPath(); c.moveTo(140, 622); c.lineTo(285, 612); c.moveTo(140, 658); c.lineTo(285, 628); c.stroke();
 	c.lineWidth = 12; c.strokeStyle = OUT; c.beginPath(); c.arc(140, 640, 74, Math.PI * 1.05, Math.PI * 1.75); c.stroke(); c.lineWidth = 8; c.strokeStyle = '#d9542b'; c.stroke();
 	c.lineWidth = 12; c.strokeStyle = OUT; c.beginPath(); c.arc(462, 640, 74, Math.PI * 1.15, Math.PI * 1.7); c.stroke(); c.lineWidth = 8; c.strokeStyle = '#d9542b'; c.stroke();
-	// frame
-	const tube = (pts: number[][], w = 8) => {c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (const p of pts.slice(1)) c.lineTo(p[0], p[1]); c.strokeStyle = OUT; c.lineWidth = w + 4; c.stroke(); c.strokeStyle = '#16181d'; c.lineWidth = w; c.stroke();};
+	const tube = (pts: number[][], w = 8, col = '#16181d') => {c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (const p of pts.slice(1)) c.lineTo(p[0], p[1]); c.strokeStyle = OUT; c.lineWidth = w + 4; c.stroke(); c.strokeStyle = col; c.lineWidth = w; c.stroke();};
 	tube([[140, 640], [230, 600], [380, 630]]); tube([[140, 640], [220, 500], [395, 470]]); tube([[395, 470], [380, 630]]);
-	// fork (chrome) + headlight + bars
+	tube([[150, 628], [205, 520]], 7, '#8794ab'); for (let k = 0; k < 6; k++) {const t = k / 6; rect(c, 155 + 46 * t, 610 - 88 * t, 10, 3, '#d2d9e4', null);}
 	tube([[462, 640], [404, 452]], 9); c.strokeStyle = '#d2d9e4'; c.lineWidth = 4; c.beginPath(); c.moveTo(460, 634); c.lineTo(406, 458); c.stroke();
-	tube([[404, 452], [380, 408], [350, 400]], 6); circ(c, 432, 470, 20, '#a9b4c6'); circ(c, 438, 470, 13, '#fff1a8');
-	// engine: crankcase + two finned cylinders at 45 deg, rocker boxes
+	circ(c, 462, 640, 26, 'rgba(0,0,0,0)', '#a9b4c6', 4);
+	tube([[404, 452], [384, 414], [352, 404]], 6); circ(c, 432, 470, 20, '#a9b4c6'); circ(c, 438, 470, 13, '#fff1a8'); c.globalAlpha = 0.25; poly(c, [[450, 460], [560, 420], [560, 520], [450, 482]], '#fff1a8', null); c.globalAlpha = 1;
+	tube([[394, 412], [404, 384]], 3, '#a9b4c6'); poly(c, [[398, 376], [414, 380], [410, 392], [396, 388]], '#d2d9e4', OUT, 2);
+	// engine
 	poly(c, [[262, 566], [338, 566], [352, 615], [318, 642], [278, 642], [248, 612]], '#66738c', OUT, 3); circ(c, 300, 606, 16, '#a9b4c6');
-	for (const [phi, col] of [[22.5, 0], [-22.5, 1]] as [number, number][]) {c.save(); c.translate(ENG.x, ENG.y); c.rotate(-phi * D2R);
-		for (let k = 0; k < 7; k++) rect(c, -21 + (k % 2), -30 - k * 7, 42 - (k % 2) * 2, 5, k % 2 ? '#a9b4c6' : '#8794ab', OUT, 1.5);
-		rect(c, -18, -30 - 7 * 7 - 4, 36, 13, '#d2d9e4', OUT, 2); rect(c, -14, -30 - 7 * 7 - 13, 28, 9, '#8794ab', OUT, 2); void col; c.restore();}
-	// tank (teardrop) + seat
+	for (const phi of [22.5, -22.5]) {c.save(); c.translate(ENG.x, ENG.y); c.rotate(-phi * D2R); for (let k = 0; k < 7; k++) rect(c, -21 + (k % 2), -30 - k * 7, 42 - (k % 2) * 2, 5, k % 2 ? '#a9b4c6' : '#8794ab', OUT, 1.5); rect(c, -18, -83, 36, 13, '#d2d9e4', OUT, 2); rect(c, -14, -92, 28, 9, '#8794ab', OUT, 2); c.restore();}
+	// air cleaner (round chrome) on the right side
+	circ(c, 318, 548, 15, '#c9cbd0'); circ(c, 318, 548, 7, '#8794ab', null);
+	// tank + badge + seat
 	c.beginPath(); c.moveTo(250, 482); c.bezierCurveTo(270, 440, 370, 430, 398, 462); c.bezierCurveTo(400, 490, 300, 500, 250, 482); c.closePath(); c.fillStyle = '#d9542b'; c.fill(); c.strokeStyle = OUT; c.lineWidth = 3; c.stroke();
-	c.beginPath(); c.moveTo(270, 456); c.bezierCurveTo(300, 446, 350, 444, 380, 452); c.strokeStyle = '#ff7a4a'; c.lineWidth = 5; c.stroke(); poly(c, [[300, 470], [350, 466], [348, 480], [300, 484]], '#a8381c', null);
+	c.beginPath(); c.moveTo(270, 456); c.bezierCurveTo(300, 446, 350, 444, 380, 452); c.strokeStyle = '#ff7a4a'; c.lineWidth = 5; c.stroke(); poly(c, [[312, 466], [342, 464], [340, 476], [312, 478]], '#d2d9e4', OUT, 1.5);
 	c.beginPath(); c.moveTo(160, 498); c.quadraticCurveTo(200, 470, 255, 482); c.lineTo(250, 500); c.quadraticCurveTo(200, 500, 165, 510); c.closePath(); c.fillStyle = '#16181d'; c.fill(); c.strokeStyle = OUT; c.lineWidth = 3; c.stroke();
-	// exhaust pipes (chrome) from heads to rear
+	// exhaust pipes
 	for (const [dy, i] of [[0, 0], [12, 1]]) {c.lineCap = 'round'; c.beginPath(); c.moveTo(i ? 350 : 262, i ? 520 : 522); c.quadraticCurveTo(i ? 372 : 238, 652 + dy, 250 + (i ? 30 : 0), 664 + dy); c.lineTo(80, 652 + dy); c.strokeStyle = OUT; c.lineWidth = 14; c.stroke(); c.strokeStyle = '#c9cbd0'; c.lineWidth = 9; c.stroke(); c.strokeStyle = '#f2f4f7'; c.lineWidth = 2; c.stroke();}
+	// rider: boots, jeans, leather jacket, gloves, helmet with visor
+	poly(c, [[270, 600], [296, 600], [300, 612], [266, 614]], '#16181d', OUT, 2);                                  // boot on peg
+	c.lineCap = 'round'; c.strokeStyle = OUT; c.lineWidth = 26; c.beginPath(); c.moveTo(214, 480); c.lineTo(282, 520); c.lineTo(282, 596); c.stroke(); c.strokeStyle = '#2b5bb5'; c.lineWidth = 20; c.stroke(); c.strokeStyle = '#3f7be0'; c.lineWidth = 4; c.beginPath(); c.moveTo(220, 472); c.lineTo(280, 508); c.stroke();
+	c.beginPath(); c.moveTo(196, 478); c.bezierCurveTo(190, 430, 220, 380, 262, 372); c.lineTo(290, 384); c.bezierCurveTo(276, 420, 250, 460, 236, 488); c.closePath(); c.fillStyle = '#6b4a2b'; c.fill(); c.strokeStyle = OUT; c.lineWidth = 3; c.stroke(); // torso
+	c.strokeStyle = '#9a6a3a'; c.lineWidth = 3; c.beginPath(); c.moveTo(214, 430); c.bezierCurveTo(222, 404, 240, 388, 262, 380); c.stroke();
+	c.strokeStyle = OUT; c.lineWidth = 18; c.beginPath(); c.moveTo(262, 392); c.lineTo(318, 412); c.lineTo(350, 406); c.stroke(); c.strokeStyle = '#6b4a2b'; c.lineWidth = 13; c.stroke(); // arm
+	circ(c, 352, 405, 9, '#16181d');                                                                                // glove
+	circ(c, 272, 348, 30, '#16181d'); c.beginPath(); c.arc(272, 348, 30, -0.5, 0.75); c.lineTo(272, 348); c.closePath(); c.fillStyle = '#2b5bb5'; c.fill(); poly(c, [[288, 336], [300, 344], [296, 352]], '#7fb2ff', null); circ(c, 272, 348, 30, 'rgba(0,0,0,0)', OUT, 3);
+	c.strokeStyle = '#e25a3a'; c.lineWidth = 4; c.beginPath(); c.arc(272, 348, 22, Math.PI * 1.1, Math.PI * 1.55); c.stroke();
 	c.restore();
-	// exhaust puffs + shock rings at the pipe exits (x~74, y~657)
-	for (let k = 0; k < 6; k++) {const fire = Math.floor(f / BEAT) - Math.floor(k / 2); const ft = fire * BEAT + (k % 2 ? FIRE_B : 0); const age = f - ft; if (age < 0 || age > 22) continue; const big = 1 + rev(f) * 1.5; const x = 70 - age * 3.2 * big, y = 655 - age * 0.8; c.globalAlpha = 1 - age / 22; circ(c, x, y, (5 + age * 1.3) * big, '#8a8f97', null); circ(c, x - 2, y - 2, (3 + age * 0.7) * big, '#c9cbd0', null); c.globalAlpha = 1;
-		if (f >= 640 && f < 800 && age < 14) {c.strokeStyle = '#ffc04a'; c.lineWidth = 3; c.globalAlpha = 1 - age / 14; c.beginPath(); c.ellipse(74 - age * 2, 657, 6 + age * 6, 10 + age * 8, 0, 0, Math.PI * 2); c.stroke(); c.globalAlpha = 1;}}
+	// exhaust trail + shock rings (exit ~ x 74, y 657)
+	for (let k = 0; k < 6; k++) {const fire = Math.floor(f / BEAT) - Math.floor(k / 2); const ft = fire * BEAT + (k % 2 ? FIRE_B : 0); const age = f - ft; if (age < 0 || age > 22) continue; const big = 1 + rev(f) * 1.5; const x = 70 - age * 9 * big, y = 655 - age * 0.6; c.globalAlpha = 1 - age / 22; circ(c, x, y, (4 + age * 1.1) * big, '#8a8f97', null); circ(c, x - 2, y - 2, (2 + age * 0.6) * big, '#c9cbd0', null); c.globalAlpha = 1;
+		if (f >= 640 && f < 800 && age < 14) {c.strokeStyle = '#ffc04a'; c.lineWidth = 3; c.globalAlpha = 1 - age / 14; c.beginPath(); c.ellipse(74 - age * 4, 657, 6 + age * 6, 10 + age * 8, 0, 0, Math.PI * 2); c.stroke(); c.globalAlpha = 1;}}
+	// dust kicked by the rear tyre
+	for (let k = 0; k < 8; k++) {const age = ((f + k * 3) % 24); const x = 100 - age * 7, y = 700 - Math.sin(age / 24 * Math.PI) * 14; c.globalAlpha = 0.5 * (1 - age / 24); rect(c, x, y, 6, 4, '#c98a4b', null); c.globalAlpha = 1;}
 };
 
 // ---------------- cameras ----------------
